@@ -7,7 +7,7 @@ import org.apache.maven.plugin.AbstractMojo
  * @version $Id: UploadMojo.java$
  * @author madamcin
  */
-class UploadMojo extends AbstractMojo with DeployParams {
+class UploadMojo extends AbstractMojo with UploadParameters {
 
   def execute() {
 

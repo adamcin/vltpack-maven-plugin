@@ -17,16 +17,16 @@ import java.io.File
   name = "package",
   defaultPhase = LifecyclePhase.PACKAGE,
   requiresDependencyResolution = ResolutionScope.COMPILE_PLUS_RUNTIME)
-class PackageMojo extends AbstractMojo with RepositoryPathParams {
+class PackageMojo extends AbstractMojo {
 
   @Component
   var project: MavenProject = null
 
   @Parameter
-  var embedBundles: java.util.List[String] = Collections.emptyList
+  var embedBundles = Collections.emptyList[String]
 
   @Parameter
-  var embedPackages: java.util.List[String] = Collections.emptyList
+  var embedPackages = Collections.emptyList[String]
 
   def execute() {
     val deps = JavaConversions.collectionAsScalaIterable(project.getDependencyArtifacts).

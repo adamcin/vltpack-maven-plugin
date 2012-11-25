@@ -69,7 +69,7 @@
                             <test>org.apache.maven.plugins:maven-surefire-plugin:test</test>
                             <package>org.apache.felix:maven-bundle-plugin:bundle</package>
                             <integration-test>
-                                net.adamcin.maven:vltpack-maven-plugin:install-bundle
+                                net.adamcin.maven:vltpack-maven-plugin:put-bundle
                             </integration-test>
                             <install>
                                 org.apache.maven.plugins:maven-install-plugin:install,
