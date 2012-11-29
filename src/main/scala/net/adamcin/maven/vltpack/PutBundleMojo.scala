@@ -14,7 +14,6 @@ import dispatch._
 @Mojo(
   name = "put-bundle",
   defaultPhase = LifecyclePhase.INTEGRATION_TEST,
-  requiresProject = false, // TODO: remove this
   threadSafe = true)
 class PutBundleMojo extends AbstractMojo with DeploysBundle with UploadParameters {
 
@@ -22,12 +21,12 @@ class PutBundleMojo extends AbstractMojo with DeploysBundle with UploadParameter
   var project: MavenProject = null
 
   @Parameter(property = "vlt.skip.put-bundle")
-  var skip = false
+  val skip = false
 
   def execute() {
     printParams()
     if (!deploy || skip) {
-      getLog.info("[install-bundle] skipping [deploy=" + deploy + "][skip=" + skip + "]")
+      getLog.info("[put-bundle] skipping [deploy=" + deploy + "][skip=" + skip + "]")
     } else if (project.getArtifact.getArtifactHandler.getExtension != "jar") {
       throw new MojoExecutionException("this goal can only be executed for *.jar artifacts")
     } else {
