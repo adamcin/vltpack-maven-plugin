@@ -1,9 +1,9 @@
 package net.adamcin.maven.vltpack
 
 import org.apache.maven.plugins.annotations.Parameter
-import org.apache.maven.plugin.AbstractMojo
 import dispatch._
-import com.ning.http.client.{HttpResponseStatus, Response, ProxyServer}
+import com.ning.http.client.{RequestBuilder, Response}
+import org.apache.maven.plugin.logging.Log
 
 trait DavVerbs extends MethodVerbs {
   def MKCOL = subject.setMethod("MKCOL")
@@ -13,10 +13,10 @@ class DavRequestVerbs(wrapped: DefaultRequestVerbs) extends DefaultRequestVerbs(
 
 /**
  *
- * @version $Id: UploadParameters.java$
+ * @version $Id: HttpParameters.scala$
  * @author madamcin
  */
-trait UploadParameters extends AbstractMojo {
+trait HttpParameters extends LogsParameters {
 
   final val defaultHost = "localhost"
   final val defaultPort = "4502"
@@ -36,9 +36,6 @@ trait UploadParameters extends AbstractMojo {
 
   @Parameter(property = "vlt.pass", defaultValue = defaultPass)
   val pass = defaultPass
-
-  @Parameter(property = "vlt.deploy")
-  val deploy = false
 
   @Parameter(property = "vlt.context", defaultValue = defaultContext)
   val context: String = defaultContext
@@ -64,6 +61,22 @@ trait UploadParameters extends AbstractMojo {
   @Parameter(property = "vlt.proxy.pass")
   val proxyPass: String = null
 
+  override def printParams(log: Log) {
+    super.printParams(log)
+    log.info("vlt.host = " + host)
+    log.info("vlt.port = " + port)
+    log.info("vlt.user = " + user)
+    log.info("vlt.pass = " + pass)
+    log.info("vlt.context = " + context)
+    log.info("vlt.https = " + https)
+    log.info("vlt.proxy.noProxy = " + noProxy)
+    log.info("vlt.proxy.set = " + proxySet)
+    log.info("vlt.proxy.host = " + proxyHost)
+    log.info("vlt.proxy.port = " + proxyPort)
+    log.info("vlt.proxy.user = " + proxyUser)
+    log.info("vlt.proxy.pass = " + proxyPass)
+  }
+
   implicit def implyDavRequestVerbs(wrapped: DefaultRequestVerbs) = new DavRequestVerbs(wrapped)
 
   def urlForPath(absPath: String): DefaultRequestVerbs = {
@@ -78,36 +91,31 @@ trait UploadParameters extends AbstractMojo {
     (req) => req
   }.head as_!(user, pass)
 
-  def mkdirs(absPath: String): Response = {
-    val segments = absPath.split('/').filter(!_.isEmpty)
-
-    val dirs = segments.foldLeft(List.empty[String]) {
-      (dirs: List[String], segment: String) => dirs match {
-        case Nil => List(segment)
-        case head :: tail => (head + "/" + segment) :: dirs
+  def isSuccess(req: RequestBuilder, resp: Response): Boolean = {
+    (req.build().getMethod, Option(resp)) match {
+      case ("MKCOL", Some(response)) => {
+        Set(201, 405) contains response.getStatusCode
       }
-    }.reverse
-
-    dirs.foldLeft (null: Response) {
-      (resp: Response, path: String) => {
-        if (resp == null || resp.getStatusCode == 201 || resp.getStatusCode == 405) {
-          mkdir(path)
-        } else {
-          resp
-        }
+      case ("PUT", Some(response)) => {
+        Set(201, 204) contains response.getStatusCode
       }
+      case (_, Some(response)) => {
+        Set(200) contains response.getStatusCode
+      }
+      case _ => false
     }
   }
 
-  def mkdir(absPath: String): Response = {
-    //getLog.info("[mkdir] absPath=" + absPath)
-    Http(urlForPath(absPath).MKCOL)()
+  def getReqRespLogMessage(req: RequestBuilder, resp: Response): String = {
+    (Option(req), Option(resp)) match {
+      case (Some(request), Some(response)) =>
+        request.build().getMethod + " " + request.url + " => " + resp.getStatusCode + " " + resp.getStatusText
+      case (Some(request), None) =>
+        request.build().getMethod + " " + request.url + " => null"
+      case (None, Some(response)) =>
+        "null => " + resp.getStatusCode + " " + resp.getStatusText
+      case _ => "null => null"
+    }
   }
 
-  def printParams() {
-    getLog.info("vlt.host = " + host)
-    getLog.info("vlt.port = " + port)
-    getLog.info("vlt.user = " + user)
-    getLog.info("vlt.pass = " + pass)
-  }
 }

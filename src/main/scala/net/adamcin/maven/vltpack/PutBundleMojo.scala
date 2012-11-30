@@ -1,10 +1,9 @@
 package net.adamcin.maven.vltpack
 
-import org.apache.maven.plugin.{MojoExecutionException, AbstractMojo}
 import org.apache.maven.project.MavenProject
 import org.apache.maven.plugins.annotations.{Parameter, LifecyclePhase, Mojo, Component}
 
-import dispatch._
+import org.apache.maven.plugin.logging.Log
 
 /**
  *
@@ -15,7 +14,7 @@ import dispatch._
   name = "put-bundle",
   defaultPhase = LifecyclePhase.INTEGRATION_TEST,
   threadSafe = true)
-class PutBundleMojo extends AbstractMojo with DeploysBundle with UploadParameters {
+class PutBundleMojo extends BaseMojo with PutsBundle with DeploysWithBuild {
 
   @Component
   var project: MavenProject = null
@@ -23,16 +22,23 @@ class PutBundleMojo extends AbstractMojo with DeploysBundle with UploadParameter
   @Parameter(property = "vlt.skip.put-bundle")
   val skip = false
 
-  def execute() {
-    printParams()
-    if (!deploy || skip) {
-      getLog.info("[put-bundle] skipping [deploy=" + deploy + "][skip=" + skip + "]")
-    } else if (project.getArtifact.getArtifactHandler.getExtension != "jar") {
-      throw new MojoExecutionException("this goal can only be executed for *.jar artifacts")
-    } else {
+  override def execute() {
+    super.execute()
 
+    if (!deploy || skip || project.getPackaging != "bundle") {
+      getLog.info("[put-bundle] skipping [deploy=" + deploy + "][skip=" + skip + "][packaging=" + project.getPackaging + "]")
+    } else {
+      putBundle(project.getArtifact.getFile) match {
+        case Left(messages) => messages.foreach {
+          (mesg) => getLog.info("[put-bundle] " + mesg)
+        }
+        case Right(t) => throw t
+      }
     }
   }
 
-
+  override def printParams(log: Log) {
+    super.printParams(log)
+    getLog.info("vlt.skip.put-bundle = " + skip)
+  }
 }

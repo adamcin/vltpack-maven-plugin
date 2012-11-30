@@ -1,43 +1,26 @@
-<!--
- Licensed to the Apache Software Foundation (ASF) under one
- or more contributor license agreements.  See the NOTICE file
- distributed with this work for additional information
- regarding copyright ownership.  The ASF licenses this file
- to you under the Apache License, Version 2.0 (the
- "License"); you may not use this file except in compliance
- with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing,
- software distributed under the License is distributed on an
- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- KIND, either express or implied.  See the License for the
- specific language governing permissions and limitations
- under the License.
--->
 <component-set>
     <components>
         <component>
             <role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
-            <role-hint>vault-package</role-hint>
+            <role-hint>vltpack</role-hint>
             <implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
             <configuration>
                 <lifecycles>
                     <lifecycle>
                         <id>default</id>
-                        <!-- START SNIPPET: vault-lifecycle -->
+                        <!-- START SNIPPET: vltpack-lifecycle -->
                         <phases>
                             <process-resources>
                                 org.apache.maven.plugins:maven-resources-plugin:resources
                             </process-resources>
-                            <compile>org.apache.maven.plugins:maven-compiler-plugin:compile</compile>
-                            <process-test-resources>org.apache.maven.plugins:maven-resources-plugin:testResources</process-test-resources>
-                            <test-compile>org.apache.maven.plugins:maven-compiler-plugin:testCompile</test-compile>
-                            <test>org.apache.maven.plugins:maven-surefire-plugin:test</test>
+                            <prepare-package>
+                                net.adamcin.maven:vltpack-maven-plugin:embed-bundles,
+                                net.adamcin.maven:vltpack-maven-plugin:embed-packages,
+                                net.adamcin.maven:vltpack-maven-plugin:vault-inf
+                            </prepare-package>
                             <package>net.adamcin.maven:vltpack-maven-plugin:package</package>
                             <integration-test>
-                                net.adamcin.maven:vltpack-maven-plugin:upload,
+                                net.adamcin.maven:vltpack-maven-plugin:upload
                             </integration-test>
                             <install>
                                 org.apache.maven.plugins:maven-install-plugin:install
@@ -46,54 +29,18 @@
                                 org.apache.maven.plugins:maven-deploy-plugin:deploy
                             </deploy>
                         </phases>
-                        <!-- END SNIPPET: vault-lifecycle -->
+                        <!-- END SNIPPET: vltpack-lifecycle -->
                     </lifecycle>
                 </lifecycles>
             </configuration>
-        </component>
-
-        <component>
-            <role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
-            <role-hint>bundle</role-hint>
-            <implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
-            <configuration>
-                <lifecycles>
-                    <lifecycle>
-                        <id>default</id>
-                        <!-- START SNIPPET: vault-bundle-lifecycle -->
-                        <phases>
-                            <process-resources>org.apache.maven.plugins:maven-resources-plugin:resources</process-resources>
-                            <compile>org.apache.maven.plugins:maven-compiler-plugin:compile</compile>
-                            <process-test-resources>org.apache.maven.plugins:maven-resources-plugin:testResources</process-test-resources>
-                            <test-compile>org.apache.maven.plugins:maven-compiler-plugin:testCompile</test-compile>
-                            <test>org.apache.maven.plugins:maven-surefire-plugin:test</test>
-                            <package>org.apache.felix:maven-bundle-plugin:bundle</package>
-                            <integration-test>
-                                net.adamcin.maven:vltpack-maven-plugin:put-bundle
-                            </integration-test>
-                            <install>
-                                org.apache.maven.plugins:maven-install-plugin:install,
-                                org.apache.felix:maven-bundle-plugin:install
-                            </install>
-                            <deploy>
-                                org.apache.maven.plugins:maven-deploy-plugin:deploy,
-                                org.apache.felix:maven-bundle-plugin:deploy
-                            </deploy>
-                        </phases>
-                        <!-- END SNIPPET: vault-bundle-lifecycle -->
-                    </lifecycle>
-                </lifecycles>
-            </configuration>
-
         </component>
         <component>
             <role>org.apache.maven.artifact.handler.ArtifactHandler</role>
-            <role-hint>vault-package</role-hint>
+            <role-hint>vltpack</role-hint>
             <implementation>org.apache.maven.artifact.handler.DefaultArtifactHandler</implementation>
             <configuration>
-                <type>jar</type>
+                <type>zip</type>
                 <includesDependencies>false</includesDependencies>
-                <language>java</language>
                 <extension>zip</extension>
                 <addedToClasspath>false</addedToClasspath>
             </configuration>
