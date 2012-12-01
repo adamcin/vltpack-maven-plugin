@@ -147,6 +147,11 @@
             <artifactId>vault-vlt</artifactId>
             <version>${vlt.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.day.jcr.vault</groupId>
+            <artifactId>com.day.jcr.vault</artifactId>
+            <version>${vlt.version}</version>
+        </dependency>
 
         <!-- Override 3rd-party logging -->
         <dependency>

@@ -28,16 +28,7 @@ class EmbedPackagesMojo extends BaseMojo with ResolvesArtifacts with OutputParam
     val artifacts = resolveByArtifactIds(JavaConversions.collectionAsScalaIterable(embedPackages).toSet)
 
     if (embedPackagesDirectory.isDirectory || embedPackagesDirectory.mkdirs()) {
-      artifacts.foreach {
-        (artifact) => {
-          val target = new File(embedPackagesDirectory, artifact.getFile.getName)
-          if (target.lastModified().compareTo(artifact.getFile.lastModified()) < 0) {
-            getLog.info("Copying " + artifact.getId)
-            getLog.info("\t=> " + target.getPath)
-            Resource.fromFile(artifact.getFile).copyDataTo(Resource.fromFile(target))
-          }
-        }
-      }
+      artifacts.foreach( copyToDir(embedPackagesDirectory, getLog)_ )
     } else {
       throw new MojoExecutionException("Failed to create directory: " + embedPackagesDirectory)
     }

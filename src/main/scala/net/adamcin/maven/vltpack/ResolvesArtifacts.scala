@@ -11,6 +11,8 @@ import org.apache.maven.shared.artifact.filter.collection.{ArtifactIdFilter, Typ
 import org.slf4j.LoggerFactory
 import org.apache.maven.artifact.versioning.VersionRange
 import collection.JavaConversions
+import java.io.File
+import scalax.io.Resource
 
 /**
  *
@@ -43,6 +45,38 @@ trait ResolvesArtifacts extends RequiresProject with LogsParameters {
     }
   }
 
+  def copyToDir(dir: File, log: Log)(artifact: Artifact): File = {
+    val target = new File(dir, artifact.getFile.getName)
+    if (target.lastModified().compareTo(artifact.getFile.lastModified()) < 0) {
+      log.info("Copying " + artifact.getId)
+      log.info("\t to " + toRelative(project.getBasedir, target.getAbsolutePath))
+      Resource.fromFile(artifact.getFile).copyDataTo(Resource.fromFile(target))
+    }
+    target
+  }
+
+  def toRelative(basedir: File, absolutePath: String) = {
+    val rightSlashPath = absolutePath.replace('\\', '/')
+    val basedirPath = basedir.getAbsolutePath.replace('\\', '/')
+    if (rightSlashPath.startsWith(basedirPath)) {
+      val fromBasePath = rightSlashPath.substring(basedirPath.length)
+      val noSlash =
+        if (fromBasePath.startsWith("/")) {
+          fromBasePath.substring(1)
+        } else {
+          fromBasePath
+        }
+
+      if (noSlash.length() <= 0) {
+        "."
+      } else {
+        noSlash
+      }
+
+    } else {
+      rightSlashPath
+    }
+  }
 
 
   override def printParams(log: Log) {

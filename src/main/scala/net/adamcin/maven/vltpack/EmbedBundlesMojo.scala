@@ -31,16 +31,7 @@ class EmbedBundlesMojo extends BaseMojo with ResolvesArtifacts with OutputParame
     val artifacts = resolveByArtifactIds(JavaConversions.collectionAsScalaIterable(embedBundles).toSet)
 
     if (embedBundlesDirectory.isDirectory || embedBundlesDirectory.mkdirs()) {
-      artifacts.foreach {
-        (artifact) => {
-          val target = new File(embedBundlesDirectory, artifact.getFile.getName)
-          if (target.lastModified().compareTo(artifact.getFile.lastModified()) < 0) {
-            getLog.info("Copying " + artifact.getId)
-            getLog.info("\t=> " + target.getPath)
-            Resource.fromFile(artifact.getFile).copyDataTo(Resource.fromFile(target))
-          }
-        }
-      }
+      artifacts.foreach( copyToDir(embedBundlesDirectory, getLog)_ )
     } else {
       throw new MojoExecutionException("Failed to create directory: " + embedBundlesDirectory)
     }
