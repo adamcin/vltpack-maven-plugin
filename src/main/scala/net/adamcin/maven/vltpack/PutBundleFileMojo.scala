@@ -21,9 +21,7 @@ class PutBundleFileMojo extends BaseMojo with PutsBundle {
 
   override def execute() {
     putBundle(file) match {
-      case Left(messages) => messages.foreach {
-        (mesg) => getLog.info("[put-bundle-file] " + mesg)
-      }
+      case Left(messages) => messages.foreach { getLog.info(_) }
       case Right(t) => throw t
     }
   }

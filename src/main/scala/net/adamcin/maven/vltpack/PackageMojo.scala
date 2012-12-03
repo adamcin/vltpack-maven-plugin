@@ -1,10 +1,6 @@
 package net.adamcin.maven.vltpack
 
-import java.util.Collections
 import org.apache.maven.plugins.annotations._
-import org.apache.maven.project.MavenProject
-import collection.JavaConversions
-import org.apache.maven.artifact.Artifact
 import java.io.File
 import org.apache.maven.plugin.logging.Log
 
@@ -16,45 +12,66 @@ import org.apache.maven.plugin.logging.Log
 @Mojo(
   name = "package",
   defaultPhase = LifecyclePhase.PACKAGE)
-class PackageMojo extends BaseMojo with OutputParameters {
+class PackageMojo extends BaseMojo with OutputParameters with CreatesPackage with IdentifiesPackages with BundlePathParameters {
 
-  final val defaultJcrPath = "/"
+  final val defaultVltRoot = "${project.build.outputDirectory}"
 
-  @Parameter(property = "vlt.jcrPath", defaultValue = defaultJcrPath)
-  val jcrPath: String = defaultJcrPath
-
-  @Parameter
-  val embedBundles = Collections.emptyList[String]
-
-  @Parameter
-  val embedPackages = Collections.emptyList[String]
+  @Parameter(defaultValue = defaultVltRoot)
+  val vltRoot: File = null
 
   override def printParams(log: Log) {
     super.printParams(log)
 
-    log.info("embedBundles:")
-    JavaConversions.collectionAsScalaIterable(embedBundles).foreach {
-      (embedBundle) => log.info("  " + embedBundle)
-    }
-
-    log.info("embedPackages:")
-    JavaConversions.collectionAsScalaIterable(embedPackages).foreach {
-      (embedPackage) => log.info("  " + embedPackage)
-    }
+    log.info("vltRoot = " + vltRoot)
   }
+
+  lazy val targetFile: File = new File(project.getBuild.getDirectory + "/" + project.getBuild.getFinalName + ".zip")
 
   override def execute() {
     super.execute()
-    val deps = JavaConversions.collectionAsScalaIterable(project.getDependencyArtifacts).
-      filter { art: Artifact => art.getType == null || art.getType == "jar" }.
-      map { art: Artifact => (art.getArtifactId, art) }.toMap
 
+    getLog.info("generating package " + targetFile)
+    createPackage(vltRoot, targetFile, (zip) => {
 
-    val outputDirectory = new File(project.getBuild.getOutputDirectory)
+      getLog.info("adding vault information...")
+      val skipVaultEntries = addEntryToZipFile(
+        addToSkip = true,
+        skipEntries = Set.empty[String],
+        entryFile = vaultInfDirectory,
+        entryName = noLeadingSlash(noTrailingSlash(vaultPrefix)),
+        zip = zip
+      )
 
+      getLog.info("adding embedded bundles...")
+      val skipBundleEntries = addEntryToZipFile(
+        addToSkip = true,
+        skipEntries = skipVaultEntries,
+        entryFile = embedBundlesDirectory,
+        entryName = JCR_ROOT + leadingSlashIfNotEmpty(noTrailingSlash(bundleInstallPath)),
+        zip = zip
+      )
 
+      getLog.info("adding embedded packages...")
+      val skipPackageEntries = embedPackagesDirectory.listFiles.foldLeft(skipBundleEntries) {
+        (skip, vp) => {
+          identifyPackage(vp) match {
+            case Some(id) => {
+              addEntryToZipFile(
+                addToSkip = true,
+                skipEntries = skip,
+                entryFile = vp,
+                entryName = JCR_ROOT + leadingSlashIfNotEmpty(noTrailingSlash(id.getInstallationPath)),
+                zip = zip
+              )
+            }
+            case None => skip
+          }
+        }
+      }
+
+      skipPackageEntries
+    })
+
+    project.getArtifact.setFile(targetFile)
   }
-
-
-
 }

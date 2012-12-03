@@ -4,11 +4,6 @@ import collection.JavaConversions
 import org.apache.maven.plugin.logging.Log
 import java.util.Collections
 import org.apache.maven.plugins.annotations._
-import java.io.File
-import org.apache.maven.repository.RepositorySystem
-import org.apache.maven.artifact.resolver.ArtifactResolutionRequest
-import org.apache.maven.project.MavenProject
-import scalax.io.Resource
 import org.apache.maven.plugin.MojoExecutionException
 
 /**
@@ -29,7 +24,6 @@ class EmbedBundlesMojo extends BaseMojo with ResolvesArtifacts with OutputParame
     super.execute()
 
     val artifacts = resolveByArtifactIds(JavaConversions.collectionAsScalaIterable(embedBundles).toSet)
-
     if (embedBundlesDirectory.isDirectory || embedBundlesDirectory.mkdirs()) {
       artifacts.foreach( copyToDir(embedBundlesDirectory, getLog)_ )
     } else {

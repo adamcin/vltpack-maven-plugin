@@ -26,12 +26,10 @@ class PutBundleMojo extends BaseMojo with PutsBundle with DeploysWithBuild {
     super.execute()
 
     if (!deploy || skip || project.getPackaging != "bundle") {
-      getLog.info("[put-bundle] skipping [deploy=" + deploy + "][skip=" + skip + "][packaging=" + project.getPackaging + "]")
+      getLog.info("skipping [deploy=" + deploy + "][skip=" + skip + "][packaging=" + project.getPackaging + "]")
     } else {
       putBundle(project.getArtifact.getFile) match {
-        case Left(messages) => messages.foreach {
-          (mesg) => getLog.info("[put-bundle] " + mesg)
-        }
+        case Left(messages) => messages.foreach { getLog.info(_) }
         case Right(t) => throw t
       }
     }

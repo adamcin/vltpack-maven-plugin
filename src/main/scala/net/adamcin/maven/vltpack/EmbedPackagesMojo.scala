@@ -5,8 +5,6 @@ import org.apache.maven.plugin.logging.Log
 import java.util.Collections
 import org.apache.maven.plugins.annotations.{Mojo, LifecyclePhase, Parameter}
 import org.apache.maven.plugin.MojoExecutionException
-import scalax.io.Resource
-import java.io.File
 
 /**
  *

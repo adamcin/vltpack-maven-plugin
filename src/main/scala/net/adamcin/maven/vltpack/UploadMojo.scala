@@ -1,8 +1,6 @@
 package net.adamcin.maven.vltpack
 
 import org.apache.maven.plugins.annotations._
-import org.apache.maven.project.MavenProject
-import java.io.File
 
 
 /**
@@ -27,12 +25,10 @@ class UploadMojo
     super.execute()
 
     if (!deploy || skip || project.getPackaging != "vltpack") {
-      getLog.info("[upload] skipping [deploy=" + deploy + "][skip=" + skip + "][packaging=" + project.getPackaging + "]")
+      getLog.info("skipping [deploy=" + deploy + "][skip=" + skip + "][packaging=" + project.getPackaging + "]")
     } else {
       uploadPackage(project.getArtifact.getFile) match {
-        case Left(messages) => messages.foreach {
-          (mesg) => getLog.info("[upload] " + mesg)
-        }
+        case Left(messages) => messages.foreach { getLog.info(_) }
         case Right(t) => throw t
       }
     }
