@@ -4,12 +4,14 @@ import java.io.{FileOutputStream, File}
 import org.apache.maven.plugin.MojoExecutionException
 import com.day.jcr.vault.vlt.meta.xml.zip.ZipMetaDir
 import com.day.jcr.vault.vlt.meta.xml.file.FileMetaDir
-import com.day.jcr.vault.vlt.meta.MetaDirectory
+import com.day.jcr.vault.vlt.meta.{VltEntries, MetaDirectory}
 import org.apache.maven.plugins.annotations.Parameter
 import scalax.io.Resource
 import java.util.TimeZone
 import org.apache.maven.plugin.logging.Log
 import java.util.jar.{JarEntry, JarOutputStream}
+import org.slf4j.LoggerFactory
+import com.day.jcr.vault.vlt.{VltDirectory, VltFile}
 
 
 /**
@@ -18,6 +20,7 @@ import java.util.jar.{JarEntry, JarOutputStream}
  * @author madamcin
  */
 trait CreatesPackage extends LogsParameters {
+  val log = LoggerFactory.getLogger(getClass)
 
   final val defaultJcrPath = "/"
   val vaultPrefix = "META-INF/vault/"
@@ -62,7 +65,6 @@ trait CreatesPackage extends LogsParameters {
     case Some(p) => if (p.length > 0 && !p.startsWith("/")) "/" + p else p
     case None => ""
   }
-
 
   def verifyJcrPath(vltRoot: File, vaultSource: File) {
     val vltFile = new File(vltRoot, "jcr_root/.vlt")
@@ -120,6 +122,9 @@ trait CreatesPackage extends LogsParameters {
           entryName = META_INF,
           zip = zip)
       }
+    } match {
+      case Left(t :: ts) => throw t
+      case _ =>
     }
   }
 
@@ -141,8 +146,8 @@ trait CreatesPackage extends LogsParameters {
                        zip: JarOutputStream): Set[String] = {
 
     if (entryFile.isDirectory) {
-      entryFile.listFiles().foldLeft(skipEntries) {
-        (skip, f) => addEntryToZipFile(addToSkip, skipEntries, f, entryName + "/" + f.getName, zip)
+      entryFile.listFiles().filter { _.getName != VltDirectory.META_DIR_NAME }.foldLeft(skipEntries) {
+        (skip, f) => addEntryToZipFile(addToSkip, skip, f, entryName + "/" + f.getName, zip)
       }
     } else {
       if (!entryFile.exists() || (skipEntries contains entryName)) {

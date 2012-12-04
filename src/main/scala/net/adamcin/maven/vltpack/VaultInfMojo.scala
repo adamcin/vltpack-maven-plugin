@@ -31,11 +31,8 @@ class VaultInfMojo extends BaseMojo with OutputParameters with BundlePathParamet
 
   override def execute() {
     super.execute()
-
     generatePropertiesXml()
-
     generateFilterXml()
-
     generateConfigXml()
   }
 
