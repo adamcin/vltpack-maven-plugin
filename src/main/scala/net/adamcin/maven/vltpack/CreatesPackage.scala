@@ -111,15 +111,15 @@ trait CreatesPackage extends LogsParameters {
         addEntryToZipFile(
           addToSkip = false,
           skipEntries = skip,
-          entryFile = new File(vltRoot, JCR_ROOT),
-          entryName = JCR_ROOT + leadingSlashIfNotEmpty(jcrPathNoSlashEnd),
+          entryFile = new File(vltRoot, META_INF),
+          entryName = META_INF,
           zip = zip)
 
         addEntryToZipFile(
           addToSkip = false,
           skipEntries = skip,
-          entryFile = new File(vltRoot, META_INF),
-          entryName = META_INF,
+          entryFile = new File(vltRoot, JCR_ROOT),
+          entryName = JCR_ROOT + leadingSlashIfNotEmpty(jcrPathNoSlashEnd),
           zip = zip)
       }
     } match {
