@@ -2,16 +2,13 @@ package net.adamcin.maven.vltpack
 
 import java.io.{FileOutputStream, File}
 import org.apache.maven.plugin.MojoExecutionException
-import com.day.jcr.vault.vlt.meta.xml.zip.ZipMetaDir
-import com.day.jcr.vault.vlt.meta.xml.file.FileMetaDir
-import com.day.jcr.vault.vlt.meta.{VltEntries, MetaDirectory}
 import org.apache.maven.plugins.annotations.Parameter
 import scalax.io.Resource
 import java.util.TimeZone
 import org.apache.maven.plugin.logging.Log
 import java.util.jar.{JarEntry, JarOutputStream}
 import org.slf4j.LoggerFactory
-import com.day.jcr.vault.vlt.{VltDirectory, VltFile}
+import com.day.jcr.vault.vlt.VltDirectory
 
 
 /**
@@ -64,21 +61,6 @@ trait CreatesPackage extends LogsParameters {
   def leadingSlashIfNotEmpty(path: String) = Option(path) match {
     case Some(p) => if (p.length > 0 && !p.startsWith("/")) "/" + p else p
     case None => ""
-  }
-
-  def verifyJcrPath(vltRoot: File, vaultSource: File) {
-    val vltFile = new File(vltRoot, "jcr_root/.vlt")
-    if (!vltFile.exists || !vltFile.canRead) {
-      Right(new MojoExecutionException("Failed to read .vlt file"))
-    } else {
-      val metaDir: MetaDirectory = if (vltFile.isDirectory) {
-        new ZipMetaDir(vltFile)
-      } else {
-        new FileMetaDir(vltFile)
-      }
-
-      val vltEntries = metaDir.getEntries
-    }
   }
 
   /**

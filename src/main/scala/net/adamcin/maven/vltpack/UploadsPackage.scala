@@ -2,7 +2,6 @@ package net.adamcin.maven.vltpack
 
 import java.io.File
 import org.apache.maven.plugin.MojoExecutionException
-import org.apache.maven.plugins.annotations.Parameter
 import dispatch._
 import org.slf4j.LoggerFactory
 import util.parsing.json.JSON

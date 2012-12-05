@@ -1,6 +1,5 @@
 package net.adamcin.maven.vltpack
 
-import util.parsing.json.JSON
 
 class CC[T] { def unapply(a:Any):Option[T] = Some(a.asInstanceOf[T]) }
 /**
