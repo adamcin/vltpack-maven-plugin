@@ -88,7 +88,7 @@ class VaultInfMojo extends BaseMojo with OutputParameters with BundlePathParamet
 
       embedPackages.foreach {
         (pkg) => identifyPackage(pkg) match {
-          case Some(id) => packageFilterSet.addInclude(new DefaultPathFilter(id.getInstallationPath))
+          case Some(id) => packageFilterSet.addInclude(new DefaultPathFilter(id.getInstallationPath + ".zip"))
           case None => getLog.warn("Failed to identify package: " + pkg)
         }
       }
