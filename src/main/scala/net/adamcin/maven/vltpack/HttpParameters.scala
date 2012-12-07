@@ -16,11 +16,10 @@ class DavRequestVerbs(wrapped: DefaultRequestVerbs) extends DefaultRequestVerbs(
  * @version $Id: HttpParameters.scala$
  * @author madamcin
  */
-trait HttpParameters extends LogsParameters {
+trait HttpParameters extends UsernameAware {
 
   final val defaultHost = "localhost"
   final val defaultPort = "4502"
-  final val defaultUser = "admin"
   final val defaultPass = "admin"
   final val defaultContext = "/"
   final val defaultProxyHost = "localhost"
@@ -30,9 +29,6 @@ trait HttpParameters extends LogsParameters {
 
   @Parameter(property = "vlt.port", defaultValue = defaultPort)
   val port = Integer.valueOf(defaultPort)
-
-  @Parameter(property = "vlt.user", defaultValue = defaultUser)
-  val user = defaultUser
 
   @Parameter(property = "vlt.pass", defaultValue = defaultPass)
   val pass = defaultPass
@@ -65,7 +61,6 @@ trait HttpParameters extends LogsParameters {
     super.printParams(log)
     log.info("vlt.host = " + host)
     log.info("vlt.port = " + port)
-    log.info("vlt.user = " + user)
     log.info("vlt.pass = " + pass)
     log.info("vlt.context = " + context)
     log.info("vlt.https = " + https)

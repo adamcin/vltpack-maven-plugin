@@ -16,6 +16,7 @@ class UploadMojo
   extends BaseMojo
   with RequiresProject
   with UploadsPackage
+  with IdentifiesPackages
   with DeploysWithBuild {
 
   @Parameter(property = "vlt.skip.upload")
@@ -39,14 +40,26 @@ class UploadMojo
 
     } else {
 
-      uploadPackage(project.getArtifact.getFile, force) match {
-        case Left(messages) => messages.foreach { getLog.info(_) }
+      val file = project.getArtifact.getFile
+      val id = identifyPackage(file)
+
+      val uploaded = uploadPackage(id, file, force) match {
+        case Left((success, msg)) => {
+          getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ": " + msg)
+          success
+        }
         case Right(t) => throw t
       }
 
-      installPackage(project.getArtifact.getFile, recursive, autosave) match {
-        case Left(messages) => messages.foreach { getLog.info(_) }
-        case Right(t) => throw t
+      if (uploaded) {
+        installPackage(id, recursive, autosave) match {
+          case Left((success, msg)) => {
+            getLog.info("installing " + id.get.getInstallationPath + ": " + msg)
+          }
+          case Right(t) => throw t
+        }
+      } else {
+        getLog.info("package was not uploaded and so it will not be installed")
       }
     }
 

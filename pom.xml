@@ -70,6 +70,11 @@
                         <goals>
                             <goal>descriptor</goal>
                         </goals>
+                        <configuration>
+                            <extractors>
+                                <extractor>java-annotations</extractor>
+                            </extractors>
+                        </configuration>
                     </execution>
                     <!-- if you want to generate help goal -->
                     <execution>
@@ -77,8 +82,28 @@
                         <goals>
                             <goal>helpmojo</goal>
                         </goals>
+                        <configuration>
+                            <extractors>
+                                <extractor>java-annotations</extractor>
+                            </extractors>
+                        </configuration>
                     </execution>
                 </executions>
+                <!--
+                <dependencies>
+                    <dependency>
+                        <groupId>org.fusesource.mvnplugins</groupId>
+                        <artifactId>scala-mojo-support</artifactId>
+                        <version>1.15</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>org.codehaus.plexus</groupId>
+                                <artifactId>plexus-container-default</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                </dependencies>
+                -->
             </plugin>
         </plugins>
     </build>
@@ -142,6 +167,26 @@
             <artifactId>core_${scala.version}</artifactId>
             <version>0.9.1</version>
         </dependency>
+
+        <!--
+        <dependency>
+            <groupId>org.fusesource.mvnplugins</groupId>
+            <artifactId>scala-mojo-support</artifactId>
+            <version>1.15</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.codehaus.plexus</groupId>
+                    <artifactId>plexus-container-default</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-container-default</artifactId>
+            <version>1.0-alpha-9-stable-1</version>
+        </dependency>
+        -->
 
         <dependency>
             <groupId>javax.jcr</groupId>

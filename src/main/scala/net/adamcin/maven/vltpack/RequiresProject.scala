@@ -13,7 +13,4 @@ trait RequiresProject {
 
   @Component
   var project: MavenProject = null
-
-  @Component
-  var session: MavenSession = null
 }

@@ -30,6 +30,8 @@ class PackageMojo extends BaseMojo with OutputParameters with CreatesPackage wit
   override def execute() {
     super.execute()
 
+    targetFile.delete()
+
     getLog.info("generating package " + targetFile)
     createPackage(vltRoot, targetFile, (zip) => {
 

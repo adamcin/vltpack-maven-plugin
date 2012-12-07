@@ -10,29 +10,46 @@ import org.slf4j.LoggerFactory
 import collection.JavaConversions
 import java.io.File
 import scalax.io.Resource
+import org.codehaus.plexus.util.SelectorUtils
+import org.apache.maven.execution.MavenSession
+import org.apache.maven.project.MavenProject
 
 /**
  *
  * @version $Id: ResolvesArtifacts.java$
  * @author madamcin
  */
-trait ResolvesArtifacts extends RequiresProject with LogsParameters {
+trait ResolvesArtifacts extends LogsParameters {
   private val log = LoggerFactory.getLogger(getClass)
 
   @Component
   var repositorySystem: RepositorySystem = null
 
-  lazy val repositoryRequest: RepositoryRequest = DefaultRepositoryRequest.getRepositoryRequest(session, project)
+  @Component
+  var session: MavenSession = null
 
-  lazy val dependencies = JavaConversions.collectionAsScalaIterable(project.getDependencyArtifacts).toList
+  def proj: MavenProject = Option(session) match {
+    case Some(s) => s.getCurrentProject
+    case None => null
+  }
+
+  lazy val repositoryRequest: RepositoryRequest = DefaultRepositoryRequest.getRepositoryRequest(session, proj)
+
+  lazy val dependencies = Option(proj) match {
+    case Some(project) => JavaConversions.collectionAsScalaIterable(project.getDependencyArtifacts).toList
+    case None => Nil
+  }
 
   def resolveByArtifactIds(artifactIds: Set[String]): Stream[Artifact] = {
 
     val deps = dependencies.filter { (artifact: Artifact) => artifactIds contains artifact.getArtifactId}
 
-    val request = new ArtifactResolutionRequest(repositoryRequest)
+    resolveArtifacts(deps.toStream)
+  }
 
-    deps.toStream.foldLeft(Stream.empty[Artifact]) {
+  def resolveArtifacts(artifacts: Stream[Artifact]): Stream[Artifact] = {
+    val request = new ArtifactResolutionRequest(repositoryRequest)
+    artifacts.toStream.foldLeft(Stream.empty[Artifact]) {
       (stream, artifact: Artifact) => {
         request.setArtifact(artifact)
         val result = repositorySystem.resolve(request)
@@ -42,11 +59,27 @@ trait ResolvesArtifacts extends RequiresProject with LogsParameters {
     }
   }
 
+  def resolveByFilter(filter: String): Stream[Artifact] = {
+    val deps = dependencies.filter {
+      (artifact: Artifact) => SelectorUtils.`match`(filter, artifact.getDependencyConflictId)
+    }
+
+    resolveArtifacts(deps.toStream)
+  }
+
+  def resolveByGATCV(groupId: String, artifactId: String, artifactType: String, classifier: String, version: String): Option[Artifact] = {
+    val artifact = repositorySystem.createArtifactWithClassifier(groupId, artifactId, version, artifactType, classifier)
+    Option(artifact) match {
+      case Some(a) => resolveArtifacts(Stream(a)).headOption
+      case None => None
+    }
+  }
+
   def copyToDir(dir: File, log: Log)(artifact: Artifact): File = {
     val target = new File(dir, artifact.getFile.getName)
     if (target.lastModified().compareTo(artifact.getFile.lastModified()) < 0) {
       log.info("Copying " + artifact.getId)
-      log.info("\t to " + toRelative(project.getBasedir, target.getAbsolutePath))
+      log.info("\t to " + toRelative(new File("."), target.getAbsolutePath))
       Resource.fromFile(artifact.getFile).copyDataTo(Resource.fromFile(target))
     }
     target
