@@ -39,8 +39,8 @@ class PackageMojo extends BaseMojo with OutputParameters with CreatesPackage wit
       val skipVaultEntries = addEntryToZipFile(
         addToSkip = true,
         skipEntries = Set.empty[String],
-        entryFile = vaultInfDirectory,
-        entryName = noLeadingSlash(noTrailingSlash(vaultPrefix)),
+        entryFile = vaultInfMetaInfDirectory,
+        entryName = "META-INF",
         zip = zip
       )
 

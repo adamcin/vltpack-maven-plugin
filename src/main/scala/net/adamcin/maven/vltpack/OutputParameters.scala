@@ -30,15 +30,25 @@ trait OutputParameters extends RequiresProject {
    * directory containing resolved packages
    */
   lazy val embedPackagesDirectory = getExistingDir(new File(vltpackDirectory, "embed-packages"))
+  lazy val vaultInfDirectory = getExistingDir(new File(vltpackDirectory, "vault-inf"))
+  lazy val transientRepoDirectory = getExistingDir(new File(vaultInfDirectory, "definitionRepo"))
 
   /**
    * vault-inf-generated META-INF/vault/... resources
    */
-  lazy val vaultInfDirectory = getExistingDir(new File(vltpackDirectory, "vault"))
-  lazy val configXml = new File(vaultInfDirectory, "config.xml")
-  lazy val settingsXml = new File(vaultInfDirectory, "settings.xml")
-  lazy val filterXml = new File(vaultInfDirectory, "filter.xml")
-  lazy val propertiesXml = new File(vaultInfDirectory, "properties.xml")
+  lazy val vaultInfMetaInfDirectory = getExistingDir(new File(vaultInfDirectory, "META-INF"))
+  lazy val vaultDirectory = getExistingDir(new File(vaultInfMetaInfDirectory, "vault"))
+  lazy val configXml = new File(vaultDirectory, "config.xml")
+  lazy val settingsXml = new File(vaultDirectory, "settings.xml")
+  lazy val filterXml = new File(vaultDirectory, "filter.xml")
+  lazy val propertiesXml = new File(vaultDirectory, "properties.xml")
+
+  lazy val definitionDirectory = getExistingDir(new File(vaultDirectory, "definition"))
+  lazy val definitionXml = new File(definitionDirectory, ".content.xml")
+
+  lazy val thumbnailDirectory = getExistingDir(new File(definitionDirectory, "thumbnail"))
+  lazy val thumbnailFileDirectory = getExistingDir(new File(thumbnailDirectory, "file"))
+  lazy val thumbnailFileXml = getExistingDir(new File(thumbnailFileDirectory, ".content.xml"))
 
   def getExistingDir(file: File): File = {
     if (!file.exists() && !file.mkdir()) {
@@ -46,4 +56,6 @@ trait OutputParameters extends RequiresProject {
     }
     file
   }
+
+
 }

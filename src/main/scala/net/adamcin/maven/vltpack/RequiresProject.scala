@@ -2,7 +2,6 @@ package net.adamcin.maven.vltpack
 
 import org.apache.maven.project.MavenProject
 import org.apache.maven.plugins.annotations.Component
-import org.apache.maven.execution.MavenSession
 
 /**
  *
