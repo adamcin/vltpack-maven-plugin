@@ -16,7 +16,8 @@ import com.day.jcr.vault.vlt.VltDirectory
  * @version $Id: CreatesPackage.java$
  * @author madamcin
  */
-trait CreatesPackage extends LogsParameters {
+trait CreatesPackage
+  extends LogsParameters {
   val log = LoggerFactory.getLogger(getClass)
 
   final val defaultJcrPath = "/"
@@ -27,7 +28,7 @@ trait CreatesPackage extends LogsParameters {
   @Parameter(property = "jcrPath", defaultValue = defaultJcrPath)
   val jcrPath: String = defaultJcrPath
 
-  lazy val jcrPathNoSlashEnd = noLeadingSlash(noTrailingSlash(jcrPath))
+  lazy val jcrPathNoSlashEnd = VltpackUtil.noLeadingSlash(VltpackUtil.noTrailingSlash(jcrPath))
 
   @Parameter(property = "vlt.tz")
   val serverTimezone: String = null
@@ -47,21 +48,6 @@ trait CreatesPackage extends LogsParameters {
 
   def adjustToServerTimeZone(localTime: Long): Long =
     (localTime - localTz.getOffset(localTime)) + serverTz.getOffset(localTime)
-
-  def noLeadingSlash(path: String) = Option(path) match {
-    case Some(p) => if (p.startsWith("/")) p.substring(1, p.length) else p
-    case None => ""
-  }
-
-  def noTrailingSlash(path: String) = Option(path) match {
-    case Some(p) => if (p.endsWith("/")) p.substring(0, p.length - 1) else p
-    case None => ""
-  }
-
-  def leadingSlashIfNotEmpty(path: String) = Option(path) match {
-    case Some(p) => if (p.length > 0 && !p.startsWith("/")) "/" + p else p
-    case None => ""
-  }
 
   /**
    * Creates a package from a standard vlt working copy, such that the vltRoot directory has two children, jcr_root and
@@ -101,7 +87,7 @@ trait CreatesPackage extends LogsParameters {
           addToSkip = false,
           skipEntries = skip,
           entryFile = new File(vltRoot, JCR_ROOT),
-          entryName = JCR_ROOT + leadingSlashIfNotEmpty(jcrPathNoSlashEnd),
+          entryName = JCR_ROOT + VltpackUtil.leadingSlashIfNotEmpty(jcrPathNoSlashEnd),
           zip = zip)
       }
     } match {
@@ -143,7 +129,7 @@ trait CreatesPackage extends LogsParameters {
 
         zip.putNextEntry(entry)
 
-        Resource.fromFile(entryFile).copyDataTo(Resource.fromOutputStream(IOUtil.blockClose(zip)))
+        Resource.fromFile(entryFile).copyDataTo(Resource.fromOutputStream(VltpackUtil.blockClose(zip)))
         if (addToSkip) {
           skipEntries + entryName
         } else {

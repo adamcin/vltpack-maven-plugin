@@ -37,4 +37,5 @@ trait BundlePathParameters extends LogsParameters {
     log.info("bundleInstallPath = " + bundleInstallPath)
     log.info("vlt.bundle.name = " + bundleNameOverride)
   }
+
 }

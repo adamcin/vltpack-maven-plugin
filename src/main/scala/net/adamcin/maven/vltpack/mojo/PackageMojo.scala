@@ -1,8 +1,10 @@
-package net.adamcin.maven.vltpack
+package net.adamcin.maven.vltpack.mojo
 
 import org.apache.maven.plugins.annotations._
 import java.io.File
 import org.apache.maven.plugin.logging.Log
+import net.adamcin.maven.vltpack._
+import scala.Some
 
 /**
  *
@@ -12,7 +14,12 @@ import org.apache.maven.plugin.logging.Log
 @Mojo(
   name = "package",
   defaultPhase = LifecyclePhase.PACKAGE)
-class PackageMojo extends BaseMojo with OutputParameters with CreatesPackage with IdentifiesPackages with BundlePathParameters {
+class PackageMojo
+  extends VltpackLifecycleMojo
+  with OutputParameters
+  with CreatesPackage
+  with IdentifiesPackages
+  with BundlePathParameters {
 
   final val defaultVltRoot = "${project.build.outputDirectory}"
 
@@ -25,7 +32,6 @@ class PackageMojo extends BaseMojo with OutputParameters with CreatesPackage wit
     log.info("vltRoot = " + vltRoot)
   }
 
-  lazy val targetFile: File = new File(project.getBuild.getDirectory + "/" + project.getBuild.getFinalName + ".zip")
 
   override def execute() {
     super.execute()
@@ -49,7 +55,7 @@ class PackageMojo extends BaseMojo with OutputParameters with CreatesPackage wit
         addToSkip = true,
         skipEntries = skipVaultEntries,
         entryFile = embedBundlesDirectory,
-        entryName = JCR_ROOT + leadingSlashIfNotEmpty(noTrailingSlash(bundleInstallPath)),
+        entryName = JCR_ROOT,
         zip = zip
       )
 
@@ -62,7 +68,7 @@ class PackageMojo extends BaseMojo with OutputParameters with CreatesPackage wit
                 addToSkip = true,
                 skipEntries = skip,
                 entryFile = vp,
-                entryName = JCR_ROOT + leadingSlashIfNotEmpty(noTrailingSlash(id.getInstallationPath)),
+                entryName = JCR_ROOT + VltpackUtil.leadingSlashIfNotEmpty(VltpackUtil.noTrailingSlash(id.getInstallationPath)),
                 zip = zip
               )
             }

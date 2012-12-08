@@ -26,6 +26,11 @@ trait OutputParameters extends RequiresProject {
    */
   lazy val embedBundlesDirectory = getExistingDir(new File(vltpackDirectory, "embed-bundles"))
 
+
+  def relativeToBundleInstallPath(bundle: File): String = {
+    VltpackUtil.toRelative(embedBundlesDirectory, VltpackUtil.noLeadingSlash(bundle.getPath)
+  }
+
   /**
    * directory containing resolved packages
    */

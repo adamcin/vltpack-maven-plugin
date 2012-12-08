@@ -1,8 +1,9 @@
-package net.adamcin.maven.vltpack
+package net.adamcin.maven.vltpack.mojo
 
 import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 import java.io.File
 import org.apache.maven.plugin.logging.Log
+import net.adamcin.maven.vltpack.PutsBundle
 
 /**
  *

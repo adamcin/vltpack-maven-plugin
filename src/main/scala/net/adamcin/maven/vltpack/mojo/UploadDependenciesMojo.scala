@@ -1,7 +1,11 @@
-package net.adamcin.maven.vltpack
+package net.adamcin.maven.vltpack.mojo
 
 import org.apache.maven.plugins.annotations.{LifecyclePhase, Parameter, Mojo}
 import org.apache.maven.plugin.MojoExecutionException
+import net.adamcin.maven.vltpack._
+import scala.Left
+import scala.Some
+import scala.Right
 
 /**
  *
@@ -13,12 +17,10 @@ class UploadDependenciesMojo
   extends BaseMojo
   with DeploysWithBuild
   with RequiresProject
+  with PackageDependencies
   with IdentifiesPackages
   with ResolvesArtifacts
   with UploadsPackage {
-
-  @Parameter(property = "vlt.filter")
-  val filter: String = null
 
   @Parameter(property = "vlt.skip.upload-dependencies")
   val skip = false
@@ -35,32 +37,42 @@ class UploadDependenciesMojo
   override def execute() {
     super.execute()
 
-    if (!deploy || skip || Option(filter).isEmpty || filter.length == 0) {
+    if (!deploy || skip || project.getPackaging != "vltpack") {
 
-      getLog.info("skipping [deploy=" + deploy + "][skip=" + skip + "][filter=" + Option(filter).getOrElse("null") + "]")
+      getLog.info("skipping [deploy=" + deploy + "][skip=" + skip + "][packaging=" + project.getPackaging + "]")
 
     } else {
-      resolveByFilter(filter).foreach {
+      packageDependencyArtifacts.foreach {
         (artifact) => Option(artifact.getFile) match {
           case Some(file) => {
             val id = identifyPackage(file)
-            val uploaded = uploadPackage(id, file, force) match {
+            val doesntExist = force || (existsOnServer(id) match {
               case Left((success, msg)) => {
-                getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ": " + msg)
-                success
+                getLog.info("checking for installed package " + id.get.getInstallationPath + ": " + msg)
+                !success
               }
               case Right(t) => throw t
-            }
+            })
 
-            if (uploaded) {
-              installPackage(id, recursive, autosave) match {
+            if (doesntExist) {
+              val uploaded = uploadPackage(id, file, force) match {
                 case Left((success, msg)) => {
-                  getLog.info("installing " + id.get.getInstallationPath + ": " + msg)
+                  getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ".zip: " + msg)
+                  success
                 }
                 case Right(t) => throw t
               }
-            } else {
-              getLog.info("package was not uploaded and so it will not be installed")
+
+              if (uploaded) {
+                installPackage(id, recursive, autosave) match {
+                  case Left((success, msg)) => {
+                    getLog.info("installing " + id.get.getInstallationPath + ".zip: " + msg)
+                  }
+                  case Right(t) => throw t
+                }
+              } else {
+                getLog.info("package was not uploaded and so it will not be installed")
+              }
             }
           }
           case None => {

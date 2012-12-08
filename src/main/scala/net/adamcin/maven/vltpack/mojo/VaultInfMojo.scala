@@ -1,11 +1,11 @@
-package net.adamcin.maven.vltpack
+package net.adamcin.maven.vltpack.mojo
 
 import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 import org.apache.maven.plugin.logging.Log
 import java.io.File
 import scalax.io.Resource
 import java.util.{Calendar, Properties, Collections}
-import com.day.jcr.vault.packaging.{ImportOptions, VaultPackage, JcrPackageDefinition, PackageId}
+import com.day.jcr.vault.packaging._
 import com.day.jcr.vault.fs.config.{MetaInf, DefaultMetaInf, DefaultWorkspaceFilter}
 import com.day.jcr.vault.fs.api.PathFilterSet
 import com.day.jcr.vault.fs.filter.DefaultPathFilter
@@ -15,6 +15,11 @@ import org.apache.jackrabbit.core.TransientRepository
 import com.day.jcr.vault.packaging.impl.{JcrPackageDefinitionImpl, JcrPackageManagerImpl}
 import com.day.jcr.vault.fs.io
 import io.PlatformExporter
+import com.day.jcr.vault.util.JcrConstants
+import collection.JavaConversions
+import java.security.{DigestInputStream, MessageDigest}
+import net.adamcin.maven.vltpack._
+import scala.Some
 
 /**
  *
@@ -29,6 +34,7 @@ class VaultInfMojo
   with UsernameAware
   with OutputParameters
   with BundlePathParameters
+  with PackageDependencies
   with IdentifiesPackages {
 
   final val DEFAULT_VAULT_SOURCE = "${project.build.outputDirectory}/META-INF/vault"
@@ -41,10 +47,30 @@ class VaultInfMojo
   val properties = Collections.emptyMap[String, String]
 
   @Parameter
-  val thumbnail: File = null
+  val definitionProperties = Collections.emptyMap[String, String]
 
   @Parameter
   val createDefinition = false
+
+  @Parameter
+  val thumbnail: File = null
+
+  @Parameter
+  val screenshots = java.util.Collections.emptyList[File]
+
+  lazy val signature: String = {
+    Resource.fromURL(getClass.getResource("plugin.properties")).inputStream.acquireAndGet {
+      (f) => {
+        val props = new Properties
+        props.load(f)
+        "%s (%s:%s:%s)".format(
+          props.getProperty("name"),
+          props.getProperty("groupId"),
+          props.getProperty("artifactId"),
+          props.getProperty("version"))
+      }
+    }
+  }
 
   override def execute() {
     super.execute()
@@ -59,7 +85,7 @@ class VaultInfMojo
 
   def getResourceFromClasspath(name: String) = {
     Resource.fromInputStream(getClass.getClassLoader.getResourceAsStream(name)).
-      addCloseAction(IOUtil.inputCloser)
+      addCloseAction(VltpackUtil.inputCloser)
   }
 
   override def printParams(log: Log) {
@@ -118,52 +144,51 @@ class VaultInfMojo
     getLog.info("generating " + filterXml)
     val filterResource = Resource.fromFile(filterXml)
     filterResource.truncate(0)
-    Resource.fromInputStream(filter.getSource).addCloseAction(IOUtil.inputCloser).
+    Resource.fromInputStream(filter.getSource).addCloseAction(VltpackUtil.inputCloser).
       copyDataTo(filterResource)
   }
 
   def generatePropertiesXml() {
+    import IdentifiesPackages._
     val props = new Properties()
 
     props.putAll(properties)
 
     props.setProperty(MetaInf.PACKAGE_FORMAT_VERSION, MetaInf.FORMAT_VERSION_2.toString)
 
-    if (!props.containsKey(MetaInf.CREATED)) {
-      props.setProperty(MetaInf.CREATED, ISO8601.format(Calendar.getInstance()))
+    if (!props.containsKey(CREATED)) {
+      props.setProperty(CREATED, ISO8601.format(Calendar.getInstance()))
     }
 
-    if (!props.containsKey(MetaInf.CREATED_BY)) {
-      props.setProperty(MetaInf.CREATED_BY, user)
+    if (!props.containsKey(CREATED_BY)) {
+      props.setProperty(CREATED_BY, user)
     }
 
-    if (!props.containsKey(JcrPackageDefinition.PN_GROUP)) {
-      props.setProperty(JcrPackageDefinition.PN_GROUP, project.getGroupId)
+    if (!props.containsKey(GROUP)) {
+      props.setProperty(GROUP, project.getGroupId)
     }
 
-    if (!props.containsKey(JcrPackageDefinition.PN_NAME)) {
-      props.setProperty(JcrPackageDefinition.PN_NAME, project.getArtifactId)
+    if (!props.containsKey(NAME)) {
+      props.setProperty(NAME, project.getArtifactId)
     }
 
-    if (!props.containsKey(JcrPackageDefinition.PN_VERSION)) {
-      props.setProperty(JcrPackageDefinition.PN_VERSION, project.getVersion)
+    if (!props.containsKey(VERSION)) {
+      props.setProperty(VERSION, project.getVersion)
     }
 
-    if (!props.containsKey("description") && project.getDescription != null) {
-      props.setProperty("description", project.getDescription)
+    if (!props.containsKey(DESCRIPTION) && project.getDescription != null) {
+      props.setProperty(DESCRIPTION, project.getDescription)
     }
 
-    val id = new PackageId(
-      props.getProperty(JcrPackageDefinition.PN_GROUP),
-      props.getProperty(JcrPackageDefinition.PN_NAME),
-      props.getProperty(JcrPackageDefinition.PN_VERSION)
-    )
+    if (!props.containsKey(DEPENDENCIES) && !packageDependencies.isEmpty) {
+      props.setProperty(DEPENDENCIES, Dependency.toString(dependsOn: _*))
+    }
 
     getLog.info("generating " + propertiesXml)
     val propertiesResource = Resource.fromFile(propertiesXml)
     propertiesResource.truncate(0)
     propertiesResource.outputStream.acquireFor {
-      (f) => props.storeToXML(f, "generated by vltpack-maven-plugin")
+      (f) => props.storeToXML(f, "generated by " + signature)
     }
   }
 
@@ -189,6 +214,58 @@ class VaultInfMojo
       defPack.getDefinition.unwrap(fakePack, true, true)
 
       val defNode = defPack.getDefNode
+
+      JavaConversions.mapAsScalaMap(definitionProperties).foreach {
+        p: (String, String) => {
+          val (key, value) = p
+          value match {
+            case "true" => defNode.setProperty(key, true)
+            case "false" => defNode.setProperty(key, false)
+            case _ => defNode.setProperty(key, value)
+          }
+        }
+      }
+
+      defNode.setProperty("builtWith", signature)
+      session.save()
+
+      Option(thumbnail) match {
+        case None => ()
+        case Some(thumb) => {
+          val tNode = defNode.addNode("thumbnail.png", JcrConstants.NT_FILE)
+          val tResource = tNode.addNode(JcrConstants.JCR_CONTENT, JcrConstants.NT_RESOURCE)
+          tResource.setProperty(JcrConstants.JCR_MIMETYPE, "image/png")
+          Resource.fromFile(thumbnail).inputStream.acquireFor {
+            (in) => tResource.setProperty(JcrConstants.JCR_DATA, session.getValueFactory.createBinary(in))
+          }
+          session.save()
+        }
+      }
+
+      JavaConversions.collectionAsScalaIterable(screenshots).toList match {
+        case Nil => ()
+        case screens => {
+          val digester = MessageDigest.getInstance("MD5")
+          val parent = defNode.addNode("screenshots", JcrConstants.NT_UNSTRUCTURED)
+          screens.filter { (f) => f.exists() && f.length() > 0 }.foreach {
+            (file) => {
+              digester.reset()
+              val temp = parent.addNode("temp", JcrConstants.NT_UNSTRUCTURED)
+              val sNode = temp.addNode("file", JcrConstants.NT_FILE)
+              val sResource = sNode.addNode(JcrConstants.JCR_CONTENT, JcrConstants.NT_RESOURCE)
+              sResource.setProperty(JcrConstants.JCR_MIMETYPE, "image/png")
+              Resource.fromFile(file).inputStream.acquireFor {
+                (stream) => {
+                  val ds = new DigestInputStream(stream, digester)
+                  sResource.setProperty(JcrConstants.JCR_DATA, session.getValueFactory.createBinary(ds))
+                  session.move(temp.getPath, parent + "/" + digester.digest.map("%02X" format _).mkString)
+                  session.save()
+                }
+              }
+            }
+          }
+        }
+      }
 
       val postProcessor = defPack.getDefinition.asInstanceOf[JcrPackageDefinitionImpl].getInjectProcessor
 

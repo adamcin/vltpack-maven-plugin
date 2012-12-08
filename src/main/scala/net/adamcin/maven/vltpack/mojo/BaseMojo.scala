@@ -1,8 +1,9 @@
-package net.adamcin.maven.vltpack
+package net.adamcin.maven.vltpack.mojo
 
 import org.apache.maven.plugin.AbstractMojo
 import org.apache.maven.plugins.annotations.Parameter
 import org.apache.maven.plugin.logging.Log
+import net.adamcin.maven.vltpack.LogsParameters
 
 /**
  *

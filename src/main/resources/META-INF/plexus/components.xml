@@ -20,6 +20,7 @@
                             </prepare-package>
                             <package>net.adamcin.maven:vltpack-maven-plugin:package</package>
                             <integration-test>
+                                net.adamcin.maven:vltpack-maven-plugin:upload-dependencies,
                                 net.adamcin.maven:vltpack-maven-plugin:upload
                             </integration-test>
                             <install>

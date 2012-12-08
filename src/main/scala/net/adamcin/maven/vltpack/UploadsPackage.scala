@@ -5,7 +5,6 @@ import org.apache.maven.plugin.MojoExecutionException
 import dispatch._
 import org.slf4j.LoggerFactory
 import util.parsing.json.JSON
-import net.adamcin.maven.vltpack.JSONUtil._
 import com.ning.http.multipart.FilePart
 import com.day.jcr.vault.packaging.PackageId
 
@@ -42,7 +41,8 @@ trait UploadsPackage extends HttpParameters {
   def installPackage(packageId: Option[PackageId], recursive: Boolean, autosave: Int): Either[(Boolean, String), Throwable] = {
     packageId match {
       case Some(id) => {
-        val req = urlForPath(servicePath + id.getInstallationPath + ".zip") << Map(
+        val pkgPath = id.getInstallationPath + ".zip"
+        val req = urlForPath(servicePath + pkgPath) << Map(
           "cmd" -> "install",
           "recursive" -> recursive.toString,
           "autosave" -> (autosave max 1024).toString
@@ -52,7 +52,7 @@ trait UploadsPackage extends HttpParameters {
         if (isSuccess(req, resp)) {
           parseServiceResponse(resp.getResponseBody)
         } else {
-          Right(new MojoExecutionException("Failed to install package at path: " + id.getInstallationPath))
+          Right(new MojoExecutionException("Failed to install package at path: " + pkgPath))
         }
       }
       case None => Right(new MojoExecutionException("Failed to identify package"))
@@ -76,6 +76,7 @@ trait UploadsPackage extends HttpParameters {
   }
 
   def parseServiceResponse(respBody: String): Either[(Boolean, String),Throwable] = {
+    import VltpackUtil._
     val json = List(JSON.parseFull(respBody))
     (for {
       Some(M(map)) <- json

@@ -1,10 +1,12 @@
-package net.adamcin.maven.vltpack
+package net.adamcin.maven.vltpack.mojo
 
 import collection.JavaConversions
 import org.apache.maven.plugin.logging.Log
 import java.util.Collections
 import org.apache.maven.plugins.annotations._
 import org.apache.maven.plugin.MojoExecutionException
+import net.adamcin.maven.vltpack.{BundlePathParameters, VltpackUtil, OutputParameters, ResolvesArtifacts}
+import java.io.File
 
 /**
  *
@@ -15,7 +17,11 @@ import org.apache.maven.plugin.MojoExecutionException
 @Mojo(
   name = "embed-bundles",
   defaultPhase = LifecyclePhase.PREPARE_PACKAGE)
-class EmbedBundlesMojo extends BaseMojo with ResolvesArtifacts with OutputParameters {
+class EmbedBundlesMojo
+  extends BaseMojo
+  with ResolvesArtifacts
+  with BundlePathParameters
+  with OutputParameters {
 
   @Parameter
   val embedBundles = Collections.emptyList[String]
@@ -24,10 +30,11 @@ class EmbedBundlesMojo extends BaseMojo with ResolvesArtifacts with OutputParame
     super.execute()
 
     val artifacts = resolveByArtifactIds(JavaConversions.collectionAsScalaIterable(embedBundles).toSet)
-    if (embedBundlesDirectory.isDirectory || embedBundlesDirectory.mkdirs()) {
-      artifacts.foreach( copyToDir(embedBundlesDirectory, getLog)_ )
+    val dir = new File(embedBundlesDirectory, VltpackUtil.noLeadingSlash(VltpackUtil.noTrailingSlash(bundleInstallPath)))
+    if (dir.isDirectory || dir.mkdirs()) {
+      artifacts.foreach( copyToDir(dir, getLog)_ )
     } else {
-      throw new MojoExecutionException("Failed to create directory: " + embedBundlesDirectory)
+      throw new MojoExecutionException("Failed to create directory: " + dir)
     }
   }
 

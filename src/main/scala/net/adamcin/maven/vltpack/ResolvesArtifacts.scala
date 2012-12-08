@@ -35,8 +35,10 @@ trait ResolvesArtifacts extends LogsParameters {
 
   lazy val repositoryRequest: RepositoryRequest = DefaultRepositoryRequest.getRepositoryRequest(session, proj)
 
-  lazy val dependencies = Option(proj) match {
-    case Some(project) => JavaConversions.collectionAsScalaIterable(project.getDependencyArtifacts).toList
+  lazy val dependencies: List[Artifact] = Option(proj) match {
+    case Some(project) => {
+      JavaConversions.collectionAsScalaIterable(project.getDependencyArtifacts).toList.asInstanceOf[List[Artifact]]
+    }
     case None => Nil
   }
 
@@ -79,34 +81,12 @@ trait ResolvesArtifacts extends LogsParameters {
     val target = new File(dir, artifact.getFile.getName)
     if (target.lastModified().compareTo(artifact.getFile.lastModified()) < 0) {
       log.info("Copying " + artifact.getId)
-      log.info("\t to " + toRelative(new File("."), target.getAbsolutePath))
+      log.info("\t to " + VltpackUtil.toRelative(new File("."), target.getAbsolutePath))
       Resource.fromFile(artifact.getFile).copyDataTo(Resource.fromFile(target))
     }
     target
   }
 
-  def toRelative(basedir: File, absolutePath: String) = {
-    val rightSlashPath = absolutePath.replace('\\', '/')
-    val basedirPath = basedir.getAbsolutePath.replace('\\', '/')
-    if (rightSlashPath.startsWith(basedirPath)) {
-      val fromBasePath = rightSlashPath.substring(basedirPath.length)
-      val noSlash =
-        if (fromBasePath.startsWith("/")) {
-          fromBasePath.substring(1)
-        } else {
-          fromBasePath
-        }
-
-      if (noSlash.length() <= 0) {
-        "."
-      } else {
-        noSlash
-      }
-
-    } else {
-      rightSlashPath
-    }
-  }
 
 
   override def printParams(log: Log) {

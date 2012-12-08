@@ -1,6 +1,7 @@
-package net.adamcin.maven.vltpack
+package net.adamcin.maven.vltpack.mojo
 
 import org.apache.maven.plugins.annotations._
+import net.adamcin.maven.vltpack.{DeploysWithBuild, IdentifiesPackages, UploadsPackage}
 
 
 /**
@@ -13,8 +14,7 @@ import org.apache.maven.plugins.annotations._
   name = "upload",
   defaultPhase = LifecyclePhase.INTEGRATION_TEST)
 class UploadMojo
-  extends BaseMojo
-  with RequiresProject
+  extends VltpackLifecycleMojo
   with UploadsPackage
   with IdentifiesPackages
   with DeploysWithBuild {
@@ -40,12 +40,12 @@ class UploadMojo
 
     } else {
 
-      val file = project.getArtifact.getFile
+      val file = targetFile
       val id = identifyPackage(file)
 
       val uploaded = uploadPackage(id, file, force) match {
         case Left((success, msg)) => {
-          getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ": " + msg)
+          getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ".zip: " + msg)
           success
         }
         case Right(t) => throw t
@@ -54,7 +54,7 @@ class UploadMojo
       if (uploaded) {
         installPackage(id, recursive, autosave) match {
           case Left((success, msg)) => {
-            getLog.info("installing " + id.get.getInstallationPath + ": " + msg)
+            getLog.info("installing " + id.get.getInstallationPath + ".zip: " + msg)
           }
           case Right(t) => throw t
         }
@@ -62,8 +62,5 @@ class UploadMojo
         getLog.info("package was not uploaded and so it will not be installed")
       }
     }
-
   }
-
-
 }
