@@ -14,29 +14,26 @@
  * limitations under the License.
  */
 
-package net.adamcin.maven.vltpack
+package net.adamcin.maven.vltpack.mojo
 
-import mojo.BaseMojo
-import org.apache.maven.plugin.logging.Log
-import org.apache.maven.plugins.annotations.Parameter
+import org.apache.maven.plugins.annotations.{Parameter, Component, Mojo}
+import org.apache.maven.repository.RepositorySystem
+import org.apache.maven.execution.MavenSession
 
 /**
- * Trait defining common mojo parameters and methods for controlling deployment of artifacts to CQ during
- * a maven lifecycle build
+ *
  * @since 1.0
  * @author Mark Adamcin
  */
-trait DeploysWithBuild extends BaseMojo {
+@Mojo(name = "test")
+class TestMojo {
 
-  /**
-   * Set to true to enable deployment of artifacts during integration-test phase
-   * @since 1.0
-   */
-  @Parameter(property = "vlt.deploy")
-  var deploy = false
+  @Component
+  var repositorySystem: RepositorySystem = null
 
-  override def printParams(log: Log) {
-    super.printParams(log)
-    log.info("vlt.deploy = " + deploy)
-  }
+  @Component
+  var session: MavenSession = null
+
+  @Parameter
+  val testParam = false
 }

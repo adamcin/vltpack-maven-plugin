@@ -1,37 +1,78 @@
+/*
+ * Copyright 2012 Mark Adamcin
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package net.adamcin.maven.vltpack
 
 import java.io.{FileOutputStream, File}
+import mojo.BaseMojo
 import org.apache.maven.plugin.MojoExecutionException
-import org.apache.maven.plugins.annotations.Parameter
 import scalax.io.Resource
 import java.util.TimeZone
 import org.apache.maven.plugin.logging.Log
 import java.util.jar.{JarEntry, JarOutputStream}
 import org.slf4j.LoggerFactory
 import com.day.jcr.vault.vlt.VltDirectory
+import org.apache.maven.plugins.annotations.Parameter
 
 
 /**
- *
- * @version $Id: CreatesPackage.java$
- * @author madamcin
+ * Trait defining common mojo parameters and methods for the creation of vault packages
+ * @since 1.0
+ * @author Mark Adamcin
  */
 trait CreatesPackage
-  extends LogsParameters {
+  extends BaseMojo {
   val log = LoggerFactory.getLogger(getClass)
 
-  final val defaultJcrPath = "/"
-  val vaultPrefix = "META-INF/vault/"
+  final val DEFAULT_JCR_PATH = "/"
+  final val VAULT_PREFIX = "META-INF/vault/"
   final val JCR_ROOT = "jcr_root"
   final val META_INF = "META-INF"
 
-  @Parameter(property = "jcrPath", defaultValue = defaultJcrPath)
-  val jcrPath: String = defaultJcrPath
+  /**
+   * Specify the JCR path that the jcr_root folder maps to. For instance, if the content was checked out
+   * using the vlt command, a jcrPath parameter may have been explicitly specified as something other than
+   * '/'. In this case, the same explicit value must be set for this mojo to properly create Jar entries so
+   * that the package contents wind up at the correct path when installed
+   * @since 1.0
+   */
+  @Parameter(property = "jcrPath", defaultValue = DEFAULT_JCR_PATH)
+  var jcrPath: String = DEFAULT_JCR_PATH
 
   lazy val jcrPathNoSlashEnd = VltpackUtil.noLeadingSlash(VltpackUtil.noTrailingSlash(jcrPath))
 
+  /**
+   * Specify the server timezone if different from the local timezone. When CRX installs the package, it will
+   * check the lastmodified timestamps on the Jar entries and compare them to the jcr:lastModified properties
+   * in the repository to determine if each file should be installed or not. Because the Jar entry timestamp
+   * does not account for timezone, it is possible for packages created in different timezones to be installed
+   * inconsistently on the same server. By setting this parameter, the Jar entry timestamps will be adjusted to
+   * reflect the local time of the server timezone instead of the local timezone
+   *
+   * The value of this property will be passed to <code>TimeZone.getTimeZone(String id)</code>, which will be
+   * compared against the build machine's default time zone, <code>TimeZone.getDefault()</code>, for computing
+   * the desired timestamp offset.
+   *
+   * As described in the TimeZone javadocs, if the value of this property is
+   * not empty and is not a valid TimeZone id, the GMT timezone will be used
+   * for adjustment of timestamps.
+   * @since 1.0
+   */
   @Parameter(property = "vlt.tz")
-  val serverTimezone: String = null
+  var serverTimezone: String = null
 
   val localTz = TimeZone.getDefault
 
@@ -138,5 +179,4 @@ trait CreatesPackage
       }
     }
   }
-
 }

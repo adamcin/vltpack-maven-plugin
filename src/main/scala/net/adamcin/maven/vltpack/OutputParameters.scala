@@ -1,12 +1,28 @@
+/*
+ * Copyright 2012 Mark Adamcin
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package net.adamcin.maven.vltpack
 
 import java.io.File
 import org.slf4j.LoggerFactory
 
 /**
- *
- * @version $Id: OutputParameters.java$
- * @author madamcin
+ * Trait defining common mojo parameters and methods useful for creation of the
+ * @since 1.0
+ * @author Mark Adamcin
  */
 trait OutputParameters extends RequiresProject {
   private val log = LoggerFactory.getLogger(getClass)
@@ -15,6 +31,11 @@ trait OutputParameters extends RequiresProject {
    * target directory
    */
   lazy val outputDirectory = getExistingDir(new File(project.getBuild.getDirectory))
+
+  /**
+   * target vltpack file
+   */
+  lazy val targetFile: File = new File(outputDirectory, project.getBuild.getFinalName + ".zip")
 
   /**
    * directory containing vltpack-generated files
@@ -28,7 +49,7 @@ trait OutputParameters extends RequiresProject {
 
 
   def relativeToBundleInstallPath(bundle: File): String = {
-    VltpackUtil.toRelative(embedBundlesDirectory, VltpackUtil.noLeadingSlash(bundle.getPath)
+    VltpackUtil.toRelative(embedBundlesDirectory, bundle.getPath)
   }
 
   /**

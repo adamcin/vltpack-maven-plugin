@@ -1,3 +1,19 @@
+/*
+ * Copyright 2012 Mark Adamcin
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package net.adamcin.maven.vltpack
 
 import java.io.File
@@ -7,9 +23,9 @@ import scalax.io.Resource
 import java.util.Properties
 
 /**
- *
- * @version $Id: IdentifiesPackages.java$
- * @author madamcin
+ * Companion object for the trait defining these useful property constants
+ * @since 1.0
+ * @author Mark Adamcin
  */
 object IdentifiesPackages {
   final val GROUP = VaultPackage.NAME_GROUP
@@ -22,6 +38,12 @@ object IdentifiesPackages {
   final val DEPENDENCIES = VaultPackage.NAME_DEPENDENCIES
 }
 
+/**
+ * Trait defining common mojo parameters and methods needed to identify vault package binaries based on
+ * embedded metadata
+ * @since 1.0
+ * @author Mark Adamcin
+ */
 trait IdentifiesPackages {
 
   val propertiesEntry = "META-INF/vault/properties.xml"

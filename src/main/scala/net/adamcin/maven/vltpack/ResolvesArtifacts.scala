@@ -1,7 +1,23 @@
+/*
+ * Copyright 2012 Mark Adamcin
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package net.adamcin.maven.vltpack
 
+import mojo.BaseMojo
 import org.apache.maven.repository.RepositorySystem
-import org.apache.maven.plugins.annotations.Component
 import org.apache.maven.artifact.repository.{DefaultRepositoryRequest, RepositoryRequest}
 import org.apache.maven.artifact.Artifact
 import org.apache.maven.plugin.logging.Log
@@ -11,22 +27,20 @@ import collection.JavaConversions
 import java.io.File
 import scalax.io.Resource
 import org.codehaus.plexus.util.SelectorUtils
-import org.apache.maven.execution.MavenSession
 import org.apache.maven.project.MavenProject
+import org.apache.maven.plugins.annotations.Component
 
 /**
- *
- * @version $Id: ResolvesArtifacts.java$
- * @author madamcin
+ * Trait defining common mojo parameters and methods useful for arbitrarily resolving artifacts from
+ * local and remote repositories
+ * @since 1.0
+ * @author Mark Adamcin
  */
-trait ResolvesArtifacts extends LogsParameters {
+trait ResolvesArtifacts extends BaseMojo {
   private val log = LoggerFactory.getLogger(getClass)
 
   @Component
   var repositorySystem: RepositorySystem = null
-
-  @Component
-  var session: MavenSession = null
 
   def proj: MavenProject = Option(session) match {
     case Some(s) => s.getCurrentProject
@@ -37,7 +51,7 @@ trait ResolvesArtifacts extends LogsParameters {
 
   lazy val dependencies: List[Artifact] = Option(proj) match {
     case Some(project) => {
-      JavaConversions.collectionAsScalaIterable(project.getDependencyArtifacts).toList.asInstanceOf[List[Artifact]]
+      JavaConversions.collectionAsScalaIterable(project.getDependencyArtifacts).toList
     }
     case None => Nil
   }
@@ -87,11 +101,8 @@ trait ResolvesArtifacts extends LogsParameters {
     target
   }
 
-
-
   override def printParams(log: Log) {
     super.printParams(log)
-
 
     log.info("repositorySystem is empty? " + Option(repositorySystem).isEmpty)
     log.info("repositoryRequest is empty? " + Option(repositoryRequest).isEmpty)

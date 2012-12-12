@@ -1,59 +1,140 @@
+/*
+ * Copyright 2012 Mark Adamcin
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package net.adamcin.maven.vltpack
 
-import org.apache.maven.plugins.annotations.Parameter
 import dispatch._
-import com.ning.http.client.{RequestBuilder, Response}
+import com.ning.http.client.{ProxyServer, RequestBuilder, Response}
 import org.apache.maven.plugin.logging.Log
+import org.apache.maven.plugins.annotations.Parameter
 
+/**
+ * Adds fluid support for the MKCOL method
+ * @since 1.0
+ * @author Mark Adamcin
+ */
 trait DavVerbs extends MethodVerbs {
   def MKCOL = subject.setMethod("MKCOL")
 }
 
+/**
+ * Wraps an implicitly created DefaultRequestVerbs object with the DavVerbs trait
+ * @param wrapped
+ */
 class DavRequestVerbs(wrapped: DefaultRequestVerbs) extends DefaultRequestVerbs(wrapped.subject) with DavVerbs
 
 /**
- *
- * @version $Id: HttpParameters.scala$
- * @author madamcin
+ * Trait defining common mojo parameters and methods for establishing HTTP connections to a CQ server. Reuses the
+ * vlt.user parameter defined in the UsernameAware trait as part of the connection credentials
+ * @since 1.0
+ * @author Mark Adamcin
  */
 trait HttpParameters extends UsernameAware {
 
-  final val defaultHost = "localhost"
-  final val defaultPort = "4502"
-  final val defaultPass = "admin"
-  final val defaultContext = "/"
-  final val defaultProxyHost = "localhost"
+  final val DEFAULT_HOST = "localhost"
+  final val DEFAULT_PORT = "4502"
+  final val DEFAULT_PASS = "admin"
+  final val DEFAULT_CONTEXT = "/"
+  final val DEFAULT_PROXY_PROTOCOL = "http"
+  final val DEFAULT_PROXY_HOST = "localhost"
 
-  @Parameter(property = "vlt.host", defaultValue = defaultHost)
-  val host = defaultHost
+  /**
+   * Hostname for the CQ server
+   * @since 1.0
+   */
+  @Parameter(property = "vlt.host", defaultValue = DEFAULT_HOST)
+  val host = DEFAULT_HOST
 
-  @Parameter(property = "vlt.port", defaultValue = defaultPort)
-  val port = Integer.valueOf(defaultPort)
+  /**
+   * TCP Port for the CQ server
+   * @since 1.0
+   */
+  @Parameter(property = "vlt.port", defaultValue = DEFAULT_PORT)
+  val port = Integer.valueOf(DEFAULT_PORT)
 
-  @Parameter(property = "vlt.pass", defaultValue = defaultPass)
-  val pass = defaultPass
+  /**
+   * Password to use in connection credentials
+   * @since 1.0
+   */
+  @Parameter(property = "vlt.pass", defaultValue = DEFAULT_PASS)
+  val pass = DEFAULT_PASS
 
-  @Parameter(property = "vlt.context", defaultValue = defaultContext)
-  val context: String = defaultContext
+  /**
+   * CQ Servlet context by which JCR paths are appended
+   * @since 1.0
+   */
+  @Parameter(property = "vlt.context", defaultValue = DEFAULT_CONTEXT)
+  val context: String = DEFAULT_CONTEXT
 
+  /**
+   * Whether to use an SSL connection instead of a normal HTTP connection.
+   * Does not affect the configured TCP port
+   * @since 1.0
+   */
   @Parameter(property = "vlt.https")
   val https = false
 
+  /**
+   * Set to true to completely disable HTTP proxy connections for this plugin.
+   * Overrides any other HTTP proxy configuration
+   * @since 1.0
+   */
   @Parameter(property = "vlt.proxy.noProxy")
   val noProxy = false
 
+  /**
+   * Set to true to override the proxy configuration in the user's Maven Settings with the
+   * associated mojo parameter alternatives
+   * @since 1.0
+   */
   @Parameter(property = "vlt.proxy.set")
   val proxySet = false
 
-  @Parameter(property = "vlt.proxy.host", defaultValue = defaultProxyHost)
-  val proxyHost: String = defaultProxyHost
+  /**
+   * The HTTP Proxy protocol
+   * @since 1.0
+   */
+  @Parameter(property = "vlt.proxy.protocol", defaultValue = DEFAULT_PROXY_PROTOCOL)
+  val proxyProtocol: String = DEFAULT_PROXY_PROTOCOL
 
+  /**
+   * The HTTP Proxy hostname
+   * @since 1.0
+   */
+  @Parameter(property = "vlt.proxy.host", defaultValue = DEFAULT_PROXY_HOST)
+  val proxyHost: String = DEFAULT_PROXY_HOST
+
+  /**
+   * The HTTP Proxy port. Set to -1 to use the default proxy port.
+   * @since 1.0
+   */
   @Parameter(property = "vlt.proxy.port")
   val proxyPort: Int = -1
 
+  /**
+   * The HTTP Proxy username
+   * @since 1.0
+   */
   @Parameter(property = "vlt.proxy.user")
   val proxyUser: String = null
 
+  /**
+   * The HTTP Proxy password
+   * @since 1.0
+   */
   @Parameter(property = "vlt.proxy.pass")
   val proxyPass: String = null
 
@@ -79,11 +160,52 @@ trait HttpParameters extends UsernameAware {
     segments.foldLeft(reqHost) { (req, segment) => req / segment }
   }
 
+  lazy val activeProxy: Option[ProxyServer] = {
+    if (noProxy) {
+      None
+    } else if (proxySet) {
+      val proxyServer =
+        new ProxyServer(
+          ProxyServer.Protocol.valueOf(Option(proxyProtocol).getOrElse("HTTP")),
+          proxyHost,
+          proxyPort,
+          proxyUser,
+          proxyPass)
+
+      Some(proxyServer)
+    } else {
+      Option(settings.getActiveProxy) match {
+        case None => None
+        case Some(proxy) => {
+          val proxyServer =
+            new ProxyServer(
+              ProxyServer.Protocol.valueOf(Option(proxy.getProtocol).getOrElse("HTTP")),
+              proxy.getHost,
+              proxy.getPort,
+              proxy.getUsername,
+              proxy.getPassword)
+
+          Option(proxy.getNonProxyHosts) match {
+            case None => ()
+            case Some(nonProxyHosts) => {
+              nonProxyHosts.split("\\|").foreach { proxyServer.addNonProxyHost(_) }
+            }
+          }
+
+          Option(proxyServer)
+        }
+      }
+      None
+    }
+  }
+
   def reqHost = List(dispatch.host(host, port)).map {
     (req) => if (https) { req.secure } else { req }
   }.map {
-    // TODO: set proxy server
-    (req) => req
+    (req) => activeProxy match {
+      case None => req
+      case Some(proxy) => req.setProxyServer(proxy)
+    }
   }.head as_!(user, pass)
 
   def isSuccess(req: RequestBuilder, resp: Response): Boolean = {

@@ -1,22 +1,43 @@
+/*
+ * Copyright 2012 Mark Adamcin
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package net.adamcin.maven.vltpack
 
 import com.ning.http.client.{RequestBuilder, Response}
 import dispatch._
-import org.apache.maven.plugins.annotations.Parameter
 import java.io.File
 import org.apache.maven.plugin.MojoExecutionException
 import org.slf4j.LoggerFactory
+import org.apache.maven.plugins.annotations.Parameter
 
 /**
- *
- * @version $Id: PutsBundle.java$
- * @author madamcin
+ * Trait defining common mojo parameters and methods for uploading OSGi bundles to the configured CQ server
+ * using the PUT HTTP method
+ * @since 1.0
+ * @author Mark Adamcin
  */
 trait PutsBundle extends HttpParameters with BundlePathParameters {
   val log = LoggerFactory.getLogger(getClass)
 
+  /**
+   * Set to true to skip the use of the MKCOL WebDAV method for the creation ancestor JCR paths
+   * @since 1.0
+   */
   @Parameter(property = "vlt.skip.mkdirs")
-  val skipMkdirs = false
+  var skipMkdirs = false
 
   /**
    * Puts the specified file to the configured location
