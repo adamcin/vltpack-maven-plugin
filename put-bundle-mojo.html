@@ -67,12 +67,11 @@
       <p><b>Full name</b>:</p>
       <p>net.adamcin:vltpack-maven-plugin:1.0-SNAPSHOT:put-bundle</p>
       <p><b>Description</b>:</p>
-      <div><p>PUT the project artifact (of packaging type 'bundle') to the
-configured CQ server</p></div>
+      <div>(no description)</div>
       <p><b>Attributes</b>:</p>
       <ul>
         <li>Requires a Maven project to be executed.</li>
-        <li>Since version: <tt>1.0</tt>.</li>
+        <li>The goal is thread-safe and supports parallel builds.</li>
         <li>Binds by default to the <a class="externalLink" href="http://maven.apache.org/ref/current/maven-core/lifecycles.html">lifecycle phase</a>: <tt>integration-test</tt>.</li>
       </ul>
       <div class="section"><h3>Optional Parameters<a name="Optional_Parameters"></a></h3>
@@ -86,264 +85,226 @@ configured CQ server</p></div>
           <tr class="b">
             <td><b><a href="#bundleInstallPath">bundleInstallPath</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>Set the JCR path where bundles will be installed for this
-project. Use a numeric suffix (as in &quot;/apps/myapp/install/30&quot;) to
-apply a felix start level configuration to the bundles</p><br /><b>Default value is</b>: <tt>/apps/bundles/install/30</tt>.<br /></td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>Default value is</b>: <tt>/apps/bundles/install/30</tt>.<br /></td>
           </tr>
           <tr class="a">
             <td><b><a href="#context">context</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><b>Deprecated.</b> <p>deprecated in comment</p><br /><b>Default value is</b>: <tt>/</tt>.<br /><b>User property is</b>: <tt>vlt.context</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>Default value is</b>: <tt>/</tt>.<br /><b>User property is</b>: <tt>vlt.context</tt>.</td>
           </tr>
           <tr class="b">
             <td><b><a href="#debug">debug</a></b></td>
             <td><tt>boolean</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>prints parameter values</p><br /><b>User property is</b>: <tt>vlt.debug</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>User property is</b>: <tt>vlt.debug</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#deploy">deploy</a></b></td>
             <td><tt>boolean</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>Set to true to enable deployment of artifacts during
-integration-test phase</p><br /><b>User property is</b>: <tt>vlt.deploy</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>User property is</b>: <tt>vlt.deploy</tt>.</td>
           </tr>
           <tr class="b">
             <td><b><a href="#host">host</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>Hostname for the CQ server</p><br /><b>Default value is</b>: <tt>localhost</tt>.<br /><b>User property is</b>: <tt>vlt.host</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>Default value is</b>: <tt>localhost</tt>.<br /><b>User property is</b>: <tt>vlt.host</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#https">https</a></b></td>
             <td><tt>boolean</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>Whether to use an SSL connection instead of a normal HTTP
-connection. Does not affect the configured TCP port</p><br /><b>User property is</b>: <tt>vlt.https</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>User property is</b>: <tt>vlt.https</tt>.</td>
           </tr>
           <tr class="b">
             <td><b><a href="#noProxy">noProxy</a></b></td>
             <td><tt>boolean</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>Set to true to completely disable HTTP proxy connections for
-this plugin. Overrides any other HTTP proxy configuration</p><br /><b>User property is</b>: <tt>vlt.proxy.noProxy</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>User property is</b>: <tt>vlt.proxy.noProxy</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#pass">pass</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><b>Deprecated.</b> <p><i>(Since version scala.this.deprecated.init$default$2)</i>
-deprecated in annotation</p><br /><b>Default value is</b>: <tt>admin</tt>.<br /><b>User property is</b>: <tt>vlt.pass</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>Default value is</b>: <tt>admin</tt>.<br /><b>User property is</b>: <tt>vlt.pass</tt>.</td>
           </tr>
           <tr class="b">
             <td><b><a href="#port">port</a></b></td>
             <td><tt>Integer</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>TCP Port for the CQ server</p><br /><b>Default value is</b>: <tt>4502</tt>.<br /><b>User property is</b>: <tt>vlt.port</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>Default value is</b>: <tt>4502</tt>.<br /><b>User property is</b>: <tt>vlt.port</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#proxyHost">proxyHost</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>The HTTP Proxy hostname</p><br /><b>Default value is</b>: <tt>localhost</tt>.<br /><b>User property is</b>: <tt>vlt.proxy.host</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>Default value is</b>: <tt>localhost</tt>.<br /><b>User property is</b>: <tt>vlt.proxy.host</tt>.</td>
           </tr>
           <tr class="b">
             <td><b><a href="#proxyPass">proxyPass</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>The HTTP Proxy password</p><br /><b>User property is</b>: <tt>vlt.proxy.pass</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>User property is</b>: <tt>vlt.proxy.pass</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#proxyPort">proxyPort</a></b></td>
             <td><tt>int</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>The HTTP Proxy port. Set to -1 to use the default proxy
-port.</p><br /><b>User property is</b>: <tt>vlt.proxy.port</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>User property is</b>: <tt>vlt.proxy.port</tt>.</td>
           </tr>
           <tr class="b">
             <td><b><a href="#proxyProtocol">proxyProtocol</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>The HTTP Proxy protocol</p><br /><b>Default value is</b>: <tt>http</tt>.<br /><b>User property is</b>: <tt>vlt.proxy.protocol</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>Default value is</b>: <tt>http</tt>.<br /><b>User property is</b>: <tt>vlt.proxy.protocol</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#proxySet">proxySet</a></b></td>
             <td><tt>boolean</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>Set to true to override the proxy configuration in the user's
-Maven Settings with the associated mojo parameter alternatives</p><br /><b>User property is</b>: <tt>vlt.proxy.set</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>User property is</b>: <tt>vlt.proxy.set</tt>.</td>
           </tr>
           <tr class="b">
             <td><b><a href="#proxyUser">proxyUser</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>The HTTP Proxy username</p><br /><b>User property is</b>: <tt>vlt.proxy.user</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>User property is</b>: <tt>vlt.proxy.user</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#skip">skip</a></b></td>
             <td><tt>boolean</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>Set to true to skip the execution of this mojo</p><br /><b>User property is</b>: <tt>vlt.skip.put-bundle</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>User property is</b>: <tt>vlt.skip.put-bundle</tt>.</td>
           </tr>
           <tr class="b">
             <td><b><a href="#skipMkdirs">skipMkdirs</a></b></td>
             <td><tt>boolean</tt></td>
-            <td><tt>1.0</tt></td>
-            <td><p>Set to true to skip the use of the MKCOL WebDAV method for the
-creation ancestor JCR paths</p><br /><b>User property is</b>: <tt>vlt.skip.mkdirs</tt>.</td>
+            <td><tt>-</tt></td>
+            <td>(no description)<br /><b>User property is</b>: <tt>vlt.skip.mkdirs</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#user">user</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>1.0</tt></td>
+            <td><tt>-</tt></td>
             <td>(no description)<br /><b>Default value is</b>: <tt>admin</tt>.<br /><b>User property is</b>: <tt>vlt.user</tt>.</td>
           </tr>
         </table>
       </div>
       <div class="section"><h3>Parameter Details<a name="Parameter_Details"></a></h3>
         <p><b><a name="bundleInstallPath">bundleInstallPath</a>:</b></p>
-        <div><p>Set the JCR path where bundles will be installed for this
-project. Use a numeric suffix (as in &quot;/apps/myapp/install/30&quot;) to
-apply a felix start level configuration to the bundles</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>Default</b>: <tt>/apps/bundles/install/30</tt></li>
         </ul><hr /><p><b><a name="context">context</a>:</b></p>
-        <div><b>Deprecated.</b> <p>deprecated in comment</p></div>
-        <div><p>CQ Servlet context by which JCR paths are appended</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.context</tt></li>
           <li><b>Default</b>: <tt>/</tt></li>
         </ul><hr /><p><b><a name="debug">debug</a>:</b></p>
-        <div><p>prints parameter values</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>boolean</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.debug</tt></li>
         </ul><hr /><p><b><a name="deploy">deploy</a>:</b></p>
-        <div><p>Set to true to enable deployment of artifacts during
-integration-test phase</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>boolean</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.deploy</tt></li>
         </ul><hr /><p><b><a name="host">host</a>:</b></p>
-        <div><p>Hostname for the CQ server</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.host</tt></li>
           <li><b>Default</b>: <tt>localhost</tt></li>
         </ul><hr /><p><b><a name="https">https</a>:</b></p>
-        <div><p>Whether to use an SSL connection instead of a normal HTTP
-connection. Does not affect the configured TCP port</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>boolean</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.https</tt></li>
         </ul><hr /><p><b><a name="noProxy">noProxy</a>:</b></p>
-        <div><p>Set to true to completely disable HTTP proxy connections for
-this plugin. Overrides any other HTTP proxy configuration</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>boolean</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.proxy.noProxy</tt></li>
         </ul><hr /><p><b><a name="pass">pass</a>:</b></p>
-        <div><b>Deprecated.</b> <p><i>(Since version scala.this.deprecated.init$default$2)</i>
-deprecated in annotation</p></div>
-        <div><p>Password to use in connection credentials</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.pass</tt></li>
           <li><b>Default</b>: <tt>admin</tt></li>
         </ul><hr /><p><b><a name="port">port</a>:</b></p>
-        <div><p>TCP Port for the CQ server</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.Integer</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.port</tt></li>
           <li><b>Default</b>: <tt>4502</tt></li>
         </ul><hr /><p><b><a name="proxyHost">proxyHost</a>:</b></p>
-        <div><p>The HTTP Proxy hostname</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.proxy.host</tt></li>
           <li><b>Default</b>: <tt>localhost</tt></li>
         </ul><hr /><p><b><a name="proxyPass">proxyPass</a>:</b></p>
-        <div><p>The HTTP Proxy password</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.proxy.pass</tt></li>
         </ul><hr /><p><b><a name="proxyPort">proxyPort</a>:</b></p>
-        <div><p>The HTTP Proxy port. Set to -1 to use the default proxy
-port.</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>int</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.proxy.port</tt></li>
         </ul><hr /><p><b><a name="proxyProtocol">proxyProtocol</a>:</b></p>
-        <div><p>The HTTP Proxy protocol</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.proxy.protocol</tt></li>
           <li><b>Default</b>: <tt>http</tt></li>
         </ul><hr /><p><b><a name="proxySet">proxySet</a>:</b></p>
-        <div><p>Set to true to override the proxy configuration in the user's
-Maven Settings with the associated mojo parameter alternatives</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>boolean</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.proxy.set</tt></li>
         </ul><hr /><p><b><a name="proxyUser">proxyUser</a>:</b></p>
-        <div><p>The HTTP Proxy username</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.proxy.user</tt></li>
         </ul><hr /><p><b><a name="skip">skip</a>:</b></p>
-        <div><p>Set to true to skip the execution of this mojo</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>boolean</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.skip.put-bundle</tt></li>
         </ul><hr /><p><b><a name="skipMkdirs">skipMkdirs</a>:</b></p>
-        <div><p>Set to true to skip the use of the MKCOL WebDAV method for the
-creation ancestor JCR paths</p></div>
+        <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>boolean</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.skip.mkdirs</tt></li>
         </ul><hr /><p><b><a name="user">user</a>:</b></p>
         <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
-          <li><b>Since</b>: <tt>1.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.user</tt></li>
           <li><b>Default</b>: <tt>admin</tt></li>
