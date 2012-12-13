@@ -67,10 +67,12 @@
       <p><b>Full name</b>:</p>
       <p>net.adamcin:vltpack-maven-plugin:1.0-SNAPSHOT:vault-inf</p>
       <p><b>Description</b>:</p>
-      <div>(no description)</div>
+      <div>Generates package meta information under META-INF/vault, including
+config.</div>
       <p><b>Attributes</b>:</p>
       <ul>
         <li>Requires a Maven project to be executed.</li>
+        <li>Since version: <tt>1.</tt>.</li>
         <li>Binds by default to the <a class="externalLink" href="http://maven.apache.org/ref/current/maven-core/lifecycles.html">lifecycle phase</a>: <tt>prepare-package</tt>.</li>
       </ul>
       <div class="section"><h3>Optional Parameters<a name="Optional_Parameters"></a></h3>
@@ -84,61 +86,61 @@
           <tr class="b">
             <td><b><a href="#bundleInstallPath">bundleInstallPath</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>-</tt></td>
+            <td><tt>1.</tt></td>
             <td>(no description)<br /><b>Default value is</b>: <tt>/apps/bundles/install/30</tt>.<br /></td>
           </tr>
           <tr class="a">
             <td><b><a href="#createDefinition">createDefinition</a></b></td>
             <td><tt>boolean</tt></td>
-            <td><tt>-</tt></td>
+            <td><tt>1.</tt></td>
             <td>(no description)<br /></td>
           </tr>
           <tr class="b">
             <td><b><a href="#debug">debug</a></b></td>
             <td><tt>boolean</tt></td>
-            <td><tt>-</tt></td>
+            <td><tt>1.</tt></td>
             <td>(no description)<br /><b>User property is</b>: <tt>vlt.debug</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#definitionProperties">definitionProperties</a></b></td>
             <td><tt>Map</tt></td>
-            <td><tt>-</tt></td>
+            <td><tt>1.</tt></td>
             <td>(no description)<br /></td>
           </tr>
           <tr class="b">
             <td><b><a href="#packageDependencies">packageDependencies</a></b></td>
             <td><tt>List</tt></td>
-            <td><tt>-</tt></td>
+            <td><tt>1.</tt></td>
             <td>(no description)<br /></td>
           </tr>
           <tr class="a">
             <td><b><a href="#properties">properties</a></b></td>
             <td><tt>Map</tt></td>
-            <td><tt>-</tt></td>
+            <td><tt>1.</tt></td>
             <td>(no description)<br /></td>
           </tr>
           <tr class="b">
             <td><b><a href="#screenshots">screenshots</a></b></td>
             <td><tt>List</tt></td>
-            <td><tt>-</tt></td>
+            <td><tt>1.</tt></td>
             <td>(no description)<br /></td>
           </tr>
           <tr class="a">
             <td><b><a href="#thumbnail">thumbnail</a></b></td>
             <td><tt>File</tt></td>
-            <td><tt>-</tt></td>
+            <td><tt>1.</tt></td>
             <td>(no description)<br /></td>
           </tr>
           <tr class="b">
             <td><b><a href="#user">user</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>-</tt></td>
+            <td><tt>1.</tt></td>
             <td>(no description)<br /><b>Default value is</b>: <tt>admin</tt>.<br /><b>User property is</b>: <tt>vlt.user</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#vaultSource">vaultSource</a></b></td>
             <td><tt>File</tt></td>
-            <td><tt>-</tt></td>
+            <td><tt>1.</tt></td>
             <td>(no description)<br /><b>Default value is</b>: <tt>${project.build.outputDirectory}/META-INF/vault</tt>.<br /></td>
           </tr>
         </table>
@@ -148,48 +150,57 @@
         <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
+          <li><b>Since</b>: <tt>1.</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>Default</b>: <tt>/apps/bundles/install/30</tt></li>
         </ul><hr /><p><b><a name="createDefinition">createDefinition</a>:</b></p>
         <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>boolean</tt></li>
+          <li><b>Since</b>: <tt>1.</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr /><p><b><a name="debug">debug</a>:</b></p>
         <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>boolean</tt></li>
+          <li><b>Since</b>: <tt>1.</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.debug</tt></li>
         </ul><hr /><p><b><a name="definitionProperties">definitionProperties</a>:</b></p>
         <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.util.Map</tt></li>
+          <li><b>Since</b>: <tt>1.</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr /><p><b><a name="packageDependencies">packageDependencies</a>:</b></p>
         <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.util.List</tt></li>
+          <li><b>Since</b>: <tt>1.</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr /><p><b><a name="properties">properties</a>:</b></p>
         <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.util.Map</tt></li>
+          <li><b>Since</b>: <tt>1.</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr /><p><b><a name="screenshots">screenshots</a>:</b></p>
         <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.util.List</tt></li>
+          <li><b>Since</b>: <tt>1.</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr /><p><b><a name="thumbnail">thumbnail</a>:</b></p>
         <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.io.File</tt></li>
+          <li><b>Since</b>: <tt>1.</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr /><p><b><a name="user">user</a>:</b></p>
         <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
+          <li><b>Since</b>: <tt>1.</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.user</tt></li>
           <li><b>Default</b>: <tt>admin</tt></li>
@@ -197,6 +208,7 @@
         <div>(no description)</div>
         <ul>
           <li><b>Type</b>: <tt>java.io.File</tt></li>
+          <li><b>Since</b>: <tt>1.</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>Default</b>: <tt>${project.build.outputDirectory}/META-INF/vault</tt></li>
         </ul>
