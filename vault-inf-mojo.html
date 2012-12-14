@@ -105,13 +105,6 @@ significantly more time than normal if this is set because a
 Jackrabbit TransientRepository will need to be started</div><br /></td>
           </tr>
           <tr class="b">
-            <td><b><a href="#debug">debug</a></b></td>
-            <td><tt>boolean</tt></td>
-            <td><tt>1.0
-</tt></td>
-            <td><div>prints parameter values</div><br /><b>User property is</b>: <tt>vlt.debug</tt>.</td>
-          </tr>
-          <tr class="a">
             <td><b><a href="#definitionProperties">definitionProperties</a></b></td>
             <td><tt>Map</tt></td>
             <td><tt>1.0
@@ -120,7 +113,7 @@ Jackrabbit TransientRepository will need to be started</div><br /></td>
 These will NOT be added to the properties.xml file. (requires
 createDefinition to be set to true)</div><br /></td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#packageDependencies">packageDependencies</a></b></td>
             <td><tt>List</tt></td>
             <td><tt>1.0
@@ -128,7 +121,7 @@ createDefinition to be set to true)</div><br /></td>
             <td><div>List of artifactIds matching dependencies that are valid vault
 packages</div><br /></td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#properties">properties</a></b></td>
             <td><tt>Map</tt></td>
             <td><tt>1.0
@@ -136,7 +129,7 @@ packages</div><br /></td>
             <td><div>Package properties that will be set in the properties.xml
 file</div><br /></td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#screenshots">screenshots</a></b></td>
             <td><tt>List</tt></td>
             <td><tt>1.0
@@ -145,7 +138,7 @@ file</div><br /></td>
 screenshots in the CRX Package Manager (requires createDefinition
 to be set to true)</div><br /></td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#thumbnail">thumbnail</a></b></td>
             <td><tt>File</tt></td>
             <td><tt>1.0
@@ -154,7 +147,7 @@ to be set to true)</div><br /></td>
 package in the CRX Package Manager (requires createDefinition to be
 set to true)</div><br /></td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#user">user</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0
@@ -162,7 +155,7 @@ set to true)</div><br /></td>
             <td><div>Specify the CQ username associated with package creation and
 installation</div><br /><b>Default value is</b>: <tt>admin</tt>.<br /><b>User property is</b>: <tt>vlt.user</tt>.</td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#vaultSource">vaultSource</a></b></td>
             <td><tt>File</tt></td>
             <td><tt>1.0
@@ -194,14 +187,6 @@ Jackrabbit TransientRepository will need to be started</div></div>
           <li><b>Since</b>: <tt>1.0
 </tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
-        </ul><hr /><p><b><a name="debug">debug</a>:</b></p>
-        <div><div>prints parameter values</div></div>
-        <ul>
-          <li><b>Type</b>: <tt>boolean</tt></li>
-          <li><b>Since</b>: <tt>1.0
-</tt></li>
-          <li><b>Required</b>: <tt>No</tt></li>
-          <li><b>User Property</b>: <tt>vlt.debug</tt></li>
         </ul><hr /><p><b><a name="definitionProperties">definitionProperties</a>:</b></p>
         <div><div>Properties to be added to the JCR Package Definition node.
 These will NOT be added to the properties.xml file. (requires
