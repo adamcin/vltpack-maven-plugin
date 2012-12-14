@@ -67,10 +67,12 @@
       <p><b>Full name</b>:</p>
       <p>net.adamcin:vltpack-maven-plugin:1.0-SNAPSHOT:embed-bundles</p>
       <p><b>Description</b>:</p>
-      <div>(no description)</div>
+      <div><div>Embeds bundles in the project artifact at the configured
+bundleInstallPath</div></div>
       <p><b>Attributes</b>:</p>
       <ul>
         <li>Requires a Maven project to be executed.</li>
+        <li>Since version: <tt>1.0</tt>.</li>
         <li>Binds by default to the <a class="externalLink" href="http://maven.apache.org/ref/current/maven-core/lifecycles.html">lifecycle phase</a>: <tt>prepare-package</tt>.</li>
       </ul>
       <div class="section"><h3>Optional Parameters<a name="Optional_Parameters"></a></h3>
@@ -84,28 +86,40 @@
           <tr class="b">
             <td><b><a href="#bundleInstallPath">bundleInstallPath</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /><b>Default value is</b>: <tt>/apps/bundles/install/30</tt>.<br /></td>
+            <td><tt>1.0
+</tt></td>
+            <td><div>Set the JCR path where bundles will be installed for this
+project. Use a numeric suffix (as in &quot;/apps/myapp/install/30&quot;) to
+apply a felix start level configuration to the bundles</div><br /><b>Default value is</b>: <tt>/apps/bundles/install/30</tt>.<br /></td>
           </tr>
           <tr class="a">
             <td><b><a href="#embedBundles">embedBundles</a></b></td>
             <td><tt>List</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /></td>
+            <td><tt>1.0
+</tt></td>
+            <td><div>List of articleIds matching dependencies that should be
+embedded</div><br /></td>
           </tr>
         </table>
       </div>
       <div class="section"><h3>Parameter Details<a name="Parameter_Details"></a></h3>
         <p><b><a name="bundleInstallPath">bundleInstallPath</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Set the JCR path where bundles will be installed for this
+project. Use a numeric suffix (as in &quot;/apps/myapp/install/30&quot;) to
+apply a felix start level configuration to the bundles</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
+          <li><b>Since</b>: <tt>1.0
+</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>Default</b>: <tt>/apps/bundles/install/30</tt></li>
         </ul><hr /><p><b><a name="embedBundles">embedBundles</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>List of articleIds matching dependencies that should be
+embedded</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.util.List</tt></li>
+          <li><b>Since</b>: <tt>1.0
+</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul>
       </div>

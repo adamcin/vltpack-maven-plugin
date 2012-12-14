@@ -67,10 +67,13 @@
       <p><b>Full name</b>:</p>
       <p>net.adamcin:vltpack-maven-plugin:1.0-SNAPSHOT:vault-inf</p>
       <p><b>Description</b>:</p>
-      <div>(no description)</div>
+      <div><div>Generates package meta information under META-INF/vault,
+including config.xml, properties.xml, filter.xml and the package
+definition</div></div>
       <p><b>Attributes</b>:</p>
       <ul>
         <li>Requires a Maven project to be executed.</li>
+        <li>Since version: <tt>1.0</tt>.</li>
         <li>Binds by default to the <a class="externalLink" href="http://maven.apache.org/ref/current/maven-core/lifecycles.html">lifecycle phase</a>: <tt>prepare-package</tt>.</li>
       </ul>
       <div class="section"><h3>Optional Parameters<a name="Optional_Parameters"></a></h3>
@@ -84,107 +87,166 @@
           <tr class="b">
             <td><b><a href="#bundleInstallPath">bundleInstallPath</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /><b>Default value is</b>: <tt>/apps/bundles/install/30</tt>.<br /></td>
+            <td><tt>1.0
+</tt></td>
+            <td><div>Set the JCR path where bundles will be installed for this
+project. Use a numeric suffix (as in &quot;/apps/myapp/install/30&quot;) to
+apply a felix start level configuration to the bundles</div><br /><b>Default value is</b>: <tt>/apps/bundles/install/30</tt>.<br /></td>
           </tr>
           <tr class="a">
             <td><b><a href="#createDefinition">createDefinition</a></b></td>
             <td><tt>boolean</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /></td>
+            <td><tt>1.0
+</tt></td>
+            <td><div>Set to true to generate the JCR Package Definition. This is
+necessary if thumbnails, screenshots, or definition properties need
+to be set within the package. Package creation may take
+significantly more time than normal if this is set because a
+Jackrabbit TransientRepository will need to be started</div><br /></td>
           </tr>
           <tr class="b">
             <td><b><a href="#definitionProperties">definitionProperties</a></b></td>
             <td><tt>Map</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /></td>
+            <td><tt>1.0
+</tt></td>
+            <td><div>Properties to be added to the JCR Package Definition node.
+These will NOT be added to the properties.xml file. (requires
+createDefinition to be set to true)</div><br /></td>
           </tr>
           <tr class="a">
             <td><b><a href="#packageDependencies">packageDependencies</a></b></td>
             <td><tt>List</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /></td>
+            <td><tt>1.0
+</tt></td>
+            <td><div>List of artifactIds matching dependencies that are valid vault
+packages</div><br /></td>
           </tr>
           <tr class="b">
             <td><b><a href="#properties">properties</a></b></td>
             <td><tt>Map</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /></td>
+            <td><tt>1.0
+</tt></td>
+            <td><div>Package properties that will be set in the properties.xml
+file</div><br /></td>
           </tr>
           <tr class="a">
             <td><b><a href="#screenshots">screenshots</a></b></td>
             <td><tt>List</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /></td>
+            <td><tt>1.0
+</tt></td>
+            <td><div>Specify a list of PNG files that will be included as package
+screenshots in the CRX Package Manager (requires createDefinition
+to be set to true)</div><br /></td>
           </tr>
           <tr class="b">
             <td><b><a href="#thumbnail">thumbnail</a></b></td>
             <td><tt>File</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /></td>
+            <td><tt>1.0
+</tt></td>
+            <td><div>Specify a PNG file that will be used as the thumbnail for the
+package in the CRX Package Manager (requires createDefinition to be
+set to true)</div><br /></td>
           </tr>
           <tr class="a">
             <td><b><a href="#user">user</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /><b>Default value is</b>: <tt>admin</tt>.<br /><b>User property is</b>: <tt>vlt.user</tt>.</td>
+            <td><tt>1.0
+</tt></td>
+            <td><div>Specify the CQ username associated with package creation and
+installation</div><br /><b>Default value is</b>: <tt>admin</tt>.<br /><b>User property is</b>: <tt>vlt.user</tt>.</td>
           </tr>
           <tr class="b">
             <td><b><a href="#vaultSource">vaultSource</a></b></td>
             <td><tt>File</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /><b>Default value is</b>: <tt>${project.build.outputDirectory}/META-INF/vault</tt>.<br /></td>
+            <td><tt>1.0
+</tt></td>
+            <td><div>Source folder for existing meta info files, such as are
+created and managed by the VLT working copy</div><br /><b>Default value is</b>: <tt>${project.build.outputDirectory}/META-INF/vault</tt>.<br /></td>
           </tr>
         </table>
       </div>
       <div class="section"><h3>Parameter Details<a name="Parameter_Details"></a></h3>
         <p><b><a name="bundleInstallPath">bundleInstallPath</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Set the JCR path where bundles will be installed for this
+project. Use a numeric suffix (as in &quot;/apps/myapp/install/30&quot;) to
+apply a felix start level configuration to the bundles</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
+          <li><b>Since</b>: <tt>1.0
+</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>Default</b>: <tt>/apps/bundles/install/30</tt></li>
         </ul><hr /><p><b><a name="createDefinition">createDefinition</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Set to true to generate the JCR Package Definition. This is
+necessary if thumbnails, screenshots, or definition properties need
+to be set within the package. Package creation may take
+significantly more time than normal if this is set because a
+Jackrabbit TransientRepository will need to be started</div></div>
         <ul>
           <li><b>Type</b>: <tt>boolean</tt></li>
+          <li><b>Since</b>: <tt>1.0
+</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr /><p><b><a name="definitionProperties">definitionProperties</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Properties to be added to the JCR Package Definition node.
+These will NOT be added to the properties.xml file. (requires
+createDefinition to be set to true)</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.util.Map</tt></li>
+          <li><b>Since</b>: <tt>1.0
+</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr /><p><b><a name="packageDependencies">packageDependencies</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>List of artifactIds matching dependencies that are valid vault
+packages</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.util.List</tt></li>
+          <li><b>Since</b>: <tt>1.0
+</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr /><p><b><a name="properties">properties</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Package properties that will be set in the properties.xml
+file</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.util.Map</tt></li>
+          <li><b>Since</b>: <tt>1.0
+</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr /><p><b><a name="screenshots">screenshots</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Specify a list of PNG files that will be included as package
+screenshots in the CRX Package Manager (requires createDefinition
+to be set to true)</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.util.List</tt></li>
+          <li><b>Since</b>: <tt>1.0
+</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr /><p><b><a name="thumbnail">thumbnail</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Specify a PNG file that will be used as the thumbnail for the
+package in the CRX Package Manager (requires createDefinition to be
+set to true)</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.io.File</tt></li>
+          <li><b>Since</b>: <tt>1.0
+</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr /><p><b><a name="user">user</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Specify the CQ username associated with package creation and
+installation</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
+          <li><b>Since</b>: <tt>1.0
+</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vlt.user</tt></li>
           <li><b>Default</b>: <tt>admin</tt></li>
         </ul><hr /><p><b><a name="vaultSource">vaultSource</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Source folder for existing meta info files, such as are
+created and managed by the VLT working copy</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.io.File</tt></li>
+          <li><b>Since</b>: <tt>1.0
+</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>Default</b>: <tt>${project.build.outputDirectory}/META-INF/vault</tt></li>
         </ul>
