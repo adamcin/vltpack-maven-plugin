@@ -1,17 +1,28 @@
 /*
- * Copyright 2012 Mark Adamcin
+ * This is free and unencumbered software released into the public domain.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Anyone is free to copy, modify, publish, use, compile, sell, or
+ * distribute this software, either in source code form or as a compiled
+ * binary, for any purpose, commercial or non-commercial, and by any
+ * means.
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * In jurisdictions that recognize copyright laws, the author or authors
+ * of this software dedicate any and all copyright interest in the
+ * software to the public domain. We make this dedication for the benefit
+ * of the public at large and to the detriment of our heirs and
+ * successors. We intend this dedication to be an overt act of
+ * relinquishment in perpetuity of all present and future rights to this
+ * software under copyright law.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * For more information, please refer to <http://unlicense.org/>
  */
 
 package net.adamcin.maven.vltpack
@@ -21,7 +32,6 @@ import mojo.BaseMojo
 import org.apache.maven.plugin.MojoExecutionException
 import scalax.io.Resource
 import java.util.TimeZone
-import org.apache.maven.plugin.logging.Log
 import java.util.jar.{JarEntry, JarOutputStream}
 import org.slf4j.LoggerFactory
 import com.day.jcr.vault.vlt.VltDirectory
@@ -79,12 +89,6 @@ trait CreatesPackage
   lazy val serverTz = Option(serverTimezone) match {
     case Some(tz) => TimeZone.getTimeZone(tz)
     case None => TimeZone.getDefault
-  }
-
-  override def printParams(log: Log) {
-    super.printParams(log)
-    log.info("jcrPath = " + jcrPath)
-    log.info("vlt.tz = " + serverTimezone)
   }
 
   def adjustToServerTimeZone(localTime: Long): Long =

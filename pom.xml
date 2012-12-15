@@ -1,18 +1,29 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!--
-  ~ Copyright 2012 Mark Adamcin
+  ~ This is free and unencumbered software released into the public domain.
   ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
+  ~ Anyone is free to copy, modify, publish, use, compile, sell, or
+  ~ distribute this software, either in source code form or as a compiled
+  ~ binary, for any purpose, commercial or non-commercial, and by any
+  ~ means.
   ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~ In jurisdictions that recognize copyright laws, the author or authors
+  ~ of this software dedicate any and all copyright interest in the
+  ~ software to the public domain. We make this dedication for the benefit
+  ~ of the public at large and to the detriment of our heirs and
+  ~ successors. We intend this dedication to be an overt act of
+  ~ relinquishment in perpetuity of all present and future rights to this
+  ~ software under copyright law.
   ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  ~ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  ~ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  ~ IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+  ~ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+  ~ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+  ~ OTHER DEALINGS IN THE SOFTWARE.
+  ~
+  ~ For more information, please refer to <http://unlicense.org/>
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -30,28 +41,27 @@
     <version>1.0-SNAPSHOT</version>
     <name>VLT Pack Maven Plugin</name>
 
-    <url>http://adamcin.github.com/vltpack-maven-plugin/</url>
+    <inceptionYear>2012</inceptionYear>
+    <description>
+        Maven plugin defining the vltpack packaging lifecycle and appropriate
+        goals for use in creating application and content packages targeting
+        the Adobe CRX / CQ / Granite platforms
+    </description>
 
     <scm>
-        <url>https://github.com/adamcin/vltpack-maven-plugin</url>
-        <connection>scm:git://github.com/adamcin/vltpack-maven-plugin.git</connection>
-        <developerConnection>scm:git://github.com/adamcin/vltpack-maven-plugin.git</developerConnection>
+        <url>https://github.com/adamcin/${project.artifactId}</url>
+        <connection>scm:git://github.com/adamcin/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:adamcin/${project.artifactId}.git</developerConnection>
     </scm>
-
-    <distributionManagement>
-        <site>
-            <id>adamcin-deploy</id>
-            <url>scpexe://adamcin.net/home/adamcin/adamcin-m2-site/vltpack-maven-plugin</url>
-        </site>
-    </distributionManagement>
 
     <properties>
         <maven.version>3.0</maven.version>
         <scala.version>2.9.2</scala.version>
         <vlt.version>2.4.28</vlt.version>
+        <maven.compiler.source>1.5</maven.compiler.source>
+        <maven.compiler.target>1.5</maven.compiler.target>
         <jackrabbit.version>2.4.2</jackrabbit.version>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
+        <encoding>UTF-8</encoding>
     </properties>
 
     <prerequisites>
@@ -66,7 +76,6 @@
                 <version>1.0</version>
             </extension>
         </extensions>
-        <!--<sourceDirectory>src/main/scala</sourceDirectory>-->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -110,7 +119,6 @@
                     <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
                     <extractors>
                         <extractor>java-annotations-for-scala</extractor>
-                        <!--<extractor>java-annotations-for-scala</extractor>-->
                     </extractors>
                 </configuration>
                 <executions>
@@ -120,19 +128,11 @@
                             <goal>helpmojo</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>default-xdoc</id>
-                        <phase>pre-site</phase>
-                        <goals>
-                            <goal>xdoc</goal>
-                        </goals>
-                        <inherited>true</inherited>
-                    </execution>
                 </executions>
                 <dependencies>
                     <dependency>
                         <groupId>net.adamcin</groupId>
-                        <artifactId>scala-mojo-descriptor</artifactId>
+                        <artifactId>scalamojo-maven-plugin</artifactId>
                         <version>1.0-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
@@ -141,53 +141,19 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.0</version>
-                <!--
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.doxia</groupId>
-                        <artifactId>doxia-module-twiki</artifactId>
-                        <version>1.1.2</version>
-                    </dependency>
-                </dependencies>
-                -->
                 <configuration>
                     <inputEncoding>utf-8</inputEncoding>
                     <reportPlugins>
                         <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-plugin-plugin</artifactId>
-                            <version>3.2</version>
+                            <groupId>net.adamcin</groupId>
+                            <artifactId>scalamojo-maven-plugin</artifactId>
+                            <version>1.0-SNAPSHOT</version>
                         </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-project-info-reports-plugin</artifactId>
                             <version>2.4</version>
                         </plugin>
-                        <!--
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-surefire-report-plugin</artifactId>
-                            <version>2.9</version>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>cobertura-maven-plugin</artifactId>
-                            <version>2.5.1</version>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-checkstyle-plugin</artifactId>
-                            <version>2.7</version>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-jxr-plugin</artifactId>
-                            <version>2.2</version>
-                            <configuration>
-                                <inputEncoding>utf-8</inputEncoding>
-                            </configuration>
-                        </plugin>
-                -->
                     </reportPlugins>
                 </configuration>
             </plugin>
@@ -217,29 +183,6 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>adobe-public-releases</id>
-            <name>Adobe Public Repository</name>
-            <url>http://repo.adobe.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>scala-tools.org</id>
-            <name>Scala-Tools Maven2 Repository</name>
-            <url>https://oss.sonatype.org/content/groups/scala-tools/</url>
-        </pluginRepository>
-    </pluginRepositories>
 
     <dependencies>
         <dependency>
