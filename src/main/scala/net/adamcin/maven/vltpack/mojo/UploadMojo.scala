@@ -52,7 +52,7 @@ class UploadMojo
    * Set to true to skip mojo execution
    * @since 1.0
    */
-  @Parameter(property = "vlt.skip.upload")
+  @Parameter(property = "vltpack.skip.upload")
   var skip = false
 
   /**

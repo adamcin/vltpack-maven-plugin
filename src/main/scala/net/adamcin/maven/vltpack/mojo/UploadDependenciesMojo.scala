@@ -55,7 +55,7 @@ class UploadDependenciesMojo
    * Set to true to skip execution of this mojo
    * @since 1.0
    */
-  @Parameter(property = "vlt.skip.upload-dependencies")
+  @Parameter(property = "vltpack.skip.upload-dependencies")
   val skip = false
 
   /**

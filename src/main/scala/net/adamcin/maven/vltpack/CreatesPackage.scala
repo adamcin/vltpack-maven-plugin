@@ -81,7 +81,7 @@ trait CreatesPackage
    * for adjustment of timestamps.
    * @since 1.0
    */
-  @Parameter(property = "vlt.tz")
+  @Parameter(property = "vltpack.tz")
   var serverTimezone: String = null
 
   val localTz = TimeZone.getDefault

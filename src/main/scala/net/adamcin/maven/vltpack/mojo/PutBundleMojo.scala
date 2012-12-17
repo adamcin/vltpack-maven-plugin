@@ -52,7 +52,7 @@ class PutBundleMojo
    * Set to true to skip the execution of this mojo
    * @since 1.0
    */
-  @Parameter(property = "vlt.skip.put-bundle")
+  @Parameter(property = "vltpack.skip.put-bundle")
   val skip = false
 
   override def execute() {

@@ -47,7 +47,7 @@ trait PutsBundle extends HttpParameters with BundlePathParameters {
    * Set to true to skip the use of the MKCOL WebDAV method for the creation ancestor JCR paths
    * @since 1.0
    */
-  @Parameter(property = "vlt.skip.mkdirs")
+  @Parameter(property = "vltpack.skip.mkdirs")
   var skipMkdirs = false
 
   /**

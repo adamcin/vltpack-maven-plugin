@@ -48,7 +48,7 @@ class DavRequestVerbs(wrapped: DefaultRequestVerbs) extends DefaultRequestVerbs(
 
 /**
  * Trait defining common mojo parameters and methods for establishing HTTP connections to a CQ server. Reuses the
- * vlt.user parameter defined in the UsernameAware trait as part of the connection credentials
+ * vltpack.user parameter defined in the UsernameAware trait as part of the connection credentials
  * @since 1.0
  * @author Mark Adamcin
  */
@@ -65,28 +65,28 @@ trait HttpParameters extends UsernameAware {
    * Hostname for the CQ server
    * @since 1.0
    */
-  @Parameter(property = "vlt.host", defaultValue = DEFAULT_HOST)
+  @Parameter(property = "vltpack.host", defaultValue = DEFAULT_HOST)
   val host = DEFAULT_HOST
 
   /**
    * TCP Port for the CQ server
    * @since 1.0
    */
-  @Parameter(property = "vlt.port", defaultValue = DEFAULT_PORT)
+  @Parameter(property = "vltpack.port", defaultValue = DEFAULT_PORT)
   val port = Integer.valueOf(DEFAULT_PORT)
 
   /**
    * Password to use in connection credentials
    * @since 1.0
    */
-  @Parameter(property = "vlt.pass", defaultValue = DEFAULT_PASS)
+  @Parameter(property = "vltpack.pass", defaultValue = DEFAULT_PASS)
   val pass = DEFAULT_PASS
 
   /**
    * CQ Servlet context by which JCR paths are appended
    * @since 1.0
    */
-  @Parameter(property = "vlt.context", defaultValue = DEFAULT_CONTEXT)
+  @Parameter(property = "vltpack.context", defaultValue = DEFAULT_CONTEXT)
   val context: String = DEFAULT_CONTEXT
 
   /**
@@ -94,7 +94,7 @@ trait HttpParameters extends UsernameAware {
    * Does not affect the configured TCP port
    * @since 1.0
    */
-  @Parameter(property = "vlt.https")
+  @Parameter(property = "vltpack.https")
   val https = false
 
   /**
@@ -102,7 +102,7 @@ trait HttpParameters extends UsernameAware {
    * Overrides any other HTTP proxy configuration
    * @since 1.0
    */
-  @Parameter(property = "vlt.proxy.noProxy")
+  @Parameter(property = "vltpack.proxy.noProxy")
   val noProxy = false
 
   /**
@@ -110,42 +110,42 @@ trait HttpParameters extends UsernameAware {
    * associated mojo parameter alternatives
    * @since 1.0
    */
-  @Parameter(property = "vlt.proxy.set")
+  @Parameter(property = "vltpack.proxy.set")
   val proxySet = false
 
   /**
    * The HTTP Proxy protocol
    * @since 1.0
    */
-  @Parameter(property = "vlt.proxy.protocol", defaultValue = DEFAULT_PROXY_PROTOCOL)
+  @Parameter(property = "vltpack.proxy.protocol", defaultValue = DEFAULT_PROXY_PROTOCOL)
   val proxyProtocol: String = DEFAULT_PROXY_PROTOCOL
 
   /**
    * The HTTP Proxy hostname
    * @since 1.0
    */
-  @Parameter(property = "vlt.proxy.host", defaultValue = DEFAULT_PROXY_HOST)
+  @Parameter(property = "vltpack.proxy.host", defaultValue = DEFAULT_PROXY_HOST)
   val proxyHost: String = DEFAULT_PROXY_HOST
 
   /**
    * The HTTP Proxy port. Set to -1 to use the default proxy port.
    * @since 1.0
    */
-  @Parameter(property = "vlt.proxy.port")
+  @Parameter(property = "vltpack.proxy.port")
   val proxyPort: Int = -1
 
   /**
    * The HTTP Proxy username
    * @since 1.0
    */
-  @Parameter(property = "vlt.proxy.user")
+  @Parameter(property = "vltpack.proxy.user")
   val proxyUser: String = null
 
   /**
    * The HTTP Proxy password
    * @since 1.0
    */
-  @Parameter(property = "vlt.proxy.pass")
+  @Parameter(property = "vltpack.proxy.pass")
   val proxyPass: String = null
 
   implicit def implyDavRequestVerbs(wrapped: DefaultRequestVerbs) = new DavRequestVerbs(wrapped)

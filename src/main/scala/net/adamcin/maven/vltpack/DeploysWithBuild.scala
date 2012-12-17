@@ -42,6 +42,6 @@ trait DeploysWithBuild extends BaseMojo {
    * Set to true to enable deployment of artifacts during integration-test phase
    * @since 1.0
    */
-  @Parameter(property = "vlt.deploy")
+  @Parameter(property = "vltpack.deploy")
   var deploy = false
 }
