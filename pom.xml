@@ -48,11 +48,18 @@
         the Adobe CRX / CQ / Granite platforms
     </description>
 
+    <url>http://adamcin.github.com/${project.artifactId}</url>
+
     <scm>
         <url>https://github.com/adamcin/${project.artifactId}</url>
-        <connection>scm:git://github.com/adamcin/${project.artifactId}.git</connection>
         <developerConnection>scm:git:git@github.com:adamcin/${project.artifactId}.git</developerConnection>
+        <connection>scm:git://github.com/adamcin/${project.artifactId}.git</connection>
     </scm>
+
+    <issueManagement>
+        <system>github</system>
+        <url>http://github.com/adamcin/${project.artifactId}/issues/</url>
+    </issueManagement>
 
     <properties>
         <maven.version>3.0</maven.version>
@@ -69,13 +76,6 @@
     </prerequisites>
 
     <build>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh-external</artifactId>
-                <version>1.0</version>
-            </extension>
-        </extensions>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -118,7 +118,7 @@
                 <configuration>
                     <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
                     <extractors>
-                        <extractor>java-annotations-for-scala</extractor>
+                        <extractor>java-annotations-and-scaladoc</extractor>
                     </extractors>
                 </configuration>
                 <executions>
