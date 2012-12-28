@@ -40,7 +40,7 @@ import org.apache.jackrabbit.core.TransientRepository
 import com.day.jcr.vault.packaging.impl.{JcrPackageDefinitionImpl, JcrPackageManagerImpl}
 import com.day.jcr.vault.fs.io
 import io.PlatformExporter
-import com.day.jcr.vault.util.JcrConstants
+import com.day.jcr.vault.util.{Text, JcrConstants}
 import collection.JavaConversions
 import java.security.{DigestInputStream, MessageDigest}
 import net.adamcin.maven.vltpack._
@@ -156,20 +156,27 @@ class VaultInfMojo
       filter.getFilterSets.addAll(sourceFilter.getFilterSets)
     }
 
-    val embedBundles = embedBundlesDirectory.listFiles
-    if (embedBundles.size > 0) {
-      val bundleFilterSet =
-        if (filter.covers(bundleInstallPath)) {
-          filter.getCoveringFilterSet(bundleInstallPath)
+    def listEmbedBundles(baseDir: File)(file: File): List[String] = {
+      if (file.isDirectory) {
+        file.listFiles().flatMap(listEmbedBundles(baseDir)(_)).toList
+      } else {
+        List("/" + VltpackUtil.toRelative(baseDir, file.getAbsolutePath))
+      }
+    }
+
+    listEmbedBundles(embedBundlesDirectory)(embedBundlesDirectory).foreach {
+      (path) => {
+        val bundleFilterSet =
+        if (filter.covers(path)) {
+          filter.getCoveringFilterSet(path)
         } else {
-          val set = new PathFilterSet(bundleInstallPath)
-          set.addExclude(new DefaultPathFilter(bundleInstallPath + "(/.*)?"))
+          val set = new PathFilterSet(path)
+          set.addExclude(new DefaultPathFilter(Text.getRelativeParent(path, 1) + "(/.*)?"))
           filter.getFilterSets.add(set)
           set
         }
 
-      embedBundles.foreach {
-        (bundle) => bundleFilterSet.addInclude(new DefaultPathFilter(bundleInstallPath + "/" + bundle.getName))
+        bundleFilterSet.addInclude(new DefaultPathFilter(path))
       }
     }
 
