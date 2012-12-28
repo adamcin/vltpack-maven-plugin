@@ -36,7 +36,7 @@ import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 
 /**
  * Upload dependencies representing vault packages to the configured CQ server
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 @Mojo(name = "upload-dependencies",

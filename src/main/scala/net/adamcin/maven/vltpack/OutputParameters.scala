@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory
 
 /**
  * Trait defining common output path variables
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait OutputParameters extends RequiresProject {

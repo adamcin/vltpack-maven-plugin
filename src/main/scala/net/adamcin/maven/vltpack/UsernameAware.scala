@@ -32,7 +32,7 @@ import org.apache.maven.plugins.annotations.Parameter
 
 /**
  * Trait defining the vltpack.user mojo parameter
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait UsernameAware extends BaseMojo {
@@ -41,7 +41,6 @@ trait UsernameAware extends BaseMojo {
 
   /**
    * Specify the CQ username associated with package creation and installation
-   * @since 1.0
    */
   @Parameter(property = "vltpack.user", defaultValue = DEFAULT_USER)
   val user = DEFAULT_USER

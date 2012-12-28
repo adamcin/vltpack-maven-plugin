@@ -44,7 +44,7 @@ import org.apache.maven.plugins.annotations.Component
 /**
  * Trait defining common mojo parameters and methods useful for arbitrarily resolving artifacts from
  * local and remote repositories
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait ResolvesArtifacts extends BaseMojo {

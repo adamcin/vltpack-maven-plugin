@@ -33,7 +33,7 @@ import java.io.{File, FilterOutputStream, OutputStream, InputStream}
 
 /**
  * Utility methods used by the plugin
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 object VltpackUtil {

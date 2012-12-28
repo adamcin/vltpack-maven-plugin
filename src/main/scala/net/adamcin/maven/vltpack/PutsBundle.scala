@@ -37,7 +37,7 @@ import org.apache.maven.plugins.annotations.Parameter
 /**
  * Trait defining common mojo parameters and methods for uploading OSGi bundles to the configured CQ server
  * using the PUT HTTP method
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait PutsBundle extends HttpParameters with BundlePathParameters {
@@ -45,7 +45,6 @@ trait PutsBundle extends HttpParameters with BundlePathParameters {
 
   /**
    * Set to true to skip the use of the MKCOL WebDAV method for the creation ancestor JCR paths
-   * @since 1.0
    */
   @Parameter(property = "vltpack.skip.mkdirs")
   var skipMkdirs = false

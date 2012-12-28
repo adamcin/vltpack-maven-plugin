@@ -50,7 +50,7 @@ import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 /**
  * Generates package meta information under META-INF/vault, including config.xml, properties.xml, filter.xml
  * and the package definition
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 @Mojo(
@@ -70,14 +70,12 @@ class VaultInfMojo
 
   /**
    * Source folder for existing meta info files, such as are created and managed by the VLT working copy
-   * @since 1.0
    */
   @Parameter(defaultValue = DEFAULT_VAULT_SOURCE)
   val vaultSource: File = null
 
   /**
    * Package properties that will be set in the properties.xml file
-   * @since 1.0
    */
   @Parameter
   val properties = Collections.emptyMap[String, String]
@@ -86,7 +84,6 @@ class VaultInfMojo
    * Set to true to generate the JCR Package Definition. This is necessary if thumbnails, screenshots, or
    * definition properties need to be set within the package. Package creation may take significantly more
    * time than normal if this is set because a Jackrabbit TransientRepository will need to be started
-   * @since 1.0
    */
   @Parameter
   val createDefinition = false
@@ -94,7 +91,6 @@ class VaultInfMojo
   /**
    * Properties to be added to the JCR Package Definition node. These will NOT be added to the properties.xml file.
    * (requires createDefinition to be set to true)
-   * @since 1.0
    */
   @Parameter
   val definitionProperties = Collections.emptyMap[String, String]
@@ -102,7 +98,6 @@ class VaultInfMojo
   /**
    * Specify a PNG file that will be used as the thumbnail for the package in the CRX Package Manager
    * (requires createDefinition to be set to true)
-   * @since 1.0
    */
   @Parameter
   val thumbnail: File = null
@@ -110,7 +105,6 @@ class VaultInfMojo
   /**
    * Specify a list of PNG files that will be included as package screenshots in the CRX Package Manager
    * (requires createDefinition to be set to true)
-   * @since 1.0
    */
   @Parameter
   val screenshots = java.util.Collections.emptyList[File]

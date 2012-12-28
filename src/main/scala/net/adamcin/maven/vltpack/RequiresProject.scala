@@ -34,7 +34,7 @@ import org.apache.maven.plugins.annotations.Component
 /**
  * Trait for mojos to mark them as requiring a reference to a maven project as well as defining
  * the dependency as a component
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait RequiresProject extends BaseMojo {

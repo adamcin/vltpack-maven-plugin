@@ -33,14 +33,13 @@ import org.apache.maven.plugins.annotations.Parameter
 /**
  * Trait defining common mojo parameters and methods for controlling deployment of artifacts to CQ during
  * a maven lifecycle build
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait DeploysWithBuild extends BaseMojo {
 
   /**
    * Set to true to enable deployment of artifacts during integration-test phase
-   * @since 1.0
    */
   @Parameter(property = "vltpack.deploy")
   var deploy = false

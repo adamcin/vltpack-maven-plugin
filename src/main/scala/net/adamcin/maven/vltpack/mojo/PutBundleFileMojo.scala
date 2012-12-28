@@ -35,7 +35,7 @@ import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 
 /**
  * PUT a bundle identified by the file parameter to the configured CQ instance
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 @Mojo(name = "put-bundle-file",
@@ -48,7 +48,6 @@ class PutBundleFileMojo
 
   /**
    * Specify a bundle file to be PUT
-   * @since 1.0
    */
   @Parameter(property = "file", required = true)
   val file: File = null

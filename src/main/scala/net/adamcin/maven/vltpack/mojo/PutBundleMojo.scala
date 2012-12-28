@@ -35,7 +35,7 @@ import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 
 /**
  * PUT the project artifact (of packaging type 'bundle') to the configured CQ server
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 @Mojo(
@@ -50,7 +50,6 @@ class PutBundleMojo
 
   /**
    * Set to true to skip the execution of this mojo
-   * @since 1.0
    */
   @Parameter(property = "vltpack.skip.put-bundle")
   val skip = false

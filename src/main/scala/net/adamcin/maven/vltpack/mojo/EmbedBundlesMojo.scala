@@ -36,7 +36,7 @@ import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 
 /**
  * Embeds bundles in the project artifact at the configured bundleInstallPath
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 @Mojo(name = "embed-bundles",
@@ -50,7 +50,6 @@ class EmbedBundlesMojo
 
   /**
    * List of articleIds matching dependencies that should be embedded
-   * @since 1.0
    */
   @Parameter
   val embedBundles = Collections.emptyList[String]

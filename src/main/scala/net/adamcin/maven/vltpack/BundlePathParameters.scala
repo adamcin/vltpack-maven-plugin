@@ -33,7 +33,7 @@ import org.apache.maven.plugins.annotations.Parameter
 
 /**
  * Trait defining common parameters and methods for placement of bundles within a JCR repository
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait BundlePathParameters extends BaseMojo {
@@ -43,7 +43,6 @@ trait BundlePathParameters extends BaseMojo {
   /**
    * Set the JCR path where bundles will be installed for this project. Use a numeric suffix
    * (as in "/apps/myapp/install/30") to apply a felix start level configuration to the bundles
-   * @since 1.0
    */
   @Parameter(defaultValue = defaultBundleInstallPath)
   var bundleInstallPath: String = defaultBundleInstallPath

@@ -40,7 +40,7 @@ import org.apache.maven.plugins.annotations.Parameter
 
 /**
  * Trait defining common mojo parameters and methods for the creation of vault packages
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait CreatesPackage
@@ -57,7 +57,6 @@ trait CreatesPackage
    * using the vlt command, a jcrPath parameter may have been explicitly specified as something other than
    * '/'. In this case, the same explicit value must be set for this mojo to properly create Jar entries so
    * that the package contents wind up at the correct path when installed
-   * @since 1.0
    */
   @Parameter(property = "jcrPath", defaultValue = DEFAULT_JCR_PATH)
   var jcrPath: String = DEFAULT_JCR_PATH
@@ -79,7 +78,6 @@ trait CreatesPackage
    * As described in the TimeZone javadocs, if the value of this property is
    * not empty and is not a valid TimeZone id, the GMT timezone will be used
    * for adjustment of timestamps.
-   * @since 1.0
    */
   @Parameter(property = "vltpack.tz")
   var serverTimezone: String = null

@@ -34,7 +34,7 @@ import org.apache.maven.execution.MavenSession
 
 /**
  * Base mojo class
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 abstract class BaseMojo extends AbstractMojo {

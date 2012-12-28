@@ -35,7 +35,7 @@ import java.util.Properties
 
 /**
  * Companion object for the trait defining these useful property constants
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 object IdentifiesPackages {
@@ -52,7 +52,7 @@ object IdentifiesPackages {
 /**
  * Trait defining common mojo parameters and methods needed to identify vault package binaries based on
  * embedded metadata
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait IdentifiesPackages {

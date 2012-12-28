@@ -34,7 +34,7 @@ import org.apache.maven.plugins.annotations.{Parameter, LifecyclePhase, Mojo}
 
 /**
  * Creates a vault package based on the generated metadata and configured content root
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 @Mojo(name = "package",
@@ -51,7 +51,6 @@ class PackageMojo
 
   /**
    * Content root directory containing jcr_root and META-INF folders
-   * @since 1.0
    */
   @Parameter(defaultValue = DEFAULT_VLT_ROOT)
   val vltRoot: File = null

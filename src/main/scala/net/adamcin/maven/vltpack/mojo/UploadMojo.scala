@@ -35,7 +35,7 @@ import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 
 /**
  * Uploads the project vault package to the configured CQ server
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 @Mojo(name = "upload",
@@ -50,28 +50,24 @@ class UploadMojo
 
   /**
    * Set to true to skip mojo execution
-   * @since 1.0
    */
   @Parameter(property = "vltpack.skip.upload")
   var skip = false
 
   /**
    * Force upload of the package if it already exists in the target environment
-   * @since 1.0
    */
   @Parameter(defaultValue = "true")
   var force = true
 
   /**
    * Set to false to not install any embedded subpackages
-   * @since 1.0
    */
   @Parameter(defaultValue = "true")
   var recursive = true
 
   /**
    * Change the autosave threshold for the install command
-   * @since 1.0
    */
   @Parameter(defaultValue = "1024")
   var autosave = 1024

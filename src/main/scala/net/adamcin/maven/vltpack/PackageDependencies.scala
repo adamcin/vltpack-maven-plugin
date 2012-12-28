@@ -35,7 +35,7 @@ import org.apache.maven.plugins.annotations.Parameter
 /**
  * Trait defining common mojo parameters and methods useful for identifying package dependencies that
  * are not embedded in the main project artifact
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait PackageDependencies
@@ -45,7 +45,6 @@ trait PackageDependencies
 
   /**
    * List of artifactIds matching dependencies that are valid vault packages
-   * @since 1.0
    */
   @Parameter
   var packageDependencies = java.util.Collections.emptyList[String]

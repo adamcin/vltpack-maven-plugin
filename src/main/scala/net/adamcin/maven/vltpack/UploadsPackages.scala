@@ -38,7 +38,7 @@ import com.day.jcr.vault.packaging.PackageId
 /**
  * Trait defining common mojo parameters and methods useful for uploading and installing vault packages on
  * CQ servers
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait UploadsPackages extends HttpParameters {

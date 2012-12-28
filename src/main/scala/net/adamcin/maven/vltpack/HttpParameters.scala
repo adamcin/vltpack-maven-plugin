@@ -33,7 +33,7 @@ import org.apache.maven.plugins.annotations.Parameter
 
 /**
  * Adds fluid support for the MKCOL method
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait DavVerbs extends MethodVerbs {
@@ -49,7 +49,7 @@ class DavRequestVerbs(wrapped: DefaultRequestVerbs) extends DefaultRequestVerbs(
 /**
  * Trait defining common mojo parameters and methods for establishing HTTP connections to a CQ server. Reuses the
  * vltpack.user parameter defined in the UsernameAware trait as part of the connection credentials
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 trait HttpParameters extends UsernameAware {
@@ -63,28 +63,24 @@ trait HttpParameters extends UsernameAware {
 
   /**
    * Hostname for the CQ server
-   * @since 1.0
    */
   @Parameter(property = "vltpack.host", defaultValue = DEFAULT_HOST)
   val host = DEFAULT_HOST
 
   /**
    * TCP Port for the CQ server
-   * @since 1.0
    */
   @Parameter(property = "vltpack.port", defaultValue = DEFAULT_PORT)
   val port = Integer.valueOf(DEFAULT_PORT)
 
   /**
    * Password to use in connection credentials
-   * @since 1.0
    */
   @Parameter(property = "vltpack.pass", defaultValue = DEFAULT_PASS)
   val pass = DEFAULT_PASS
 
   /**
    * CQ Servlet context by which JCR paths are appended
-   * @since 1.0
    */
   @Parameter(property = "vltpack.context", defaultValue = DEFAULT_CONTEXT)
   val context: String = DEFAULT_CONTEXT
@@ -92,7 +88,6 @@ trait HttpParameters extends UsernameAware {
   /**
    * Whether to use an SSL connection instead of a normal HTTP connection.
    * Does not affect the configured TCP port
-   * @since 1.0
    */
   @Parameter(property = "vltpack.https")
   val https = false
@@ -100,7 +95,6 @@ trait HttpParameters extends UsernameAware {
   /**
    * Set to true to completely disable HTTP proxy connections for this plugin.
    * Overrides any other HTTP proxy configuration
-   * @since 1.0
    */
   @Parameter(property = "vltpack.proxy.noProxy")
   val noProxy = false
@@ -108,42 +102,36 @@ trait HttpParameters extends UsernameAware {
   /**
    * Set to true to override the proxy configuration in the user's Maven Settings with the
    * associated mojo parameter alternatives
-   * @since 1.0
    */
   @Parameter(property = "vltpack.proxy.set")
   val proxySet = false
 
   /**
    * The HTTP Proxy protocol
-   * @since 1.0
    */
   @Parameter(property = "vltpack.proxy.protocol", defaultValue = DEFAULT_PROXY_PROTOCOL)
   val proxyProtocol: String = DEFAULT_PROXY_PROTOCOL
 
   /**
    * The HTTP Proxy hostname
-   * @since 1.0
    */
   @Parameter(property = "vltpack.proxy.host", defaultValue = DEFAULT_PROXY_HOST)
   val proxyHost: String = DEFAULT_PROXY_HOST
 
   /**
    * The HTTP Proxy port. Set to -1 to use the default proxy port.
-   * @since 1.0
    */
   @Parameter(property = "vltpack.proxy.port")
   val proxyPort: Int = -1
 
   /**
    * The HTTP Proxy username
-   * @since 1.0
    */
   @Parameter(property = "vltpack.proxy.user")
   val proxyUser: String = null
 
   /**
    * The HTTP Proxy password
-   * @since 1.0
    */
   @Parameter(property = "vltpack.proxy.pass")
   val proxyPass: String = null

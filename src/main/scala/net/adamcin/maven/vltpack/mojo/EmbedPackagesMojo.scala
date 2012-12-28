@@ -35,7 +35,7 @@ import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 
 /**
  * Embed sub packages in the project artifact package under /etc/packages
- * @since 1.0
+ * @since 0.6.0
  * @author Mark Adamcin
  */
 @Mojo(name = "embed-packages",
@@ -48,7 +48,6 @@ class EmbedPackagesMojo
 
   /**
    * List of artifactIds matching project dependencies that should be embedded
-   * @since 1.0
    */
   @Parameter
   val embedPackages = Collections.emptyList[String]
