@@ -25,7 +25,7 @@
  * For more information, please refer to <http://unlicense.org/>
  */
 
-package net.adamcin.maven.vltpack
+package net.adamcin.vltpack
 
 import java.io.File
 import org.apache.maven.plugin.MojoExecutionException

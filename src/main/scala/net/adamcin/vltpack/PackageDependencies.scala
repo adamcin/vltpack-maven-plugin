@@ -25,20 +25,40 @@
  * For more information, please refer to <http://unlicense.org/>
  */
 
-package net.adamcin.maven.vltpack
+package net.adamcin.vltpack
 
-import mojo.BaseMojo
-import org.apache.maven.project.MavenProject
-import org.apache.maven.plugins.annotations.Component
+import com.day.jcr.vault.packaging.Dependency
+import collection.JavaConversions
+import org.apache.maven.plugins.annotations.Parameter
+
 
 /**
- * Trait for mojos to mark them as requiring a reference to a maven project as well as defining
- * the dependency as a component
+ * Trait defining common mojo parameters and methods useful for identifying package dependencies that
+ * are not embedded in the main project artifact
  * @since 0.6.0
  * @author Mark Adamcin
  */
-trait RequiresProject extends BaseMojo {
+trait PackageDependencies
+  extends RequiresProject
+  with IdentifiesPackages
+  with ResolvesArtifacts {
 
-  @Component
-  var project: MavenProject = null
+  /**
+   * List of artifactIds matching dependencies that are valid vault packages
+   */
+  @Parameter
+  var packageDependencies = java.util.Collections.emptyList[String]
+
+  def packageDependencyArtifacts = resolveByArtifactIds(JavaConversions.collectionAsScalaIterable(packageDependencies).toSet)
+
+  def dependsOn: List[Dependency] = {
+    packageDependencyArtifacts.map {
+      (artifact) => {
+        identifyPackage(artifact.getFile) match {
+          case Some(id) => new Dependency(id)
+          case None => null
+        }
+      }
+    }.filter {(dep) => Option(dep).isDefined}.toList
+  }
 }

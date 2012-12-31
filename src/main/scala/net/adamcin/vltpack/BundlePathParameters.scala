@@ -25,40 +25,31 @@
  * For more information, please refer to <http://unlicense.org/>
  */
 
-package net.adamcin.maven.vltpack
+package net.adamcin.vltpack
 
-import com.day.jcr.vault.packaging.Dependency
-import collection.JavaConversions
+import java.io.File
+import mojo.BaseMojo
 import org.apache.maven.plugins.annotations.Parameter
 
-
 /**
- * Trait defining common mojo parameters and methods useful for identifying package dependencies that
- * are not embedded in the main project artifact
+ * Trait defining common parameters and methods for placement of bundles within a JCR repository
  * @since 0.6.0
  * @author Mark Adamcin
  */
-trait PackageDependencies
-  extends RequiresProject
-  with IdentifiesPackages
-  with ResolvesArtifacts {
+trait BundlePathParameters extends BaseMojo {
+
+  final val defaultBundleInstallPath = "/apps/bundles/install/30"
 
   /**
-   * List of artifactIds matching dependencies that are valid vault packages
+   * Set the JCR path where bundles will be installed for this project. Use a numeric suffix
+   * (as in "/apps/myapp/install/30") to apply a felix start level configuration to the bundles
    */
-  @Parameter
-  var packageDependencies = java.util.Collections.emptyList[String]
+  @Parameter(defaultValue = defaultBundleInstallPath)
+  var bundleInstallPath: String = defaultBundleInstallPath
 
-  def packageDependencyArtifacts = resolveByArtifactIds(JavaConversions.collectionAsScalaIterable(packageDependencies).toSet)
-
-  def dependsOn: List[Dependency] = {
-    packageDependencyArtifacts.map {
-      (artifact) => {
-        identifyPackage(artifact.getFile) match {
-          case Some(id) => new Dependency(id)
-          case None => null
-        }
-      }
-    }.filter {(dep) => Option(dep).isDefined}.toList
+  def getBundleRepoPath(filename: String): String = {
+    bundleInstallPath + "/" + filename
   }
+
+  def getBundlePath(file: File): String = getBundleRepoPath(file.getName)
 }

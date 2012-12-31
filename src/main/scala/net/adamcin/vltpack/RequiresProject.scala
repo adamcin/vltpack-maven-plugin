@@ -25,31 +25,20 @@
  * For more information, please refer to <http://unlicense.org/>
  */
 
-package net.adamcin.maven.vltpack
+package net.adamcin.vltpack
 
-import java.io.File
 import mojo.BaseMojo
-import org.apache.maven.plugins.annotations.Parameter
+import org.apache.maven.project.MavenProject
+import org.apache.maven.plugins.annotations.Component
 
 /**
- * Trait defining common parameters and methods for placement of bundles within a JCR repository
+ * Trait for mojos to mark them as requiring a reference to a maven project as well as defining
+ * the dependency as a component
  * @since 0.6.0
  * @author Mark Adamcin
  */
-trait BundlePathParameters extends BaseMojo {
+trait RequiresProject extends BaseMojo {
 
-  final val defaultBundleInstallPath = "/apps/bundles/install/30"
-
-  /**
-   * Set the JCR path where bundles will be installed for this project. Use a numeric suffix
-   * (as in "/apps/myapp/install/30") to apply a felix start level configuration to the bundles
-   */
-  @Parameter(defaultValue = defaultBundleInstallPath)
-  var bundleInstallPath: String = defaultBundleInstallPath
-
-  def getBundleRepoPath(filename: String): String = {
-    bundleInstallPath + "/" + filename
-  }
-
-  def getBundlePath(file: File): String = getBundleRepoPath(file.getName)
+  @Component
+  var project: MavenProject = null
 }

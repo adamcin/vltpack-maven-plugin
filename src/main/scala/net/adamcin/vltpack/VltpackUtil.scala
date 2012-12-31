@@ -25,7 +25,7 @@
  * For more information, please refer to <http://unlicense.org/>
  */
 
-package net.adamcin.maven.vltpack
+package net.adamcin.vltpack
 
 import scalax.io.CloseAction
 import java.io.{File, FilterOutputStream, OutputStream, InputStream}

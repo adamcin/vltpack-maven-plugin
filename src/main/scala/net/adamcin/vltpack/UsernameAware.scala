@@ -25,22 +25,23 @@
  * For more information, please refer to <http://unlicense.org/>
  */
 
-package net.adamcin.maven.vltpack
+package net.adamcin.vltpack
 
 import mojo.BaseMojo
 import org.apache.maven.plugins.annotations.Parameter
 
 /**
- * Trait defining common mojo parameters and methods for controlling deployment of artifacts to CQ during
- * a maven lifecycle build
+ * Trait defining the vltpack.user mojo parameter
  * @since 0.6.0
  * @author Mark Adamcin
  */
-trait DeploysWithBuild extends BaseMojo {
+trait UsernameAware extends BaseMojo {
+
+  final val DEFAULT_USER = "admin"
 
   /**
-   * Set to true to enable deployment of artifacts during integration-test phase
+   * Specify the CQ username associated with package creation and installation
    */
-  @Parameter(property = "vltpack.deploy")
-  var deploy = false
+  @Parameter(property = "vltpack.user", defaultValue = DEFAULT_USER)
+  val user = DEFAULT_USER
 }

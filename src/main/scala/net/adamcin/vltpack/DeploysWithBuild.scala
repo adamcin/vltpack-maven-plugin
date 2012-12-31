@@ -25,39 +25,22 @@
  * For more information, please refer to <http://unlicense.org/>
  */
 
-package net.adamcin.maven.vltpack.mojo
+package net.adamcin.vltpack
 
-import java.io.File
-import net.adamcin.maven.vltpack.PutsBundle
-import scala.Left
-import scala.Right
-import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
+import mojo.BaseMojo
+import org.apache.maven.plugins.annotations.Parameter
 
 /**
- * PUT a bundle identified by the file parameter to the configured CQ instance
+ * Trait defining common mojo parameters and methods for controlling deployment of artifacts to CQ during
+ * a maven lifecycle build
  * @since 0.6.0
  * @author Mark Adamcin
  */
-@Mojo(name = "put-bundle-file",
-  defaultPhase = LifecyclePhase.INTEGRATION_TEST,
-  requiresProject = false,
-  threadSafe = true)
-class PutBundleFileMojo
-  extends BaseMojo
-  with PutsBundle {
+trait DeploysWithBuild extends BaseMojo {
 
   /**
-   * Specify a bundle file to be PUT
+   * Set to true to enable deployment of artifacts during integration-test phase
    */
-  @Parameter(property = "file", required = true)
-  val file: File = null
-
-  override def execute() {
-    putBundle(file) match {
-      case Right(t) => throw t
-      case Left(messages) => messages.foreach { getLog.info(_) }
-    }
-  }
+  @Parameter(property = "vltpack.deploy")
+  var deploy = false
 }
-
-
