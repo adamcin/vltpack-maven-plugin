@@ -28,8 +28,6 @@
 package net.adamcin.vltpack.mojo
 
 import java.io.File
-import net.adamcin.maven.vltpack._
-import scala.Some
 import org.apache.maven.plugins.annotations.{Parameter, LifecyclePhase, Mojo}
 import net.adamcin.vltpack._
 import scala.Some

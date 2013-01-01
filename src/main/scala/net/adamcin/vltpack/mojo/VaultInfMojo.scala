@@ -43,8 +43,6 @@ import io.PlatformExporter
 import com.day.jcr.vault.util.{Text, JcrConstants}
 import collection.JavaConversions
 import java.security.{DigestInputStream, MessageDigest}
-import net.adamcin.maven.vltpack._
-import scala.Some
 import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 import net.adamcin.vltpack._
 import scala.Left

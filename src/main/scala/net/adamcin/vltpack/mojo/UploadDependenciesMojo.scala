@@ -28,10 +28,6 @@
 package net.adamcin.vltpack.mojo
 
 import org.apache.maven.plugin.MojoExecutionException
-import net.adamcin.maven.vltpack._
-import scala.Left
-import scala.Some
-import scala.Right
 import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 import net.adamcin.vltpack._
 import scala.Left
