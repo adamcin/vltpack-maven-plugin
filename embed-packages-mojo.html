@@ -54,7 +54,7 @@
         <ul class="breadcrumb">
                 
                     
-                  <li id="publishDate">Last Published: 2012-12-31 17:23</li>
+                  <li id="publishDate">Last Published: 2012-12-31 17:37</li>
                   <li class="divider">|</li> <li id="projectVersion">Version: 0.5.0-SNAPSHOT</li>
                       
                 
@@ -173,11 +173,13 @@
       <p><b>Full name</b>:</p>
       <p>net.adamcin:vltpack-maven-plugin:0.5.0-SNAPSHOT:embed-packages</p>
       <p><b>Description</b>:</p>
-      <div>(no description)</div>
+      <div><div>Embed sub packages in the project artifact package under
+/etc/packages</div></div>
       <p><b>Attributes</b>:</p>
       <ul>
         <li>Requires a Maven project to be executed.</li>
         <li>The goal is thread-safe and supports parallel builds.</li>
+        <li>Since version: <tt>0.6.0</tt>.</li>
         <li>Binds by default to the <a class="externalLink" href="http://maven.apache.org/ref/current/maven-core/lifecycles.html">lifecycle phase</a>: <tt>prepare-package</tt>.</li>
       </ul>
       <div class="section"><h3>Optional Parameters<a name="Optional_Parameters"></a></h3>
@@ -191,16 +193,19 @@
           <tr class="b">
             <td><b><a href="#embedPackages">embedPackages</a></b></td>
             <td><tt>List</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /></td>
+            <td><tt>0.6.0</tt></td>
+            <td><div>List of artifactIds matching project dependencies that should
+be embedded</div><br /></td>
           </tr>
         </table>
       </div>
       <div class="section"><h3>Parameter Details<a name="Parameter_Details"></a></h3>
         <p><b><a name="embedPackages">embedPackages</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>List of artifactIds matching project dependencies that should
+be embedded</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.util.List</tt></li>
+          <li><b>Since</b>: <tt>0.6.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
         </ul>
       </div>
