@@ -87,7 +87,7 @@
     <properties>
         <maven.version>3.0</maven.version>
         <scala.version>2.9.2</scala.version>
-        <scalamojo.version>0.5.0-SNAPSHOT</scalamojo.version>
+        <scalamojo.version>0.6.0</scalamojo.version>
         <vlt.version>2.4.28</vlt.version>
         <maven.compiler.source>1.5</maven.compiler.source>
         <maven.compiler.target>1.5</maven.compiler.target>
