@@ -1,0 +1,287 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>net.adamcin.vltpack</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../../lib/template.css" />
+      <script type="text/javascript" src="../../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+      <div id="definition">
+        <img src="../../../lib/package_big.png" />
+        <p id="owner"><a name="net" class="extype" href="../../package.html">net</a>.<a name="net.adamcin" class="extype" href="../package.html">adamcin</a></p>
+        <h1>vltpack</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">vltpack</span>
+      </span>
+      </h4>
+      
+      <div class="fullcommenttop" id="comment"></div>
+    
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div class="types members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="net.adamcin.vltpack.BundlePathParameters" data-isabs="true">
+      <a id="BundlePathParameters:BundlePathParameters"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="BundlePathParameters.html"><span class="name">BundlePathParameters</span></a><span class="result"> extends BaseMojo</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait defining common parameters and methods for placement of bundles within a JCR repository</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.CreatesPackage" data-isabs="true">
+      <a id="CreatesPackage:CreatesPackage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CreatesPackage.html"><span class="name">CreatesPackage</span></a><span class="result"> extends BaseMojo</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait defining common mojo parameters and methods for the creation of vault packages</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.DavRequestVerbs" data-isabs="false">
+      <a id="DavRequestVerbs:DavRequestVerbs"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DavRequestVerbs.html"><span class="name">DavRequestVerbs</span></a><span class="result"> extends DefaultRequestVerbs with DavVerbs</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Wraps an implicitly created DefaultRequestVerbs object with the DavVerbs trait</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.DavVerbs" data-isabs="true">
+      <a id="DavVerbs:DavVerbs"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="DavVerbs.html"><span class="name">DavVerbs</span></a><span class="result"> extends MethodVerbs</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Adds fluid support for the MKCOL method</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.DeploysWithBuild" data-isabs="true">
+      <a id="DeploysWithBuild:DeploysWithBuild"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="DeploysWithBuild.html"><span class="name">DeploysWithBuild</span></a><span class="result"> extends BaseMojo</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait defining common mojo parameters and methods for controlling deployment of artifacts to CQ during
+a maven lifecycle build</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.HttpParameters" data-isabs="true">
+      <a id="HttpParameters:HttpParameters"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HttpParameters.html"><span class="name">HttpParameters</span></a><span class="result"> extends BaseMojo with UsernameAware</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait defining common mojo parameters and methods for establishing HTTP connections to a CQ server.</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.IdentifiesPackages" data-isabs="true">
+      <a id="IdentifiesPackages:IdentifiesPackages"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="IdentifiesPackages.html"><span class="name">IdentifiesPackages</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait defining common mojo parameters and methods needed to identify vault package binaries based on
+embedded metadata</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters" data-isabs="true">
+      <a id="OutputParameters:OutputParameters"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="OutputParameters.html"><span class="name">OutputParameters</span></a><span class="result"> extends BaseMojo with RequiresProject</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait defining common output path variables</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.PackageDependencies" data-isabs="true">
+      <a id="PackageDependencies:PackageDependencies"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="PackageDependencies.html"><span class="name">PackageDependencies</span></a><span class="result"> extends BaseMojo with RequiresProject with IdentifiesPackages with ResolvesArtifacts</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait defining common mojo parameters and methods useful for identifying package dependencies that
+are not embedded in the main project artifact</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.PutsBundle" data-isabs="true">
+      <a id="PutsBundle:PutsBundle"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="PutsBundle.html"><span class="name">PutsBundle</span></a><span class="result"> extends BaseMojo with HttpParameters with BundlePathParameters</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait defining common mojo parameters and methods for uploading OSGi bundles to the configured CQ server
+using the PUT HTTP method</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.RequiresProject" data-isabs="true">
+      <a id="RequiresProject:RequiresProject"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="RequiresProject.html"><span class="name">RequiresProject</span></a><span class="result"> extends BaseMojo</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait for mojos to mark them as requiring a reference to a maven project as well as defining
+the dependency as a component</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.ResolvesArtifacts" data-isabs="true">
+      <a id="ResolvesArtifacts:ResolvesArtifacts"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ResolvesArtifacts.html"><span class="name">ResolvesArtifacts</span></a><span class="result"> extends BaseMojo</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait defining common mojo parameters and methods useful for arbitrarily resolving artifacts from
+local and remote repositories</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.UploadsPackages" data-isabs="true">
+      <a id="UploadsPackages:UploadsPackages"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="UploadsPackages.html"><span class="name">UploadsPackages</span></a><span class="result"> extends BaseMojo with HttpParameters</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait defining common mojo parameters and methods useful for uploading and installing vault packages on
+CQ servers</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.UsernameAware" data-isabs="true">
+      <a id="UsernameAware:UsernameAware"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="UsernameAware.html"><span class="name">UsernameAware</span></a><span class="result"> extends BaseMojo</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Trait defining the vltpack.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div class="values members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="net.adamcin.vltpack.IdentifiesPackages" data-isabs="false">
+      <a id="IdentifiesPackages:IdentifiesPackages"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="IdentifiesPackages$.html"><span class="name">IdentifiesPackages</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Companion object for the trait defining these useful property constants</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.VltpackUtil" data-isabs="false">
+      <a id="VltpackUtil:VltpackUtil"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="VltpackUtil$.html"><span class="name">VltpackUtil</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Utility methods used by the plugin</p>
+    </li><li visbl="pub" name="net.adamcin.vltpack.mojo" data-isabs="false">
+      <a id="mojo:mojo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="mojo/package.html"><span class="name">mojo</span></a>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
