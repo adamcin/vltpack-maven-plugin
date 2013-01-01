@@ -30,25 +30,26 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>net.adamcin</groupId>
-        <artifactId>net.adamcin.parent</artifactId>
-        <version>1-SNAPSHOT</version>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
     </parent>
 
     <groupId>net.adamcin</groupId>
     <artifactId>vltpack-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
     <version>0.5.0-SNAPSHOT</version>
-    <name>VLT Pack Maven Plugin</name>
 
     <inceptionYear>2012</inceptionYear>
+
+    <name>VLT Pack Maven Plugin</name>
     <description>
         Maven plugin defining the vltpack packaging lifecycle and appropriate
         goals for use in creating application and content packages targeting
         the Adobe CRX / CQ / Granite platforms
     </description>
 
-    <url>http://adamcin.github.com/${project.artifactId}</url>
+    <url>http://adamcin.net/${project.artifactId}</url>
 
     <scm>
         <url>https://github.com/adamcin/${project.artifactId}</url>
@@ -60,6 +61,28 @@
         <system>github</system>
         <url>http://github.com/adamcin/${project.artifactId}/issues/</url>
     </issueManagement>
+
+    <licenses>
+        <license>
+            <name>Public domain (Unlicense)</name>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>madamcin</id>
+            <name>Mark Adamcin</name>
+            <email>adamcin@gmail.com</email>
+            <url>http://adamcin.net</url>
+            <organization>Acquity Group</organization>
+            <organizationUrl>http://www.acquitygroup.com</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <properties>
         <maven.version>3.0</maven.version>
@@ -89,26 +112,26 @@
                 <artifactId>scala-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
+                    <args>
+                        <arg>-target:jvm-1.5</arg>
+                        <arg>-no-specialization</arg>
+                        <arg>-deprecation</arg>
+                    </args>
                     <recompileMode>incremental</recompileMode>
-                    <useZincServer>true</useZincServer>
                 </configuration>
                 <executions>
                     <execution>
                         <goals>
+                            <goal>add-source</goal>
                             <goal>compile</goal>
                             <goal>testCompile</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>doc</id>
-                        <phase>process-classes</phase>
+                        <id>attach-javadocs</id>
                         <goals>
-                            <goal>doc</goal>
+                            <goal>doc-jar</goal>
                         </goals>
-                        <configuration>
-                            <reportOutputDirectory>${project.build.directory}</reportOutputDirectory>
-                            <outputDirectory>apidocs</outputDirectory>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -157,6 +180,25 @@
                         </plugin>
                     </reportPlugins>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.5</version>
+                <configuration>
+                    <message>Creating site for ${project.artifactId} ${project.version}</message>
+                    <noJekyll>true</noJekyll>
+                    <repositoryOwner>adamcin</repositoryOwner>
+                    <repositoryName>${project.artifactId}</repositoryName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>site</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

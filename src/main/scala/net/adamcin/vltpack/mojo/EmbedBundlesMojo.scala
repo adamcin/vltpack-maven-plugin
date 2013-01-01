@@ -25,25 +25,44 @@
  * For more information, please refer to <http://unlicense.org/>
  */
 
-package net.adamcin.maven.vltpack.mojo
+package net.adamcin.vltpack.mojo
 
-import org.apache.maven.plugin.AbstractMojo
-import org.apache.maven.plugins.annotations.Component
-import org.apache.maven.settings.Settings
-import org.apache.maven.execution.MavenSession
+import collection.JavaConversions
+import java.util.Collections
+import org.apache.maven.plugin.MojoExecutionException
+import java.io.File
+import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
+import net.adamcin.vltpack.{VltpackUtil, ResolvesArtifacts, OutputParameters, BundlePathParameters}
 
 /**
- * Base mojo class
+ * Embeds bundles in the project artifact at the configured bundleInstallPath
  * @since 0.6.0
  * @author Mark Adamcin
  */
-abstract class BaseMojo extends AbstractMojo {
+@Mojo(name = "embed-bundles",
+  defaultPhase = LifecyclePhase.PREPARE_PACKAGE,
+  threadSafe = true)
+class EmbedBundlesMojo
+  extends BaseMojo
+  with ResolvesArtifacts
+  with BundlePathParameters
+  with OutputParameters {
 
-  @Component
-  var settings: Settings = null
+  /**
+   * List of articleIds matching dependencies that should be embedded
+   */
+  @Parameter
+  val embedBundles = Collections.emptyList[String]
 
-  @Component
-  var session: MavenSession = null
+  override def execute() {
+    super.execute()
 
-  def execute() { /* nothing here now */ }
+    val artifacts = resolveByArtifactIds(JavaConversions.collectionAsScalaIterable(embedBundles).toSet)
+    val dir = new File(embedBundlesDirectory, VltpackUtil.noLeadingSlash(VltpackUtil.noTrailingSlash(bundleInstallPath)))
+    if (dir.isDirectory || dir.mkdirs()) {
+      artifacts.foreach( copyToDir(dir, getLog)_ )
+    } else {
+      throw new MojoExecutionException("Failed to create directory: " + dir)
+    }
+  }
 }
