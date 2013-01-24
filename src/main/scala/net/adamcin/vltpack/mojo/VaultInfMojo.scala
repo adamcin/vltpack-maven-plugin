@@ -317,7 +317,7 @@ class VaultInfMojo
                 (stream) => {
                   val ds = new DigestInputStream(stream, digester)
                   sResource.setProperty(JcrConstants.JCR_DATA, session.getValueFactory.createBinary(ds))
-                  session.move(temp.getPath, parent + "/" + digester.digest.map("%02X" format _).mkString)
+                  session.move(temp.getPath, parent.getPath + "/" + digester.digest.map("%02X" format _).mkString)
                   session.save()
                 }
               }
