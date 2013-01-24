@@ -33,6 +33,7 @@ import org.apache.maven.plugin.MojoExecutionException
 import java.io.File
 import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 import net.adamcin.vltpack.{VltpackUtil, ResolvesArtifacts, OutputParameters, BundlePathParameters}
+import scala.collection.JavaConversions._
 
 /**
  * Embeds bundles in the project artifact at the configured bundleInstallPath
@@ -57,7 +58,7 @@ class EmbedBundlesMojo
   override def execute() {
     super.execute()
 
-    val artifacts = resolveByArtifactIds(JavaConversions.collectionAsScalaIterable(embedBundles).toSet)
+    val artifacts = resolveByArtifactIds(embedBundles.toSet)
     val dir = new File(embedBundlesDirectory, VltpackUtil.noLeadingSlash(VltpackUtil.noTrailingSlash(bundleInstallPath)))
     if (dir.isDirectory || dir.mkdirs()) {
       artifacts.foreach( copyToDir(dir, getLog)_ )

@@ -88,6 +88,8 @@ trait OutputParameters extends RequiresProject {
   lazy val thumbnailFileDirectory = getExistingDir(new File(thumbnailDirectory, "file"))
   lazy val thumbnailFileXml = getExistingDir(new File(thumbnailFileDirectory, ".content.xml"))
 
+  lazy val hooksDirectory = getExistingDir(new File(vaultDirectory, "hooks"))
+
   def getExistingDir(file: File): File = {
     if (!file.exists() && !file.mkdir()) {
       log.error("[getExistingDir] failed to create directory: {}", file)

@@ -28,8 +28,9 @@
 package net.adamcin.vltpack
 
 import com.day.jcr.vault.packaging.Dependency
-import collection.JavaConversions
+import collection.JavaConversions._
 import org.apache.maven.plugins.annotations.Parameter
+import java.util.Collections
 
 
 /**
@@ -47,9 +48,9 @@ trait PackageDependencies
    * List of artifactIds matching dependencies that are valid vault packages
    */
   @Parameter
-  var packageDependencies = java.util.Collections.emptyList[String]
+  var packageDependencies = Collections.emptyList[String]
 
-  def packageDependencyArtifacts = resolveByArtifactIds(JavaConversions.collectionAsScalaIterable(packageDependencies).toSet)
+  def packageDependencyArtifacts = resolveByArtifactIds(packageDependencies.toSet)
 
   def dependsOn: List[Dependency] = {
     packageDependencyArtifacts.map {

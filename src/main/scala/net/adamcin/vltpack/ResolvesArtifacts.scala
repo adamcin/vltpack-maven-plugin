@@ -34,7 +34,7 @@ import org.apache.maven.artifact.Artifact
 import org.apache.maven.plugin.logging.Log
 import org.apache.maven.artifact.resolver.ArtifactResolutionRequest
 import org.slf4j.LoggerFactory
-import collection.JavaConversions
+import collection.JavaConversions._
 import java.io.File
 import scalax.io.Resource
 import org.codehaus.plexus.util.SelectorUtils
@@ -62,7 +62,7 @@ trait ResolvesArtifacts extends BaseMojo {
 
   lazy val dependencies: List[Artifact] = Option(proj) match {
     case Some(project) => {
-      JavaConversions.collectionAsScalaIterable(project.getDependencyArtifacts).toList
+      project.getDependencyArtifacts.toList
     }
     case None => Nil
   }
@@ -81,7 +81,7 @@ trait ResolvesArtifacts extends BaseMojo {
         request.setArtifact(artifact)
         val result = repositorySystem.resolve(request)
 
-        stream #::: JavaConversions.collectionAsScalaIterable(result.getArtifacts).toStream
+        stream #::: result.getArtifacts.toStream
       }
     }
   }

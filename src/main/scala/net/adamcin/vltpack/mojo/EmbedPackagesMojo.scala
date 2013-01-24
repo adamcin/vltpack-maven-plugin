@@ -27,7 +27,7 @@
 
 package net.adamcin.vltpack.mojo
 
-import collection.JavaConversions
+import collection.JavaConversions._
 import java.util.Collections
 import org.apache.maven.plugin.MojoExecutionException
 import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
@@ -55,7 +55,7 @@ class EmbedPackagesMojo
   override def execute() {
     super.execute()
 
-    val artifacts = resolveByArtifactIds(JavaConversions.collectionAsScalaIterable(embedPackages).toSet)
+    val artifacts = resolveByArtifactIds(embedPackages.toSet)
 
     if (embedPackagesDirectory.isDirectory || embedPackagesDirectory.mkdirs()) {
       artifacts.foreach( copyToDir(embedPackagesDirectory, getLog)_ )

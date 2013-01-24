@@ -41,7 +41,7 @@ import com.day.jcr.vault.packaging.impl.{JcrPackageDefinitionImpl, JcrPackageMan
 import com.day.jcr.vault.fs.io
 import io.PlatformExporter
 import com.day.jcr.vault.util.{Text, JcrConstants}
-import collection.JavaConversions
+import collection.JavaConversions._
 import java.security.{DigestInputStream, MessageDigest}
 import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
 import net.adamcin.vltpack._
@@ -274,7 +274,7 @@ class VaultInfMojo
 
       val defNode = defPack.getDefNode
 
-      JavaConversions.mapAsScalaMap(definitionProperties).foreach {
+      definitionProperties.foreach {
         p: (String, String) => {
           val (key, value) = p
           value match {
@@ -301,7 +301,7 @@ class VaultInfMojo
         }
       }
 
-      JavaConversions.collectionAsScalaIterable(screenshots).toList match {
+      screenshots.toList match {
         case Nil => ()
         case screens => {
           val digester = MessageDigest.getInstance("MD5")

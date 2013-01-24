@@ -43,6 +43,7 @@
                             <prepare-package>
                                 net.adamcin:vltpack-maven-plugin:embed-bundles,
                                 net.adamcin:vltpack-maven-plugin:embed-packages,
+                                net.adamcin:vltpack-maven-plugin:embed-hooks,
                                 net.adamcin:vltpack-maven-plugin:vault-inf
                             </prepare-package>
                             <package>net.adamcin:vltpack-maven-plugin:package</package>

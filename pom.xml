@@ -86,7 +86,8 @@
 
     <properties>
         <maven.version>3.0</maven.version>
-        <scala.version>2.9.2</scala.version>
+        <scala.version.major>2.10</scala.version.major>
+        <scala.version>${scala.version.major}.0</scala.version>
         <scalamojo.version>0.6.0</scalamojo.version>
         <vlt.version>2.4.28</vlt.version>
         <maven.compiler.source>1.5</maven.compiler.source>
@@ -203,6 +204,26 @@
         </plugins>
     </build>
 
+    <!--
+    this plugin is specifically designed to create artifacts for installation on Adobe's non-free CRX
+    application platform, and thus depends on some proprietary libraries, namely, the vault-vlt and
+    com.day.jcr.vault libraries. These are only available from Adobe's public repository.
+    -->
+    <repositories>
+        <repository>
+            <id>adobe-public-releases</id>
+            <name>Adobe Public Repository</name>
+            <url>http://repo.adobe.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
@@ -218,21 +239,21 @@
         <!-- Core -->
         <dependency>
             <groupId>com.github.scala-incubator.io</groupId>
-            <artifactId>scala-io-core_${scala.version}</artifactId>
-            <version>0.4.1-seq</version>
+            <artifactId>scala-io-core_${scala.version.major}</artifactId>
+            <version>0.4.1</version>
         </dependency>
 
         <!-- File -->
         <dependency>
             <groupId>com.github.scala-incubator.io</groupId>
-            <artifactId>scala-io-file_${scala.version}</artifactId>
-            <version>0.4.1-seq</version>
+            <artifactId>scala-io-file_${scala.version.major}</artifactId>
+            <version>0.4.1</version>
         </dependency>
 
         <dependency>
             <groupId>net.databinder.dispatch</groupId>
-            <artifactId>core_${scala.version}</artifactId>
-            <version>0.9.1</version>
+            <artifactId>dispatch-core_${scala.version.major}</artifactId>
+            <version>0.9.5</version>
         </dependency>
 
         <dependency>
