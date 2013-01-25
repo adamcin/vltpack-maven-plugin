@@ -54,7 +54,7 @@
         <ul class="breadcrumb">
                 
                     
-                  <li id="publishDate">Last Published: 2013-01-24 17:09</li>
+                  <li id="publishDate">Last Published: 2013-01-24 17:15</li>
                   <li class="divider">|</li> <li id="projectVersion">Version: 0.5.0-SNAPSHOT</li>
                       
                 
@@ -186,11 +186,13 @@
       <p><b>Full name</b>:</p>
       <p>net.adamcin:vltpack-maven-plugin:0.5.0-SNAPSHOT:package</p>
       <p><b>Description</b>:</p>
-      <div>(no description)</div>
+      <div><div>Creates a vault package based on the generated metadata and
+configured content root</div></div>
       <p><b>Attributes</b>:</p>
       <ul>
         <li>Requires a Maven project to be executed.</li>
         <li>The goal is thread-safe and supports parallel builds.</li>
+        <li>Since version: <tt>0.6.0</tt>.</li>
         <li>Binds by default to the <a class="externalLink" href="http://maven.apache.org/ref/current/maven-core/lifecycles.html">lifecycle phase</a>: <tt>package</tt>.</li>
       </ul>
       <div class="section"><h3>Optional Parameters<a name="Optional_Parameters"></a></h3>
@@ -204,53 +206,107 @@
           <tr class="b">
             <td><b><a href="#bundleInstallPath">bundleInstallPath</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /><b>Default value is</b>: <tt>/apps/bundles/install/30</tt>.<br /></td>
+            <td><tt>0.6.0</tt></td>
+            <td><div>Set the JCR path where bundles will be installed for this
+project. Use a numeric suffix (as in &quot;/apps/myapp/install/30&quot;) to
+apply a felix start level configuration to the bundles</div><br /><b>Default value is</b>: <tt>/apps/bundles/install/30</tt>.<br /></td>
           </tr>
           <tr class="a">
             <td><b><a href="#jcrPath">jcrPath</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /><b>Default value is</b>: <tt>/</tt>.<br /><b>User property is</b>: <tt>jcrPath</tt>.</td>
+            <td><tt>0.6.0</tt></td>
+            <td><div>Specify the JCR path that the jcr_root folder maps to. For
+instance, if the content was checked out using the vlt command, a
+jcrPath parameter may have been explicitly specified as something
+other than '/'. In this case, the same explicit value must be set
+for this mojo to properly create Jar entries so that the package
+contents wind up at the correct path when installed</div><br /><b>Default value is</b>: <tt>/</tt>.<br /><b>User property is</b>: <tt>jcrPath</tt>.</td>
           </tr>
           <tr class="b">
             <td><b><a href="#serverTimezone">serverTimezone</a></b></td>
             <td><tt>String</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /><b>User property is</b>: <tt>vltpack.tz</tt>.</td>
+            <td><tt>0.6.0</tt></td>
+            <td><div>Specify the server timezone if different from the local
+timezone. When CRX installs the package, it will check the
+lastmodified timestamps on the Jar entries and compare them to the
+jcr:lastModified properties in the repository to determine if each
+file should be installed or not. Because the Jar entry timestamp
+does not account for timezone, it is possible for packages created
+in different timezones to be installed inconsistently on the same
+server. By setting this parameter, the Jar entry timestamps will be
+adjusted to reflect the local time of the server timezone instead
+of the local timezone</div>
+<div>The value of this property will be passed to
+<tt>TimeZone.getTimeZone(String id)</tt>, which will be
+compared against the build machine's default time zone,
+<tt>TimeZone.getDefault()</tt>, for computing the desired
+timestamp offset.</div>
+<div>As described in the TimeZone javadocs, if the value of this
+property is not empty and is not a valid TimeZone id, the GMT
+timezone will be used for adjustment of timestamps.</div><br /><b>User property is</b>: <tt>vltpack.tz</tt>.</td>
           </tr>
           <tr class="a">
             <td><b><a href="#vltRoot">vltRoot</a></b></td>
             <td><tt>File</tt></td>
-            <td><tt>-</tt></td>
-            <td>(no description)<br /><b>Default value is</b>: <tt>${project.build.outputDirectory}</tt>.<br /></td>
+            <td><tt>0.6.0</tt></td>
+            <td><div>Content root directory containing jcr_root and META-INF
+folders</div><br /><b>Default value is</b>: <tt>${project.build.outputDirectory}</tt>.<br /></td>
           </tr>
         </table>
       </div>
       <div class="section"><h3>Parameter Details<a name="Parameter_Details"></a></h3>
         <p><b><a name="bundleInstallPath">bundleInstallPath</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Set the JCR path where bundles will be installed for this
+project. Use a numeric suffix (as in &quot;/apps/myapp/install/30&quot;) to
+apply a felix start level configuration to the bundles</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
+          <li><b>Since</b>: <tt>0.6.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>Default</b>: <tt>/apps/bundles/install/30</tt></li>
         </ul><hr /><p><b><a name="jcrPath">jcrPath</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Specify the JCR path that the jcr_root folder maps to. For
+instance, if the content was checked out using the vlt command, a
+jcrPath parameter may have been explicitly specified as something
+other than '/'. In this case, the same explicit value must be set
+for this mojo to properly create Jar entries so that the package
+contents wind up at the correct path when installed</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
+          <li><b>Since</b>: <tt>0.6.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>jcrPath</tt></li>
           <li><b>Default</b>: <tt>/</tt></li>
         </ul><hr /><p><b><a name="serverTimezone">serverTimezone</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Specify the server timezone if different from the local
+timezone. When CRX installs the package, it will check the
+lastmodified timestamps on the Jar entries and compare them to the
+jcr:lastModified properties in the repository to determine if each
+file should be installed or not. Because the Jar entry timestamp
+does not account for timezone, it is possible for packages created
+in different timezones to be installed inconsistently on the same
+server. By setting this parameter, the Jar entry timestamps will be
+adjusted to reflect the local time of the server timezone instead
+of the local timezone</div>
+<div>The value of this property will be passed to
+<tt>TimeZone.getTimeZone(String id)</tt>, which will be
+compared against the build machine's default time zone,
+<tt>TimeZone.getDefault()</tt>, for computing the desired
+timestamp offset.</div>
+<div>As described in the TimeZone javadocs, if the value of this
+property is not empty and is not a valid TimeZone id, the GMT
+timezone will be used for adjustment of timestamps.</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
+          <li><b>Since</b>: <tt>0.6.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>vltpack.tz</tt></li>
         </ul><hr /><p><b><a name="vltRoot">vltRoot</a>:</b></p>
-        <div>(no description)</div>
+        <div><div>Content root directory containing jcr_root and META-INF
+folders</div></div>
         <ul>
           <li><b>Type</b>: <tt>java.io.File</tt></li>
+          <li><b>Since</b>: <tt>0.6.0</tt></li>
           <li><b>Required</b>: <tt>No</tt></li>
           <li><b>Default</b>: <tt>${project.build.outputDirectory}</tt></li>
         </ul>
