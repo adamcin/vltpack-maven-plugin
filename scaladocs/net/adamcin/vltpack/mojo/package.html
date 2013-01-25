@@ -2,24 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>net.adamcin.vltpack.mojo</title>
+          <title>mojo - VLT Pack Maven Plugin 0.5.0-SNAPSHOT API - net.adamcin.vltpack.mojo</title>
+          <meta name="description" content="mojo - VLT Pack Maven Plugin 0.5.0 - SNAPSHOT API - net.adamcin.vltpack.mojo" />
+          <meta name="keywords" content="mojo VLT Pack Maven Plugin 0.5.0 SNAPSHOT API net.adamcin.vltpack.mojo" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../../../lib/template.css" />
-      <script type="text/javascript" src="../../../../lib/jquery.js"></script>
+      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
       <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../../../lib/template.js"></script>
       <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../index.html';
+            var hash = 'net.adamcin.vltpack.mojo.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+        <body class="value">
       <div id="definition">
         <img src="../../../../lib/package_big.png" />
-        <p id="owner"><a name="net" class="extype" href="../../../package.html">net</a>.<a name="net.adamcin" class="extype" href="../../package.html">adamcin</a>.<a name="net.adamcin.vltpack" class="extype" href="../package.html">vltpack</a></p>
+        <p id="owner"><a href="../../../package.html" class="extype" name="net">net</a>.<a href="../../package.html" class="extype" name="net.adamcin">adamcin</a>.<a href="../package.html" class="extype" name="net.adamcin.vltpack">vltpack</a></p>
         <h1>mojo</h1>
       </div>
 
-      <h4 class="signature" id="signature">
+      <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
@@ -29,11 +44,11 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"></div>
-    
+          <div id="comment" class="fullcommenttop"></div>
+        
 
       <div id="mbrsel">
-        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
         
         
         <div id="visbl">
@@ -46,9 +61,10 @@
         <div id="allMembers">
         
 
-        <div class="types members" id="types">
+        <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="net.adamcin.vltpack.mojo.BaseMojo" data-isabs="true">
+              <ol><li name="net.adamcin.vltpack.mojo.BaseMojo" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="BaseMojoextendsAbstractMojo"></a>
       <a id="BaseMojo:BaseMojo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -56,11 +72,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="BaseMojo.html"><span class="name">BaseMojo</span></a><span class="result"> extends AbstractMojo</span>
+        <a href="BaseMojo.html"><span class="name">BaseMojo</span></a><span class="result"> extends <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span></span>
       </span>
       </h4>
       <p class="comment cmt">Base mojo class</p>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.EmbedBundlesMojo" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.EmbedBundlesMojo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EmbedBundlesMojoextendsBaseMojowithResolvesArtifactswithBundlePathParameterswithOutputParameters"></a>
       <a id="EmbedBundlesMojo:EmbedBundlesMojo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -68,11 +85,25 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="EmbedBundlesMojo.html"><span class="name">EmbedBundlesMojo</span></a><span class="result"> extends BaseMojo with ResolvesArtifacts with BundlePathParameters with OutputParameters</span>
+        <a href="EmbedBundlesMojo.html"><span class="name">EmbedBundlesMojo</span></a><span class="result"> extends <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a> with <a href="../BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a> with <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></span>
       </span>
       </h4>
       <p class="comment cmt">Embeds bundles in the project artifact at the configured bundleInstallPath</p>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.EmbedPackagesMojo" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.EmbedHooksMojo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EmbedHooksMojoextendsBaseMojowithResolvesArtifactswithOutputParameters"></a>
+      <a id="EmbedHooksMojo:EmbedHooksMojo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="EmbedHooksMojo.html"><span class="name">EmbedHooksMojo</span></a><span class="result"> extends <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a> with <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Embeds install hooks (dependencies referenced by artifactId) into the package.</p>
+    </li><li name="net.adamcin.vltpack.mojo.EmbedPackagesMojo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EmbedPackagesMojoextendsBaseMojowithResolvesArtifactswithOutputParameters"></a>
       <a id="EmbedPackagesMojo:EmbedPackagesMojo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -80,11 +111,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="EmbedPackagesMojo.html"><span class="name">EmbedPackagesMojo</span></a><span class="result"> extends BaseMojo with ResolvesArtifacts with OutputParameters</span>
+        <a href="EmbedPackagesMojo.html"><span class="name">EmbedPackagesMojo</span></a><span class="result"> extends <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a> with <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></span>
       </span>
       </h4>
       <p class="comment cmt">Embed sub packages in the project artifact package under /etc/packages</p>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.HelpMojo" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.HelpMojo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HelpMojoextendsAbstractMojo"></a>
       <a id="HelpMojo:HelpMojo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,11 +124,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="HelpMojo.html"><span class="name">HelpMojo</span></a><span class="result"> extends AbstractMojo</span>
+        <a href="HelpMojo.html"><span class="name">HelpMojo</span></a><span class="result"> extends <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.PackageMojo" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.PackageMojo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PackageMojoextendsBaseMojowithOutputParameterswithCreatesPackagewithIdentifiesPackageswithBundlePathParameters"></a>
       <a id="PackageMojo:PackageMojo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -104,11 +137,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="PackageMojo.html"><span class="name">PackageMojo</span></a><span class="result"> extends BaseMojo with OutputParameters with CreatesPackage with IdentifiesPackages with BundlePathParameters</span>
+        <a href="PackageMojo.html"><span class="name">PackageMojo</span></a><span class="result"> extends <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a> with <a href="../CreatesPackage.html" class="extype" name="net.adamcin.vltpack.CreatesPackage">CreatesPackage</a> with <a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a> with <a href="../BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a></span>
       </span>
       </h4>
       <p class="comment cmt">Creates a vault package based on the generated metadata and configured content root</p>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.PutBundleFileMojo" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.PutBundleFileMojo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PutBundleFileMojoextendsBaseMojowithPutsBundle"></a>
       <a id="PutBundleFileMojo:PutBundleFileMojo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -116,11 +150,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="PutBundleFileMojo.html"><span class="name">PutBundleFileMojo</span></a><span class="result"> extends BaseMojo with PutsBundle</span>
+        <a href="PutBundleFileMojo.html"><span class="name">PutBundleFileMojo</span></a><span class="result"> extends <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="../PutsBundle.html" class="extype" name="net.adamcin.vltpack.PutsBundle">PutsBundle</a></span>
       </span>
       </h4>
       <p class="comment cmt">PUT a bundle identified by the file parameter to the configured CQ instance</p>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.PutBundleMojo" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.PutBundleMojo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PutBundleMojoextendsBaseMojowithRequiresProjectwithPutsBundlewithDeploysWithBuild"></a>
       <a id="PutBundleMojo:PutBundleMojo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -128,11 +163,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="PutBundleMojo.html"><span class="name">PutBundleMojo</span></a><span class="result"> extends BaseMojo with RequiresProject with PutsBundle with DeploysWithBuild</span>
+        <a href="PutBundleMojo.html"><span class="name">PutBundleMojo</span></a><span class="result"> extends <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a> with <a href="../PutsBundle.html" class="extype" name="net.adamcin.vltpack.PutsBundle">PutsBundle</a> with <a href="../DeploysWithBuild.html" class="extype" name="net.adamcin.vltpack.DeploysWithBuild">DeploysWithBuild</a></span>
       </span>
       </h4>
       <p class="comment cmt">PUT the project artifact (of packaging type 'bundle') to the configured CQ server</p>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.UploadDependenciesMojo" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.UploadDependenciesMojo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UploadDependenciesMojoextendsBaseMojowithDeploysWithBuildwithRequiresProjectwithPackageDependencieswithIdentifiesPackageswithResolvesArtifactswithUploadsPackages"></a>
       <a id="UploadDependenciesMojo:UploadDependenciesMojo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -140,11 +176,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="UploadDependenciesMojo.html"><span class="name">UploadDependenciesMojo</span></a><span class="result"> extends BaseMojo with DeploysWithBuild with RequiresProject with PackageDependencies with IdentifiesPackages with ResolvesArtifacts with UploadsPackages</span>
+        <a href="UploadDependenciesMojo.html"><span class="name">UploadDependenciesMojo</span></a><span class="result"> extends <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="../DeploysWithBuild.html" class="extype" name="net.adamcin.vltpack.DeploysWithBuild">DeploysWithBuild</a> with <a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a> with <a href="../PackageDependencies.html" class="extype" name="net.adamcin.vltpack.PackageDependencies">PackageDependencies</a> with <a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a> with <a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a> with <a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></span>
       </span>
       </h4>
       <p class="comment cmt">Upload dependencies representing vault packages to the configured CQ server</p>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.UploadMojo" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.UploadMojo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UploadMojoextendsBaseMojowithOutputParameterswithUploadsPackageswithIdentifiesPackageswithDeploysWithBuild"></a>
       <a id="UploadMojo:UploadMojo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -152,11 +189,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="UploadMojo.html"><span class="name">UploadMojo</span></a><span class="result"> extends BaseMojo with OutputParameters with UploadsPackages with IdentifiesPackages with DeploysWithBuild</span>
+        <a href="UploadMojo.html"><span class="name">UploadMojo</span></a><span class="result"> extends <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a> with <a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a> with <a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a> with <a href="../DeploysWithBuild.html" class="extype" name="net.adamcin.vltpack.DeploysWithBuild">DeploysWithBuild</a></span>
       </span>
       </h4>
       <p class="comment cmt">Uploads the project vault package to the configured CQ server</p>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="VaultInfMojoextendsBaseMojowithUsernameAwarewithOutputParameterswithBundlePathParameterswithPackageDependencieswithIdentifiesPackages"></a>
       <a id="VaultInfMojo:VaultInfMojo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -164,7 +202,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="VaultInfMojo.html"><span class="name">VaultInfMojo</span></a><span class="result"> extends BaseMojo with UsernameAware with OutputParameters with BundlePathParameters with PackageDependencies with IdentifiesPackages</span>
+        <a href="VaultInfMojo.html"><span class="name">VaultInfMojo</span></a><span class="result"> extends <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="../UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a> with <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a> with <a href="../BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a> with <a href="../PackageDependencies.html" class="extype" name="net.adamcin.vltpack.PackageDependencies">PackageDependencies</a> with <a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></span>
       </span>
       </h4>
       <p class="comment cmt">Generates package meta information under META-INF/vault, including config.</p>
@@ -176,10 +214,20 @@
         
 
         
+
+        
         </div>
 
         <div id="inheritedMembers">
         
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
         </div>
 
       </div>

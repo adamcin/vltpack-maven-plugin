@@ -2,55 +2,82 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>net.adamcin.vltpack.mojo.VaultInfMojo</title>
+          <title>VaultInfMojo - VLT Pack Maven Plugin 0.5.0-SNAPSHOT API - net.adamcin.vltpack.mojo.VaultInfMojo</title>
+          <meta name="description" content="VaultInfMojo - VLT Pack Maven Plugin 0.5.0 - SNAPSHOT API - net.adamcin.vltpack.mojo.VaultInfMojo" />
+          <meta name="keywords" content="VaultInfMojo VLT Pack Maven Plugin 0.5.0 SNAPSHOT API net.adamcin.vltpack.mojo.VaultInfMojo" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../../../lib/template.css" />
-      <script type="text/javascript" src="../../../../lib/jquery.js"></script>
+      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
       <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../../../lib/template.js"></script>
       <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../index.html';
+            var hash = 'net.adamcin.vltpack.mojo.VaultInfMojo';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="type">
+        <body class="type">
       <div id="definition">
         <img src="../../../../lib/class_big.png" />
-        <p id="owner"><a name="net" class="extype" href="../../../package.html">net</a>.<a name="net.adamcin" class="extype" href="../../package.html">adamcin</a>.<a name="net.adamcin.vltpack" class="extype" href="../package.html">vltpack</a>.<a name="net.adamcin.vltpack.mojo" class="extype" href="package.html">mojo</a></p>
+        <p id="owner"><a href="../../../package.html" class="extype" name="net">net</a>.<a href="../../package.html" class="extype" name="net.adamcin">adamcin</a>.<a href="../package.html" class="extype" name="net.adamcin.vltpack">vltpack</a>.<a href="package.html" class="extype" name="net.adamcin.vltpack.mojo">mojo</a></p>
         <h1>VaultInfMojo</h1>
       </div>
 
-      <h4 class="signature" id="signature">
+      <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">VaultInfMojo</span><span class="result"> extends <a name="net.adamcin.vltpack.mojo.BaseMojo" class="extype" href="BaseMojo.html">BaseMojo</a> with <a name="net.adamcin.vltpack.UsernameAware" class="extype" href="../UsernameAware.html">UsernameAware</a> with <a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a> with <a name="net.adamcin.vltpack.BundlePathParameters" class="extype" href="../BundlePathParameters.html">BundlePathParameters</a> with <a name="net.adamcin.vltpack.PackageDependencies" class="extype" href="../PackageDependencies.html">PackageDependencies</a> with <a name="net.adamcin.vltpack.IdentifiesPackages" class="extype" href="../IdentifiesPackages.html">IdentifiesPackages</a></span>
+        <span class="name">VaultInfMojo</span><span class="result"> extends <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="../UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a> with <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a> with <a href="../BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a> with <a href="../PackageDependencies.html" class="extype" name="net.adamcin.vltpack.PackageDependencies">PackageDependencies</a> with <a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></span>
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Generates package meta information under META-INF/vault, including config.xml, properties.xml, filter.xml
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Generates package meta information under META-INF/vault, including config.xml, properties.xml, filter.xml
 and the package definition</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Mojo</span><span class="args">()</span>
               
         </dd><dt>Since</dt><dd><p>0.6.0</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a name="net.adamcin.vltpack.PackageDependencies" class="extype" href="../PackageDependencies.html">PackageDependencies</a>, <a name="net.adamcin.vltpack.ResolvesArtifacts" class="extype" href="../ResolvesArtifacts.html">ResolvesArtifacts</a>, <a name="net.adamcin.vltpack.IdentifiesPackages" class="extype" href="../IdentifiesPackages.html">IdentifiesPackages</a>, <a name="net.adamcin.vltpack.BundlePathParameters" class="extype" href="../BundlePathParameters.html">BundlePathParameters</a>, <a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a>, <a name="net.adamcin.vltpack.RequiresProject" class="extype" href="../RequiresProject.html">RequiresProject</a>, <a name="net.adamcin.vltpack.UsernameAware" class="extype" href="../UsernameAware.html">UsernameAware</a>, <a name="net.adamcin.vltpack.mojo.BaseMojo" class="extype" href="BaseMojo.html">BaseMojo</a>, <span name="org.apache.maven.plugin.AbstractMojo" class="extype">AbstractMojo</span>, <span name="org.apache.maven.plugin.ContextEnabled" class="extype">ContextEnabled</span>, <span name="org.apache.maven.plugin.Mojo" class="extype">Mojo</span>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../PackageDependencies.html" class="extype" name="net.adamcin.vltpack.PackageDependencies">PackageDependencies</a>, <a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a>, <a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a>, <a href="../BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a>, <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a>, <a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a>, <a href="../UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a>, <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a>, <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span>, <span class="extype" name="org.apache.maven.plugin.ContextEnabled">ContextEnabled</span>, <span class="extype" name="org.apache.maven.plugin.Mojo">Mojo</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
-    
+        
 
       <div id="mbrsel">
-        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
         <div id="order">
               <span class="filtertype">Ordering</span>
-              <ol><li class="alpha in"><span>Alphabetic</span></li><li class="inherit out"><span>By inheritance</span></li></ol>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
             </div>
         <div id="ancestors">
-              <span class="filtertype">Inherited</span>
-              <ol><li class="hideall out"><span>Hide All</span></li>
-              <li class="showall in"><span>Show all</span></li></ol>
-              <ol id="linearization"><li name="net.adamcin.vltpack.mojo.VaultInfMojo" class="in"><span>VaultInfMojo</span></li><li name="net.adamcin.vltpack.PackageDependencies" class="in"><span>PackageDependencies</span></li><li name="net.adamcin.vltpack.ResolvesArtifacts" class="in"><span>ResolvesArtifacts</span></li><li name="net.adamcin.vltpack.IdentifiesPackages" class="in"><span>IdentifiesPackages</span></li><li name="net.adamcin.vltpack.BundlePathParameters" class="in"><span>BundlePathParameters</span></li><li name="net.adamcin.vltpack.OutputParameters" class="in"><span>OutputParameters</span></li><li name="net.adamcin.vltpack.RequiresProject" class="in"><span>RequiresProject</span></li><li name="net.adamcin.vltpack.UsernameAware" class="in"><span>UsernameAware</span></li><li name="net.adamcin.vltpack.mojo.BaseMojo" class="in"><span>BaseMojo</span></li><li name="org.apache.maven.plugin.AbstractMojo" class="in"><span>AbstractMojo</span></li><li name="org.apache.maven.plugin.ContextEnabled" class="in"><span>ContextEnabled</span></li><li name="org.apache.maven.plugin.Mojo" class="in"><span>Mojo</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
-            </div>
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="net.adamcin.vltpack.mojo.VaultInfMojo"><span>VaultInfMojo</span></li><li class="in" name="net.adamcin.vltpack.PackageDependencies"><span>PackageDependencies</span></li><li class="in" name="net.adamcin.vltpack.ResolvesArtifacts"><span>ResolvesArtifacts</span></li><li class="in" name="net.adamcin.vltpack.IdentifiesPackages"><span>IdentifiesPackages</span></li><li class="in" name="net.adamcin.vltpack.BundlePathParameters"><span>BundlePathParameters</span></li><li class="in" name="net.adamcin.vltpack.OutputParameters"><span>OutputParameters</span></li><li class="in" name="net.adamcin.vltpack.RequiresProject"><span>RequiresProject</span></li><li class="in" name="net.adamcin.vltpack.UsernameAware"><span>UsernameAware</span></li><li class="in" name="net.adamcin.vltpack.mojo.BaseMojo"><span>BaseMojo</span></li><li class="in" name="org.apache.maven.plugin.AbstractMojo"><span>AbstractMojo</span></li><li class="in" name="org.apache.maven.plugin.ContextEnabled"><span>ContextEnabled</span></li><li class="in" name="org.apache.maven.plugin.Mojo"><span>Mojo</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
             <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
@@ -59,10 +86,11 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
 
       <div id="template">
         <div id="allMembers">
-        <div class="members" id="constructors">
+        <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#this" data-isabs="false">
-      <a id="this:VaultInfMojo"></a>
+              <ol><li name="net.adamcin.vltpack.mojo.VaultInfMojo#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;():net.adamcin.vltpack.mojo.VaultInfMojo"></a>
+      <a id="&lt;init&gt;:VaultInfMojo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
@@ -80,9 +108,10 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
 
         
 
-        <div class="values members" id="values">
+        <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="scala.AnyRef#!=" data-isabs="false">
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -90,11 +119,12 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name" title="gt4s: $bang$eq">!=</span><span class="params">(<span name="arg0">arg0: AnyRef</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="scala.Any#!=" data-isabs="false">
+    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -102,11 +132,12 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name" title="gt4s: $bang$eq">!=</span><span class="params">(<span name="arg0">arg0: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li visbl="pub" name="scala.AnyRef###" data-isabs="false">
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
       <a id="##():Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -114,11 +145,12 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name" title="gt4s: $hash$hash">##</span><span class="params">()</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li visbl="pub" name="scala.AnyRef#==" data-isabs="false">
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:AnyRef):Boolean"></a>
       <a id="==(AnyRef):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -126,11 +158,12 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name" title="gt4s: $eq$eq">==</span><span class="params">(<span name="arg0">arg0: AnyRef</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="scala.Any#==" data-isabs="false">
+    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -138,47 +171,51 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name" title="gt4s: $eq$eq">==</span><span class="params">(<span name="arg0">arg0: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#DEFAULT_CONFIG" data-isabs="false">
-      <a id="DEFAULT_CONFIG:java.lang.String(&quot;com/day/jcr/vault/fs/config/defaultConfig-1.1.xml&quot;)"></a>
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#DEFAULT_CONFIG" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DEFAULT_CONFIG:String(&quot;com/day/jcr/vault/fs/config/defaultConfig-1.1.xml&quot;)"></a>
+      <a id="DEFAULT_CONFIG:String(&quot;com/day/jcr/vault/fs/config/defaultConfig-1.1.xml&quot;)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">DEFAULT_CONFIG</span><span class="result">: java.lang.String(&quot;com/day/jcr/vault/fs/config/defaultConfig-1.1.xml&quot;)</span>
+        <span class="name">DEFAULT_CONFIG</span><span class="result">: String(&quot;com/day/jcr/vault/fs/config/defaultConfig-1.1.xml&quot;)</span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.adamcin.vltpack.UsernameAware#DEFAULT_USER" data-isabs="false">
-      <a id="DEFAULT_USER:java.lang.String(&quot;admin&quot;)"></a>
+    </li><li name="net.adamcin.vltpack.UsernameAware#DEFAULT_USER" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DEFAULT_USER:String(&quot;admin&quot;)"></a>
+      <a id="DEFAULT_USER:String(&quot;admin&quot;)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">DEFAULT_USER</span><span class="result">: java.lang.String(&quot;admin&quot;)</span>
+        <span class="name">DEFAULT_USER</span><span class="result">: String(&quot;admin&quot;)</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.UsernameAware" class="extype" href="../UsernameAware.html">UsernameAware</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#DEFAULT_VAULT_SOURCE" data-isabs="false">
-      <a id="DEFAULT_VAULT_SOURCE:java.lang.String(&quot;${project.build.outputDirectory}/META-INF/vault&quot;)"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#DEFAULT_VAULT_SOURCE" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DEFAULT_VAULT_SOURCE:String(&quot;${project.build.outputDirectory}/META-INF/vault&quot;)"></a>
+      <a id="DEFAULT_VAULT_SOURCE:String(&quot;${project.build.outputDirectory}/META-INF/vault&quot;)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">DEFAULT_VAULT_SOURCE</span><span class="result">: java.lang.String(&quot;${project.build.outputDirectory}/META-INF/vault&quot;)</span>
+        <span class="name">DEFAULT_VAULT_SOURCE</span><span class="result">: String(&quot;${project.build.outputDirectory}/META-INF/vault&quot;)</span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="scala.Any#asInstanceOf" data-isabs="false">
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -186,11 +223,12 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: T0</span>
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.BundlePathParameters#bundleInstallPath" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.BundlePathParameters#bundleInstallPath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="bundleInstallPath:String"></a>
       <a id="bundleInstallPath:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -198,13 +236,14 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">bundleInstallPath</span><span class="result">: String</span>
+        <span class="name">bundleInstallPath</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set the JCR path where bundles will be installed for this project.</p><div class="fullcomment"><div class="comment cmt"><p>Set the JCR path where bundles will be installed for this project. Use a numeric suffix
 (as in &quot;/apps/myapp/install/30&quot;) to apply a felix start level configuration to the bundles
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.BundlePathParameters" class="extype" href="../BundlePathParameters.html">BundlePathParameters</a></dd></dl></div>
-    </li><li visbl="prt" name="scala.AnyRef#clone" data-isabs="false">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a></dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -212,14 +251,15 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: AnyRef</span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#configXml" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.OutputParameters#configXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="configXml:java.io.File"></a>
       <a id="configXml:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -227,11 +267,12 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">configXml</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">configXml</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.ResolvesArtifacts#copyToDir" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ResolvesArtifacts#copyToDir" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="copyToDir(dir:java.io.File,log:org.apache.maven.plugin.logging.Log)(artifact:org.apache.maven.artifact.Artifact):java.io.File"></a>
       <a id="copyToDir(File,Log)(Artifact):File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -239,11 +280,12 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">copyToDir</span><span class="params">(<span name="dir">dir: <span name="java.io.File" class="extype">File</span></span>, <span name="log">log: <span name="org.apache.maven.plugin.logging.Log" class="extype">Log</span></span>)</span><span class="params">(<span name="artifact">artifact: <span name="org.apache.maven.artifact.Artifact" class="extype">Artifact</span></span>)</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">copyToDir</span><span class="params">(<span name="dir">dir: <span class="extype" name="java.io.File">File</span></span>, <span name="log">log: <span class="extype" name="org.apache.maven.plugin.logging.Log">Log</span></span>)</span><span class="params">(<span name="artifact">artifact: <span class="extype" name="org.apache.maven.artifact.Artifact">Artifact</span></span>)</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.ResolvesArtifacts" class="extype" href="../ResolvesArtifacts.html">ResolvesArtifacts</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#createDefinition" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#createDefinition" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createDefinition:Boolean"></a>
       <a id="createDefinition:Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -251,26 +293,28 @@ and the package definition</p></div><dl class="attributes block"> <dt>Annotation
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">createDefinition</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+        <span class="name">createDefinition</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set to true to generate the JCR Package Definition.</p><div class="fullcomment"><div class="comment cmt"><p>Set to true to generate the JCR Package Definition. This is necessary if thumbnails, screenshots, or
 definition properties need to be set within the package. Package creation may take significantly more
 time than normal if this is set because a Jackrabbit TransientRepository will need to be started
 </p></div></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.BundlePathParameters#defaultBundleInstallPath" data-isabs="false">
-      <a id="defaultBundleInstallPath:java.lang.String(&quot;/apps/bundles/install/30&quot;)"></a>
+    </li><li name="net.adamcin.vltpack.BundlePathParameters#defaultBundleInstallPath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="defaultBundleInstallPath:String(&quot;/apps/bundles/install/30&quot;)"></a>
+      <a id="defaultBundleInstallPath:String(&quot;/apps/bundles/install/30&quot;)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">defaultBundleInstallPath</span><span class="result">: java.lang.String(&quot;/apps/bundles/install/30&quot;)</span>
+        <span class="name">defaultBundleInstallPath</span><span class="result">: String(&quot;/apps/bundles/install/30&quot;)</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.BundlePathParameters" class="extype" href="../BundlePathParameters.html">BundlePathParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#definitionDirectory" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#definitionDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="definitionDirectory:java.io.File"></a>
       <a id="definitionDirectory:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -278,25 +322,27 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">definitionDirectory</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">definitionDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#definitionProperties" data-isabs="false">
-      <a id="definitionProperties:Map[String, String]"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#definitionProperties" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="definitionProperties:java.util.Map[String,String]"></a>
+      <a id="definitionProperties:Map[String,String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">definitionProperties</span><span class="result">: <span name="java.util.Map" class="extype">Map</span>[String, String]</span>
+        <span class="name">definitionProperties</span><span class="result">: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Properties to be added to the JCR Package Definition node.</p><div class="fullcomment"><div class="comment cmt"><p>Properties to be added to the JCR Package Definition node. These will NOT be added to the properties.xml file.
 (requires createDefinition to be set to true)
 </p></div></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#definitionXml" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.OutputParameters#definitionXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="definitionXml:java.io.File"></a>
       <a id="definitionXml:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -304,11 +350,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">definitionXml</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">definitionXml</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.ResolvesArtifacts#dependencies" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ResolvesArtifacts#dependencies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dependencies:List[org.apache.maven.artifact.Artifact]"></a>
       <a id="dependencies:List[Artifact]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -316,11 +363,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">dependencies</span><span class="result">: List[<span name="org.apache.maven.artifact.Artifact" class="extype">Artifact</span>]</span>
+        <span class="name">dependencies</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="org.apache.maven.artifact.Artifact">Artifact</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.ResolvesArtifacts" class="extype" href="../ResolvesArtifacts.html">ResolvesArtifacts</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.PackageDependencies#dependsOn" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.PackageDependencies#dependsOn" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dependsOn:List[com.day.jcr.vault.packaging.Dependency]"></a>
       <a id="dependsOn:List[Dependency]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -328,11 +376,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">dependsOn</span><span class="result">: List[<span name="com.day.jcr.vault.packaging.Dependency" class="extype">Dependency</span>]</span>
+        <span class="name">dependsOn</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="com.day.jcr.vault.packaging.Dependency">Dependency</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.PackageDependencies" class="extype" href="../PackageDependencies.html">PackageDependencies</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#embedBundlesDirectory" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../PackageDependencies.html" class="extype" name="net.adamcin.vltpack.PackageDependencies">PackageDependencies</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#embedBundlesDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="embedBundlesDirectory:java.io.File"></a>
       <a id="embedBundlesDirectory:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -340,13 +389,14 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">embedBundlesDirectory</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">embedBundlesDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">directory containing resolved bundles
 </p><div class="fullcomment"><div class="comment cmt"><p>directory containing resolved bundles
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#embedPackagesDirectory" data-isabs="false">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#embedPackagesDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="embedPackagesDirectory:java.io.File"></a>
       <a id="embedPackagesDirectory:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -354,13 +404,14 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">embedPackagesDirectory</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">embedPackagesDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">directory containing resolved packages
 </p><div class="fullcomment"><div class="comment cmt"><p>directory containing resolved packages
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="scala.AnyRef#eq" data-isabs="false">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -368,11 +419,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: AnyRef</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="scala.AnyRef#equals" data-isabs="false">
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
       <a id="equals(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -380,11 +432,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#execute" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#execute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="execute():Unit"></a>
       <a id="execute():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -392,11 +445,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">execute</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">execute</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.mojo.VaultInfMojo" class="extype" href="">VaultInfMojo</a> → <a name="net.adamcin.vltpack.mojo.BaseMojo" class="extype" href="BaseMojo.html">BaseMojo</a> → Mojo</dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#filterXml" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="net.adamcin.vltpack.mojo.VaultInfMojo">VaultInfMojo</a> → <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> → Mojo</dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#filterXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="filterXml:java.io.File"></a>
       <a id="filterXml:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -404,11 +458,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">filterXml</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">filterXml</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="prt" name="scala.AnyRef#finalize" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -416,14 +471,15 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#generateConfigXml" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#generateConfigXml" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="generateConfigXml():Unit"></a>
       <a id="generateConfigXml():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -431,11 +487,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">generateConfigXml</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">generateConfigXml</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#generateDefinition" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#generateDefinition" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="generateDefinition():Unit"></a>
       <a id="generateDefinition():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -443,11 +500,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">generateDefinition</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">generateDefinition</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#generateFilterXml" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#generateFilterXml" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="generateFilterXml():Unit"></a>
       <a id="generateFilterXml():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -455,11 +513,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">generateFilterXml</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">generateFilterXml</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#generatePropertiesXml" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#generatePropertiesXml" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="generatePropertiesXml():Unit"></a>
       <a id="generatePropertiesXml():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -467,11 +526,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">generatePropertiesXml</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">generatePropertiesXml</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.adamcin.vltpack.BundlePathParameters#getBundlePath" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.BundlePathParameters#getBundlePath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getBundlePath(file:java.io.File):String"></a>
       <a id="getBundlePath(File):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -479,11 +539,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getBundlePath</span><span class="params">(<span name="file">file: <span name="java.io.File" class="extype">File</span></span>)</span><span class="result">: String</span>
+        <span class="name">getBundlePath</span><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.BundlePathParameters" class="extype" href="../BundlePathParameters.html">BundlePathParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.BundlePathParameters#getBundleRepoPath" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.BundlePathParameters#getBundleRepoPath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getBundleRepoPath(filename:String):String"></a>
       <a id="getBundleRepoPath(String):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -491,23 +552,25 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getBundleRepoPath</span><span class="params">(<span name="filename">filename: String</span>)</span><span class="result">: String</span>
+        <span class="name">getBundleRepoPath</span><span class="params">(<span name="filename">filename: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.BundlePathParameters" class="extype" href="../BundlePathParameters.html">BundlePathParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="scala.AnyRef#getClass" data-isabs="false">
-      <a id="getClass():java.lang.Class[_]"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a></dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getClass</span><span class="params">()</span><span class="result">: java.lang.Class[_]</span>
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#getExistingDir" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.OutputParameters#getExistingDir" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getExistingDir(file:java.io.File):java.io.File"></a>
       <a id="getExistingDir(File):File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -515,11 +578,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getExistingDir</span><span class="params">(<span name="file">file: <span name="java.io.File" class="extype">File</span></span>)</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">getExistingDir</span><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#getFakePackage" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#getFakePackage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getFakePackage:com.day.jcr.vault.packaging.VaultPackage"></a>
       <a id="getFakePackage:VaultPackage"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -527,11 +591,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getFakePackage</span><span class="result">: <span name="com.day.jcr.vault.packaging.VaultPackage" class="extype">VaultPackage</span></span>
+        <span class="name">getFakePackage</span><span class="result">: <span class="extype" name="com.day.jcr.vault.packaging.VaultPackage">VaultPackage</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.adamcin.vltpack.IdentifiesPackages#getIdFromProperties" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.IdentifiesPackages#getIdFromProperties" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getIdFromProperties(props:java.util.Properties,defaultId:Option[com.day.jcr.vault.packaging.PackageId]):Option[com.day.jcr.vault.packaging.PackageId]"></a>
       <a id="getIdFromProperties(Properties,Option[PackageId]):Option[PackageId]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -539,11 +604,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getIdFromProperties</span><span class="params">(<span name="props">props: <span name="java.util.Properties" class="extype">Properties</span></span>, <span name="defaultId">defaultId: <span name="scala.Option" class="extype">Option</span>[<span name="com.day.jcr.vault.packaging.PackageId" class="extype">PackageId</span>]</span>)</span><span class="result">: <span name="scala.Option" class="extype">Option</span>[<span name="com.day.jcr.vault.packaging.PackageId" class="extype">PackageId</span>]</span>
+        <span class="name">getIdFromProperties</span><span class="params">(<span name="props">props: <span class="extype" name="java.util.Properties">Properties</span></span>, <span name="defaultId">defaultId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.IdentifiesPackages" class="extype" href="../IdentifiesPackages.html">IdentifiesPackages</a></dd></dl></div>
-    </li><li visbl="pub" name="org.apache.maven.plugin.AbstractMojo#getLog" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></dd></dl></div>
+    </li><li name="org.apache.maven.plugin.AbstractMojo#getLog" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getLog():org.apache.maven.plugin.logging.Log"></a>
       <a id="getLog():Log"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -551,11 +617,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getLog</span><span class="params">()</span><span class="result">: <span name="org.apache.maven.plugin.logging.Log" class="extype">Log</span></span>
+        <span class="name">getLog</span><span class="params">()</span><span class="result">: <span class="extype" name="org.apache.maven.plugin.logging.Log">Log</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractMojo → Mojo</dd></dl></div>
-    </li><li visbl="pub" name="org.apache.maven.plugin.AbstractMojo#getPluginContext" data-isabs="false">
+    </li><li name="org.apache.maven.plugin.AbstractMojo#getPluginContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getPluginContext():java.util.Map"></a>
       <a id="getPluginContext():Map"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -563,11 +630,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getPluginContext</span><span class="params">()</span><span class="result">: <span name="java.util.Map" class="extype">Map</span></span>
+        <span class="name">getPluginContext</span><span class="params">()</span><span class="result">: <span class="extype" name="java.util.Map">Map</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractMojo → ContextEnabled</dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#getResourceFromClasspath" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#getResourceFromClasspath" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getResourceFromClasspath(name:String):scalax.io.managed.InputStreamResource[java.io.InputStream]"></a>
       <a id="getResourceFromClasspath(String):InputStreamResource[InputStream]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -575,11 +643,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getResourceFromClasspath</span><span class="params">(<span name="name">name: String</span>)</span><span class="result">: <span name="scalax.io.managed.InputStreamResource" class="extype">InputStreamResource</span>[<span name="java.io.InputStream" class="extype">InputStream</span>]</span>
+        <span class="name">getResourceFromClasspath</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scalax.io.managed.InputStreamResource">InputStreamResource</span>[<span class="extype" name="java.io.InputStream">InputStream</span>]</span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="scala.AnyRef#hashCode" data-isabs="false">
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -587,11 +656,25 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.IdentifiesPackages#identifyPackage" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.OutputParameters#hooksDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hooksDirectory:java.io.File"></a>
+      <a id="hooksDirectory:File"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hooksDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.IdentifiesPackages#identifyPackage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="identifyPackage(file:java.io.File):Option[com.day.jcr.vault.packaging.PackageId]"></a>
       <a id="identifyPackage(File):Option[PackageId]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -599,11 +682,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">identifyPackage</span><span class="params">(<span name="file">file: <span name="java.io.File" class="extype">File</span></span>)</span><span class="result">: <span name="scala.Option" class="extype">Option</span>[<span name="com.day.jcr.vault.packaging.PackageId" class="extype">PackageId</span>]</span>
+        <span class="name">identifyPackage</span><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.IdentifiesPackages" class="extype" href="../IdentifiesPackages.html">IdentifiesPackages</a></dd></dl></div>
-    </li><li visbl="pub" name="scala.Any#isInstanceOf" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -611,11 +695,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li visbl="pub" name="scala.AnyRef#ne" data-isabs="false">
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -623,11 +708,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: AnyRef</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="scala.AnyRef#notify" data-isabs="false">
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -635,11 +721,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">notify</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="scala.AnyRef#notifyAll" data-isabs="false">
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
       <a id="notifyAll():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -647,11 +734,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#outputDirectory" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.OutputParameters#outputDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="outputDirectory:java.io.File"></a>
       <a id="outputDirectory:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -659,13 +747,14 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">outputDirectory</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">outputDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">target directory
 </p><div class="fullcomment"><div class="comment cmt"><p>target directory
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.PackageDependencies#packageDependencies" data-isabs="false">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.PackageDependencies#packageDependencies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="packageDependencies:java.util.List[String]"></a>
       <a id="packageDependencies:List[String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -673,13 +762,14 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">packageDependencies</span><span class="result">: <span name="java.util.List" class="extype">List</span>[String]</span>
+        <span class="name">packageDependencies</span><span class="result">: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">List of artifactIds matching dependencies that are valid vault packages
 </p><div class="fullcomment"><div class="comment cmt"><p>List of artifactIds matching dependencies that are valid vault packages
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.PackageDependencies" class="extype" href="../PackageDependencies.html">PackageDependencies</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.PackageDependencies#packageDependencyArtifacts" data-isabs="false">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../PackageDependencies.html" class="extype" name="net.adamcin.vltpack.PackageDependencies">PackageDependencies</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.PackageDependencies#packageDependencyArtifacts" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="packageDependencyArtifacts:Stream[org.apache.maven.artifact.Artifact]"></a>
       <a id="packageDependencyArtifacts:Stream[Artifact]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -687,11 +777,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">packageDependencyArtifacts</span><span class="result">: Stream[<span name="org.apache.maven.artifact.Artifact" class="extype">Artifact</span>]</span>
+        <span class="name">packageDependencyArtifacts</span><span class="result">: <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="org.apache.maven.artifact.Artifact">Artifact</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.PackageDependencies" class="extype" href="../PackageDependencies.html">PackageDependencies</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.ResolvesArtifacts#proj" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../PackageDependencies.html" class="extype" name="net.adamcin.vltpack.PackageDependencies">PackageDependencies</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ResolvesArtifacts#proj" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="proj:org.apache.maven.project.MavenProject"></a>
       <a id="proj:MavenProject"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -699,11 +790,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">proj</span><span class="result">: <span name="org.apache.maven.project.MavenProject" class="extype">MavenProject</span></span>
+        <span class="name">proj</span><span class="result">: <span class="extype" name="org.apache.maven.project.MavenProject">MavenProject</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.ResolvesArtifacts" class="extype" href="../ResolvesArtifacts.html">ResolvesArtifacts</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.RequiresProject#project" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.RequiresProject#project" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="project:org.apache.maven.project.MavenProject"></a>
       <a id="project:MavenProject"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -711,24 +803,26 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">project</span><span class="result">: <span name="org.apache.maven.project.MavenProject" class="extype">MavenProject</span></span>
+        <span class="name">project</span><span class="result">: <span class="extype" name="org.apache.maven.project.MavenProject">MavenProject</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.RequiresProject" class="extype" href="../RequiresProject.html">RequiresProject</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#properties" data-isabs="false">
-      <a id="properties:Map[String, String]"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#properties" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="properties:java.util.Map[String,String]"></a>
+      <a id="properties:Map[String,String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">properties</span><span class="result">: <span name="java.util.Map" class="extype">Map</span>[String, String]</span>
+        <span class="name">properties</span><span class="result">: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Package properties that will be set in the properties.</p><div class="fullcomment"><div class="comment cmt"><p>Package properties that will be set in the properties.xml file
 </p></div></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.IdentifiesPackages#propertiesEntry" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.IdentifiesPackages#propertiesEntry" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="propertiesEntry:String"></a>
       <a id="propertiesEntry:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -736,11 +830,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">propertiesEntry</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
+        <span class="name">propertiesEntry</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.IdentifiesPackages" class="extype" href="../IdentifiesPackages.html">IdentifiesPackages</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#propertiesXml" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#propertiesXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="propertiesXml:java.io.File"></a>
       <a id="propertiesXml:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -748,11 +843,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">propertiesXml</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">propertiesXml</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#relativeToBundleInstallPath" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#relativeToBundleInstallPath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="relativeToBundleInstallPath(bundle:java.io.File):String"></a>
       <a id="relativeToBundleInstallPath(File):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -760,11 +856,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">relativeToBundleInstallPath</span><span class="params">(<span name="bundle">bundle: <span name="java.io.File" class="extype">File</span></span>)</span><span class="result">: String</span>
+        <span class="name">relativeToBundleInstallPath</span><span class="params">(<span name="bundle">bundle: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.ResolvesArtifacts#repositoryRequest" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ResolvesArtifacts#repositoryRequest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="repositoryRequest:org.apache.maven.artifact.repository.RepositoryRequest"></a>
       <a id="repositoryRequest:RepositoryRequest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -772,11 +869,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">repositoryRequest</span><span class="result">: <span name="org.apache.maven.artifact.repository.RepositoryRequest" class="extype">RepositoryRequest</span></span>
+        <span class="name">repositoryRequest</span><span class="result">: <span class="extype" name="org.apache.maven.artifact.repository.RepositoryRequest">RepositoryRequest</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.ResolvesArtifacts" class="extype" href="../ResolvesArtifacts.html">ResolvesArtifacts</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.ResolvesArtifacts#repositorySystem" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ResolvesArtifacts#repositorySystem" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="repositorySystem:org.apache.maven.repository.RepositorySystem"></a>
       <a id="repositorySystem:RepositorySystem"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -784,11 +882,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">repositorySystem</span><span class="result">: <span name="org.apache.maven.repository.RepositorySystem" class="extype">RepositorySystem</span></span>
+        <span class="name">repositorySystem</span><span class="result">: <span class="extype" name="org.apache.maven.repository.RepositorySystem">RepositorySystem</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.ResolvesArtifacts" class="extype" href="../ResolvesArtifacts.html">ResolvesArtifacts</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.ResolvesArtifacts#resolveArtifacts" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ResolvesArtifacts#resolveArtifacts" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="resolveArtifacts(artifacts:Stream[org.apache.maven.artifact.Artifact]):Stream[org.apache.maven.artifact.Artifact]"></a>
       <a id="resolveArtifacts(Stream[Artifact]):Stream[Artifact]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -796,11 +895,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">resolveArtifacts</span><span class="params">(<span name="artifacts">artifacts: Stream[<span name="org.apache.maven.artifact.Artifact" class="extype">Artifact</span>]</span>)</span><span class="result">: Stream[<span name="org.apache.maven.artifact.Artifact" class="extype">Artifact</span>]</span>
+        <span class="name">resolveArtifacts</span><span class="params">(<span name="artifacts">artifacts: <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="org.apache.maven.artifact.Artifact">Artifact</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="org.apache.maven.artifact.Artifact">Artifact</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.ResolvesArtifacts" class="extype" href="../ResolvesArtifacts.html">ResolvesArtifacts</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.ResolvesArtifacts#resolveByArtifactIds" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ResolvesArtifacts#resolveByArtifactIds" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="resolveByArtifactIds(artifactIds:Set[String]):Stream[org.apache.maven.artifact.Artifact]"></a>
       <a id="resolveByArtifactIds(Set[String]):Stream[Artifact]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -808,11 +908,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">resolveByArtifactIds</span><span class="params">(<span name="artifactIds">artifactIds: Set[String]</span>)</span><span class="result">: Stream[<span name="org.apache.maven.artifact.Artifact" class="extype">Artifact</span>]</span>
+        <span class="name">resolveByArtifactIds</span><span class="params">(<span name="artifactIds">artifactIds: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="org.apache.maven.artifact.Artifact">Artifact</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.ResolvesArtifacts" class="extype" href="../ResolvesArtifacts.html">ResolvesArtifacts</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.ResolvesArtifacts#resolveByFilter" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ResolvesArtifacts#resolveByFilter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="resolveByFilter(filter:String):Stream[org.apache.maven.artifact.Artifact]"></a>
       <a id="resolveByFilter(String):Stream[Artifact]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -820,11 +921,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">resolveByFilter</span><span class="params">(<span name="filter">filter: String</span>)</span><span class="result">: Stream[<span name="org.apache.maven.artifact.Artifact" class="extype">Artifact</span>]</span>
+        <span class="name">resolveByFilter</span><span class="params">(<span name="filter">filter: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="org.apache.maven.artifact.Artifact">Artifact</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.ResolvesArtifacts" class="extype" href="../ResolvesArtifacts.html">ResolvesArtifacts</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.ResolvesArtifacts#resolveByGATCV" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ResolvesArtifacts#resolveByGATCV" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="resolveByGATCV(groupId:String,artifactId:String,artifactType:String,classifier:String,version:String):Option[org.apache.maven.artifact.Artifact]"></a>
       <a id="resolveByGATCV(String,String,String,String,String):Option[Artifact]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -832,11 +934,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">resolveByGATCV</span><span class="params">(<span name="groupId">groupId: String</span>, <span name="artifactId">artifactId: String</span>, <span name="artifactType">artifactType: String</span>, <span name="classifier">classifier: String</span>, <span name="version">version: String</span>)</span><span class="result">: <span name="scala.Option" class="extype">Option</span>[<span name="org.apache.maven.artifact.Artifact" class="extype">Artifact</span>]</span>
+        <span class="name">resolveByGATCV</span><span class="params">(<span name="groupId">groupId: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="artifactId">artifactId: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="artifactType">artifactType: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="classifier">classifier: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="version">version: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.maven.artifact.Artifact">Artifact</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.ResolvesArtifacts" class="extype" href="../ResolvesArtifacts.html">ResolvesArtifacts</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#screenshots" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#screenshots" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="screenshots:java.util.List[java.io.File]"></a>
       <a id="screenshots:List[File]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -844,13 +947,14 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">screenshots</span><span class="result">: <span name="java.util.List" class="extype">List</span>[<span name="java.io.File" class="extype">File</span>]</span>
+        <span class="name">screenshots</span><span class="result">: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="java.io.File">File</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Specify a list of PNG files that will be included as package screenshots in the CRX Package Manager
 (requires createDefinition to be set to true)
 </p>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.BaseMojo#session" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.BaseMojo#session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="session:org.apache.maven.execution.MavenSession"></a>
       <a id="session:MavenSession"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -858,11 +962,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">session</span><span class="result">: <span name="org.apache.maven.execution.MavenSession" class="extype">MavenSession</span></span>
+        <span class="name">session</span><span class="result">: <span class="extype" name="org.apache.maven.execution.MavenSession">MavenSession</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.mojo.BaseMojo" class="extype" href="BaseMojo.html">BaseMojo</a></dd></dl></div>
-    </li><li visbl="pub" name="org.apache.maven.plugin.AbstractMojo#setLog" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
+    </li><li name="org.apache.maven.plugin.AbstractMojo#setLog" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setLog(x$1:org.apache.maven.plugin.logging.Log):Unit"></a>
       <a id="setLog(Log):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -870,11 +975,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setLog</span><span class="params">(<span name="arg0">arg0: <span name="org.apache.maven.plugin.logging.Log" class="extype">Log</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">setLog</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="org.apache.maven.plugin.logging.Log">Log</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractMojo → Mojo</dd></dl></div>
-    </li><li visbl="pub" name="org.apache.maven.plugin.AbstractMojo#setPluginContext" data-isabs="false">
+    </li><li name="org.apache.maven.plugin.AbstractMojo#setPluginContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setPluginContext(x$1:java.util.Map):Unit"></a>
       <a id="setPluginContext(Map):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -882,11 +988,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setPluginContext</span><span class="params">(<span name="arg0">arg0: <span name="java.util.Map" class="extype">Map</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">setPluginContext</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.util.Map">Map</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractMojo → ContextEnabled</dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.BaseMojo#settings" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.mojo.BaseMojo#settings" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="settings:org.apache.maven.settings.Settings"></a>
       <a id="settings:Settings"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -894,11 +1001,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">settings</span><span class="result">: <span name="org.apache.maven.settings.Settings" class="extype">Settings</span></span>
+        <span class="name">settings</span><span class="result">: <span class="extype" name="org.apache.maven.settings.Settings">Settings</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.mojo.BaseMojo" class="extype" href="BaseMojo.html">BaseMojo</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#settingsXml" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#settingsXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="settingsXml:java.io.File"></a>
       <a id="settingsXml:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -906,11 +1014,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">settingsXml</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">settingsXml</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#signature" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#signature" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="signature:String"></a>
       <a id="signature:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -918,23 +1027,25 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">signature</span><span class="result">: String</span>
+        <span class="name">signature</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
-      <a id="synchronized[T0](⇒ T0):T0"></a>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ T0</span>)</span><span class="result">: T0</span>
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#targetFile" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.OutputParameters#targetFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="targetFile:java.io.File"></a>
       <a id="targetFile:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -942,13 +1053,14 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">targetFile</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">targetFile</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">target vltpack file
 </p><div class="fullcomment"><div class="comment cmt"><p>target vltpack file
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#thumbnail" data-isabs="false">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#thumbnail" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="thumbnail:java.io.File"></a>
       <a id="thumbnail:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -956,13 +1068,14 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">thumbnail</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">thumbnail</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Specify a PNG file that will be used as the thumbnail for the package in the CRX Package Manager
 (requires createDefinition to be set to true)
 </p>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#thumbnailDirectory" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.OutputParameters#thumbnailDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="thumbnailDirectory:java.io.File"></a>
       <a id="thumbnailDirectory:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -970,11 +1083,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">thumbnailDirectory</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">thumbnailDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#thumbnailFileDirectory" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#thumbnailFileDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="thumbnailFileDirectory:java.io.File"></a>
       <a id="thumbnailFileDirectory:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -982,11 +1096,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">thumbnailFileDirectory</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">thumbnailFileDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#thumbnailFileXml" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#thumbnailFileXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="thumbnailFileXml:java.io.File"></a>
       <a id="thumbnailFileXml:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -994,11 +1109,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">thumbnailFileXml</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">thumbnailFileXml</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="scala.AnyRef#toString" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
       <a id="toString():String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1006,11 +1122,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#transientRepoDirectory" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.OutputParameters#transientRepoDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transientRepoDirectory:java.io.File"></a>
       <a id="transientRepoDirectory:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1018,11 +1135,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">transientRepoDirectory</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">transientRepoDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.UsernameAware#user" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.UsernameAware#user" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="user:String"></a>
       <a id="user:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1030,13 +1148,14 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">user</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
+        <span class="name">user</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Specify the CQ username associated with package creation and installation
 </p><div class="fullcomment"><div class="comment cmt"><p>Specify the CQ username associated with package creation and installation
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.UsernameAware" class="extype" href="../UsernameAware.html">UsernameAware</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#vaultDirectory" data-isabs="false">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#vaultDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="vaultDirectory:java.io.File"></a>
       <a id="vaultDirectory:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1044,11 +1163,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">vaultDirectory</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">vaultDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#vaultInfDirectory" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#vaultInfDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="vaultInfDirectory:java.io.File"></a>
       <a id="vaultInfDirectory:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1056,11 +1176,12 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">vaultInfDirectory</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">vaultInfDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#vaultInfMetaInfDirectory" data-isabs="false">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#vaultInfMetaInfDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="vaultInfMetaInfDirectory:java.io.File"></a>
       <a id="vaultInfMetaInfDirectory:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1068,12 +1189,13 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">vaultInfMetaInfDirectory</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">vaultInfMetaInfDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">vault-inf-generated META-INF/vault/.</p><div class="fullcomment"><div class="comment cmt"><p>vault-inf-generated META-INF/vault/... resources
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="net.adamcin.vltpack.mojo.VaultInfMojo#vaultSource" data-isabs="false">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.VaultInfMojo#vaultSource" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="vaultSource:java.io.File"></a>
       <a id="vaultSource:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1081,12 +1203,13 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">vaultSource</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">vaultSource</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Source folder for existing meta info files, such as are created and managed by the VLT working copy
 </p>
-    </li><li visbl="pub" name="net.adamcin.vltpack.OutputParameters#vltpackDirectory" data-isabs="false">
+    </li><li name="net.adamcin.vltpack.OutputParameters#vltpackDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="vltpackDirectory:java.io.File"></a>
       <a id="vltpackDirectory:File"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1094,13 +1217,14 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">vltpackDirectory</span><span class="result">: <span name="java.io.File" class="extype">File</span></span>
+        <span class="name">vltpackDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">directory containing vltpack-generated files
 </p><div class="fullcomment"><div class="comment cmt"><p>directory containing vltpack-generated files
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></dd></dl></div>
-    </li><li visbl="pub" name="scala.AnyRef#wait" data-isabs="false">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1108,14 +1232,15 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wait</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="scala.AnyRef#wait" data-isabs="false">
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
       <a id="wait(Long,Int):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1123,14 +1248,15 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span name="scala.Long" class="extype">Long</span></span>, <span name="arg1">arg1: <span name="scala.Int" class="extype">Int</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="scala.AnyRef#wait" data-isabs="false">
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
       <a id="wait(Long):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1138,7 +1264,7 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span name="scala.Long" class="extype">Long</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -1149,35 +1275,45 @@ time than normal if this is set because a Jackrabbit TransientRepository will ne
             </div>
 
         
+
+        
         </div>
 
         <div id="inheritedMembers">
-        <div name="net.adamcin.vltpack.PackageDependencies" class="parent">
-              <h3>Inherited from <a name="net.adamcin.vltpack.PackageDependencies" class="extype" href="../PackageDependencies.html">PackageDependencies</a></h3>
-            </div><div name="net.adamcin.vltpack.ResolvesArtifacts" class="parent">
-              <h3>Inherited from <a name="net.adamcin.vltpack.ResolvesArtifacts" class="extype" href="../ResolvesArtifacts.html">ResolvesArtifacts</a></h3>
-            </div><div name="net.adamcin.vltpack.IdentifiesPackages" class="parent">
-              <h3>Inherited from <a name="net.adamcin.vltpack.IdentifiesPackages" class="extype" href="../IdentifiesPackages.html">IdentifiesPackages</a></h3>
-            </div><div name="net.adamcin.vltpack.BundlePathParameters" class="parent">
-              <h3>Inherited from <a name="net.adamcin.vltpack.BundlePathParameters" class="extype" href="../BundlePathParameters.html">BundlePathParameters</a></h3>
-            </div><div name="net.adamcin.vltpack.OutputParameters" class="parent">
-              <h3>Inherited from <a name="net.adamcin.vltpack.OutputParameters" class="extype" href="../OutputParameters.html">OutputParameters</a></h3>
-            </div><div name="net.adamcin.vltpack.RequiresProject" class="parent">
-              <h3>Inherited from <a name="net.adamcin.vltpack.RequiresProject" class="extype" href="../RequiresProject.html">RequiresProject</a></h3>
-            </div><div name="net.adamcin.vltpack.UsernameAware" class="parent">
-              <h3>Inherited from <a name="net.adamcin.vltpack.UsernameAware" class="extype" href="../UsernameAware.html">UsernameAware</a></h3>
-            </div><div name="net.adamcin.vltpack.mojo.BaseMojo" class="parent">
-              <h3>Inherited from <a name="net.adamcin.vltpack.mojo.BaseMojo" class="extype" href="BaseMojo.html">BaseMojo</a></h3>
-            </div><div name="org.apache.maven.plugin.AbstractMojo" class="parent">
-              <h3>Inherited from <span name="org.apache.maven.plugin.AbstractMojo" class="extype">AbstractMojo</span></h3>
-            </div><div name="org.apache.maven.plugin.ContextEnabled" class="parent">
-              <h3>Inherited from <span name="org.apache.maven.plugin.ContextEnabled" class="extype">ContextEnabled</span></h3>
-            </div><div name="org.apache.maven.plugin.Mojo" class="parent">
-              <h3>Inherited from <span name="org.apache.maven.plugin.Mojo" class="extype">Mojo</span></h3>
-            </div><div name="scala.AnyRef" class="parent">
-              <h3>Inherited from AnyRef</h3>
-            </div><div name="scala.Any" class="parent">
-              <h3>Inherited from <span name="scala.Any" class="extype">Any</span></h3>
+        <div class="parent" name="net.adamcin.vltpack.PackageDependencies">
+              <h3>Inherited from <a href="../PackageDependencies.html" class="extype" name="net.adamcin.vltpack.PackageDependencies">PackageDependencies</a></h3>
+            </div><div class="parent" name="net.adamcin.vltpack.ResolvesArtifacts">
+              <h3>Inherited from <a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a></h3>
+            </div><div class="parent" name="net.adamcin.vltpack.IdentifiesPackages">
+              <h3>Inherited from <a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></h3>
+            </div><div class="parent" name="net.adamcin.vltpack.BundlePathParameters">
+              <h3>Inherited from <a href="../BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a></h3>
+            </div><div class="parent" name="net.adamcin.vltpack.OutputParameters">
+              <h3>Inherited from <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></h3>
+            </div><div class="parent" name="net.adamcin.vltpack.RequiresProject">
+              <h3>Inherited from <a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a></h3>
+            </div><div class="parent" name="net.adamcin.vltpack.UsernameAware">
+              <h3>Inherited from <a href="../UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a></h3>
+            </div><div class="parent" name="net.adamcin.vltpack.mojo.BaseMojo">
+              <h3>Inherited from <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></h3>
+            </div><div class="parent" name="org.apache.maven.plugin.AbstractMojo">
+              <h3>Inherited from <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span></h3>
+            </div><div class="parent" name="org.apache.maven.plugin.ContextEnabled">
+              <h3>Inherited from <span class="extype" name="org.apache.maven.plugin.ContextEnabled">ContextEnabled</span></h3>
+            </div><div class="parent" name="org.apache.maven.plugin.Mojo">
+              <h3>Inherited from <span class="extype" name="org.apache.maven.plugin.Mojo">Mojo</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
             </div>
         </div>
 
