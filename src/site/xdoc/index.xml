@@ -33,13 +33,17 @@
     <body>
         <section name="vltpack-maven-plugin">
             <p>
-                The vltpack-maven-plugin ...
+                The vltpack-maven-plugin is a tool for developers of Adobe CQ/CRX/Granite-based applications to
+                create content package artifacts from vlt working copies.
             </p>
+        </section>
+        <section name="Features">
+
         </section>
         <section name="Requirements">
             <ul>
                 <li>Maven 3.0</li>
-                <li>JDK 1.5</li>
+                <li>JDK 1.6</li>
                 <li><strong>vltpack-maven-plugin depends on proprietary Adobe libraries which are available in the public Adobe Nexus repository</strong></li>
             </ul>
         </section>

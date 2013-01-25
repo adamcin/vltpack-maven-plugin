@@ -87,8 +87,8 @@
     <properties>
         <maven.version>3.0</maven.version>
         <scala.version.major>2.10</scala.version.major>
-        <scala.version>${scala.version.major}.0</scala.version>
-        <scalamojo.version>0.6.0</scalamojo.version>
+        <scala.version>2.10.0</scala.version>
+        <scalamojo.version>0.7.0-SNAPSHOT</scalamojo.version>
         <vlt.version>2.4.28</vlt.version>
         <maven.compiler.source>1.5</maven.compiler.source>
         <maven.compiler.target>1.5</maven.compiler.target>
@@ -111,10 +111,10 @@
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.1.2</version>
                 <configuration>
                     <args>
-                        <arg>-target:jvm-1.5</arg>
+                        <arg>-target:jvm-1.6</arg>
                         <arg>-no-specialization</arg>
                         <arg>-deprecation</arg>
                     </args>
@@ -233,6 +233,11 @@
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-compiler</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-reflect</artifactId>
             <version>${scala.version}</version>
         </dependency>
 
