@@ -37,8 +37,28 @@
                 create content package artifacts from vlt working copies.
             </p>
         </section>
-        <section name="Features">
-
+        <section name="Design Priorities">
+            <ul>
+                <li>
+                    Enable consistent and reliable assembly of vault packages, and avoid interfering with the
+                    development process that produces the contents of those packages, with specific consideration
+                    given to Adobe's own instructions for development using the vlt tool.
+                </li>
+                <li>
+                    Support a test-driven maven lifecycle using the Sling JUnit integration test framework.
+                    Bundle and package deployment goals are mapped to the integration-test phase (not the install phase)
+                    so that maven install and deploy phases can be made dependent on successful test execution.
+                </li>
+                <li>
+                    Provide a consistent configuration model such that any two maven goals that do similar things
+                    will accept a similar set of configuration parameters.
+                </li>
+                <li>
+                    Support an iterative development process for the package artifact itself by exposing convenient
+                    property names for configuration values that are likely to vary for local development, so that
+                    maven profiles and command-line scripts may be reused across modules and across projects.
+                </li>
+            </ul>
         </section>
         <section name="Requirements">
             <ul>

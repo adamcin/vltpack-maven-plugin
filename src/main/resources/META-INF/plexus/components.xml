@@ -43,10 +43,12 @@
                             <prepare-package>
                                 net.adamcin:vltpack-maven-plugin:embed-bundles,
                                 net.adamcin:vltpack-maven-plugin:embed-packages,
-                                net.adamcin:vltpack-maven-plugin:embed-hooks,
-                                net.adamcin:vltpack-maven-plugin:vault-inf
+                                net.adamcin:vltpack-maven-plugin:embed-hooks
                             </prepare-package>
-                            <package>net.adamcin:vltpack-maven-plugin:package</package>
+                            <package>
+                                net.adamcin:vltpack-maven-plugin:vault-inf,
+                                net.adamcin:vltpack-maven-plugin:package
+                            </package>
                             <integration-test>
                                 net.adamcin:vltpack-maven-plugin:upload-dependencies,
                                 net.adamcin:vltpack-maven-plugin:upload

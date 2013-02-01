@@ -161,17 +161,19 @@ class VaultInfMojo
 
     listEmbedBundles(embedBundlesDirectory)(embedBundlesDirectory).foreach {
       (path) => {
-        val bundleFilterSet =
-        if (filter.covers(path)) {
-          filter.getCoveringFilterSet(path)
-        } else {
-          val set = new PathFilterSet(path)
-          set.addExclude(new DefaultPathFilter(Text.getRelativeParent(path, 1) + "(/.*)?"))
-          filter.getFilterSets.add(set)
-          set
-        }
+        if (!filter.contains(path)) {
+          val bundleFilterSet =
+            if (filter.covers(path)) {
+              filter.getCoveringFilterSet(path)
+            } else {
+              val set = new PathFilterSet(path)
+              set.addExclude(new DefaultPathFilter(Text.getRelativeParent(path, 1) + "(/.*)?"))
+              filter.getFilterSets.add(set)
+              set
+            }
 
-        bundleFilterSet.addInclude(new DefaultPathFilter(path))
+          bundleFilterSet.addInclude(new DefaultPathFilter(path))
+        }
       }
     }
 
