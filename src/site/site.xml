@@ -70,10 +70,10 @@
             <item name="ScalaDocs" href="scaladocs/index.html" />
         </menu>
         <menu name="How To">
-            <item name="VLT Pack and VLT" href="vltpack-and-vlt.html" />
+            <!--<item name="VLT Pack and VLT" href="vltpack-and-vlt.html" />-->
             <item name="Embed Dependencies" href="embedding-dependencies.html" />
-            <item name="Upload Packages to CQ" href="uploading-packages-to-cq.html" />
-            <item name="Upload OSGi Bundles to CQ" href="uploading-bundles-to-cq.html" />
+            <!--<item name="Upload Packages to CQ" href="uploading-packages-to-cq.html" />-->
+            <!--<item name="Upload OSGi Bundles to CQ" href="uploading-bundles-to-cq.html" />-->
         </menu>
         <menu ref="reports" />
         <menu ref="modules" />

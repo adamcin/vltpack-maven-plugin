@@ -164,7 +164,20 @@ class VaultInfMojo
         if (!filter.contains(path)) {
           val bundleFilterSet =
             if (filter.covers(path)) {
-              filter.getCoveringFilterSet(path)
+              val oldFs = filter.getCoveringFilterSet(path)
+              if (oldFs.isSealed) {
+                val newFs = new PathFilterSet(oldFs.getRoot)
+                newFs.setImportMode(oldFs.getImportMode)
+                oldFs.getEntries.foreach( e =>
+                  if (e.isInclude) newFs.addInclude(e.getFilter)
+                  else newFs.addExclude(e.getFilter)
+                )
+                filter.getFilterSets.remove(oldFs)
+                filter.getFilterSets.add(newFs)
+                newFs
+              } else {
+                oldFs
+              }
             } else {
               val set = new PathFilterSet(path)
               set.addExclude(new DefaultPathFilter(Text.getRelativeParent(path, 1) + "(/.*)?"))
@@ -181,7 +194,20 @@ class VaultInfMojo
     if (embedPackages.size > 0) {
       val packageFilterSet =
         if (filter.covers(PackageId.ETC_PACKAGES)) {
-          filter.getCoveringFilterSet(PackageId.ETC_PACKAGES)
+          val oldFs = filter.getCoveringFilterSet(PackageId.ETC_PACKAGES)
+          if (oldFs.isSealed) {
+            val newFs = new PathFilterSet(oldFs.getRoot)
+            newFs.setImportMode(oldFs.getImportMode)
+            oldFs.getEntries.foreach( e =>
+              if (e.isInclude) newFs.addInclude(e.getFilter)
+              else newFs.addExclude(e.getFilter)
+            )
+            filter.getFilterSets.remove(oldFs)
+            filter.getFilterSets.add(newFs)
+            newFs
+          } else {
+            oldFs
+          }
         } else {
           val set = new PathFilterSet(PackageId.ETC_PACKAGES)
           set.addExclude(new DefaultPathFilter(PackageId.ETC_PACKAGES + "(/.*)?"))
