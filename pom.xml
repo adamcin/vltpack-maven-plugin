@@ -204,26 +204,6 @@
         </plugins>
     </build>
 
-    <!--
-    this plugin is specifically designed to create artifacts for installation on Adobe's non-free CRX
-    application platform, and thus depends on some proprietary libraries, namely, the vault-vlt and
-    com.day.jcr.vault libraries. These are only available from Adobe's public repository.
-    -->
-    <repositories>
-        <repository>
-            <id>adobe-public-releases</id>
-            <name>Adobe Public Repository</name>
-            <url>http://repo.adobe.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
