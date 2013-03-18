@@ -38,7 +38,7 @@
     <groupId>net.adamcin</groupId>
     <artifactId>vltpack-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>0.6.6</version>
+    <version>0.7.0-SNAPSHOT</version>
 
     <inceptionYear>2012</inceptionYear>
 
