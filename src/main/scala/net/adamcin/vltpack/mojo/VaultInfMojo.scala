@@ -35,7 +35,7 @@ import com.day.jcr.vault.fs.config.{MetaInf, DefaultMetaInf, DefaultWorkspaceFil
 import com.day.jcr.vault.fs.api.PathFilterSet
 import com.day.jcr.vault.fs.filter.DefaultPathFilter
 import org.apache.jackrabbit.util.ISO8601
-import javax.jcr.{SimpleCredentials, Session}
+import javax.jcr.{Node, SimpleCredentials, Session}
 import org.apache.jackrabbit.core.TransientRepository
 import com.day.jcr.vault.packaging.impl.{JcrPackageDefinitionImpl, JcrPackageManagerImpl}
 import com.day.jcr.vault.fs.io
@@ -297,6 +297,14 @@ class VaultInfMojo
       val fakePack = getFakePackage
       val id = fakePack.getId
       val mgr = new JcrPackageManagerImpl(session)
+
+      Option(mgr.getPackageRoot(true)) flatMap {
+        (node: Node) => {
+          node.remove()
+          session.save()
+          Option(true)
+        }}
+
       val defPack = mgr.create(id.getGroup, id.getName, id.getVersionString)
       defPack.getDefinition.unwrap(fakePack, true, true)
 
