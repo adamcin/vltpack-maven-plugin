@@ -298,11 +298,10 @@ class VaultInfMojo
       val id = fakePack.getId
       val mgr = new JcrPackageManagerImpl(session)
 
-      Option(mgr.getPackageRoot(true)) flatMap {
+      Option(mgr.getPackageRoot(true)) foreach {
         (node: Node) => {
           node.remove()
           session.save()
-          Option(true)
         }}
 
       val defPack = mgr.create(id.getGroup, id.getName, id.getVersionString)
@@ -324,9 +323,8 @@ class VaultInfMojo
       defNode.setProperty("builtWith", signature)
       session.save()
 
-      Option(thumbnail) match {
-        case None => ()
-        case Some(thumb) => {
+      Option(thumbnail) foreach {
+        (thumb) => {
           val tNode = defNode.addNode("thumbnail.png", JcrConstants.NT_FILE)
           val tResource = tNode.addNode(JcrConstants.JCR_CONTENT, JcrConstants.NT_RESOURCE)
           tResource.setProperty(JcrConstants.JCR_MIMETYPE, "image/png")
