@@ -90,7 +90,8 @@ trait UploadsPackages extends HttpParameters {
   def existsOnServer(packageId: Option[PackageId]): Either[(Boolean, String),Throwable] = {
     packageId match {
       case Some(id) => {
-        val req = urlForPath(servicePath + id.getInstallationPath) << Map("cmd" -> "contents")
+        val pkgPath = id.getInstallationPath + ".zip"
+        val req = urlForPath(servicePath + pkgPath) << Map("cmd" -> "contents")
         val resp = Http(req)()
 
         if (isSuccess(req, resp)) {

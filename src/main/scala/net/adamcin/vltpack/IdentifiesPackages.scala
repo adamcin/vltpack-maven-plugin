@@ -56,7 +56,6 @@ object IdentifiesPackages {
  * @author Mark Adamcin
  */
 trait IdentifiesPackages {
-
   val propertiesEntry = "META-INF/vault/properties.xml"
 
   def identifyPackage(file: File): Option[PackageId] = {

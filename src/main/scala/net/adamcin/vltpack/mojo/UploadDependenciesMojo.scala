@@ -95,7 +95,7 @@ class UploadDependenciesMojo
             val doesntExist = force || (existsOnServer(id) match {
               case Right(t) => throw t
               case Left((success, msg)) => {
-                getLog.info("checking for installed package " + id.get.getInstallationPath + ": " + msg)
+                getLog.info("checking for installed package " + id.get.getInstallationPath + ".zip: " + msg)
                 !success
               }
             })
