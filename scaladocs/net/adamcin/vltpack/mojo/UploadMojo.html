@@ -291,20 +291,21 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="net.adamcin.vltpack.mojo.UploadMojo#autosave" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="net.adamcin.vltpack.UploadsPackages#autosave" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="autosave:Int"></a>
       <a id="autosave:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">var</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">autosave</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Change the autosave threshold for the install command
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Change the autosave threshold for the install command
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -460,15 +461,15 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="net.adamcin.vltpack.mojo.UploadMojo">UploadMojo</a> → <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> → Mojo</dd></dl></div>
     </li><li name="net.adamcin.vltpack.UploadsPackages#existsOnServer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="existsOnServer(packageId:Option[com.day.jcr.vault.packaging.PackageId]):Either[(Boolean,String),Throwable]"></a>
-      <a id="existsOnServer(Option[PackageId]):Either[(Boolean,String),Throwable]"></a>
+      <a id="existsOnServer(packageId:Option[com.day.jcr.vault.packaging.PackageId]):Either[Throwable,(Boolean,String)]"></a>
+      <a id="existsOnServer(Option[PackageId]):Either[Throwable,(Boolean,String)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">existsOnServer</span><span class="params">(<span name="packageId">packageId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[(<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>), <span class="extype" name="scala.Throwable">Throwable</span>]</span>
+        <span class="name">existsOnServer</span><span class="params">(<span name="packageId">packageId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Throwable">Throwable</span>, (<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
@@ -676,15 +677,15 @@ Does not affect the configured TCP port
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.UploadsPackages#installPackage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="installPackage(packageId:Option[com.day.jcr.vault.packaging.PackageId],recursive:Boolean,autosave:Int):Either[(Boolean,String),Throwable]"></a>
-      <a id="installPackage(Option[PackageId],Boolean,Int):Either[(Boolean,String),Throwable]"></a>
+      <a id="installPackage(packageId:Option[com.day.jcr.vault.packaging.PackageId]):Either[Throwable,(Boolean,String)]"></a>
+      <a id="installPackage(Option[PackageId]):Either[Throwable,(Boolean,String)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">installPackage</span><span class="params">(<span name="packageId">packageId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>, <span name="recursive">recursive: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="autosave">autosave: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[(<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>), <span class="extype" name="scala.Throwable">Throwable</span>]</span>
+        <span class="name">installPackage</span><span class="params">(<span name="packageId">packageId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Throwable">Throwable</span>, (<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
@@ -797,15 +798,15 @@ Overrides any other HTTP proxy configuration
 </p><div class="fullcomment"><div class="comment cmt"><p>target directory
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.UploadsPackages#parseServiceResponse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="parseServiceResponse(respBody:String):Either[(Boolean,String),Throwable]"></a>
-      <a id="parseServiceResponse(String):Either[(Boolean,String),Throwable]"></a>
+      <a id="parseServiceResponse(respBody:String):Either[Throwable,(Boolean,String)]"></a>
+      <a id="parseServiceResponse(String):Either[Throwable,(Boolean,String)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">parseServiceResponse</span><span class="params">(<span name="respBody">respBody: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[(<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>), <span class="extype" name="scala.Throwable">Throwable</span>]</span>
+        <span class="name">parseServiceResponse</span><span class="params">(<span name="respBody">respBody: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Throwable">Throwable</span>, (<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
@@ -969,20 +970,21 @@ associated mojo parameter alternatives
       <p class="shortcomment cmt">The HTTP Proxy username
 </p><div class="fullcomment"><div class="comment cmt"><p>The HTTP Proxy username
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.mojo.UploadMojo#recursive" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="net.adamcin.vltpack.UploadsPackages#recursive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="recursive:Boolean"></a>
       <a id="recursive:Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">var</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">recursive</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Set to false to not install any embedded subpackages
-</p>
+      <p class="shortcomment cmt">Set to false to not install any subpackages that might be embedded within each dependency
+</p><div class="fullcomment"><div class="comment cmt"><p>Set to false to not install any subpackages that might be embedded within each dependency
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.OutputParameters#relativeToBundleInstallPath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="relativeToBundleInstallPath(bundle:java.io.File):String"></a>
       <a id="relativeToBundleInstallPath(File):String"></a>
@@ -1195,15 +1197,15 @@ associated mojo parameter alternatives
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.UploadsPackages#uploadPackage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="uploadPackage(packageId:Option[com.day.jcr.vault.packaging.PackageId],file:java.io.File,force:Boolean):Either[(Boolean,String),Throwable]"></a>
-      <a id="uploadPackage(Option[PackageId],File,Boolean):Either[(Boolean,String),Throwable]"></a>
+      <a id="uploadPackage(packageId:Option[com.day.jcr.vault.packaging.PackageId],file:java.io.File,force:Boolean):Either[Throwable,(Boolean,String)]"></a>
+      <a id="uploadPackage(Option[PackageId],File,Boolean):Either[Throwable,(Boolean,String)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">uploadPackage</span><span class="params">(<span name="packageId">packageId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>, <span name="file">file: <span class="extype" name="java.io.File">File</span></span>, <span name="force">force: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[(<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>), <span class="extype" name="scala.Throwable">Throwable</span>]</span>
+        <span class="name">uploadPackage</span><span class="params">(<span name="packageId">packageId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>, <span name="file">file: <span class="extype" name="java.io.File">File</span></span>, <span name="force">force: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Throwable">Throwable</span>, (<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
