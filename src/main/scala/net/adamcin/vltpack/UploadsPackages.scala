@@ -34,6 +34,7 @@ import org.slf4j.LoggerFactory
 import util.parsing.json.JSON
 import com.ning.http.multipart.FilePart
 import com.day.jcr.vault.packaging.PackageId
+import org.apache.maven.plugins.annotations.Parameter
 
 /**
  * Trait defining common mojo parameters and methods useful for uploading and installing vault packages on
@@ -44,9 +45,21 @@ import com.day.jcr.vault.packaging.PackageId
 trait UploadsPackages extends HttpParameters {
   val log = LoggerFactory.getLogger(getClass)
 
+  /**
+   * Set to false to not install any subpackages that might be embedded within each dependency
+   */
+  @Parameter(defaultValue = "true")
+  val recursive = true
+
+  /**
+   * Change the autosave threshold for the install command
+   */
+  @Parameter(defaultValue = "1024")
+  val autosave = 1024
+
   lazy val servicePath = "/crx/packmgr/service/exec.json"
 
-  def uploadPackage(packageId: Option[PackageId], file: File, force: Boolean): Either[(Boolean, String), Throwable] = {
+  def uploadPackage(packageId: Option[PackageId], file: File, force: Boolean): Either[Throwable, (Boolean, String)] = {
     packageId match {
       case Some(id) => {
         val req = urlForPath(servicePath + id.getInstallationPath).POST <<? Map(
@@ -59,14 +72,14 @@ trait UploadsPackages extends HttpParameters {
         if (isSuccess(req, resp)) {
           parseServiceResponse(resp.getResponseBody)
         } else {
-          Right(new MojoExecutionException("Failed to upload file: " + file))
+          Left(new MojoExecutionException("Failed to upload file: " + file))
         }
       }
-      case None => Right(new MojoExecutionException("Failed to identify package"))
+      case None => Left(new MojoExecutionException("Failed to identify package"))
     }
   }
 
-  def installPackage(packageId: Option[PackageId], recursive: Boolean, autosave: Int): Either[(Boolean, String), Throwable] = {
+  def installPackage(packageId: Option[PackageId]): Either[Throwable, (Boolean, String)] = {
     packageId match {
       case Some(id) => {
         val pkgPath = id.getInstallationPath + ".zip"
@@ -80,14 +93,14 @@ trait UploadsPackages extends HttpParameters {
         if (isSuccess(req, resp)) {
           parseServiceResponse(resp.getResponseBody)
         } else {
-          Right(new MojoExecutionException("Failed to install package at path: " + pkgPath))
+          Left(new MojoExecutionException("Failed to install package at path: " + pkgPath))
         }
       }
-      case None => Right(new MojoExecutionException("Failed to identify package"))
+      case None => Left(new MojoExecutionException("Failed to identify package"))
     }
   }
 
-  def existsOnServer(packageId: Option[PackageId]): Either[(Boolean, String),Throwable] = {
+  def existsOnServer(packageId: Option[PackageId]): Either[Throwable, (Boolean, String)] = {
     packageId match {
       case Some(id) => {
         val pkgPath = id.getInstallationPath + ".zip"
@@ -97,14 +110,14 @@ trait UploadsPackages extends HttpParameters {
         if (isSuccess(req, resp)) {
           parseServiceResponse(resp.getResponseBody)
         } else {
-          Right(new MojoExecutionException("failed to check for existence of package on server: " + id.getInstallationPath))
+          Left(new MojoExecutionException("failed to check for existence of package on server: " + pkgPath))
         }
       }
-      case None => Right(new MojoExecutionException("Failed to identify package"))
+      case None => Left(new MojoExecutionException("Failed to identify package"))
     }
   }
 
-  def parseServiceResponse(respBody: String): Either[(Boolean, String),Throwable] = {
+  def parseServiceResponse(respBody: String): Either[Throwable, (Boolean, String)] = {
     import VltpackUtil._
     val json = List(JSON.parseFull(respBody))
     (for {
@@ -112,8 +125,8 @@ trait UploadsPackages extends HttpParameters {
       B(success) = map("success")
       S(msg) = map("msg")
     } yield (success, msg)).toList match {
-      case head :: tail => Left(head)
-      case _ => Right(new MojoExecutionException("failed to parse json response: " + respBody))
+      case head :: tail => Right(head)
+      case _ => Left(new MojoExecutionException("failed to parse json response: " + respBody))
     }
   }
 }

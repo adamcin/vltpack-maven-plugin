@@ -60,18 +60,6 @@ class UploadMojo
   @Parameter(defaultValue = "true")
   var force = true
 
-  /**
-   * Set to false to not install any embedded subpackages
-   */
-  @Parameter(defaultValue = "true")
-  var recursive = true
-
-  /**
-   * Change the autosave threshold for the install command
-   */
-  @Parameter(defaultValue = "1024")
-  var autosave = 1024
-
   override def execute() {
     super.execute()
 
@@ -84,20 +72,21 @@ class UploadMojo
       val file = targetFile
       val id = identifyPackage(file)
 
-      val uploaded = uploadPackage(id, file, force) match {
-        case Right(t) => throw t
-        case Left((success, msg)) => {
-          getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ".zip: " + msg)
-          success
-        }
-      }
+      val uploaded = uploadPackage(id, file, force) fold (throw _, (resp) => {
+        val (success, msg) = resp
+        getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ".zip: " + msg)
+        success
+      })
 
       if (uploaded) {
-        installPackage(id, recursive, autosave) match {
-          case Right(t) => throw t
-          case Left((success, msg)) => {
-            getLog.info("installing " + id.get.getInstallationPath + ".zip: " + msg)
-          }
+        val installed = installPackage(id) fold (throw _, (resp) => {
+          val (success, msg) = resp
+          getLog.info("installing " + id.get.getInstallationPath + ".zip: " + msg)
+          success
+        })
+
+        if (!installed) {
+          getLog.info("package was not installed")
         }
       } else {
         getLog.info("package was not uploaded and so it will not be installed")

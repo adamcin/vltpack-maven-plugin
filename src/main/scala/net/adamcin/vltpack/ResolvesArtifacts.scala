@@ -40,6 +40,7 @@ import scalax.io.Resource
 import org.codehaus.plexus.util.SelectorUtils
 import org.apache.maven.project.MavenProject
 import org.apache.maven.plugins.annotations.Component
+import util.matching.Regex
 
 /**
  * Trait defining common mojo parameters and methods useful for arbitrarily resolving artifacts from
@@ -49,6 +50,21 @@ import org.apache.maven.plugins.annotations.Component
  */
 trait ResolvesArtifacts extends BaseMojo {
   private val log = LoggerFactory.getLogger(getClass)
+
+  final val pA = new Regex("""^([^:]*)$""",
+    "artifactId")
+
+  final val pGA = new Regex("""^([^:]*):([^:]*)$""",
+    "groupId", "artifactId")
+
+  final val pGAV = new Regex("""^([^:]*):([^:]*):([^:]*)$""",
+    "groupId", "artifactId", "version")
+
+  final val pGATV = new Regex("""^([^:]*):([^:]*):([^:]*):([^:]*)$""",
+    "groupId", "artifactId", "artifactType", "version")
+
+  final val pGATCV = new Regex("""^([^:]*):([^:]*):([^:]*):([^:]*):([^:]*)$""",
+    "groupId", "artifactId", "artifactType", "classifier", "version")
 
   @Component
   var repositorySystem: RepositorySystem = null
@@ -94,7 +110,32 @@ trait ResolvesArtifacts extends BaseMojo {
     resolveArtifacts(deps.toStream)
   }
 
-  def resolveByGATCV(groupId: String, artifactId: String, artifactType: String, classifier: String, version: String): Option[Artifact] = {
+  def resolveByCoordinates(coordinates: String): Option[Artifact] = {
+    Option(coordinates).flatMap {
+      (coords) => {
+        coords.count(_ == ':') match {
+          case 2 => pGAV findFirstIn coords match {
+            case Some(pGAV(groupId, artifactId, version)) =>
+              resolveByCoordinates(groupId, artifactId, version, null, null)
+            case None => None
+          }
+          case 3 => pGATV findFirstIn coords match {
+            case Some(pGATV(groupId, artifactId, artifactType, version)) =>
+              resolveByCoordinates(groupId, artifactId, version, artifactType, null)
+            case None => None
+          }
+          case 4 => pGATCV findFirstIn coords match {
+              case Some(pGATCV(groupId, artifactId, classifier, artifactType, version)) =>
+                resolveByCoordinates(groupId, artifactId, version, artifactType, classifier)
+              case None => None
+          }
+          case _ => None
+        }
+      }
+    }
+  }
+
+  def resolveByCoordinates(groupId: String, artifactId: String, version: String, artifactType: String, classifier: String): Option[Artifact] = {
     val artifact = repositorySystem.createArtifactWithClassifier(groupId, artifactId, version, artifactType, classifier)
     Option(artifact) match {
       case Some(a) => resolveArtifacts(Stream(a)).headOption

@@ -27,51 +27,58 @@
 
 package net.adamcin.vltpack.mojo
 
+import org.apache.maven.plugins.annotations.{Parameter, LifecyclePhase, Mojo}
+import net.adamcin.vltpack.{IdentifiesPackages, ResolvesArtifacts, UploadsPackages}
 import org.apache.maven.plugin.MojoExecutionException
-import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
-import net.adamcin.vltpack._
-import scala.Left
-import scala.Some
-import scala.Right
 
 /**
- * Upload dependencies representing vault packages to the configured CQ server
- * @since 0.6.0
+ * Embeds bundles in the project artifact at the configured bundleInstallPath
+ * @since 1.0.0
  * @author Mark Adamcin
  */
-@Mojo(name = "upload-dependencies",
+@Mojo(name = "upload-from-repo",
   defaultPhase = LifecyclePhase.INTEGRATION_TEST,
+  requiresProject = false,
   threadSafe = true)
-class UploadDependenciesMojo
+class UploadFromRepoMojo
   extends BaseMojo
-  with DeploysWithBuild
-  with RequiresProject
-  with PackageDependencies
-  with IdentifiesPackages
   with ResolvesArtifacts
+  with IdentifiesPackages
   with UploadsPackages {
 
   /**
    * Set to true to skip execution of this mojo
    */
-  @Parameter(property = "vltpack.skip.upload-dependencies")
+  @Parameter(property = "vltpack.skip.upload-from-repo")
   val skip = false
 
   /**
    * Force upload of packages if they already exist in the target environment
    */
-  @Parameter
+  @Parameter(property = "force")
   val force = false
+
+  /**
+   * Specify the full maven coordinates of the artifact in one of the following forms:
+   *
+   *  "groupId:artifactId:version"
+   *  "groupId:artifactId:packaging:version"
+   *  "groupId:artifactId:packaging:classifier:version"
+   *
+   *  where packaging is either "jar" or "zip" (the default is "jar")
+   */
+  @Parameter(property = "coords", required = true)
+  val coords = ""
 
   override def execute() {
     super.execute()
 
-    if (!deploy || skip || project.getPackaging != "vltpack") {
+    if (skip) {
 
-      getLog.info("skipping [deploy=" + deploy + "][skip=" + skip + "][packaging=" + project.getPackaging + "]")
+      getLog.info("skipping [skip=" + skip + "]")
 
     } else {
-      packageDependencyArtifacts.foreach {
+      resolveByCoordinates(coords) foreach {
         (artifact) => Option(artifact.getFile) match {
           case None => throw new MojoExecutionException("failed to resolve artifact: " + artifact.getId)
           case Some(file) => {

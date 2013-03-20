@@ -27,34 +27,9 @@
 
 package net.adamcin.vltpack
 
-import com.day.jcr.vault.packaging.Dependency
-import collection.JavaConversions._
-import org.apache.maven.plugins.annotations.Parameter
-import java.util.Collections
-
-
 /**
- * Trait defining common mojo parameters and methods useful for identifying package dependencies that
- * are not embedded in the main project artifact
- * @since 0.6.0
- * @author Mark Adamcin
+ * General exception for error cases without a throwable cause
  */
-trait PackageDependencies
-  extends RequiresProject
-  with IdentifiesPackages
-  with ResolvesArtifacts {
+class VltpackException(message: String) extends Exception(message) {
 
-  /**
-   * List of artifactIds matching dependencies that are valid vault packages
-   */
-  @Parameter
-  var packageDependencies = Collections.emptyList[String]
-
-  def packageDependencyArtifacts = resolveByArtifactIds(packageDependencies.toSet)
-
-  def dependsOn: List[Dependency] = {
-    packageDependencyArtifacts.flatMap {
-      (artifact) => identifyPackage(artifact.getFile)
-    }.map { new Dependency(_) }.toList
-  }
 }
