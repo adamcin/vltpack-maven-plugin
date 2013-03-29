@@ -31,7 +31,7 @@ import java.io.File
 import scala.Left
 import scala.Right
 import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
-import net.adamcin.vltpack.PutsBundle
+import net.adamcin.vltpack.PutsBundles
 
 /**
  * PUT a bundle identified by the file parameter to the configured CQ instance
@@ -44,7 +44,8 @@ import net.adamcin.vltpack.PutsBundle
   threadSafe = true)
 class PutBundleFileMojo
   extends BaseMojo
-  with PutsBundle {
+  with PutsBundles {
+
 
   /**
    * Specify a bundle file to be PUT
@@ -54,8 +55,8 @@ class PutBundleFileMojo
 
   override def execute() {
     putBundle(file) match {
-      case Right(t) => throw t
-      case Left(messages) => messages.foreach { getLog.info(_) }
+      case Left(t) => throw t
+      case Right(messages) => messages.foreach { getLog.info(_) }
     }
   }
 }

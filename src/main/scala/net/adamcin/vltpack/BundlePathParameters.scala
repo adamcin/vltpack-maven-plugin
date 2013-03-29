@@ -40,6 +40,8 @@ trait BundlePathParameters extends BaseMojo {
 
   final val defaultBundleInstallPath = "/apps/bundles/install/30"
 
+  final val defaultTestBundleInstallPath = "/apps/testBundles/install/30"
+
   /**
    * Set the JCR path where bundles will be installed for this project. Use a numeric suffix
    * (as in "/apps/myapp/install/30") to apply a felix start level configuration to the bundles
@@ -47,9 +49,23 @@ trait BundlePathParameters extends BaseMojo {
   @Parameter(defaultValue = defaultBundleInstallPath)
   var bundleInstallPath: String = defaultBundleInstallPath
 
+  /**
+   * Set the JCR path where test bundles will be installed during the integration test phase this project. Use a
+   * numeric suffix (as in "/apps/myappTests/install/30") to apply a felix start level configuration to the bundles
+   * @since 1.0.0
+   */
+  @Parameter(defaultValue = defaultTestBundleInstallPath)
+  var testBundleInstallPath: String = defaultTestBundleInstallPath
+
   def getBundleRepoPath(filename: String): String = {
     bundleInstallPath + "/" + filename
   }
 
   def getBundlePath(file: File): String = getBundleRepoPath(file.getName)
+
+  def getTestBundleRepoPath(filename: String): String = {
+    testBundleInstallPath + "/" + filename
+  }
+
+  def getTestBundlePath(file: File): String = getTestBundleRepoPath(file.getName)
 }

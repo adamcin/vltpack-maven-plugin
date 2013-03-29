@@ -28,8 +28,10 @@
 package net.adamcin.vltpack
 
 import dispatch._
-import com.ning.http.client.{ProxyServer, RequestBuilder, Response}
+import com.ning.http.client._
 import org.apache.maven.plugins.annotations.Parameter
+import scala.Some
+import annotation.tailrec
 
 /**
  * Adds fluid support for the MKCOL method
@@ -143,6 +145,11 @@ trait HttpParameters extends UsernameAware {
     segments.foldLeft(reqHost) { (req, segment) => req / segment }
   }
 
+  def baseUrlString: String = {
+    val url = urlForPath("/").url
+    url.substring(0, url.length - 1)
+  }
+
   lazy val activeProxy: Option[ProxyServer] = {
     if (noProxy) {
       None
@@ -218,4 +225,25 @@ trait HttpParameters extends UsernameAware {
     }
   }
 
+  @tailrec
+  final def waitForResponse[T](nTrys: Int)
+                              (implicit until: Long,
+                               requestFunction: () => (Request, AsyncHandler[T]),
+                               contentChecker: (Promise[T]) => Promise[Boolean]): Boolean = {
+    if (nTrys > 0) {
+      val sleepTime = nTrys * 1000L
+      getLog.info("sleeping " + nTrys + " seconds")
+      Thread.sleep(sleepTime)
+    }
+    val mayProceed = contentChecker(for (res <- Http(requestFunction())) yield res)
+    if (mayProceed()) {
+      true
+    } else {
+      if (System.currentTimeMillis() >= until) {
+        false
+      } else {
+        waitForResponse(nTrys + 1)
+      }
+    }
+  }
 }

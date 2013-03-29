@@ -309,6 +309,17 @@ class VaultInfMojo
 
       val defNode = defPack.getDefNode
 
+      properties.foreach {
+        p: (String, String) => {
+          val (key, value) = p
+          value match {
+            case "true" => defNode.setProperty(key, true)
+            case "false" => defNode.setProperty(key, false)
+            case _ => defNode.setProperty(key, value)
+          }
+        }
+      }
+
       definitionProperties.foreach {
         p: (String, String) => {
           val (key, value) = p

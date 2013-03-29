@@ -33,6 +33,7 @@ import java.io.File
 import org.apache.maven.plugin.MojoExecutionException
 import org.slf4j.LoggerFactory
 import org.apache.maven.plugins.annotations.Parameter
+import com.day.jcr.vault.util.Text
 
 /**
  * Trait defining common mojo parameters and methods for uploading OSGi bundles to the configured CQ server
@@ -40,8 +41,8 @@ import org.apache.maven.plugins.annotations.Parameter
  * @since 0.6.0
  * @author Mark Adamcin
  */
-trait PutsBundle extends HttpParameters with BundlePathParameters {
-  val log = LoggerFactory.getLogger(getClass)
+trait PutsBundles extends HttpParameters with BundlePathParameters {
+  private val log = LoggerFactory.getLogger(getClass)
 
   /**
    * Set to true to skip the use of the MKCOL WebDAV method for the creation ancestor JCR paths
@@ -50,38 +51,51 @@ trait PutsBundle extends HttpParameters with BundlePathParameters {
   var skipMkdirs = false
 
   /**
-   * Puts the specified file to the configured location
+   * Puts the specified file to the configured bundle install location
    * @param file file to put
    * @return either log messages or a throwable
    */
-  def putBundle(file: File): Either[List[String], Throwable] = {
+  def putBundle(file: File): Either[Throwable, List[String]] = {
+    putBundleToPath(file, getBundleRepoPath(file.getName))
+  }
+
+  /**
+   * Puts the specified file to the configured test bundle install location
+   * @param file file to put
+   * @return either log messages or a throwable
+   */
+  def putTestBundle(file: File): Either[Throwable, List[String]] = {
+    putBundleToPath(file, getTestBundleRepoPath(file.getName))
+  }
+
+  def putBundleToPath(file: File, path: String): Either[Throwable, List[String]] = {
     lazy val (putReq, putResp) = {
-      val req = urlForPath(getBundleRepoPath(file.getName)) <<< file
+      val req = urlForPath(path) <<< file
       (req, Http(req)())
     }
 
-    val fromMkdirs: Either[List[String], Throwable] = if (!skipMkdirs) {
-      val (mkReq, mkResp) = mkdirs(bundleInstallPath)
+    val fromMkdirs: Either[Throwable, List[String]] = if (!skipMkdirs) {
+      val (mkReq, mkResp) = mkdirs(Text.getRelativeParent(path, 1))
       if (isSuccess(mkReq, mkResp)) {
-        Left(List("successfully created path at " + mkReq.url))
+        Right(List("successfully created path at " + mkReq.url))
       } else {
         log.debug("[putBundle] {}", getReqRespLogMessage(mkReq, mkResp))
-        Right(new MojoExecutionException("failed to create path at: " + mkReq.url))
+        Left(new MojoExecutionException("failed to create path at: " + mkReq.url))
       }
     } else {
-      Left(List("skipping mkdirs"))
+      Right(List("skipping mkdirs"))
     }
 
     fromMkdirs match {
-      case Left(messages) => {
+      case Right(messages) => {
         if (file == null || !file.exists || !file.canRead) {
-          Right(new MojoExecutionException("A valid file must be specified"))
+          Left(new MojoExecutionException("A valid file must be specified"))
         }
         if (isSuccess(putReq, putResp)) {
-          Left(messages ++ List("successfully uploaded " + file + " to " + putReq.url))
+          Right(messages ++ List("successfully uploaded " + file + " to " + putReq.url))
         } else {
           log.debug("[putBundle] {}", getReqRespLogMessage(putReq, putResp))
-          Right(new MojoExecutionException("failed to upload " + file + " to " + putReq.url))
+          Left(new MojoExecutionException("failed to upload " + file + " to " + putReq.url))
         }
       }
       case _ => fromMkdirs

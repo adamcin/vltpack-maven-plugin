@@ -46,4 +46,12 @@ abstract class BaseMojo extends AbstractMojo {
   var session: MavenSession = null
 
   def execute() { /* nothing here now */ }
+
+  def skipOrExecute(skip: Boolean)(body: => Unit) {
+    if (skip) {
+      getLog.info("skipping [skip=" + skip + "]")
+    } else {
+      body
+    }
+  }
 }

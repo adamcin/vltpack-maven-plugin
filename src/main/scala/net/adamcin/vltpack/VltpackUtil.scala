@@ -37,6 +37,7 @@ import java.io.{File, FilterOutputStream, OutputStream, InputStream}
  * @author Mark Adamcin
  */
 object VltpackUtil {
+  final val PACKAGING = "vltpack"
 
   val inputCloser: CloseAction[InputStream] = new CloseAction[InputStream] {
     protected def closeImpl(resource: InputStream) = {

@@ -40,6 +40,12 @@
                             <process-resources>
                                 org.apache.maven.plugins:maven-resources-plugin:resources
                             </process-resources>
+                            <process-test-resources>
+                                org.apache.maven.plugins:maven-resources-plugin:testResources
+                            </process-test-resources>
+                            <test-compile>
+                                org.apache.maven.plugins:maven-compiler-plugin:testCompile
+                            </test-compile>
                             <prepare-package>
                                 net.adamcin:vltpack-maven-plugin:embed-bundles,
                                 net.adamcin:vltpack-maven-plugin:embed-packages,
@@ -49,10 +55,12 @@
                                 net.adamcin:vltpack-maven-plugin:vault-inf,
                                 net.adamcin:vltpack-maven-plugin:package
                             </package>
-                            <integration-test>
-                                net.adamcin:vltpack-maven-plugin:upload-dependencies,
-                                net.adamcin:vltpack-maven-plugin:upload
-                            </integration-test>
+                            <pre-integration-test>
+                                net.adamcin:vltpack-maven-plugin:IT-upload,
+                                net.adamcin:vltpack-maven-plugin:IT-upload-tests,
+                                net.adamcin:vltpack-maven-plugin:IT-server-ready,
+                                net.adamcin:vltpack-maven-plugin:IT-http-properties
+                            </pre-integration-test>
                             <install>
                                 org.apache.maven.plugins:maven-install-plugin:install
                             </install>

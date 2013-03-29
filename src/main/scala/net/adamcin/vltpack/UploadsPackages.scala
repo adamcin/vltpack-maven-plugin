@@ -28,13 +28,15 @@
 package net.adamcin.vltpack
 
 import java.io.File
-import org.apache.maven.plugin.MojoExecutionException
+import org.apache.maven.plugin.{MojoFailureException, MojoExecutionException}
 import dispatch._
 import org.slf4j.LoggerFactory
 import util.parsing.json.JSON
 import com.ning.http.multipart.FilePart
 import com.day.jcr.vault.packaging.PackageId
 import org.apache.maven.plugins.annotations.Parameter
+import com.ning.http.client.Response
+import org.apache.maven.artifact.Artifact
 
 /**
  * Trait defining common mojo parameters and methods useful for uploading and installing vault packages on
@@ -42,8 +44,8 @@ import org.apache.maven.plugins.annotations.Parameter
  * @since 0.6.0
  * @author Mark Adamcin
  */
-trait UploadsPackages extends HttpParameters {
-  val log = LoggerFactory.getLogger(getClass)
+trait UploadsPackages extends HttpParameters with IdentifiesPackages {
+  private val log = LoggerFactory.getLogger(getClass)
 
   /**
    * Set to false to not install any subpackages that might be embedded within each dependency
@@ -57,63 +59,105 @@ trait UploadsPackages extends HttpParameters {
   @Parameter(defaultValue = "1024")
   val autosave = 1024
 
+  /**
+   * Set the timeout used for waiting for Package Manager service availability
+   */
+  @Parameter(defaultValue = "60")
+  val serviceTimeout = 60
+
   lazy val servicePath = "/crx/packmgr/service/exec.json"
 
-  def uploadPackage(packageId: Option[PackageId], file: File, force: Boolean): Either[Throwable, (Boolean, String)] = {
-    packageId match {
-      case Some(id) => {
-        val req = urlForPath(servicePath + id.getInstallationPath).POST <<? Map(
-          "cmd" -> "upload",
-          "force" -> force.toString
-        )
-        req.addBodyPart(new FilePart("package", id.getDownloadName, file))
-        val resp = Http(req)()
-
-        if (isSuccess(req, resp)) {
-          parseServiceResponse(resp.getResponseBody)
+  /**
+   * wrap package manager service POST requests with this function to first check for service availability,
+   * which is interpreted by expecting a GET response of 405 (Method not allowed)
+   * @param thenDo
+   * @return
+   */
+  def waitForService(thenDo: => Either[Throwable, (Boolean, String)]): Either[Throwable, (Boolean, String)] = {
+    val until = System.currentTimeMillis() + (serviceTimeout * 1000)
+    import dispatch._
+    val responseHandler =
+      (response: Response) => {
+        if (response.getStatusCode == 405) {
+          as.String(response)
         } else {
-          Left(new MojoExecutionException("Failed to upload file: " + file))
+          throw StatusCode(response.getStatusCode)
         }
       }
-      case None => Left(new MojoExecutionException("Failed to identify package"))
+
+    def checkContent(response: Promise[String]): Promise[Boolean] = {
+      response.fold((ex) => { getLog.info("check service exception: " + ex.getMessage); false },
+        (content) => true)
+    }
+
+    if (waitForResponse(0)(until, () => urlForPath(servicePath).subject > responseHandler, checkContent)) {
+      thenDo
+    } else {
+      Left(new MojoFailureException("Package Manager service failed to respond as expected within " + serviceTimeout + " seconds."))
+    }
+  }
+
+  def uploadPackage(packageId: Option[PackageId], file: File, force: Boolean): Either[Throwable, (Boolean, String)] = {
+    waitForService {
+      packageId match {
+        case Some(id) => {
+          val req = urlForPath(servicePath + id.getInstallationPath).POST <<? Map(
+            "cmd" -> "upload",
+            "force" -> force.toString
+          )
+          req.addBodyPart(new FilePart("package", id.getDownloadName, file))
+          val resp = Http(req)()
+
+          if (isSuccess(req, resp)) {
+            parseServiceResponse(resp.getResponseBody)
+          } else {
+            Left(new MojoExecutionException("Failed to upload file: " + file))
+          }
+        }
+        case None => Left(new MojoExecutionException("Failed to identify package"))
+      }
     }
   }
 
   def installPackage(packageId: Option[PackageId]): Either[Throwable, (Boolean, String)] = {
-    packageId match {
-      case Some(id) => {
-        val pkgPath = id.getInstallationPath + ".zip"
-        val req = urlForPath(servicePath + pkgPath) << Map(
-          "cmd" -> "install",
-          "recursive" -> recursive.toString,
-          "autosave" -> (autosave max 1024).toString
-        )
-        val resp = Http(req)()
+    waitForService {
+      packageId match {
+        case Some(id) => {
+          val pkgPath = id.getInstallationPath + ".zip"
+          val req = urlForPath(servicePath + pkgPath) << Map(
+            "cmd" -> "install",
+            "recursive" -> recursive.toString,
+            "autosave" -> (autosave max 1024).toString
+          )
+          val resp = Http(req)()
 
-        if (isSuccess(req, resp)) {
-          parseServiceResponse(resp.getResponseBody)
-        } else {
-          Left(new MojoExecutionException("Failed to install package at path: " + pkgPath))
+          if (isSuccess(req, resp)) {
+            parseServiceResponse(resp.getResponseBody)
+          } else {
+            Left(new MojoExecutionException("Failed to install package at path: " + pkgPath))
+          }
         }
+        case None => Left(new MojoExecutionException("Failed to identify package"))
       }
-      case None => Left(new MojoExecutionException("Failed to identify package"))
     }
   }
 
   def existsOnServer(packageId: Option[PackageId]): Either[Throwable, (Boolean, String)] = {
-    packageId match {
-      case Some(id) => {
-        val pkgPath = id.getInstallationPath + ".zip"
-        val req = urlForPath(servicePath + pkgPath) << Map("cmd" -> "contents")
-        val resp = Http(req)()
+    waitForService {
+      packageId match {
+        case Some(id) => {
+          val pkgPath = id.getInstallationPath + ".zip"
+          val req = urlForPath(servicePath + pkgPath) << Map("cmd" -> "contents")
+          val resp = Http(req)()
 
-        if (isSuccess(req, resp)) {
-          parseServiceResponse(resp.getResponseBody)
-        } else {
-          Left(new MojoExecutionException("failed to check for existence of package on server: " + pkgPath))
+          if (isSuccess(req, resp)) {
+            parseServiceResponse(resp.getResponseBody)
+          } else {
+            Left(new MojoExecutionException("failed to check for existence of package on server: " + pkgPath))
+          }
         }
+        case None => Left(new MojoExecutionException("Failed to identify package"))
       }
-      case None => Left(new MojoExecutionException("Failed to identify package"))
     }
   }
 
@@ -127,6 +171,45 @@ trait UploadsPackages extends HttpParameters {
     } yield (success, msg)).toList match {
       case head :: tail => Right(head)
       case _ => Left(new MojoExecutionException("failed to parse json response: " + respBody))
+    }
+  }
+
+  def uploadPackageArtifact(artifact: Artifact, force: Boolean) {
+    val thrower = (t: Throwable) => throw t
+    Option(artifact.getFile) match {
+      case None => throw new MojoExecutionException("failed to resolve artifact: " + artifact.getId)
+      case Some(file) => {
+        val id = identifyPackage(file)
+        val doesntExist = force || (existsOnServer(id) fold (thrower, {
+          (result) => {
+            val (success, msg) = result
+            val successMsg = if (success) "Package exists" else "Package not found"
+            getLog.info("checking for installed package " + id.get.getInstallationPath + ".zip: " + successMsg)
+            !success
+          }
+        }))
+
+        if (doesntExist) {
+          val uploaded = uploadPackage(id, file, force) fold (thrower, {
+            (result) => {
+              val (success, msg) = result
+              getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ".zip: " + msg)
+              success
+            }
+          })
+
+          if (uploaded) {
+            installPackage(id) fold (thrower, {
+              (result) => {
+                val (success, msg) = result
+                getLog.info("installing " + id.get.getInstallationPath + ".zip: " + msg)
+              }
+            })
+          } else {
+            getLog.info("package was not uploaded and so it will not be installed")
+          }
+        }
+      }
     }
   }
 }

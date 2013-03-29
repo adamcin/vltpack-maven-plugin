@@ -32,7 +32,8 @@ import net.adamcin.vltpack.{IdentifiesPackages, ResolvesArtifacts, UploadsPackag
 import org.apache.maven.plugin.MojoExecutionException
 
 /**
- * Embeds bundles in the project artifact at the configured bundleInstallPath
+ * Command-line goal that provides the ability to resolve a package artifact from a local or remote repository and
+ * install it directly into a running instance.
  * @since 1.0.0
  * @author Mark Adamcin
  */

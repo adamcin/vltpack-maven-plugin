@@ -28,83 +28,75 @@
 package net.adamcin.vltpack.mojo
 
 import org.apache.maven.plugin.MojoExecutionException
-import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
+import org.apache.maven.plugins.annotations.{ResolutionScope, Parameter, Mojo, LifecyclePhase}
 import net.adamcin.vltpack._
 import scala.Left
 import scala.Some
 import scala.Right
+import java.util.Collections
+import scala.collection.JavaConversions._
+import org.apache.maven.artifact.Artifact
 
 /**
- * Upload dependencies representing vault packages to the configured CQ server
- * @since 0.6.0
+ * Upload integration test dependencies, including vault packages and OSGi bundles, to the configured integration test
+ * server
+ * @since 1.0.0
  * @author Mark Adamcin
  */
-@Mojo(name = "upload-dependencies",
-  defaultPhase = LifecyclePhase.INTEGRATION_TEST,
+@Mojo(name = "IT-upload-tests",
+  defaultPhase = LifecyclePhase.PRE_INTEGRATION_TEST,
+  requiresDependencyResolution = ResolutionScope.TEST,
   threadSafe = true)
-class UploadDependenciesMojo
-  extends BaseMojo
-  with DeploysWithBuild
+class ITUploadTestsMojo
+  extends BaseITMojo
   with RequiresProject
   with PackageDependencies
-  with IdentifiesPackages
   with ResolvesArtifacts
-  with UploadsPackages {
+  with UploadsPackages
+  with PutsBundles {
 
   /**
    * Set to true to skip execution of this mojo
    */
-  @Parameter(property = "vltpack.skip.upload-dependencies")
+  @Parameter(property = "vltpack.skip.IT-upload-tests")
   val skip = false
 
   /**
    * Force upload of packages if they already exist in the target environment
    */
+  @Parameter(defaultValue = "true")
+  val force = true
+
+  /**
+   * List of artifactIds matching test package dependencies
+   */
   @Parameter
-  val force = false
+  var testPackages = Collections.emptyList[String]
+
+  def testPackageArtifacts = resolveByArtifactIds(testPackages.toSet)
+
+  /**
+   * List of artifactIds matching OSGi bundle dependencies
+   */
+  @Parameter
+  var testBundles = Collections.emptyList[String]
+
+  def testBundleArtifacts = resolveByArtifactIds(testBundles.toSet)
 
   override def execute() {
     super.execute()
 
-    if (!deploy || skip || project.getPackaging != "vltpack") {
+    skipWithTestsOrExecute(skip) {
+      getLog.info("uploading test packages...")
+      testPackageArtifacts.foreach( uploadPackageArtifact(_, force) )
 
-      getLog.info("skipping [deploy=" + deploy + "][skip=" + skip + "][packaging=" + project.getPackaging + "]")
-
-    } else {
-      packageDependencyArtifacts.foreach {
+      getLog.info("uploading test bundles...")
+      testBundleArtifacts.foreach {
         (artifact) => Option(artifact.getFile) match {
           case None => throw new MojoExecutionException("failed to resolve artifact: " + artifact.getId)
-          case Some(file) => {
-            val id = identifyPackage(file)
-            val doesntExist = force || (existsOnServer(id) match {
-              case Left(t) => throw t
-              case Right((success, msg)) => {
-                val successMsg = if (success) "Package exists" else "Package not found"
-                getLog.info("checking for installed package " + id.get.getInstallationPath + ".zip: " + successMsg)
-                !success
-              }
-            })
-
-            if (doesntExist) {
-              val uploaded = uploadPackage(id, file, force) match {
-                case Left(t) => throw t
-                case Right((success, msg)) => {
-                  getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ".zip: " + msg)
-                  success
-                }
-              }
-
-              if (uploaded) {
-                installPackage(id) match {
-                  case Left(t) => throw t
-                  case Right((success, msg)) => {
-                    getLog.info("installing " + id.get.getInstallationPath + ".zip: " + msg)
-                  }
-                }
-              } else {
-                getLog.info("package was not uploaded and so it will not be installed")
-              }
-            }
+          case Some(bundle) => putTestBundle(bundle)match {
+            case Left(ex) => throw ex
+            case Right(messages) => messages.foreach { getLog.info(_) }
           }
         }
       }

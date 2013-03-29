@@ -27,31 +27,28 @@
 
 package net.adamcin.vltpack.mojo
 
-import scala.Left
-import scala.Right
 import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
-import net.adamcin.vltpack.{UploadsPackages, OutputParameters, IdentifiesPackages, DeploysWithBuild}
+import net.adamcin.vltpack.{PackageDependencies, UploadsPackages, OutputParameters}
 
 
 /**
- * Uploads the project vault package to the configured CQ server
- * @since 0.6.0
+ * Uploads the project vault package and its dependencies to the configured IT server
+ * @since 1.0.0
  * @author Mark Adamcin
  */
-@Mojo(name = "upload",
+@Mojo(name = "IT-upload",
   defaultPhase = LifecyclePhase.INTEGRATION_TEST,
   threadSafe = true)
-class UploadMojo
-  extends BaseMojo
+class ITUploadMojo
+  extends BaseITMojo
   with OutputParameters
   with UploadsPackages
-  with IdentifiesPackages
-  with DeploysWithBuild {
+  with PackageDependencies {
 
   /**
    * Set to true to skip mojo execution
    */
-  @Parameter(property = "vltpack.skip.upload")
+  @Parameter(property = "vltpack.skip.IT-upload")
   var skip = false
 
   /**
@@ -60,14 +57,18 @@ class UploadMojo
   @Parameter(defaultValue = "true")
   var force = true
 
+  /**
+   * Force upload of the package dependencies if they already exist in the target environment
+   */
+  @Parameter(defaultValue = "false")
+  var forceDependencies = false
+
   override def execute() {
     super.execute()
 
-    if (!deploy || skip || project.getPackaging != "vltpack") {
-
-      getLog.info("skipping [deploy=" + deploy + "][skip=" + skip + "][packaging=" + project.getPackaging + "]")
-
-    } else {
+    skipOrExecute(skip) {
+      getLog.info("uploading package dependencies...")
+      packageDependencyArtifacts.foreach { uploadPackageArtifact(_, forceDependencies) }
 
       val file = targetFile
       val id = identifyPackage(file)
