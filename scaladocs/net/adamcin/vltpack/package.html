@@ -76,6 +76,19 @@
       </span>
       </h4>
       <p class="comment cmt">Trait defining common parameters and methods for placement of bundles within a JCR repository</p>
+    </li><li name="net.adamcin.vltpack.ChecksumCalculator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ChecksumCalculatorextendsObject"></a>
+      <a id="ChecksumCalculator:ChecksumCalculator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ChecksumCalculator.html"><span class="name">ChecksumCalculator</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      
     </li><li name="net.adamcin.vltpack.CreatesPackage" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="CreatesPackageextendsBaseMojo"></a>
       <a id="CreatesPackage:CreatesPackage"></a>
@@ -115,20 +128,6 @@
       </span>
       </h4>
       <p class="comment cmt">Adds fluid support for the MKCOL method</p>
-    </li><li name="net.adamcin.vltpack.DeploysWithBuild" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="DeploysWithBuildextendsBaseMojo"></a>
-      <a id="DeploysWithBuild:DeploysWithBuild"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="DeploysWithBuild.html"><span class="name">DeploysWithBuild</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></span>
-      </span>
-      </h4>
-      <p class="comment cmt">Trait defining common mojo parameters and methods for controlling deployment of artifacts to CQ during
-a maven lifecycle build</p>
     </li><li name="net.adamcin.vltpack.HttpParameters" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="HttpParametersextendsBaseMojowithUsernameAware"></a>
       <a id="HttpParameters:HttpParameters"></a>
@@ -183,16 +182,16 @@ embedded metadata</p>
       </h4>
       <p class="comment cmt">Trait defining common mojo parameters and methods useful for identifying package dependencies that
 are not embedded in the main project artifact</p>
-    </li><li name="net.adamcin.vltpack.PutsBundle" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="PutsBundleextendsBaseMojowithHttpParameterswithBundlePathParameters"></a>
-      <a id="PutsBundle:PutsBundle"></a>
+    </li><li name="net.adamcin.vltpack.PutsBundles" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="PutsBundlesextendsBaseMojowithHttpParameterswithBundlePathParameters"></a>
+      <a id="PutsBundles:PutsBundles"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="PutsBundle.html"><span class="name">PutsBundle</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a> with <a href="BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a></span>
+        <a href="PutsBundles.html"><span class="name">PutsBundles</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a> with <a href="BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a></span>
       </span>
       </h4>
       <p class="comment cmt">Trait defining common mojo parameters and methods for uploading OSGi bundles to the configured CQ server
@@ -226,7 +225,7 @@ the dependency as a component</p>
       <p class="comment cmt">Trait defining common mojo parameters and methods useful for arbitrarily resolving artifacts from
 local and remote repositories</p>
     </li><li name="net.adamcin.vltpack.UploadsPackages" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="UploadsPackagesextendsBaseMojowithHttpParameters"></a>
+      <a id="UploadsPackagesextendsBaseMojowithHttpParameterswithIdentifiesPackages"></a>
       <a id="UploadsPackages:UploadsPackages"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -234,7 +233,7 @@ local and remote repositories</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="UploadsPackages.html"><span class="name">UploadsPackages</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></span>
+        <a href="UploadsPackages.html"><span class="name">UploadsPackages</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a> with <a href="IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></span>
       </span>
       </h4>
       <p class="comment cmt">Trait defining common mojo parameters and methods useful for uploading and installing vault packages on

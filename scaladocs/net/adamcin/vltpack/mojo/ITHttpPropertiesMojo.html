@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>UploadMojo - VLT Pack Maven Plugin 0.9.0-SNAPSHOT API - net.adamcin.vltpack.mojo.UploadMojo</title>
-          <meta name="description" content="UploadMojo - VLT Pack Maven Plugin 0.9.0 - SNAPSHOT API - net.adamcin.vltpack.mojo.UploadMojo" />
-          <meta name="keywords" content="UploadMojo VLT Pack Maven Plugin 0.9.0 SNAPSHOT API net.adamcin.vltpack.mojo.UploadMojo" />
+          <title>ITHttpPropertiesMojo - VLT Pack Maven Plugin 0.9.0-SNAPSHOT API - net.adamcin.vltpack.mojo.ITHttpPropertiesMojo</title>
+          <meta name="description" content="ITHttpPropertiesMojo - VLT Pack Maven Plugin 0.9.0 - SNAPSHOT API - net.adamcin.vltpack.mojo.ITHttpPropertiesMojo" />
+          <meta name="keywords" content="ITHttpPropertiesMojo VLT Pack Maven Plugin 0.9.0 SNAPSHOT API net.adamcin.vltpack.mojo.ITHttpPropertiesMojo" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -17,7 +17,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../index.html';
-            var hash = 'net.adamcin.vltpack.mojo.UploadMojo';
+            var hash = 'net.adamcin.vltpack.mojo.ITHttpPropertiesMojo';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -31,7 +31,7 @@
       <div id="definition">
         <img src="../../../../lib/class_big.png" />
         <p id="owner"><a href="../../../package.html" class="extype" name="net">net</a>.<a href="../../package.html" class="extype" name="net.adamcin">adamcin</a>.<a href="../package.html" class="extype" name="net.adamcin.vltpack">vltpack</a>.<a href="package.html" class="extype" name="net.adamcin.vltpack.mojo">mojo</a></p>
-        <h1>UploadMojo</h1>
+        <h1>ITHttpPropertiesMojo</h1>
       </div>
 
       <h4 id="signature" class="signature">
@@ -40,16 +40,17 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">UploadMojo</span><span class="result"> extends <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a> with <a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a> with <a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a> with <a href="../DeploysWithBuild.html" class="extype" name="net.adamcin.vltpack.DeploysWithBuild">DeploysWithBuild</a></span>
+        <span class="name">ITHttpPropertiesMojo</span><span class="result"> extends <a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a> with <a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Uploads the project vault package to the configured CQ server</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Exports HTTP properties defined in <code> HttpParameters</code> and the active Maven Proxy configuration for integration
+tests to use via <code> java.lang.System#getProperties</code>.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Mojo</span><span class="args">()</span>
               
-        </dd><dt>Since</dt><dd><p>0.6.0</p></dd></dl><div class="toggleContainer block">
+        </dd><dt>Since</dt><dd><p>1.0.0</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../DeploysWithBuild.html" class="extype" name="net.adamcin.vltpack.DeploysWithBuild">DeploysWithBuild</a>, <a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a>, <a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a>, <a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a>, <a href="../UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a>, <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a>, <a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a>, <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a>, <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span>, <span class="extype" name="org.apache.maven.plugin.ContextEnabled">ContextEnabled</span>, <span class="extype" name="org.apache.maven.plugin.Mojo">Mojo</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a>, <a href="../UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a>, <a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a>, <a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a>, <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a>, <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span>, <span class="extype" name="org.apache.maven.plugin.ContextEnabled">ContextEnabled</span>, <span class="extype" name="org.apache.maven.plugin.Mojo">Mojo</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -67,7 +68,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="net.adamcin.vltpack.mojo.UploadMojo"><span>UploadMojo</span></li><li class="in" name="net.adamcin.vltpack.DeploysWithBuild"><span>DeploysWithBuild</span></li><li class="in" name="net.adamcin.vltpack.IdentifiesPackages"><span>IdentifiesPackages</span></li><li class="in" name="net.adamcin.vltpack.UploadsPackages"><span>UploadsPackages</span></li><li class="in" name="net.adamcin.vltpack.HttpParameters"><span>HttpParameters</span></li><li class="in" name="net.adamcin.vltpack.UsernameAware"><span>UsernameAware</span></li><li class="in" name="net.adamcin.vltpack.OutputParameters"><span>OutputParameters</span></li><li class="in" name="net.adamcin.vltpack.RequiresProject"><span>RequiresProject</span></li><li class="in" name="net.adamcin.vltpack.mojo.BaseMojo"><span>BaseMojo</span></li><li class="in" name="org.apache.maven.plugin.AbstractMojo"><span>AbstractMojo</span></li><li class="in" name="org.apache.maven.plugin.ContextEnabled"><span>ContextEnabled</span></li><li class="in" name="org.apache.maven.plugin.Mojo"><span>Mojo</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo"><span>ITHttpPropertiesMojo</span></li><li class="in" name="net.adamcin.vltpack.HttpParameters"><span>HttpParameters</span></li><li class="in" name="net.adamcin.vltpack.UsernameAware"><span>UsernameAware</span></li><li class="in" name="net.adamcin.vltpack.mojo.BaseITMojo"><span>BaseITMojo</span></li><li class="in" name="net.adamcin.vltpack.RequiresProject"><span>RequiresProject</span></li><li class="in" name="net.adamcin.vltpack.mojo.BaseMojo"><span>BaseMojo</span></li><li class="in" name="org.apache.maven.plugin.AbstractMojo"><span>AbstractMojo</span></li><li class="in" name="org.apache.maven.plugin.ContextEnabled"><span>ContextEnabled</span></li><li class="in" name="org.apache.maven.plugin.Mojo"><span>Mojo</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -87,16 +88,16 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="net.adamcin.vltpack.mojo.UploadMojo#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;():net.adamcin.vltpack.mojo.UploadMojo"></a>
-      <a id="&lt;init&gt;:UploadMojo"></a>
+              <ol><li name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;():net.adamcin.vltpack.mojo.ITHttpPropertiesMojo"></a>
+      <a id="&lt;init&gt;:ITHttpPropertiesMojo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">UploadMojo</span><span class="params">()</span>
+        <span class="name">ITHttpPropertiesMojo</span><span class="params">()</span>
       </span>
       </h4>
       
@@ -291,21 +292,34 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="net.adamcin.vltpack.UploadsPackages#autosave" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="autosave:Int"></a>
-      <a id="autosave:Int"></a>
+    </li><li name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo#baseUrlProperty" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="baseUrlProperty:String"></a>
+      <a id="baseUrlProperty:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">autosave</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">baseUrlProperty</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Change the autosave threshold for the install command
-</p><div class="fullcomment"><div class="comment cmt"><p>Change the autosave threshold for the install command
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
+      <p class="shortcomment cmt">Maps the effective base URL (including context path, but without trailing slash) to the specified system
+property
+</p>
+    </li><li name="net.adamcin.vltpack.HttpParameters#baseUrlString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="baseUrlString:String"></a>
+      <a id="baseUrlString:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">baseUrlString</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -322,19 +336,6 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#configXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="configXml:java.io.File"></a>
-      <a id="configXml:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">configXml</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.HttpParameters#context" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="context:String"></a>
       <a id="context:String"></a>
@@ -350,77 +351,20 @@
       <p class="shortcomment cmt">CQ Servlet context by which JCR paths are appended
 </p><div class="fullcomment"><div class="comment cmt"><p>CQ Servlet context by which JCR paths are appended
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#definitionDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="definitionDirectory:java.io.File"></a>
-      <a id="definitionDirectory:File"></a>
+    </li><li name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo#contextProperty" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="contextProperty:String"></a>
+      <a id="contextProperty:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">definitionDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
+        <span class="name">contextProperty</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#definitionXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="definitionXml:java.io.File"></a>
-      <a id="definitionXml:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">definitionXml</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.DeploysWithBuild#deploy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="deploy:Boolean"></a>
-      <a id="deploy:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">deploy</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Set to true to enable deployment of artifacts during integration-test phase
-</p><div class="fullcomment"><div class="comment cmt"><p>Set to true to enable deployment of artifacts during integration-test phase
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../DeploysWithBuild.html" class="extype" name="net.adamcin.vltpack.DeploysWithBuild">DeploysWithBuild</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#embedBundlesDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="embedBundlesDirectory:java.io.File"></a>
-      <a id="embedBundlesDirectory:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">embedBundlesDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">directory containing resolved bundles
-</p><div class="fullcomment"><div class="comment cmt"><p>directory containing resolved bundles
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#embedPackagesDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="embedPackagesDirectory:java.io.File"></a>
-      <a id="embedPackagesDirectory:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">embedPackagesDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">directory containing resolved packages
-</p><div class="fullcomment"><div class="comment cmt"><p>directory containing resolved packages
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+      <p class="shortcomment cmt">Maps the effective server context path property to the specified system property
+</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -447,7 +391,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="net.adamcin.vltpack.mojo.UploadMojo#execute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo#execute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="execute():Unit"></a>
       <a id="execute():Unit"></a>
       <h4 class="signature">
@@ -459,33 +403,7 @@
         <span class="name">execute</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="net.adamcin.vltpack.mojo.UploadMojo">UploadMojo</a> → <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> → Mojo</dd></dl></div>
-    </li><li name="net.adamcin.vltpack.UploadsPackages#existsOnServer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="existsOnServer(packageId:Option[com.day.jcr.vault.packaging.PackageId]):Either[Throwable,(Boolean,String)]"></a>
-      <a id="existsOnServer(Option[PackageId]):Either[Throwable,(Boolean,String)]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">existsOnServer</span><span class="params">(<span name="packageId">packageId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Throwable">Throwable</span>, (<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#filterXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="filterXml:java.io.File"></a>
-      <a id="filterXml:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">filterXml</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo">ITHttpPropertiesMojo</a> → <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> → Mojo</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -502,20 +420,6 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="net.adamcin.vltpack.mojo.UploadMojo#force" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="force:Boolean"></a>
-      <a id="force:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">force</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Force upload of the package if it already exists in the target environment
-</p>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -529,32 +433,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#getExistingDir" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getExistingDir(file:java.io.File):java.io.File"></a>
-      <a id="getExistingDir(File):File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getExistingDir</span><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.IdentifiesPackages#getIdFromProperties" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getIdFromProperties(props:java.util.Properties,defaultId:Option[com.day.jcr.vault.packaging.PackageId]):Option[com.day.jcr.vault.packaging.PackageId]"></a>
-      <a id="getIdFromProperties(Properties,Option[PackageId]):Option[PackageId]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getIdFromProperties</span><span class="params">(<span name="props">props: <span class="extype" name="java.util.Properties">Properties</span></span>, <span name="defaultId">defaultId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></dd></dl></div>
     </li><li name="org.apache.maven.plugin.AbstractMojo#getLog" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getLog():org.apache.maven.plugin.logging.Log"></a>
       <a id="getLog():Log"></a>
@@ -607,19 +485,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#hooksDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hooksDirectory:java.io.File"></a>
-      <a id="hooksDirectory:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">hooksDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.HttpParameters#host" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="host:String"></a>
       <a id="host:String"></a>
@@ -635,6 +500,20 @@
       <p class="shortcomment cmt">Hostname for the CQ server
 </p><div class="fullcomment"><div class="comment cmt"><p>Hostname for the CQ server
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo#hostnameProperty" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="hostnameProperty:String"></a>
+      <a id="hostnameProperty:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hostnameProperty</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Maps the effective server hostname value to the specified system property
+</p>
     </li><li name="net.adamcin.vltpack.HttpParameters#https" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="https:Boolean"></a>
       <a id="https:Boolean"></a>
@@ -650,19 +529,6 @@
       <p class="shortcomment cmt">Whether to use an SSL connection instead of a normal HTTP connection.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to use an SSL connection instead of a normal HTTP connection.
 Does not affect the configured TCP port
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.IdentifiesPackages#identifyPackage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="identifyPackage(file:java.io.File):Option[com.day.jcr.vault.packaging.PackageId]"></a>
-      <a id="identifyPackage(File):Option[PackageId]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">identifyPackage</span><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.HttpParameters#implyDavRequestVerbs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="implyDavRequestVerbs(wrapped:dispatch.DefaultRequestVerbs):net.adamcin.vltpack.DavRequestVerbs"></a>
       <a id="implyDavRequestVerbs(DefaultRequestVerbs):DavRequestVerbs"></a>
@@ -676,19 +542,6 @@ Does not affect the configured TCP port
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.UploadsPackages#installPackage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="installPackage(packageId:Option[com.day.jcr.vault.packaging.PackageId]):Either[Throwable,(Boolean,String)]"></a>
-      <a id="installPackage(Option[PackageId]):Either[Throwable,(Boolean,String)]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">installPackage</span><span class="params">(<span name="packageId">packageId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Throwable">Throwable</span>, (<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -715,19 +568,21 @@ Does not affect the configured TCP port
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.UploadsPackages#log" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="log:org.slf4j.Logger"></a>
-      <a id="log:Logger"></a>
+    </li><li name="net.adamcin.vltpack.mojo.BaseITMojo#itSupport" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="itSupport:Boolean"></a>
+      <a id="itSupport:Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">log</span><span class="result">: <span class="extype" name="org.slf4j.Logger">Logger</span></span>
+        <span class="name">itSupport</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
+      <p class="shortcomment cmt">Set this property to true to enable the pre-integration-test goals (<code> vltpack-maven-plugin:IT-*</code>)
+</p><div class="fullcomment"><div class="comment cmt"><p>Set this property to true to enable the pre-integration-test goals (<code> vltpack-maven-plugin:IT-*</code>)
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -782,34 +637,6 @@ Overrides any other HTTP proxy configuration
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#outputDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="outputDirectory:java.io.File"></a>
-      <a id="outputDirectory:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">outputDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">target directory
-</p><div class="fullcomment"><div class="comment cmt"><p>target directory
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.UploadsPackages#parseServiceResponse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="parseServiceResponse(respBody:String):Either[Throwable,(Boolean,String)]"></a>
-      <a id="parseServiceResponse(String):Either[Throwable,(Boolean,String)]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">parseServiceResponse</span><span class="params">(<span name="respBody">respBody: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Throwable">Throwable</span>, (<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.HttpParameters#pass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pass:String"></a>
       <a id="pass:String"></a>
@@ -825,6 +652,20 @@ Overrides any other HTTP proxy configuration
       <p class="shortcomment cmt">Password to use in connection credentials
 </p><div class="fullcomment"><div class="comment cmt"><p>Password to use in connection credentials
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo#passwordProperty" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="passwordProperty:String"></a>
+      <a id="passwordProperty:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">passwordProperty</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Maps the effective password value to the specified system property
+</p>
     </li><li name="net.adamcin.vltpack.HttpParameters#port" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="port:Integer"></a>
       <a id="port:Integer"></a>
@@ -840,6 +681,20 @@ Overrides any other HTTP proxy configuration
       <p class="shortcomment cmt">TCP Port for the CQ server
 </p><div class="fullcomment"><div class="comment cmt"><p>TCP Port for the CQ server
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo#portProperty" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="portProperty:String"></a>
+      <a id="portProperty:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">portProperty</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Maps the effective server port value to the specified system property
+</p>
     </li><li name="net.adamcin.vltpack.RequiresProject#project" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="project:org.apache.maven.project.MavenProject"></a>
       <a id="project:MavenProject"></a>
@@ -853,32 +708,20 @@ Overrides any other HTTP proxy configuration
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.IdentifiesPackages#propertiesEntry" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="propertiesEntry:String"></a>
-      <a id="propertiesEntry:String"></a>
+    </li><li name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo#protocolProperty" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="protocolProperty:String"></a>
+      <a id="protocolProperty:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">propertiesEntry</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+        <span class="name">protocolProperty</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#propertiesXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="propertiesXml:java.io.File"></a>
-      <a id="propertiesXml:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">propertiesXml</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+      <p class="shortcomment cmt">Maps the effective HTTP protocol (http/https) to the specified system property
+</p>
     </li><li name="net.adamcin.vltpack.HttpParameters#proxyHost" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="proxyHost:String"></a>
       <a id="proxyHost:String"></a>
@@ -970,34 +813,6 @@ associated mojo parameter alternatives
       <p class="shortcomment cmt">The HTTP Proxy username
 </p><div class="fullcomment"><div class="comment cmt"><p>The HTTP Proxy username
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.UploadsPackages#recursive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="recursive:Boolean"></a>
-      <a id="recursive:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">recursive</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Set to false to not install any subpackages that might be embedded within each dependency
-</p><div class="fullcomment"><div class="comment cmt"><p>Set to false to not install any subpackages that might be embedded within each dependency
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#relativeToBundleInstallPath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="relativeToBundleInstallPath(bundle:java.io.File):String"></a>
-      <a id="relativeToBundleInstallPath(File):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">relativeToBundleInstallPath</span><span class="params">(<span name="bundle">bundle: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.HttpParameters#reqHost" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reqHost:com.ning.http.client.RequestBuilder"></a>
       <a id="reqHost:RequestBuilder"></a>
@@ -1011,19 +826,6 @@ associated mojo parameter alternatives
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.UploadsPackages#servicePath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="servicePath:String"></a>
-      <a id="servicePath:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">servicePath</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.mojo.BaseMojo#session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="session:org.apache.maven.execution.MavenSession"></a>
       <a id="session:MavenSession"></a>
@@ -1063,6 +865,20 @@ associated mojo parameter alternatives
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractMojo → ContextEnabled</dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo#setProxyProperties" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setProxyProperties:Boolean"></a>
+      <a id="setProxyProperties:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setProxyProperties</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set to true to set the standard java proxy properties using the active maven proxy values
+</p>
     </li><li name="net.adamcin.vltpack.mojo.BaseMojo#settings" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="settings:org.apache.maven.settings.Settings"></a>
       <a id="settings:Settings"></a>
@@ -1076,33 +892,76 @@ associated mojo parameter alternatives
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#settingsXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="settingsXml:java.io.File"></a>
-      <a id="settingsXml:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">settingsXml</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.mojo.UploadMojo#skip" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo#skip" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="skip:Boolean"></a>
       <a id="skip:Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">var</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">skip</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Set to true to skip mojo execution
+      <p class="shortcomment cmt">Maps the effective HTTP protocol (http/https) to the specified system property
 </p>
+    </li><li name="net.adamcin.vltpack.mojo.BaseITMojo#skipITs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="skipITs:Boolean"></a>
+      <a id="skipITs:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">skipITs</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">By convention, this parameter is used to disable execution of the maven-failsafe-plugin.</p><div class="fullcomment"><div class="comment cmt"><p>By convention, this parameter is used to disable execution of the maven-failsafe-plugin.
+It is recognized by vltpack to disable uploading of test artifacts and integration test reporting goals.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.BaseITMojo#skipOrExecute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="skipOrExecute(skip:Boolean)(body:=&gt;Unit):Unit"></a>
+      <a id="skipOrExecute(Boolean)(⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">skipOrExecute</span><span class="params">(<span name="skip">skip: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="body">body: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a> → <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.BaseITMojo#skipTests" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="skipTests:Boolean"></a>
+      <a id="skipTests:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">skipTests</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">By convention, this parameter is used to disable execution of maven-surefire-plugin-derived goals.</p><div class="fullcomment"><div class="comment cmt"><p>By convention, this parameter is used to disable execution of maven-surefire-plugin-derived goals.
+It is recognized by vltpack to disable uploading of test artifacts and integration test reporting goals.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.BaseITMojo#skipWithTestsOrExecute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="skipWithTestsOrExecute(skip:Boolean)(body:=&gt;Unit):Unit"></a>
+      <a id="skipWithTestsOrExecute(Boolean)(⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">skipWithTestsOrExecute</span><span class="params">(<span name="skip">skip: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="body">body: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -1116,60 +975,6 @@ associated mojo parameter alternatives
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#targetFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="targetFile:java.io.File"></a>
-      <a id="targetFile:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">targetFile</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">target vltpack file
-</p><div class="fullcomment"><div class="comment cmt"><p>target vltpack file
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#thumbnailDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="thumbnailDirectory:java.io.File"></a>
-      <a id="thumbnailDirectory:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">thumbnailDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#thumbnailFileDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="thumbnailFileDirectory:java.io.File"></a>
-      <a id="thumbnailFileDirectory:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">thumbnailFileDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#thumbnailFileXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="thumbnailFileXml:java.io.File"></a>
-      <a id="thumbnailFileXml:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">thumbnailFileXml</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
@@ -1183,32 +988,6 @@ associated mojo parameter alternatives
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#transientRepoDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="transientRepoDirectory:java.io.File"></a>
-      <a id="transientRepoDirectory:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">transientRepoDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.UploadsPackages#uploadPackage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="uploadPackage(packageId:Option[com.day.jcr.vault.packaging.PackageId],file:java.io.File,force:Boolean):Either[Throwable,(Boolean,String)]"></a>
-      <a id="uploadPackage(Option[PackageId],File,Boolean):Either[Throwable,(Boolean,String)]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">uploadPackage</span><span class="params">(<span name="packageId">packageId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>, <span name="file">file: <span class="extype" name="java.io.File">File</span></span>, <span name="force">force: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Throwable">Throwable</span>, (<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.HttpParameters#urlForPath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="urlForPath(absPath:String):dispatch.DefaultRequestVerbs"></a>
       <a id="urlForPath(String):DefaultRequestVerbs"></a>
@@ -1237,61 +1016,20 @@ associated mojo parameter alternatives
       <p class="shortcomment cmt">Specify the CQ username associated with package creation and installation
 </p><div class="fullcomment"><div class="comment cmt"><p>Specify the CQ username associated with package creation and installation
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#vaultDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="vaultDirectory:java.io.File"></a>
-      <a id="vaultDirectory:File"></a>
+    </li><li name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo#usernameProperty" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="usernameProperty:String"></a>
+      <a id="usernameProperty:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">vaultDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
+        <span class="name">usernameProperty</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#vaultInfDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="vaultInfDirectory:java.io.File"></a>
-      <a id="vaultInfDirectory:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">vaultInfDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#vaultInfMetaInfDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="vaultInfMetaInfDirectory:java.io.File"></a>
-      <a id="vaultInfMetaInfDirectory:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">vaultInfMetaInfDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">vault-inf-generated META-INF/vault/.</p><div class="fullcomment"><div class="comment cmt"><p>vault-inf-generated META-INF/vault/... resources
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.OutputParameters#vltpackDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="vltpackDirectory:java.io.File"></a>
-      <a id="vltpackDirectory:File"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">vltpackDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">directory containing vltpack-generated files
-</p><div class="fullcomment"><div class="comment cmt"><p>directory containing vltpack-generated files
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+      <p class="shortcomment cmt">Maps the effective username value to the specified system property
+</p>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -1340,27 +1078,55 @@ associated mojo parameter alternatives
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="net.adamcin.vltpack.HttpParameters#waitForResponse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="waitForResponse[T](nTrys:Int)(implicituntil:Long,implicitrequestFunction:()=&gt;(com.ning.http.client.Request,com.ning.http.client.AsyncHandler[T]),implicitcontentChecker:dispatch.Promise[T]=&gt;dispatch.Promise[Boolean]):Boolean"></a>
+      <a id="waitForResponse[T](Int)(Long,()⇒(Request,AsyncHandler[T]),(Promise[T])⇒Promise[Boolean]):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">waitForResponse</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="nTrys">nTrys: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="until">until: <span class="extype" name="scala.Long">Long</span></span>, <span name="requestFunction">requestFunction: () ⇒ (<span class="extype" name="com.ning.http.client.Request">Request</span>, <span class="extype" name="com.ning.http.client.AsyncHandler">AsyncHandler</span>[<span class="extype" name="net.adamcin.vltpack.HttpParameters.waitForResponse.T">T</span>])</span>, <span name="contentChecker">contentChecker: (<span class="extype" name="dispatch.Promise">Promise</span>[<span class="extype" name="net.adamcin.vltpack.HttpParameters.waitForResponse.T">T</span>]) ⇒ <span class="extype" name="dispatch.Promise">Promise</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@tailrec</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li></ol>
             </div>
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="net.adamcin.vltpack.mojo.BaseITMojo#deploy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="deploy:Boolean"></a>
+      <a id="deploy:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: value ignored as of 1.0.0
+">deploy</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">legacy deploy flag</p><div class="fullcomment"><div class="comment cmt"><p>legacy deploy flag</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a></dd><dt>Deprecated</dt><dd class="cmt"><p>value ignored as of 1.0.0
+</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="net.adamcin.vltpack.DeploysWithBuild">
-              <h3>Inherited from <a href="../DeploysWithBuild.html" class="extype" name="net.adamcin.vltpack.DeploysWithBuild">DeploysWithBuild</a></h3>
-            </div><div class="parent" name="net.adamcin.vltpack.IdentifiesPackages">
-              <h3>Inherited from <a href="../IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></h3>
-            </div><div class="parent" name="net.adamcin.vltpack.UploadsPackages">
-              <h3>Inherited from <a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></h3>
-            </div><div class="parent" name="net.adamcin.vltpack.HttpParameters">
+        <div class="parent" name="net.adamcin.vltpack.HttpParameters">
               <h3>Inherited from <a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></h3>
             </div><div class="parent" name="net.adamcin.vltpack.UsernameAware">
               <h3>Inherited from <a href="../UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a></h3>
-            </div><div class="parent" name="net.adamcin.vltpack.OutputParameters">
-              <h3>Inherited from <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></h3>
+            </div><div class="parent" name="net.adamcin.vltpack.mojo.BaseITMojo">
+              <h3>Inherited from <a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a></h3>
             </div><div class="parent" name="net.adamcin.vltpack.RequiresProject">
               <h3>Inherited from <a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a></h3>
             </div><div class="parent" name="net.adamcin.vltpack.mojo.BaseMojo">

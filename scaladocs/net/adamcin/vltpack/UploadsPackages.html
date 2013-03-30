@@ -40,17 +40,17 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">UploadsPackages</span><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></span>
+        <span class="name">UploadsPackages</span><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a> with <a href="IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trait defining common mojo parameters and methods useful for uploading and installing vault packages on
 CQ servers</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a>, <a href="UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a>, <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a>, <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span>, <span class="extype" name="org.apache.maven.plugin.ContextEnabled">ContextEnabled</span>, <span class="extype" name="org.apache.maven.plugin.Mojo">Mojo</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a>, <a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a>, <a href="UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a>, <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a>, <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span>, <span class="extype" name="org.apache.maven.plugin.ContextEnabled">ContextEnabled</span>, <span class="extype" name="org.apache.maven.plugin.Mojo">Mojo</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="mojo/UploadDependenciesMojo.html" class="extype" name="net.adamcin.vltpack.mojo.UploadDependenciesMojo">UploadDependenciesMojo</a>, <a href="mojo/UploadFromRepoMojo.html" class="extype" name="net.adamcin.vltpack.mojo.UploadFromRepoMojo">UploadFromRepoMojo</a>, <a href="mojo/UploadMojo.html" class="extype" name="net.adamcin.vltpack.mojo.UploadMojo">UploadMojo</a></div>
+          <div class="subClasses hiddenContent"><a href="mojo/ITUploadMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITUploadMojo">ITUploadMojo</a>, <a href="mojo/ITUploadTestsMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITUploadTestsMojo">ITUploadTestsMojo</a>, <a href="mojo/UploadFromRepoMojo.html" class="extype" name="net.adamcin.vltpack.mojo.UploadFromRepoMojo">UploadFromRepoMojo</a></div>
         </div></div>
         
 
@@ -68,7 +68,7 @@ CQ servers</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p>
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="net.adamcin.vltpack.UploadsPackages"><span>UploadsPackages</span></li><li class="in" name="net.adamcin.vltpack.HttpParameters"><span>HttpParameters</span></li><li class="in" name="net.adamcin.vltpack.UsernameAware"><span>UsernameAware</span></li><li class="in" name="net.adamcin.vltpack.mojo.BaseMojo"><span>BaseMojo</span></li><li class="in" name="org.apache.maven.plugin.AbstractMojo"><span>AbstractMojo</span></li><li class="in" name="org.apache.maven.plugin.ContextEnabled"><span>ContextEnabled</span></li><li class="in" name="org.apache.maven.plugin.Mojo"><span>Mojo</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="net.adamcin.vltpack.UploadsPackages"><span>UploadsPackages</span></li><li class="in" name="net.adamcin.vltpack.IdentifiesPackages"><span>IdentifiesPackages</span></li><li class="in" name="net.adamcin.vltpack.HttpParameters"><span>HttpParameters</span></li><li class="in" name="net.adamcin.vltpack.UsernameAware"><span>UsernameAware</span></li><li class="in" name="net.adamcin.vltpack.mojo.BaseMojo"><span>BaseMojo</span></li><li class="in" name="org.apache.maven.plugin.AbstractMojo"><span>AbstractMojo</span></li><li class="in" name="org.apache.maven.plugin.ContextEnabled"><span>ContextEnabled</span></li><li class="in" name="org.apache.maven.plugin.Mojo"><span>Mojo</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -290,6 +290,19 @@ CQ servers</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p>
       </h4>
       <p class="shortcomment cmt">Change the autosave threshold for the install command
 </p>
+    </li><li name="net.adamcin.vltpack.HttpParameters#baseUrlString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="baseUrlString:String"></a>
+      <a id="baseUrlString:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">baseUrlString</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -402,6 +415,19 @@ CQ servers</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="net.adamcin.vltpack.IdentifiesPackages#getIdFromProperties" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getIdFromProperties(props:java.util.Properties,defaultId:Option[com.day.jcr.vault.packaging.PackageId]):Option[com.day.jcr.vault.packaging.PackageId]"></a>
+      <a id="getIdFromProperties(Properties,Option[PackageId]):Option[PackageId]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getIdFromProperties</span><span class="params">(<span name="props">props: <span class="extype" name="java.util.Properties">Properties</span></span>, <span name="defaultId">defaultId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></dd></dl></div>
     </li><li name="org.apache.maven.plugin.AbstractMojo#getLog" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getLog():org.apache.maven.plugin.logging.Log"></a>
       <a id="getLog():Log"></a>
@@ -484,6 +510,19 @@ CQ servers</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p>
       <p class="shortcomment cmt">Whether to use an SSL connection instead of a normal HTTP connection.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to use an SSL connection instead of a normal HTTP connection.
 Does not affect the configured TCP port
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.IdentifiesPackages#identifyPackage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="identifyPackage(file:java.io.File):Option[com.day.jcr.vault.packaging.PackageId]"></a>
+      <a id="identifyPackage(File):Option[PackageId]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">identifyPackage</span><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.HttpParameters#implyDavRequestVerbs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="implyDavRequestVerbs(wrapped:dispatch.DefaultRequestVerbs):net.adamcin.vltpack.DavRequestVerbs"></a>
       <a id="implyDavRequestVerbs(DefaultRequestVerbs):DavRequestVerbs"></a>
@@ -536,19 +575,6 @@ Does not affect the configured TCP port
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.UploadsPackages#log" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="log:org.slf4j.Logger"></a>
-      <a id="log:Logger"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">log</span><span class="result">: <span class="extype" name="org.slf4j.Logger">Logger</span></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -646,6 +672,19 @@ Overrides any other HTTP proxy configuration
       <p class="shortcomment cmt">TCP Port for the CQ server
 </p><div class="fullcomment"><div class="comment cmt"><p>TCP Port for the CQ server
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.IdentifiesPackages#propertiesEntry" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="propertiesEntry:String"></a>
+      <a id="propertiesEntry:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">propertiesEntry</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.HttpParameters#proxyHost" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="proxyHost:String"></a>
       <a id="proxyHost:String"></a>
@@ -777,6 +816,20 @@ associated mojo parameter alternatives
       </span>
       </h4>
       
+    </li><li name="net.adamcin.vltpack.UploadsPackages#serviceTimeout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="serviceTimeout:Int"></a>
+      <a id="serviceTimeout:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">serviceTimeout</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set the timeout used for waiting for Package Manager service availability
+</p>
     </li><li name="net.adamcin.vltpack.mojo.BaseMojo#session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="session:org.apache.maven.execution.MavenSession"></a>
       <a id="session:MavenSession"></a>
@@ -829,6 +882,19 @@ associated mojo parameter alternatives
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.BaseMojo#skipOrExecute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="skipOrExecute(skip:Boolean)(body:=&gt;Unit):Unit"></a>
+      <a id="skipOrExecute(Boolean)(⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">skipOrExecute</span><span class="params">(<span name="skip">skip: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="body">body: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -865,6 +931,19 @@ associated mojo parameter alternatives
       </span>
       <span class="symbol">
         <span class="name">uploadPackage</span><span class="params">(<span name="packageId">packageId: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.day.jcr.vault.packaging.PackageId">PackageId</span>]</span>, <span name="file">file: <span class="extype" name="java.io.File">File</span></span>, <span name="force">force: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Throwable">Throwable</span>, (<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
+      </span>
+      </h4>
+      
+    </li><li name="net.adamcin.vltpack.UploadsPackages#uploadPackageArtifact" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="uploadPackageArtifact(artifact:org.apache.maven.artifact.Artifact,force:Boolean):Unit"></a>
+      <a id="uploadPackageArtifact(Artifact,Boolean):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uploadPackageArtifact</span><span class="params">(<span name="artifact">artifact: <span class="extype" name="org.apache.maven.artifact.Artifact">Artifact</span></span>, <span name="force">force: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       
@@ -944,6 +1023,38 @@ associated mojo parameter alternatives
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="net.adamcin.vltpack.HttpParameters#waitForResponse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="waitForResponse[T](nTrys:Int)(implicituntil:Long,implicitrequestFunction:()=&gt;(com.ning.http.client.Request,com.ning.http.client.AsyncHandler[T]),implicitcontentChecker:dispatch.Promise[T]=&gt;dispatch.Promise[Boolean]):Boolean"></a>
+      <a id="waitForResponse[T](Int)(Long,()⇒(Request,AsyncHandler[T]),(Promise[T])⇒Promise[Boolean]):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">waitForResponse</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="nTrys">nTrys: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="until">until: <span class="extype" name="scala.Long">Long</span></span>, <span name="requestFunction">requestFunction: () ⇒ (<span class="extype" name="com.ning.http.client.Request">Request</span>, <span class="extype" name="com.ning.http.client.AsyncHandler">AsyncHandler</span>[<span class="extype" name="net.adamcin.vltpack.HttpParameters.waitForResponse.T">T</span>])</span>, <span name="contentChecker">contentChecker: (<span class="extype" name="dispatch.Promise">Promise</span>[<span class="extype" name="net.adamcin.vltpack.HttpParameters.waitForResponse.T">T</span>]) ⇒ <span class="extype" name="dispatch.Promise">Promise</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@tailrec</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="net.adamcin.vltpack.UploadsPackages#waitForService" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="waitForService(thenDo:=&gt;Either[Throwable,(Boolean,String)]):Either[Throwable,(Boolean,String)]"></a>
+      <a id="waitForService(⇒Either[Throwable,(Boolean,String)]):Either[Throwable,(Boolean,String)]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">waitForService</span><span class="params">(<span name="thenDo">thenDo: ⇒ <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Throwable">Throwable</span>, (<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.Throwable">Throwable</span>, (<span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">wrap package manager service POST requests with this function to first check for service availability,
+which is interpreted by expecting a GET response of 405 (Method not allowed)</p><div class="fullcomment"><div class="comment cmt"><p>wrap package manager service POST requests with this function to first check for service availability,
+which is interpreted by expecting a GET response of 405 (Method not allowed)</p></div><dl class="paramcmts block"><dt class="param">thenDo</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -953,7 +1064,9 @@ associated mojo parameter alternatives
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="net.adamcin.vltpack.HttpParameters">
+        <div class="parent" name="net.adamcin.vltpack.IdentifiesPackages">
+              <h3>Inherited from <a href="IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></h3>
+            </div><div class="parent" name="net.adamcin.vltpack.HttpParameters">
               <h3>Inherited from <a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></h3>
             </div><div class="parent" name="net.adamcin.vltpack.UsernameAware">
               <h3>Inherited from <a href="UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a></h3>

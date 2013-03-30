@@ -2,22 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>DeploysWithBuild - VLT Pack Maven Plugin 0.9.0-SNAPSHOT API - net.adamcin.vltpack.DeploysWithBuild</title>
-          <meta name="description" content="DeploysWithBuild - VLT Pack Maven Plugin 0.9.0 - SNAPSHOT API - net.adamcin.vltpack.DeploysWithBuild" />
-          <meta name="keywords" content="DeploysWithBuild VLT Pack Maven Plugin 0.9.0 SNAPSHOT API net.adamcin.vltpack.DeploysWithBuild" />
+          <title>BaseITMojo - VLT Pack Maven Plugin 0.9.0-SNAPSHOT API - net.adamcin.vltpack.mojo.BaseITMojo</title>
+          <meta name="description" content="BaseITMojo - VLT Pack Maven Plugin 0.9.0 - SNAPSHOT API - net.adamcin.vltpack.mojo.BaseITMojo" />
+          <meta name="keywords" content="BaseITMojo VLT Pack Maven Plugin 0.9.0 SNAPSHOT API net.adamcin.vltpack.mojo.BaseITMojo" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
       
       <script type="text/javascript">
          if(top === self) {
-            var url = '../../../index.html';
-            var hash = 'net.adamcin.vltpack.DeploysWithBuild';
+            var url = '../../../../index.html';
+            var hash = 'net.adamcin.vltpack.mojo.BaseITMojo';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -29,28 +29,28 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../lib/trait_big.png" />
-        <p id="owner"><a href="../../package.html" class="extype" name="net">net</a>.<a href="../package.html" class="extype" name="net.adamcin">adamcin</a>.<a href="package.html" class="extype" name="net.adamcin.vltpack">vltpack</a></p>
-        <h1>DeploysWithBuild</h1>
+        <img src="../../../../lib/class_big.png" />
+        <p id="owner"><a href="../../../package.html" class="extype" name="net">net</a>.<a href="../../package.html" class="extype" name="net.adamcin">adamcin</a>.<a href="../package.html" class="extype" name="net.adamcin.vltpack">vltpack</a>.<a href="package.html" class="extype" name="net.adamcin.vltpack.mojo">mojo</a></p>
+        <h1>BaseITMojo</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">trait</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">DeploysWithBuild</span><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></span>
+        <span class="name">BaseITMojo</span><span class="result"> extends <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trait defining common mojo parameters and methods for controlling deployment of artifacts to CQ during
-a maven lifecycle build</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Base project IT mojo defining common mojo parameters and methods for enabling/disabling traffic to the configured
+integration test server for goals bound to the integration test phase of the default vltpack lifecycle</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>1.0.0</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a>, <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span>, <span class="extype" name="org.apache.maven.plugin.ContextEnabled">ContextEnabled</span>, <span class="extype" name="org.apache.maven.plugin.Mojo">Mojo</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a>, <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a>, <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span>, <span class="extype" name="org.apache.maven.plugin.ContextEnabled">ContextEnabled</span>, <span class="extype" name="org.apache.maven.plugin.Mojo">Mojo</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="mojo/PutBundleMojo.html" class="extype" name="net.adamcin.vltpack.mojo.PutBundleMojo">PutBundleMojo</a>, <a href="mojo/UploadDependenciesMojo.html" class="extype" name="net.adamcin.vltpack.mojo.UploadDependenciesMojo">UploadDependenciesMojo</a>, <a href="mojo/UploadMojo.html" class="extype" name="net.adamcin.vltpack.mojo.UploadMojo">UploadMojo</a></div>
+          <div class="subClasses hiddenContent"><a href="ITHttpPropertiesMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo">ITHttpPropertiesMojo</a>, <a href="ITPutBundleMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITPutBundleMojo">ITPutBundleMojo</a>, <a href="ITServerReadyMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITServerReadyMojo">ITServerReadyMojo</a>, <a href="ITUploadMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITUploadMojo">ITUploadMojo</a>, <a href="ITUploadTestsMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITUploadTestsMojo">ITUploadTestsMojo</a></div>
         </div></div>
         
 
@@ -68,7 +68,7 @@ a maven lifecycle build</p></div><dl class="attributes block"> <dt>Since</dt><dd
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="net.adamcin.vltpack.DeploysWithBuild"><span>DeploysWithBuild</span></li><li class="in" name="net.adamcin.vltpack.mojo.BaseMojo"><span>BaseMojo</span></li><li class="in" name="org.apache.maven.plugin.AbstractMojo"><span>AbstractMojo</span></li><li class="in" name="org.apache.maven.plugin.ContextEnabled"><span>ContextEnabled</span></li><li class="in" name="org.apache.maven.plugin.Mojo"><span>Mojo</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="net.adamcin.vltpack.mojo.BaseITMojo"><span>BaseITMojo</span></li><li class="in" name="net.adamcin.vltpack.RequiresProject"><span>RequiresProject</span></li><li class="in" name="net.adamcin.vltpack.mojo.BaseMojo"><span>BaseMojo</span></li><li class="in" name="org.apache.maven.plugin.AbstractMojo"><span>AbstractMojo</span></li><li class="in" name="org.apache.maven.plugin.ContextEnabled"><span>ContextEnabled</span></li><li class="in" name="org.apache.maven.plugin.Mojo"><span>Mojo</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -86,7 +86,23 @@ a maven lifecycle build</p></div><dl class="attributes block"> <dt>Since</dt><dd
 
       <div id="template">
         <div id="allMembers">
-        
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="net.adamcin.vltpack.mojo.BaseITMojo#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;():net.adamcin.vltpack.mojo.BaseITMojo"></a>
+      <a id="&lt;init&gt;:BaseITMojo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">BaseITMojo</span><span class="params">()</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
 
         
 
@@ -188,20 +204,6 @@ a maven lifecycle build</p></div><dl class="attributes block"> <dt>Since</dt><dd
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="net.adamcin.vltpack.DeploysWithBuild#deploy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="deploy:Boolean"></a>
-      <a id="deploy:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">deploy</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Set to true to enable deployment of artifacts during integration-test phase
-</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -240,7 +242,7 @@ a maven lifecycle build</p></div><dl class="attributes block"> <dt>Since</dt><dd
         <span class="name">execute</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> → Mojo</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> → Mojo</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -322,6 +324,20 @@ a maven lifecycle build</p></div><dl class="attributes block"> <dt>Since</dt><dd
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.BaseITMojo#itSupport" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="itSupport:Boolean"></a>
+      <a id="itSupport:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">itSupport</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set this property to true to enable the pre-integration-test goals (<code> vltpack-maven-plugin:IT-*</code>)
+</p>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -361,6 +377,19 @@ a maven lifecycle build</p></div><dl class="attributes block"> <dt>Since</dt><dd
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="net.adamcin.vltpack.RequiresProject#project" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="project:org.apache.maven.project.MavenProject"></a>
+      <a id="project:MavenProject"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">project</span><span class="result">: <span class="extype" name="org.apache.maven.project.MavenProject">MavenProject</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.mojo.BaseMojo#session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="session:org.apache.maven.execution.MavenSession"></a>
       <a id="session:MavenSession"></a>
@@ -373,7 +402,7 @@ a maven lifecycle build</p></div><dl class="attributes block"> <dt>Since</dt><dd
         <span class="name">session</span><span class="result">: <span class="extype" name="org.apache.maven.execution.MavenSession">MavenSession</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
     </li><li name="org.apache.maven.plugin.AbstractMojo#setLog" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setLog(x$1:org.apache.maven.plugin.logging.Log):Unit"></a>
       <a id="setLog(Log):Unit"></a>
@@ -412,7 +441,63 @@ a maven lifecycle build</p></div><dl class="attributes block"> <dt>Since</dt><dd
         <span class="name">settings</span><span class="result">: <span class="extype" name="org.apache.maven.settings.Settings">Settings</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.BaseITMojo#skipITs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="skipITs:Boolean"></a>
+      <a id="skipITs:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">skipITs</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">By convention, this parameter is used to disable execution of the maven-failsafe-plugin.</p><div class="fullcomment"><div class="comment cmt"><p>By convention, this parameter is used to disable execution of the maven-failsafe-plugin.
+It is recognized by vltpack to disable uploading of test artifacts and integration test reporting goals.
+</p></div></div>
+    </li><li name="net.adamcin.vltpack.mojo.BaseITMojo#skipOrExecute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="skipOrExecute(skip:Boolean)(body:=&gt;Unit):Unit"></a>
+      <a id="skipOrExecute(Boolean)(⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">skipOrExecute</span><span class="params">(<span name="skip">skip: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="body">body: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a> → <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.BaseITMojo#skipTests" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="skipTests:Boolean"></a>
+      <a id="skipTests:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">skipTests</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">By convention, this parameter is used to disable execution of maven-surefire-plugin-derived goals.</p><div class="fullcomment"><div class="comment cmt"><p>By convention, this parameter is used to disable execution of maven-surefire-plugin-derived goals.
+It is recognized by vltpack to disable uploading of test artifacts and integration test reporting goals.
+</p></div></div>
+    </li><li name="net.adamcin.vltpack.mojo.BaseITMojo#skipWithTestsOrExecute" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="skipWithTestsOrExecute(skip:Boolean)(body:=&gt;Unit):Unit"></a>
+      <a id="skipWithTestsOrExecute(Boolean)(⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">skipWithTestsOrExecute</span><span class="params">(<span name="skip">skip: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="body">body: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -492,12 +577,32 @@ a maven lifecycle build</p></div><dl class="attributes block"> <dt>Since</dt><dd
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="net.adamcin.vltpack.mojo.BaseITMojo#deploy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="deploy:Boolean"></a>
+      <a id="deploy:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: value ignored as of 1.0.0
+">deploy</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">legacy deploy flag</p><div class="fullcomment"><div class="comment cmt"><p>legacy deploy flag</p></div><dl class="attributes block"> <dt>Deprecated</dt><dd class="cmt"><p>value ignored as of 1.0.0
+</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="net.adamcin.vltpack.mojo.BaseMojo">
-              <h3>Inherited from <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></h3>
+        <div class="parent" name="net.adamcin.vltpack.RequiresProject">
+              <h3>Inherited from <a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a></h3>
+            </div><div class="parent" name="net.adamcin.vltpack.mojo.BaseMojo">
+              <h3>Inherited from <a href="BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></h3>
             </div><div class="parent" name="org.apache.maven.plugin.AbstractMojo">
               <h3>Inherited from <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span></h3>
             </div><div class="parent" name="org.apache.maven.plugin.ContextEnabled">

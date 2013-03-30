@@ -49,7 +49,7 @@
           <div class="superTypes hiddenContent"><a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a>, <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span>, <span class="extype" name="org.apache.maven.plugin.ContextEnabled">ContextEnabled</span>, <span class="extype" name="org.apache.maven.plugin.Mojo">Mojo</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="mojo/EmbedBundlesMojo.html" class="extype" name="net.adamcin.vltpack.mojo.EmbedBundlesMojo">EmbedBundlesMojo</a>, <a href="mojo/PackageMojo.html" class="extype" name="net.adamcin.vltpack.mojo.PackageMojo">PackageMojo</a>, <a href="mojo/PutBundleFileMojo.html" class="extype" name="net.adamcin.vltpack.mojo.PutBundleFileMojo">PutBundleFileMojo</a>, <a href="mojo/PutBundleMojo.html" class="extype" name="net.adamcin.vltpack.mojo.PutBundleMojo">PutBundleMojo</a>, <a href="PutsBundle.html" class="extype" name="net.adamcin.vltpack.PutsBundle">PutsBundle</a>, <a href="mojo/VaultInfMojo.html" class="extype" name="net.adamcin.vltpack.mojo.VaultInfMojo">VaultInfMojo</a></div>
+          <div class="subClasses hiddenContent"><a href="mojo/EmbedBundlesMojo.html" class="extype" name="net.adamcin.vltpack.mojo.EmbedBundlesMojo">EmbedBundlesMojo</a>, <a href="mojo/ITPutBundleMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITPutBundleMojo">ITPutBundleMojo</a>, <a href="mojo/ITUploadTestsMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITUploadTestsMojo">ITUploadTestsMojo</a>, <a href="mojo/PutBundleFileMojo.html" class="extype" name="net.adamcin.vltpack.mojo.PutBundleFileMojo">PutBundleFileMojo</a>, <a href="PutsBundles.html" class="extype" name="net.adamcin.vltpack.PutsBundles">PutsBundles</a></div>
         </div></div>
         
 
@@ -215,6 +215,19 @@
       </span>
       </h4>
       
+    </li><li name="net.adamcin.vltpack.BundlePathParameters#defaultTestBundleInstallPath" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="defaultTestBundleInstallPath:String(&quot;/apps/testBundles/install/30&quot;)"></a>
+      <a id="defaultTestBundleInstallPath:String(&quot;/apps/testBundles/install/30&quot;)"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultTestBundleInstallPath</span><span class="result">: String(&quot;/apps/testBundles/install/30&quot;)</span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -335,6 +348,32 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractMojo → ContextEnabled</dd></dl></div>
+    </li><li name="net.adamcin.vltpack.BundlePathParameters#getTestBundlePath" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getTestBundlePath(file:java.io.File):String"></a>
+      <a id="getTestBundlePath(File):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getTestBundlePath</span><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.adamcin.vltpack.BundlePathParameters#getTestBundleRepoPath" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getTestBundleRepoPath(filename:String):String"></a>
+      <a id="getTestBundleRepoPath(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getTestBundleRepoPath</span><span class="params">(<span name="filename">filename: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -452,6 +491,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.BaseMojo#skipOrExecute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="skipOrExecute(skip:Boolean)(body:=&gt;Unit):Unit"></a>
+      <a id="skipOrExecute(Boolean)(⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">skipOrExecute</span><span class="params">(<span name="skip">skip: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="body">body: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -465,6 +517,21 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="net.adamcin.vltpack.BundlePathParameters#testBundleInstallPath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="testBundleInstallPath:String"></a>
+      <a id="testBundleInstallPath:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">testBundleInstallPath</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set the JCR path where test bundles will be installed during the integration test phase this project.</p><div class="fullcomment"><div class="comment cmt"><p>Set the JCR path where test bundles will be installed during the integration test phase this project. Use a
+numeric suffix (as in &quot;/apps/myappTests/install/30&quot;) to apply a felix start level configuration to the bundles</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>1.0.0
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>

@@ -2,22 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>BaseMojo - VLT Pack Maven Plugin 0.9.0-SNAPSHOT API - net.adamcin.vltpack.mojo.BaseMojo</title>
-          <meta name="description" content="BaseMojo - VLT Pack Maven Plugin 0.9.0 - SNAPSHOT API - net.adamcin.vltpack.mojo.BaseMojo" />
-          <meta name="keywords" content="BaseMojo VLT Pack Maven Plugin 0.9.0 SNAPSHOT API net.adamcin.vltpack.mojo.BaseMojo" />
+          <title>ChecksumCalculator - VLT Pack Maven Plugin 0.9.0-SNAPSHOT API - net.adamcin.vltpack.ChecksumCalculator</title>
+          <meta name="description" content="ChecksumCalculator - VLT Pack Maven Plugin 0.9.0 - SNAPSHOT API - net.adamcin.vltpack.ChecksumCalculator" />
+          <meta name="keywords" content="ChecksumCalculator VLT Pack Maven Plugin 0.9.0 SNAPSHOT API net.adamcin.vltpack.ChecksumCalculator" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
+      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
       
       <script type="text/javascript">
          if(top === self) {
-            var url = '../../../../index.html';
-            var hash = 'net.adamcin.vltpack.mojo.BaseMojo';
+            var url = '../../../index.html';
+            var hash = 'net.adamcin.vltpack.ChecksumCalculator';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -29,27 +29,24 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../../lib/class_big.png" />
-        <p id="owner"><a href="../../../package.html" class="extype" name="net">net</a>.<a href="../../package.html" class="extype" name="net.adamcin">adamcin</a>.<a href="../package.html" class="extype" name="net.adamcin.vltpack">vltpack</a>.<a href="package.html" class="extype" name="net.adamcin.vltpack.mojo">mojo</a></p>
-        <h1>BaseMojo</h1>
+        <img src="../../../lib/class_big.png" />
+        <p id="owner"><a href="../../package.html" class="extype" name="net">net</a>.<a href="../package.html" class="extype" name="net.adamcin">adamcin</a>.<a href="package.html" class="extype" name="net.adamcin.vltpack">vltpack</a></p>
+        <h1>ChecksumCalculator</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier">abstract </span>
+        <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">BaseMojo</span><span class="result"> extends <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span></span>
+        <span class="name">ChecksumCalculator</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Base mojo class</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span>, <span class="extype" name="org.apache.maven.plugin.ContextEnabled">ContextEnabled</span>, <span class="extype" name="org.apache.maven.plugin.Mojo">Mojo</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a>, <a href="../BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a>, <a href="../CreatesPackage.html" class="extype" name="net.adamcin.vltpack.CreatesPackage">CreatesPackage</a>, <a href="EmbedBundlesMojo.html" class="extype" name="net.adamcin.vltpack.mojo.EmbedBundlesMojo">EmbedBundlesMojo</a>, <a href="EmbedHooksMojo.html" class="extype" name="net.adamcin.vltpack.mojo.EmbedHooksMojo">EmbedHooksMojo</a>, <a href="EmbedPackagesMojo.html" class="extype" name="net.adamcin.vltpack.mojo.EmbedPackagesMojo">EmbedPackagesMojo</a>, <a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a>, <a href="ITHttpPropertiesMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITHttpPropertiesMojo">ITHttpPropertiesMojo</a>, <a href="ITPutBundleMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITPutBundleMojo">ITPutBundleMojo</a>, <a href="ITServerReadyMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITServerReadyMojo">ITServerReadyMojo</a>, <a href="ITUploadMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITUploadMojo">ITUploadMojo</a>, <a href="ITUploadTestsMojo.html" class="extype" name="net.adamcin.vltpack.mojo.ITUploadTestsMojo">ITUploadTestsMojo</a>, <a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a>, <a href="../PackageDependencies.html" class="extype" name="net.adamcin.vltpack.PackageDependencies">PackageDependencies</a>, <a href="PackageMojo.html" class="extype" name="net.adamcin.vltpack.mojo.PackageMojo">PackageMojo</a>, <a href="PutBundleFileMojo.html" class="extype" name="net.adamcin.vltpack.mojo.PutBundleFileMojo">PutBundleFileMojo</a>, <a href="../PutsBundles.html" class="extype" name="net.adamcin.vltpack.PutsBundles">PutsBundles</a>, <a href="../RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a>, <a href="../ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a>, <a href="UploadFromRepoMojo.html" class="extype" name="net.adamcin.vltpack.mojo.UploadFromRepoMojo">UploadFromRepoMojo</a>, <a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a>, <a href="../UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a>, <a href="VaultInfMojo.html" class="extype" name="net.adamcin.vltpack.mojo.VaultInfMojo">VaultInfMojo</a></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -67,7 +64,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="net.adamcin.vltpack.mojo.BaseMojo"><span>BaseMojo</span></li><li class="in" name="org.apache.maven.plugin.AbstractMojo"><span>AbstractMojo</span></li><li class="in" name="org.apache.maven.plugin.ContextEnabled"><span>ContextEnabled</span></li><li class="in" name="org.apache.maven.plugin.Mojo"><span>Mojo</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="net.adamcin.vltpack.ChecksumCalculator"><span>ChecksumCalculator</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -87,16 +84,16 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="net.adamcin.vltpack.mojo.BaseMojo#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;():net.adamcin.vltpack.mojo.BaseMojo"></a>
-      <a id="&lt;init&gt;:BaseMojo"></a>
+              <ol><li name="net.adamcin.vltpack.ChecksumCalculator#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;():net.adamcin.vltpack.ChecksumCalculator"></a>
+      <a id="&lt;init&gt;:ChecksumCalculator"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">BaseMojo</span><span class="params">()</span>
+        <span class="name">ChecksumCalculator</span><span class="params">()</span>
       </span>
       </h4>
       
@@ -174,6 +171,84 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ChecksumCalculator#add" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="add(item:Map[String,String]):net.adamcin.vltpack.ChecksumCalculator"></a>
+      <a id="add(Map[String,String]):ChecksumCalculator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">add</span><span class="params">(<span name="item">item: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="net.adamcin.vltpack.ChecksumCalculator">ChecksumCalculator</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.adamcin.vltpack.ChecksumCalculator#add" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="add(item:java.io.File):net.adamcin.vltpack.ChecksumCalculator"></a>
+      <a id="add(File):ChecksumCalculator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">add</span><span class="params">(<span name="item">item: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <a href="" class="extype" name="net.adamcin.vltpack.ChecksumCalculator">ChecksumCalculator</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.adamcin.vltpack.ChecksumCalculator#add" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="add(item:String):net.adamcin.vltpack.ChecksumCalculator"></a>
+      <a id="add(String):ChecksumCalculator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">add</span><span class="params">(<span name="item">item: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="net.adamcin.vltpack.ChecksumCalculator">ChecksumCalculator</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.adamcin.vltpack.ChecksumCalculator#add" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="add(item:AnyVal):net.adamcin.vltpack.ChecksumCalculator"></a>
+      <a id="add(AnyVal):ChecksumCalculator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">add</span><span class="params">(<span name="item">item: <span class="extype" name="scala.AnyVal">AnyVal</span></span>)</span><span class="result">: <a href="" class="extype" name="net.adamcin.vltpack.ChecksumCalculator">ChecksumCalculator</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.adamcin.vltpack.ChecksumCalculator#addContents" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="addContents(item:java.io.File):net.adamcin.vltpack.ChecksumCalculator"></a>
+      <a id="addContents(File):ChecksumCalculator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addContents</span><span class="params">(<span name="item">item: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <a href="" class="extype" name="net.adamcin.vltpack.ChecksumCalculator">ChecksumCalculator</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.adamcin.vltpack.ChecksumCalculator#addNull" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="addNull():net.adamcin.vltpack.ChecksumCalculator"></a>
+      <a id="addNull():ChecksumCalculator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addNull</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="net.adamcin.vltpack.ChecksumCalculator">ChecksumCalculator</a></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -187,6 +262,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ChecksumCalculator#calculate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="calculate():String"></a>
+      <a id="calculate():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">calculate</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -229,19 +317,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="net.adamcin.vltpack.mojo.BaseMojo#execute" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="execute():Unit"></a>
-      <a id="execute():Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">execute</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> → Mojo</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -271,32 +346,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="org.apache.maven.plugin.AbstractMojo#getLog" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getLog():org.apache.maven.plugin.logging.Log"></a>
-      <a id="getLog():Log"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getLog</span><span class="params">()</span><span class="result">: <span class="extype" name="org.apache.maven.plugin.logging.Log">Log</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractMojo → Mojo</dd></dl></div>
-    </li><li name="org.apache.maven.plugin.AbstractMojo#getPluginContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getPluginContext():java.util.Map"></a>
-      <a id="getPluginContext():Map"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getPluginContext</span><span class="params">()</span><span class="result">: <span class="extype" name="java.util.Map">Map</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractMojo → ContextEnabled</dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -323,6 +372,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ChecksumCalculator#md" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="md:java.security.MessageDigest"></a>
+      <a id="md:MessageDigest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">md</span><span class="result">: <span class="extype" name="java.security.MessageDigest">MessageDigest</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -362,68 +424,16 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="net.adamcin.vltpack.mojo.BaseMojo#session" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="session:org.apache.maven.execution.MavenSession"></a>
-      <a id="session:MavenSession"></a>
+    </li><li name="net.adamcin.vltpack.ChecksumCalculator#nullBytes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="nullBytes:Array[Byte]"></a>
+      <a id="nullBytes:Array[Byte]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
+        <span class="modifier">final </span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">session</span><span class="result">: <span class="extype" name="org.apache.maven.execution.MavenSession">MavenSession</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="org.apache.maven.plugin.AbstractMojo#setLog" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setLog(x$1:org.apache.maven.plugin.logging.Log):Unit"></a>
-      <a id="setLog(Log):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setLog</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="org.apache.maven.plugin.logging.Log">Log</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractMojo → Mojo</dd></dl></div>
-    </li><li name="org.apache.maven.plugin.AbstractMojo#setPluginContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setPluginContext(x$1:java.util.Map):Unit"></a>
-      <a id="setPluginContext(Map):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setPluginContext</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.util.Map">Map</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractMojo → ContextEnabled</dd></dl></div>
-    </li><li name="net.adamcin.vltpack.mojo.BaseMojo#settings" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="settings:org.apache.maven.settings.Settings"></a>
-      <a id="settings:Settings"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">settings</span><span class="result">: <span class="extype" name="org.apache.maven.settings.Settings">Settings</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="net.adamcin.vltpack.mojo.BaseMojo#skipOrExecute" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="skipOrExecute(skip:Boolean)(body:=&gt;Unit):Unit"></a>
-      <a id="skipOrExecute(Boolean)(⇒Unit):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">skipOrExecute</span><span class="params">(<span name="skip">skip: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span name="body">body: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">nullBytes</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>
       </span>
       </h4>
       
@@ -510,13 +520,7 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="org.apache.maven.plugin.AbstractMojo">
-              <h3>Inherited from <span class="extype" name="org.apache.maven.plugin.AbstractMojo">AbstractMojo</span></h3>
-            </div><div class="parent" name="org.apache.maven.plugin.ContextEnabled">
-              <h3>Inherited from <span class="extype" name="org.apache.maven.plugin.ContextEnabled">ContextEnabled</span></h3>
-            </div><div class="parent" name="org.apache.maven.plugin.Mojo">
-              <h3>Inherited from <span class="extype" name="org.apache.maven.plugin.Mojo">Mojo</span></h3>
-            </div><div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
