@@ -73,16 +73,18 @@ class ITUploadMojo
       val file = targetFile
       val id = identifyPackage(file)
 
+      getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ".zip")
       val uploaded = uploadPackage(id, file, force) fold (throw _, (resp) => {
         val (success, msg) = resp
-        getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ".zip: " + msg)
+        getLog.info("package manager response: " + msg)
         success
       })
 
       if (uploaded) {
+        getLog.info("installing " + id.get.getInstallationPath + ".zip")
         val installed = installPackage(id) fold (throw _, (resp) => {
           val (success, msg) = resp
-          getLog.info("installing " + id.get.getInstallationPath + ".zip: " + msg)
+          getLog.info("package manager response: " + msg)
           success
         })
 

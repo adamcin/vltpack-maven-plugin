@@ -31,6 +31,7 @@ import java.io.File
 import org.apache.maven.plugins.annotations.{Parameter, LifecyclePhase, Mojo}
 import net.adamcin.vltpack._
 import scala.Some
+import scalax.io.Resource
 
 /**
  * Creates a vault package based on the generated metadata and configured content root
@@ -44,8 +45,7 @@ class PackageMojo
   extends BaseMojo
   with OutputParameters
   with CreatesPackage
-  with IdentifiesPackages
-  with BundlePathParameters {
+  with IdentifiesPackages {
 
   final val DEFAULT_VLT_ROOT = "${project.build.outputDirectory}"
 
@@ -55,52 +55,67 @@ class PackageMojo
   @Parameter(defaultValue = DEFAULT_VLT_ROOT)
   val vltRoot: File = null
 
+  lazy val packageChecksum = (new ChecksumCalculator).add(jcrPath).add(vltRoot).calculate()
+
+  def shouldCreatePackage: Boolean = {
+    !targetFile.exists() ||
+      !packageSha.exists() ||
+      Resource.fromFile(packageSha).string != packageChecksum ||
+      inputFileModified(packageSha, listFiles(vltRoot)) ||
+      inputFileModified(packageSha, listFiles(vaultInfMetaInfDirectory)) ||
+      inputFileModified(packageSha, listFiles(embedBundlesDirectory)) ||
+      inputFileModified(packageSha, listFiles(embedPackagesDirectory))
+  }
+
   override def execute() {
     super.execute()
 
-    targetFile.delete()
+    if (shouldCreatePackage) {
+      overwriteFile(packageSha, packageChecksum)
+      targetFile.delete()
 
-    getLog.info("generating package " + targetFile)
-    createPackage(vltRoot, targetFile, (zip) => {
+      getLog.info("generating package")
+      createPackage(vltRoot, targetFile, (zip) => {
 
-      getLog.info("adding vault information...")
-      val skipVaultEntries = addEntryToZipFile(
-        addToSkip = true,
-        skipEntries = Set.empty[String],
-        entryFile = vaultInfMetaInfDirectory,
-        entryName = "META-INF",
-        zip = zip
-      )
+        getLog.info("adding vault information...")
+        val skipVaultEntries = addEntryToZipFile(
+          addToSkip = true,
+          skipEntries = Set.empty[String],
+          entryFile = vaultInfMetaInfDirectory,
+          entryName = "META-INF",
+          zip = zip
+        )
 
-      getLog.info("adding embedded bundles...")
-      val skipBundleEntries = addEntryToZipFile(
-        addToSkip = true,
-        skipEntries = skipVaultEntries,
-        entryFile = embedBundlesDirectory,
-        entryName = JCR_ROOT,
-        zip = zip
-      )
+        getLog.info("adding embedded bundles...")
+        val skipBundleEntries = addEntryToZipFile(
+          addToSkip = true,
+          skipEntries = skipVaultEntries,
+          entryFile = embedBundlesDirectory,
+          entryName = JCR_ROOT,
+          zip = zip
+        )
 
-      getLog.info("adding embedded packages...")
-      val skipPackageEntries = embedPackagesDirectory.listFiles.foldLeft(skipBundleEntries) {
-        (skip, vp) => {
-          identifyPackage(vp) match {
-            case None => skip
-            case Some(id) => {
-              addEntryToZipFile(
-                addToSkip = true,
-                skipEntries = skip,
-                entryFile = vp,
-                entryName = JCR_ROOT + VltpackUtil.leadingSlashIfNotEmpty(VltpackUtil.noTrailingSlash(id.getInstallationPath)),
-                zip = zip
-              )
+        getLog.info("adding embedded packages...")
+        val skipPackageEntries = embedPackagesDirectory.listFiles.foldLeft(skipBundleEntries) {
+          (skip, vp) => {
+            identifyPackage(vp) match {
+              case None => skip
+              case Some(id) => {
+                addEntryToZipFile(
+                  addToSkip = true,
+                  skipEntries = skip,
+                  entryFile = vp,
+                  entryName = JCR_ROOT + VltpackUtil.leadingSlashIfNotEmpty(VltpackUtil.noTrailingSlash(id.getInstallationPath)),
+                  zip = zip
+                )
+              }
             }
           }
         }
-      }
 
-      skipPackageEntries
-    })
+        skipPackageEntries
+      })
+    }
 
     project.getArtifact.setFile(targetFile)
   }

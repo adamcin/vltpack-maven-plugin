@@ -62,7 +62,6 @@ class VaultInfMojo
   extends BaseMojo
   with UsernameAware
   with OutputParameters
-  with BundlePathParameters
   with PackageDependencies
   with IdentifiesPackages {
 
@@ -124,14 +123,92 @@ class VaultInfMojo
     }
   }
 
+
+  lazy val sourceConfigXml = new File(vaultSource, "config.xml")
+  lazy val sourceFilterXml = new File(vaultSource, "filter.xml")
+
+  lazy val configChecksum: String = (new ChecksumCalculator).add(vaultSource).calculate()
+
+  lazy val listEmbedBundleFiles: List[File] = {
+    listFiles(embedBundlesDirectory).toList
+  }
+
+  lazy val listEmbedBundles: List[String] = {
+    listEmbedBundleFiles.map {
+      (file) => "/" + VltpackUtil.toRelative(embedBundlesDirectory, file.getAbsolutePath)
+    }
+  }
+
+  lazy val listEmbedPackageFiles: List[File] = embedPackagesDirectory.listFiles.toList
+
+  lazy val filterChecksum: String = {
+    val calc = new ChecksumCalculator
+    calc.add(vaultSource)
+    listEmbedBundleFiles.foreach { (file) => calc.add(file) }
+    listEmbedPackageFiles.foreach { (file) => calc.add(file) }
+    calc.calculate()
+  }
+
+  lazy val propertiesChecksum: String = {
+    (new ChecksumCalculator).add(properties.toMap).add(project.getId).add(project.getDescription)
+      .add(Dependency.toString(dependsOn: _*)).calculate()
+  }
+
+  lazy val definitionChecksum: String = {
+    val calc = new ChecksumCalculator
+    calc.add(propertiesChecksum).add(definitionProperties.toMap).add(thumbnail)
+    screenshots.foreach(calc.add(_))
+    calc.calculate()
+  }
+
+  def shouldGenerateConfigXml(): Boolean = {
+    !configXml.exists() ||
+      (sourceConfigXml.exists() && inputFileModified(configSha, List(sourceConfigXml))) ||
+      Resource.fromFile(configSha).string != configChecksum
+  }
+
+  def shouldGenerateFilterXml(): Boolean = {
+    !filterXml.exists() ||
+      (sourceFilterXml.exists() && inputFileModified(filterSha,
+        sourceFilterXml :: listEmbedBundleFiles ++ listEmbedPackageFiles)) ||
+      Resource.fromFile(filterSha).string != filterChecksum
+  }
+
+  def shouldGeneratePropertiesXml(): Boolean =  {
+    !propertiesXml.exists() ||
+      !propertiesSha.exists() ||
+      Resource.fromFile(propertiesSha).string != propertiesChecksum
+  }
+
+  def shouldGenerateDefinition(): Boolean =  {
+    !definitionXml.exists() ||
+      inputFileModified(definitionSha, thumbnail :: screenshots.toList) ||
+      Resource.fromFile(definitionSha).string != definitionChecksum
+  }
+
   override def execute() {
     super.execute()
-    generateConfigXml()
-    generateFilterXml()
-    generatePropertiesXml()
+
+    if (shouldGenerateConfigXml()) {
+      overwriteFile(configSha, configChecksum)
+      generateConfigXml()
+    }
+
+    if (shouldGenerateFilterXml()) {
+      overwriteFile(filterSha, filterChecksum)
+      generateFilterXml()
+    }
+
+    if (shouldGeneratePropertiesXml()) {
+      overwriteFile(propertiesSha, propertiesChecksum)
+      generatePropertiesXml()
+    }
 
     if (createDefinition) {
-      generateDefinition()
+      if (shouldGenerateDefinition()) {
+        overwriteFile(definitionSha, definitionChecksum)
+        generateDefinition()
+      }
     }
   }
 
@@ -140,26 +217,18 @@ class VaultInfMojo
       addCloseAction(VltpackUtil.inputCloser)
   }
 
-  def generateFilterXml() {
-    val file = new File(vaultSource, "filter.xml")
 
+  def generateFilterXml() {
+    getLog.info("generating filter.xml")
     val filter = new DefaultWorkspaceFilter
 
-    if (file.exists()) {
+    if (sourceFilterXml.exists()) {
       val sourceFilter = new DefaultWorkspaceFilter
-      sourceFilter.load(file)
+      sourceFilter.load(sourceFilterXml)
       filter.getFilterSets.addAll(sourceFilter.getFilterSets)
     }
 
-    def listEmbedBundles(baseDir: File)(file: File): List[String] = {
-      if (file.isDirectory) {
-        file.listFiles().flatMap(listEmbedBundles(baseDir)(_)).toList
-      } else {
-        List("/" + VltpackUtil.toRelative(baseDir, file.getAbsolutePath))
-      }
-    }
-
-    listEmbedBundles(embedBundlesDirectory)(embedBundlesDirectory).foreach {
+    listEmbedBundles.foreach {
       (path) => {
         if (!filter.contains(path)) {
           val bundleFilterSet =
@@ -190,8 +259,7 @@ class VaultInfMojo
       }
     }
 
-    val embedPackages = embedPackagesDirectory.listFiles
-    if (embedPackages.size > 0) {
+    if (listEmbedPackageFiles.size > 0) {
       val packageFilterSet =
         if (filter.covers(PackageId.ETC_PACKAGES)) {
           val oldFs = filter.getCoveringFilterSet(PackageId.ETC_PACKAGES)
@@ -215,15 +283,13 @@ class VaultInfMojo
           set
         }
 
-      embedPackages.foreach {
+      listEmbedPackageFiles.foreach {
         (pkg) => identifyPackage(pkg) match {
           case Some(id) => packageFilterSet.addInclude(new DefaultPathFilter(id.getInstallationPath + ".zip"))
           case None => getLog.warn("Failed to identify package: " + pkg)
         }
       }
     }
-
-    getLog.info("generating " + filterXml)
     val filterResource = Resource.fromFile(filterXml)
     filterResource.truncate(0)
     Resource.fromInputStream(filter.getSource).addCloseAction(VltpackUtil.inputCloser).
@@ -232,6 +298,9 @@ class VaultInfMojo
 
   def generatePropertiesXml() {
     import IdentifiesPackages._
+
+    getLog.info("generating properties")
+
     val props = new Properties()
 
     props.putAll(properties)
@@ -266,8 +335,6 @@ class VaultInfMojo
       props.setProperty(DEPENDENCIES, Dependency.toString(dependsOn: _*))
     }
 
-    getLog.info("generating " + propertiesXml)
-
     val propertiesResource = Resource.fromFile(propertiesXml)
     propertiesResource.truncate(0)
 
@@ -280,17 +347,16 @@ class VaultInfMojo
   }
 
   def generateConfigXml() {
-    val file = new File(vaultSource, "config.xml")
-
-    getLog.info("generating " + configXml)
-    if (file.exists()) {
-      Resource.fromFile(file).copyDataTo(Resource.fromFile(configXml))
+    getLog.info("generating config.xml")
+    if (sourceConfigXml.exists()) {
+      Resource.fromFile(sourceConfigXml).copyDataTo(Resource.fromFile(configXml))
     } else {
       Resource.fromClasspath(DEFAULT_CONFIG).copyDataTo(Resource.fromFile(configXml))
     }
   }
 
   def generateDefinition() {
+    getLog.info("generating definition")
     lazy val repository = new TransientRepository(transientRepoDirectory)
     lazy val session = repository.login(new SimpleCredentials("admin", "admin".toCharArray))
     try {

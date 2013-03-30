@@ -94,6 +94,12 @@ class ITHttpPropertiesMojo
   @Parameter(defaultValue = "test.server.url")
   val baseUrlProperty = ""
 
+  /**
+   * Set to true to set the standard java proxy properties using the active maven proxy values
+   */
+  @Parameter(defaultValue = "true")
+  val setProxyProperties = true
+
   override def execute() {
     skipWithTestsOrExecute(skip) {
       session.getUserProperties.setProperty(protocolProperty, if (https) "https" else "http")
@@ -104,18 +110,20 @@ class ITHttpPropertiesMojo
       session.getUserProperties.setProperty(contextProperty, context)
       session.getUserProperties.setProperty(baseUrlProperty, baseUrlString)
 
-      activeProxy.foreach {
-        (proxy) => {
-          val proto = proxy.getProtocolAsString.toLowerCase + "."
+      if (setProxyProperties) {
+        activeProxy.foreach {
+          (proxy) => {
+            val proto = proxy.getProtocolAsString.toLowerCase + "."
 
-          session.getUserProperties.setProperty(proto + "proxyHost", proxy.getHost)
-          session.getUserProperties.setProperty(proto + "proxyPort", Integer.toString(proxy.getPort))
+            session.getUserProperties.setProperty(proto + "proxyHost", proxy.getHost)
+            session.getUserProperties.setProperty(proto + "proxyPort", Integer.toString(proxy.getPort))
 
-          Option(proxy.getPrincipal) foreach { session.getUserProperties.setProperty(proto + "proxyUser", _) }
-          Option(proxy.getPassword) foreach { session.getUserProperties.setProperty(proto + "proxyPass", _) }
-          proxy.getNonProxyHosts.toList match {
-            case Nil => ()
-            case hosts => session.getUserProperties.setProperty(proto + "nonProxyHosts", hosts.mkString("|"))
+            Option(proxy.getPrincipal) foreach { session.getUserProperties.setProperty(proto + "proxyUser", _) }
+            Option(proxy.getPassword) foreach { session.getUserProperties.setProperty(proto + "proxyPass", _) }
+            proxy.getNonProxyHosts.toList match {
+              case Nil => ()
+              case hosts => session.getUserProperties.setProperty(proto + "nonProxyHosts", hosts.mkString("|"))
+            }
           }
         }
       }

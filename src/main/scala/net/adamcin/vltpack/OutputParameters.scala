@@ -29,6 +29,7 @@ package net.adamcin.vltpack
 
 import java.io.File
 import org.slf4j.LoggerFactory
+import scalax.io.Resource
 
 /**
  * Trait defining common output path variables
@@ -67,6 +68,8 @@ trait OutputParameters extends RequiresProject {
    * directory containing resolved packages
    */
   lazy val embedPackagesDirectory = getExistingDir(new File(vltpackDirectory, "embed-packages"))
+  lazy val packageDirectory = getExistingDir(new File(vltpackDirectory, "package"))
+  lazy val packageSha = new File(packageDirectory, "package.sha1")
 
   lazy val vaultInfDirectory = getExistingDir(new File(vltpackDirectory, "vault-inf"))
   lazy val transientRepoDirectory = getExistingDir(new File(vaultInfDirectory, "definitionRepo"))
@@ -75,6 +78,11 @@ trait OutputParameters extends RequiresProject {
    * vault-inf-generated META-INF/vault/... resources
    */
   lazy val vaultInfMetaInfDirectory = getExistingDir(new File(vaultInfDirectory, "META-INF"))
+  lazy val configSha = new File(vaultInfDirectory, "config.sha1")
+  lazy val filterSha = new File(vaultInfDirectory, "filter.sha1")
+  lazy val propertiesSha = new File(vaultInfDirectory, "properties.sha1")
+  lazy val definitionSha = new File(vaultInfDirectory, "definition.sha1")
+
   lazy val vaultDirectory = getExistingDir(new File(vaultInfMetaInfDirectory, "vault"))
   lazy val configXml = new File(vaultDirectory, "config.xml")
   lazy val settingsXml = new File(vaultDirectory, "settings.xml")
@@ -97,5 +105,29 @@ trait OutputParameters extends RequiresProject {
     file
   }
 
+  def listFiles(file: File): Stream[File] = {
+    if (file.isDirectory) {
+      file.listFiles().flatMap(listFiles(_)).toStream
+    } else {
+      Stream(file)
+    }
+  }
 
+  def inputFileModified(output: File, inputFiles: List[File]): Boolean = {
+    inputFileModified(output, inputFiles.toStream)
+  }
+
+  def inputFileModified(output: File, inputFiles: Stream[File]): Boolean = {
+    !output.exists() || inputFiles.exists {
+      (file) => Option(file) match {
+        case None => false
+        case Some(f) => !file.exists() || file.lastModified() >= output.lastModified()
+      }
+    }
+  }
+
+  def overwriteFile(file: File, content: String) {
+    if (file.exists()) file.delete()
+    Resource.fromFile(file).write(content)
+  }
 }
