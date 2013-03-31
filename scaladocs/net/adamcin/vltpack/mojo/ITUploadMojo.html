@@ -303,8 +303,7 @@
         <span class="name">autosave</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Change the autosave threshold for the install command
-</p><div class="fullcomment"><div class="comment cmt"><p>Change the autosave threshold for the install command
+      <p class="shortcomment cmt">Change the autosave threshold for the install command.</p><div class="fullcomment"><div class="comment cmt"><p>Change the autosave threshold for the install command. 1024 is the minimum.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.HttpParameters#baseUrlString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="baseUrlString:String"></a>
@@ -578,34 +577,21 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="net.adamcin.vltpack.mojo.ITUploadMojo#force" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="net.adamcin.vltpack.UploadsPackages#force" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="force:Boolean"></a>
       <a id="force:Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">var</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">force</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Force upload of the package if it already exists in the target environment
-</p>
-    </li><li name="net.adamcin.vltpack.mojo.ITUploadMojo#forceDependencies" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="forceDependencies:Boolean"></a>
-      <a id="forceDependencies:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">forceDependencies</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Force upload of the package dependencies if they already exist in the target environment
-</p>
+      <p class="shortcomment cmt">Force upload of packages if they already exist in the target environment
+</p><div class="fullcomment"><div class="comment cmt"><p>Force upload of packages if they already exist in the target environment
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -831,21 +817,6 @@ Does not affect the configured TCP port
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a></dd></dl></div>
-    </li><li name="net.adamcin.vltpack.mojo.BaseITMojo#itSupport" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="itSupport:Boolean"></a>
-      <a id="itSupport:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">itSupport</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Set this property to true to enable the pre-integration-test goals (<code> vltpack-maven-plugin:IT-*</code>)
-</p><div class="fullcomment"><div class="comment cmt"><p>Set this property to true to enable the pre-integration-test goals (<code> vltpack-maven-plugin:IT-*</code>)
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.OutputParameters#listFiles" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="listFiles(file:java.io.File):Stream[java.io.File]"></a>
       <a id="listFiles(File):Stream[File]"></a>
@@ -1416,8 +1387,11 @@ associated mojo parameter alternatives
         <span class="name">serviceTimeout</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Set the timeout used for waiting for Package Manager service availability
-</p><div class="fullcomment"><div class="comment cmt"><p>Set the timeout used for waiting for Package Manager service availability
+      <p class="shortcomment cmt">Set the timeout used for waiting for Package Manager service availability before sending
+any POST requests.</p><div class="fullcomment"><div class="comment cmt"><p>Set the timeout used for waiting for Package Manager service availability before sending
+any POST requests. The wait is to avoid creating dummy nodes in the repository when the SlingPostServlet
+handles premature package manager requests, which can confuse the link rewriter and mess up
+links to the package manager console.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.mojo.BaseMojo#session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="session:org.apache.maven.execution.MavenSession"></a>
@@ -1484,6 +1458,19 @@ associated mojo parameter alternatives
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.ITUploadMojo#shouldForceUpload" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="shouldForceUpload:Boolean"></a>
+      <a id="shouldForceUpload:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">shouldForceUpload</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li name="net.adamcin.vltpack.mojo.ITUploadMojo#skip" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="skip:Boolean"></a>
       <a id="skip:Boolean"></a>
@@ -1554,6 +1541,21 @@ It is recognized by vltpack to disable uploading of test artifacts and integrati
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.BaseITMojo#supportITs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="supportITs:Boolean"></a>
+      <a id="supportITs:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">supportITs</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set this property to true to enable the pre-integration-test goals (<code> vltpack-maven-plugin:IT-*</code>)
+</p><div class="fullcomment"><div class="comment cmt"><p>Set this property to true to enable the pre-integration-test goals (<code> vltpack-maven-plugin:IT-*</code>)
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -1647,6 +1649,32 @@ It is recognized by vltpack to disable uploading of test artifacts and integrati
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.mojo.ITUploadMojo#uploadChecksum" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="uploadChecksum:String"></a>
+      <a id="uploadChecksum:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uploadChecksum</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="net.adamcin.vltpack.OutputParameters#uploadDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="uploadDirectory:java.io.File"></a>
+      <a id="uploadDirectory:File"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uploadDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.UploadsPackages#uploadPackage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="uploadPackage(packageId:Option[com.day.jcr.vault.packaging.PackageId],file:java.io.File,force:Boolean):Either[Throwable,(Boolean,String)]"></a>
       <a id="uploadPackage(Option[PackageId],File,Boolean):Either[Throwable,(Boolean,String)]"></a>
@@ -1673,6 +1701,45 @@ It is recognized by vltpack to disable uploading of test artifacts and integrati
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#uploadSha" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="uploadSha:java.io.File"></a>
+      <a id="uploadSha:File"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uploadSha</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#uploadTestsDirectory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="uploadTestsDirectory:java.io.File"></a>
+      <a id="uploadTestsDirectory:File"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uploadTestsDirectory</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters#uploadTestsSha" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="uploadTestsSha:java.io.File"></a>
+      <a id="uploadTestsSha:File"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uploadTestsSha</span><span class="result">: <span class="extype" name="java.io.File">File</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../OutputParameters.html" class="extype" name="net.adamcin.vltpack.OutputParameters">OutputParameters</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.HttpParameters#urlForPath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="urlForPath(absPath:String):dispatch.DefaultRequestVerbs"></a>
       <a id="urlForPath(String):DefaultRequestVerbs"></a>
@@ -1841,25 +1908,7 @@ which is interpreted by expecting a GET response of 405 (Method not allowed)</p>
 
         
 
-        <div id="values" class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="net.adamcin.vltpack.mojo.BaseITMojo#deploy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="deploy:Boolean"></a>
-      <a id="deploy:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: value ignored as of 1.0.0
-">deploy</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">legacy deploy flag</p><div class="fullcomment"><div class="comment cmt"><p>legacy deploy flag</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseITMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseITMojo">BaseITMojo</a></dd><dt>Deprecated</dt><dd class="cmt"><p>value ignored as of 1.0.0
-</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">

@@ -304,8 +304,7 @@ install it directly into a running instance.</p></div><dl class="attributes bloc
         <span class="name">autosave</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Change the autosave threshold for the install command
-</p><div class="fullcomment"><div class="comment cmt"><p>Change the autosave threshold for the install command
+      <p class="shortcomment cmt">Change the autosave threshold for the install command.</p><div class="fullcomment"><div class="comment cmt"><p>Change the autosave threshold for the install command. 1024 is the minimum.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.HttpParameters#baseUrlString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="baseUrlString:String"></a>
@@ -461,7 +460,7 @@ install it directly into a running instance.</p></div><dl class="attributes bloc
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="net.adamcin.vltpack.mojo.UploadFromRepoMojo#force" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="net.adamcin.vltpack.UploadsPackages#force" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="force:Boolean"></a>
       <a id="force:Boolean"></a>
       <h4 class="signature">
@@ -474,7 +473,8 @@ install it directly into a running instance.</p></div><dl class="attributes bloc
       </span>
       </h4>
       <p class="shortcomment cmt">Force upload of packages if they already exist in the target environment
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Force upload of packages if they already exist in the target environment
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -1071,8 +1071,11 @@ associated mojo parameter alternatives
         <span class="name">serviceTimeout</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Set the timeout used for waiting for Package Manager service availability
-</p><div class="fullcomment"><div class="comment cmt"><p>Set the timeout used for waiting for Package Manager service availability
+      <p class="shortcomment cmt">Set the timeout used for waiting for Package Manager service availability before sending
+any POST requests.</p><div class="fullcomment"><div class="comment cmt"><p>Set the timeout used for waiting for Package Manager service availability before sending
+any POST requests. The wait is to avoid creating dummy nodes in the repository when the SlingPostServlet
+handles premature package manager requests, which can confuse the link rewriter and mess up
+links to the package manager console.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../UploadsPackages.html" class="extype" name="net.adamcin.vltpack.UploadsPackages">UploadsPackages</a></dd></dl></div>
     </li><li name="net.adamcin.vltpack.mojo.BaseMojo#session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="session:org.apache.maven.execution.MavenSession"></a>
