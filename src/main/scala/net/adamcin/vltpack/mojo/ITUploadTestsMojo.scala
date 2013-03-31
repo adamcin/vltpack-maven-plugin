@@ -90,28 +90,32 @@ class ITUploadTestsMojo
     super.execute()
 
     skipWithTestsOrExecute(skip) {
-      getLog.info("uploading test packages...")
+      if (!testPackages.isEmpty) {
+        getLog.info("uploading test packages...")
 
-      testPackageArtifacts.foreach(
-        (packageArtifact) => {
-          val shouldForce = force || inputFileModified(uploadTestsSha,
-            List(packageArtifact.getFile))
-          uploadPackageArtifact(packageArtifact)(shouldForce)
-        }
-      )
+        testPackageArtifacts.foreach(
+          (packageArtifact) => {
+            val shouldForce = force || inputFileModified(uploadTestsSha,
+              List(packageArtifact.getFile))
+            uploadPackageArtifact(packageArtifact)(shouldForce)
+          }
+        )
+      }
 
-      val shouldForceUploadBundles = !uploadTestsSha.exists() ||
+      if (!testBundles.isEmpty) {
+        val shouldForceUploadBundles = !uploadTestsSha.exists() ||
           Resource.fromFile(uploadTestsSha).string != uploadTestsChecksum
 
-      getLog.info("uploading test bundles...")
-      testBundleArtifacts.foreach {
-        (artifact) => Option(artifact.getFile) match {
-          case None => throw new MojoExecutionException("failed to resolve artifact: " + artifact.getId)
-          case Some(bundle) => {
-            if (shouldForceUploadBundles || inputFileModified(uploadTestsSha, List(bundle))) {
-              putTestBundle(bundle) match {
-                case Left(ex) => throw ex
-                case Right(messages) => messages.foreach { getLog.info(_) }
+        getLog.info("uploading test bundles...")
+        testBundleArtifacts.foreach {
+          (artifact) => Option(artifact.getFile) match {
+            case None => throw new MojoExecutionException("failed to resolve artifact: " + artifact.getId)
+            case Some(bundle) => {
+              if (shouldForceUploadBundles || inputFileModified(uploadTestsSha, List(bundle))) {
+                putTestBundle(bundle) match {
+                  case Left(ex) => throw ex
+                  case Right(messages) => messages.foreach { getLog.info(_) }
+                }
               }
             }
           }
