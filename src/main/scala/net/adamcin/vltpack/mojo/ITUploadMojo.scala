@@ -28,8 +28,9 @@
 package net.adamcin.vltpack.mojo
 
 import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
-import net.adamcin.vltpack.{PackageDependencies, UploadsPackages, OutputParameters}
+import net.adamcin.vltpack.{ChecksumCalculator, PackageDependencies, UploadsPackages, OutputParameters}
 
+import scala.collection.JavaConversions._
 
 /**
  * Uploads the project vault package and its dependencies to the configured IT server
@@ -51,49 +52,30 @@ class ITUploadMojo
   @Parameter(property = "vltpack.skip.IT-upload")
   var skip = false
 
-  /**
-   * Force upload of the package if it already exists in the target environment
-   */
-  @Parameter(defaultValue = "true")
-  var force = true
+  lazy val uploadChecksum = {
+    val calc = new ChecksumCalculator
+    packageDependencies.foreach { calc.add }
+    calc.calculate()
+  }
 
-  /**
-   * Force upload of the package dependencies if they already exist in the target environment
-   */
-  @Parameter(defaultValue = "false")
-  var forceDependencies = false
+  def shouldForceUpload = {
+    force || !uploadSha.exists() ||
+    inputFileModified(uploadSha, List(targetFile))
+  }
 
   override def execute() {
     super.execute()
 
     skipOrExecute(skip) {
-      getLog.info("uploading package dependencies...")
-      packageDependencyArtifacts.foreach { uploadPackageArtifact(_, forceDependencies) }
-
-      val file = targetFile
-      val id = identifyPackage(file)
-
-      getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ".zip")
-      val uploaded = uploadPackage(id, file, force) fold (throw _, (resp) => {
-        val (success, msg) = resp
-        getLog.info("package manager response: " + msg)
-        success
-      })
-
-      if (uploaded) {
-        getLog.info("installing " + id.get.getInstallationPath + ".zip")
-        val installed = installPackage(id) fold (throw _, (resp) => {
-          val (success, msg) = resp
-          getLog.info("package manager response: " + msg)
-          success
-        })
-
-        if (!installed) {
-          getLog.info("package was not installed")
-        }
-      } else {
-        getLog.info("package was not uploaded and so it will not be installed")
+      if (!packageDependencies.isEmpty) {
+        getLog.info("uploading package dependencies...")
+        packageDependencyArtifacts.foreach { uploadPackageArtifact }
       }
+
+      getLog.info("uploading main package...")
+      uploadPackageArtifact(project.getArtifact)(shouldForceUpload)
+
+      overwriteFile(uploadSha, uploadChecksum)
     }
   }
 }

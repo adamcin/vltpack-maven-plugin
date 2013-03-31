@@ -71,6 +71,12 @@ trait OutputParameters extends RequiresProject {
   lazy val packageDirectory = getExistingDir(new File(vltpackDirectory, "package"))
   lazy val packageSha = new File(packageDirectory, "package.sha1")
 
+  lazy val uploadDirectory = getExistingDir(new File(vltpackDirectory, "IT-upload"))
+  lazy val uploadSha = new File(uploadDirectory, "IT-upload.sha1")
+
+  lazy val uploadTestsDirectory = getExistingDir(new File(vltpackDirectory, "IT-upload-tests"))
+  lazy val uploadTestsSha = new File(uploadTestsDirectory, "IT-upload-tests.sha1")
+
   lazy val vaultInfDirectory = getExistingDir(new File(vltpackDirectory, "vault-inf"))
   lazy val transientRepoDirectory = getExistingDir(new File(vaultInfDirectory, "definitionRepo"))
 

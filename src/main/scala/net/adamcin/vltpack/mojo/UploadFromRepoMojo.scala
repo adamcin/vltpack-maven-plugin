@@ -54,12 +54,6 @@ class UploadFromRepoMojo
   val skip = false
 
   /**
-   * Force upload of packages if they already exist in the target environment
-   */
-  @Parameter(property = "force")
-  val force = false
-
-  /**
    * Specify the full maven coordinates of the artifact in one of the following forms:
    *
    *  "groupId:artifactId:version"
@@ -74,48 +68,8 @@ class UploadFromRepoMojo
   override def execute() {
     super.execute()
 
-    if (skip) {
-
-      getLog.info("skipping [skip=" + skip + "]")
-
-    } else {
-      resolveByCoordinates(coords) foreach {
-        (artifact) => Option(artifact.getFile) match {
-          case None => throw new MojoExecutionException("failed to resolve artifact: " + artifact.getId)
-          case Some(file) => {
-            val id = identifyPackage(file)
-            val doesntExist = force || (existsOnServer(id) match {
-              case Left(t) => throw t
-              case Right((success, msg)) => {
-                val successMsg = if (success) "Package exists" else "Package not found"
-                getLog.info("checking for installed package " + id.get.getInstallationPath + ".zip: " + successMsg)
-                !success
-              }
-            })
-
-            if (doesntExist) {
-              val uploaded = uploadPackage(id, file, force) match {
-                case Left(t) => throw t
-                case Right((success, msg)) => {
-                  getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ".zip: " + msg)
-                  success
-                }
-              }
-
-              if (uploaded) {
-                installPackage(id) match {
-                  case Left(t) => throw t
-                  case Right((success, msg)) => {
-                    getLog.info("installing " + id.get.getInstallationPath + ".zip: " + msg)
-                  }
-                }
-              } else {
-                getLog.info("package was not uploaded and so it will not be installed")
-              }
-            }
-          }
-        }
-      }
+    skipOrExecute(skip) {
+      resolveByCoordinates(coords) foreach { uploadPackageArtifact }
     }
   }
 }

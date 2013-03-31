@@ -123,7 +123,6 @@ class VaultInfMojo
     }
   }
 
-
   lazy val sourceConfigXml = new File(vaultSource, "config.xml")
   lazy val sourceFilterXml = new File(vaultSource, "filter.xml")
 
@@ -182,7 +181,7 @@ class VaultInfMojo
 
   def shouldGenerateDefinition(): Boolean =  {
     !definitionXml.exists() ||
-      inputFileModified(definitionSha, thumbnail :: screenshots.toList) ||
+      inputFileModified(definitionSha, thumbnail #:: screenshots.toStream) ||
       Resource.fromFile(definitionSha).string != definitionChecksum
   }
 

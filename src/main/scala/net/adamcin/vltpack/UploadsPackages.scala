@@ -48,21 +48,30 @@ trait UploadsPackages extends HttpParameters with IdentifiesPackages {
   private val log = LoggerFactory.getLogger(getClass)
 
   /**
+   * Force upload of packages if they already exist in the target environment
+   */
+  @Parameter(property = "vltpack.upload.force")
+  implicit val force = false
+
+  /**
    * Set to false to not install any subpackages that might be embedded within each dependency
    */
-  @Parameter(defaultValue = "true")
+  @Parameter(property = "vltpack.upload.recursive", defaultValue = "true")
   val recursive = true
 
   /**
-   * Change the autosave threshold for the install command
+   * Change the autosave threshold for the install command. 1024 is the minimum.
    */
-  @Parameter(defaultValue = "1024")
+  @Parameter(property = "vltpack.upload.autosave", defaultValue = "1024")
   val autosave = 1024
 
   /**
-   * Set the timeout used for waiting for Package Manager service availability
+   * Set the timeout used for waiting for Package Manager service availability before sending
+   * any POST requests. The wait is to avoid creating dummy nodes in the repository when the SlingPostServlet
+   * handles premature package manager requests, which can confuse the link rewriter and mess up
+   * links to the package manager console.
    */
-  @Parameter(defaultValue = "60")
+  @Parameter(property = "vltpack.upload.timeout", defaultValue = "60")
   val serviceTimeout = 60
 
   lazy val servicePath = "/crx/packmgr/service/exec.json"
@@ -174,7 +183,7 @@ trait UploadsPackages extends HttpParameters with IdentifiesPackages {
     }
   }
 
-  def uploadPackageArtifact(artifact: Artifact, force: Boolean) {
+  def uploadPackageArtifact(artifact: Artifact)(implicit force: Boolean) {
     val thrower = (t: Throwable) => throw t
     Option(artifact.getFile) match {
       case None => throw new MojoExecutionException("failed to resolve artifact: " + artifact.getId)
@@ -184,7 +193,7 @@ trait UploadsPackages extends HttpParameters with IdentifiesPackages {
           (result) => {
             val (success, msg) = result
             val successMsg = if (success) "Package exists" else "Package not found"
-            getLog.info("checking for installed package " + id.get.getInstallationPath + ".zip: " + successMsg)
+            getLog.info("check for installed package " + id.get.getInstallationPath + ".zip: " + successMsg)
             !success
           }
         }))

@@ -43,8 +43,8 @@ class BaseITMojo
   /**
    * Set this property to true to enable the pre-integration-test goals ({@code vltpack-maven-plugin:IT-*})
    */
-  @Parameter(property = "vltpack.itSupport")
-  val itSupport = false
+  @Parameter(property = "vltpack.supportITs")
+  val supportITs = false
 
   /**
    * By convention, this parameter is used to disable execution of the maven-failsafe-plugin.
@@ -60,24 +60,17 @@ class BaseITMojo
   @Parameter(property = "skipTests")
   val skipTests = false
 
-  /**
-   * legacy deploy flag
-   * @deprecated value ignored as of 1.0.0
-   */
-  @Parameter(property = "vltpack.deploy")
-  val deploy = false
-
   override def skipOrExecute(skip: Boolean)(body: => Unit) {
-    if (!itSupport || skip) {
-      getLog.info("skipping [itSupport=" + itSupport + "][skip=" + skip + "]")
+    if (!supportITs || skip) {
+      getLog.info("skipping [supportITs=" + supportITs + "][skip=" + skip + "]")
     } else {
       body
     }
   }
 
   def skipWithTestsOrExecute(skip: Boolean)(body: => Unit) {
-    if (!itSupport || skip || skipITs || skipTests) {
-      getLog.info("skipping [itSupport=" + itSupport + "][skip=" + skip + "][skipITs=" + skipITs + "][skipTests=" + skipTests + "]")
+    if (!supportITs || skip || skipITs || skipTests) {
+      getLog.info("skipping [supportITs=" + supportITs + "][skip=" + skip + "][skipITs=" + skipITs + "][skipTests=" + skipTests + "]")
     } else {
       body
     }

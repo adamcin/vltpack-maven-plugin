@@ -49,8 +49,8 @@ trait DavVerbs extends MethodVerbs {
 class DavRequestVerbs(wrapped: DefaultRequestVerbs) extends DefaultRequestVerbs(wrapped.subject) with DavVerbs
 
 /**
- * Trait defining common mojo parameters and methods for establishing HTTP connections to a CQ server. Reuses the
- * vltpack.user parameter defined in the UsernameAware trait as part of the connection credentials
+ * Trait defining common mojo parameters and methods for establishing HTTP connections to a Granite server.
+ * Reuses the vltpack.user parameter defined in the UsernameAware trait as part of the connection credentials
  * @since 0.6.0
  * @author Mark Adamcin
  */
@@ -64,13 +64,13 @@ trait HttpParameters extends UsernameAware {
   final val DEFAULT_PROXY_HOST = "localhost"
 
   /**
-   * Hostname for the CQ server
+   * Hostname for the Granite server
    */
   @Parameter(property = "vltpack.host", defaultValue = DEFAULT_HOST)
   val host = DEFAULT_HOST
 
   /**
-   * TCP Port for the CQ server
+   * TCP Port for the Granite server
    */
   @Parameter(property = "vltpack.port", defaultValue = DEFAULT_PORT)
   val port = Integer.valueOf(DEFAULT_PORT)
@@ -82,7 +82,7 @@ trait HttpParameters extends UsernameAware {
   val pass = DEFAULT_PASS
 
   /**
-   * CQ Servlet context by which JCR paths are appended
+   * Granite Servlet context by which JCR paths are appended
    */
   @Parameter(property = "vltpack.context", defaultValue = DEFAULT_CONTEXT)
   val context: String = DEFAULT_CONTEXT

@@ -36,6 +36,7 @@ import scala.Right
 import java.util.Collections
 import scala.collection.JavaConversions._
 import org.apache.maven.artifact.Artifact
+import scalax.io.Resource
 
 /**
  * Upload integration test dependencies, including vault packages and OSGi bundles, to the configured integration test
@@ -52,6 +53,7 @@ class ITUploadTestsMojo
   with RequiresProject
   with PackageDependencies
   with ResolvesArtifacts
+  with OutputParameters
   with UploadsPackages
   with PutsBundles {
 
@@ -60,12 +62,6 @@ class ITUploadTestsMojo
    */
   @Parameter(property = "vltpack.skip.IT-upload-tests")
   val skip = false
-
-  /**
-   * Force upload of packages if they already exist in the target environment
-   */
-  @Parameter(defaultValue = "true")
-  val force = true
 
   /**
    * List of artifactIds matching test package dependencies
@@ -83,23 +79,46 @@ class ITUploadTestsMojo
 
   def testBundleArtifacts = resolveByArtifactIds(testBundles.toSet)
 
+  lazy val uploadTestsChecksum = {
+    val calc = new ChecksumCalculator
+    testPackages.foreach { calc.add }
+    testBundles.foreach { calc.add }
+    calc.calculate()
+  }
+
   override def execute() {
     super.execute()
 
     skipWithTestsOrExecute(skip) {
       getLog.info("uploading test packages...")
-      testPackageArtifacts.foreach( uploadPackageArtifact(_, force) )
+
+      testPackageArtifacts.foreach(
+        (packageArtifact) => {
+          val shouldForce = force || inputFileModified(uploadTestsSha,
+            List(packageArtifact.getFile))
+          uploadPackageArtifact(packageArtifact)(shouldForce)
+        }
+      )
+
+      val shouldForceUploadBundles = !uploadTestsSha.exists() ||
+          Resource.fromFile(uploadTestsSha).string != uploadTestsChecksum
 
       getLog.info("uploading test bundles...")
       testBundleArtifacts.foreach {
         (artifact) => Option(artifact.getFile) match {
           case None => throw new MojoExecutionException("failed to resolve artifact: " + artifact.getId)
-          case Some(bundle) => putTestBundle(bundle)match {
-            case Left(ex) => throw ex
-            case Right(messages) => messages.foreach { getLog.info(_) }
+          case Some(bundle) => {
+            if (shouldForceUploadBundles || inputFileModified(uploadTestsSha, List(bundle))) {
+              putTestBundle(bundle) match {
+                case Left(ex) => throw ex
+                case Right(messages) => messages.foreach { getLog.info(_) }
+              }
+            }
           }
         }
       }
+
+      overwriteFile(uploadTestsSha, uploadTestsChecksum)
     }
   }
 }

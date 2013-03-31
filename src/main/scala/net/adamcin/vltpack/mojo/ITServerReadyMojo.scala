@@ -7,7 +7,8 @@ import annotation.tailrec
 import dispatch._
 
 /**
- *
+ * Waits for server readiness before continuing on to integration-test phase. Fails the build if
+ * the configured timeout is exceeded.
  * @author Mark Adamcin
  * @since 1.0.0
  */
@@ -20,15 +21,27 @@ class ITServerReadyMojo
   extends BaseITMojo
   with HttpParameters {
 
+  /**
+   * Set to true to skip this goal
+   */
   @Parameter(property = "vltpack.skip.IT-server-ready")
   val skip = false
 
+  /**
+   * Number of seconds to wait while pinging the configured IT server for the expected response
+   */
   @Parameter(defaultValue = "60")
   val timeout = 60
 
+  /**
+   * The server path to ping.
+   */
   @Parameter(defaultValue = "/libs/granite/core/content/login.html")
   val serverReadyPath = "/"
 
+  /**
+   * The content that is expected anywhere in the response text.
+   */
   @Parameter(defaultValue = "QUICKSTART_HOMEPAGE")
   val expectedContent = ""
 
