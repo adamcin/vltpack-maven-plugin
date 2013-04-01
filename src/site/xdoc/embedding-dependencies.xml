@@ -33,43 +33,43 @@
     <body>
         <section name="Embedding OSGi Bundles">
             <p>
-                The <a href="../embed-bundles-mojo.html">embed-bundles</a> goal is used to programmatically add OSGi
-                bundles to the vault package. By default, it will execute once during the <em>prepare-package</em> phase.
-                Bundles will be inserted into the package at the path specified by the <em>bundleInstallPath</em>
+                The <a href="embed-bundles-mojo.html">embed-bundles</a> goal is used to programmatically add OSGi
+                bundles to the vault package. By default, it will execute once during the <tt>prepare-package</tt> phase.
+                Bundles will be inserted into the package at the path specified by the <tt>bundleInstallPath</tt>
                 configuration parameter, with the effective node name matching the pattern
-                <em>[articleId]-[version].jar</em>.
+                <tt>[articleId]-[version].jar</tt>.
             </p>
             <p>
-                Different bundles may be embedded at different bundleInstallPaths in the same package by using multiple
-                executions of this goal, each with their own bundleInstallPath value.
+                Different bundles may be embedded at different <tt>bundleInstallPath</tt>s in the same package by using
+                multiple executions of this goal, each with their own <tt>bundleInstallPath</tt> value.
             </p>
             <p>
-                The <a href="../vault-inf-mojo.html">vault-inf</a> goal will modify the workspaceFilter to include the
+                The <a href="vault-inf-mojo.html">vault-inf</a> goal will modify the workspaceFilter to include the
                 embedded bundle paths under an appropriate filter root if it is not already included.
             </p>
         </section>
         <section name="Embedding Sub-packages">
             <p>
-                The <a href="../embed-packages-mojo.html">embed-packages</a> goal is used to programmatically add
+                The <a href="embed-packages-mojo.html">embed-packages</a> goal is used to programmatically add
                 sub-packages to the vault package, which will be installed by the CRX Package Manager upon extraction of
-                the parent package. Sub-packages are embedded under <em>/etc/packages</em> at the path determined by
-                their PackageId, which is constructed based on the <em>group</em>, <em>name</em>, and <em>version</em>
-                package properties present within the zip binary at <em>META-INF/vault/properties.xml</em>.
+                the parent package. Sub-packages are embedded under <tt>/etc/packages</tt> at the path determined by
+                their PackageId, which is constructed based on the <tt>group</tt>, <tt>name</tt>, and <tt>version</tt>
+                package properties present within the zip binary at <tt>META-INF/vault/properties.xml</tt>.
             </p>
             <p>
-                The <a href="../vault-inf-mojo.html">vault-inf</a> goal will modify the workspaceFilter to include the
-                embedded package paths under an <em>/etc/packages</em> filter root.
+                The <a href="vault-inf-mojo.html">vault-inf</a> goal will modify the workspaceFilter to include the
+                embedded package paths under an <tt>/etc/packages</tt> filter root.
             </p>
         </section>
         <section name="Embedding InstallHooks">
             <p>
                 For more complex package installs, it may be necessary to implement one or more InstallHooks. A valid
-                InstallHook is a jar with a Main-Class manifest attribute whose value references a class in the jar that
-                implements <em>com.day.jcr.vault.packaging.InstallHook</em>.
+                InstallHook is a jar with a <tt>Main-Class</tt> manifest attribute whose value references a class in the
+                jar that implements <tt>com.day.jcr.vault.packaging.InstallHook</tt>.
             </p>
             <p>
-                The <a href="../embed-hooks-mojo.html">embed-hooks</a> goal will embed such jars under
-                <em>META-INF/vault/hooks</em>, as expected by CRX Package Manager.
+                The <a href="embed-hooks-mojo.html">embed-hooks</a> goal will embed such jars under
+                <tt>META-INF/vault/hooks</tt>, as expected by CRX Package Manager.
             </p>
         </section>
         <section name="Example POM with embedded dependencies">
@@ -115,7 +115,7 @@
             <plugin>
                 <groupId>net.adamcin</groupId>
                 <artifactId>vltpack-maven-plugin</artifactId>
-                <version>0.6.0</version>
+                <version>1.0.0</version>
                 <extensions>true</extensions>
 
                 <!-- project dependencies are referenced by

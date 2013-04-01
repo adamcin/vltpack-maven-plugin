@@ -43,7 +43,7 @@ class BaseITMojo
   /**
    * Set this property to true to enable the pre-integration-test goals ({@code vltpack-maven-plugin:IT-*})
    */
-  @Parameter(property = "vltpack.supportITs")
+  @Parameter(property = "supportITs")
   val supportITs = false
 
   /**
