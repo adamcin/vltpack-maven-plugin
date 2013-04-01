@@ -54,7 +54,7 @@
         <ul class="breadcrumb">
                 
                     
-                  <li id="publishDate">Last Published: 2013-03-31 12:36</li>
+                  <li id="publishDate">Last Published: 2013-03-31 19:43</li>
                   <li class="divider">|</li> <li id="projectVersion">Version: 0.9.0-SNAPSHOT</li>
                       
                 
@@ -310,12 +310,12 @@
                 </li>
                 <li>
                     Support a test-driven maven lifecycle using the Sling JUnit integration test framework.
-                    Bundle and package deployment goals are mapped to the integration-test phase (not the install phase)
-                    so that maven install and deploy phases can be made dependent on successful test execution.
+                    Bundle and package deployment goals are mapped to the pre-integration-test phase (not the install
+                    phase) so that maven install and deploy phases can be made dependent on successful test execution.
                 </li>
                 <li>
                     Provide a consistent configuration model such that any two maven goals that do similar things
-                    will accept a similar set of configuration parameters.
+                    will accept a similar set of configuration parameters/property names.
                 </li>
                 <li>
                     Support an iterative development process for the package artifact itself by exposing convenient
@@ -324,11 +324,47 @@
                 </li>
             </ul>
         </div>
+        <div class="section"><h2>CRX Content Package Creation<a name="CRX_Content_Package_Creation"></a></h2>
+            <p>
+                Developers might use
+                <a class="externalLink" href="http://dev.day.com/docs/en/crx/current/how_to/how_to_use_the_vlttool.html">Adobe's VLT tool</a>
+                to develop their application content, code, and configuration in their local Granite instance, and then
+                create CRX content packages to deploy that content, code, and configuration to shared repositories and
+                production CRX servers.
+            </p>
+            <p>
+                The vltpack-maven-plugin defines a &quot;vltpack&quot; packaging type to represent CRX content packages. It
+                provides a set of maven goals mapped to the default lifecycle (compile, test, package, install, deploy)
+                that are designed to assemble the package pieces from a VLT working copy, overlay project properties,
+                and embed any referenced maven dependencies, and then deploy that assembled package to a central maven
+                artifact repository like Nexus or Artifactory.
+            </p>
+        </div>
+        <div class="section"><h2>Integration Test Support<a name="Integration_Test_Support"></a></h2>
+            <p>
+                In addition to the basic package creation goals, a number of goals have been provided to support the use
+                of the maven-failsafe-plugin for execution of integration tests based on the Sling JUnit Framework.
+                These are all mapped to the </p><div><pre>pre-integration-test</pre></div> phase so that they may be easily executed
+                immediately prior to the execution of the maven-failsafe-plugin's integration-test goal. Simply use a
+                profile to set the <div><pre>supportITs</pre></div> user property to enable the following goals:
+            
+            <ul>
+                <li><a href="../IT-upload-mojo.html">IT-upload</a></li>
+                <li><a href="../IT-upload-tests-mojo.html">IT-upload-tests</a></li>
+                <li><a href="../IT-server-ready-mojo.html">IT-server-ready</a></li>
+                <li><a href="../IT-http-properties.html">IT-http-properties</a></li>
+            </ul>
+        </div>
         <div class="section"><h2>Requirements<a name="Requirements"></a></h2>
             <ul>
                 <li>Maven 3.0</li>
                 <li>JDK 1.6</li>
-                <li><b>vltpack-maven-plugin depends on proprietary Adobe libraries which are available in the public Adobe Nexus repository</b></li>
+                <li>
+                    <b>
+                        vltpack-maven-plugin depends on proprietary Adobe libraries which are available in the
+                        public <a class="externalLink" href="http://repo.adobe.com/">Adobe Nexus repository</a>
+                    </b>
+                </li>
             </ul>
         </div>
     
