@@ -57,7 +57,8 @@
         <section name="Integration Test Support">
             <p>
                 In addition to the basic package creation goals, a number of goals have been provided to support the use
-                of the maven-failsafe-plugin for execution of integration tests based on the Sling JUnit Framework.
+                of the maven-failsafe-plugin for execution of integration tests based on the
+                <a href="http://sling.apache.org/site/sling-testing-tools.html">Sling JUnit Framework</a>.
                 These are all mapped to the <tt>pre-integration-test</tt> phase so that they may be easily executed
                 immediately prior to the execution of the maven-failsafe-plugin's <tt>integration-test</tt> goal. Simply
                 use a profile to set the <tt>supportITs</tt> user property to enable the following goals:
@@ -83,7 +84,8 @@
                     given to Adobe's own instructions for development using the vlt tool.
                 </li>
                 <li>
-                    Support a test-driven maven lifecycle using the Sling JUnit integration test framework.
+                    Support a test-driven maven lifecycle using the
+                    <a href="Sling JUnit Framework">Sling JUnit integration test framework</a>.
                     Bundle and package deployment goals are mapped to the pre-integration-test phase (not the install
                     phase) so that maven install and deploy phases can be made dependent on successful test execution.
                 </li>

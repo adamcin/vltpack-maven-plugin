@@ -72,7 +72,7 @@
         <menu name="How To">
             <!--<item name="VLT Pack and VLT" href="vltpack-and-vlt.html" />-->
             <item name="Embed Dependencies" href="embedding-dependencies.html" />
-            <item name="Integration Testing" href="integration-testing.html" />
+            <item name="Setup Integration Tests" href="integration-testing.html" />
             <!--<item name="Upload Packages to CQ" href="uploading-packages-to-cq.html" />-->
             <!--<item name="Upload OSGi Bundles to CQ" href="uploading-bundles-to-cq.html" />-->
         </menu>

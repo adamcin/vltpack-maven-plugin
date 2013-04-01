@@ -31,21 +31,11 @@
         <title>Integration Testing</title>
     </properties>
     <body>
-        <section name="Embedding OSGi Bundles">
+        <section name="Integration Testing">
             <p>
-                The <a href="embed-bundles-mojo.html">embed-bundles</a> goal is used to programmatically add OSGi
-                bundles to the vault package. By default, it will execute once during the <tt>prepare-package</tt> phase.
-                Bundles will be inserted into the package at the path specified by the <tt>bundleInstallPath</tt>
-                configuration parameter, with the effective node name matching the pattern
-                <tt>[articleId]-[version].jar</tt>.
-            </p>
-            <p>
-                Different bundles may be embedded at different <tt>bundleInstallPath</tt>s in the same package by using
-                multiple executions of this goal, each with their own <tt>bundleInstallPath</tt> value.
-            </p>
-            <p>
-                The <a href="vault-inf-mojo.html">vault-inf</a> goal will modify the workspaceFilter to include the
-                embedded bundle paths under an appropriate filter root if it is not already included.
+                Work in progress. See
+                <a href="https://github.com/adamcin/net.adamcin.recap/blob/master/graniteui/pom.xml">the Recap -
+                    Granite UI pom</a> for an example.
             </p>
         </section>
     </body>
