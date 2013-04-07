@@ -31,88 +31,65 @@
         <title>VLT Pack and VLT</title>
     </properties>
     <body>
-        <section name="Creating a new vltpack project">
-            <p>
-                The <a href="../embed-bundles-mojo.html">embed-bundles</a> goal is used to programmatically add OSGi
-                bundles to the vault package. By default, it will execute once during the <em>prepare-package</em> phase.
-                Bundles will be inserted into the package at the path specified by the <em>bundleInstallPath</em>
-                configuration parameter, with the effective node name matching the pattern
-                <em>[articleId]-[version].jar</em>.
-            </p>
-            <p>
-                Different bundles may be embedded at different bundleInstallPaths in the same package by using multiple
-                executions of this goal, each with their own bundleInstallPath value.
-            </p>
-            <p>
-                The <a href="../vault-inf-mojo.html">vault-inf</a> goal will modify the workspaceFilter to include the
-                embedded bundle paths under an appropriate filter root if it is not already included.
-            </p>
-        </section>
-        <section name="Example POM with embedded dependencies">
-            <p>
-                The following example illustrates how to configure your POM to embed each type of
-                dependency: bundles, packages, and install hooks. Notice that the embed configurations
-                reference project dependencies by artifactId, which is similar to the convention used
-                by the maven-bundle-plugin.
-            </p>
-            <source>
-                <![CDATA[
-<project>
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>org.example</groupId>
-    <artifactId>example-ui</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
-    <!-- be sure to specify the packaging type as 'vltpack' -->
-    <packaging>vltpack</packaging>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>example-bundle</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>example-package</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>example-hook</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
-
-    <build>
-
-        <plugins>
-            <plugin>
-                <groupId>net.adamcin</groupId>
-                <artifactId>vltpack-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <extensions>true</extensions>
-
-                <!-- project dependencies are referenced by
-                artifactId in the plugin configuration -->
-                <configuration>
-                    <embedBundles>
-                        <bundle>example-bundle</bundle>
-                    </embedBundles>
-                    <embedPackages>
-                        <package>example-package</package>
-                    </embedPackages>
-                    <embedHooks>
-                        <hook>example-hook</hook>
-                    </embedHooks>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-</project>
-            ]]>
-            </source>
+        <section name="VLT Pack and VLT">
+            <subsection name="Project Structure at a glance">
+                <source>
+[basedir]
++- src/main/content/
+|  +- jcr_root/             # jcr_root contains repository content like jsp and .content.xml files
+|  \- META-INF/vault/
+|     \- filter.xml         # the META-INF/vault/filter.xml defines the package Workspace Filter
+\- pom.xml
+                </source>
+                <p>
+                    Keeping your vlt workspace under <tt>src/main/content</tt> is merely a convention. It is possible to
+                    specify any directory containing the <tt>jcr_root</tt> and <tt>META-INF/vault</tt> paths in your
+                    pom.xml using a &lt;resource&gt; element, just so long as the jcr_root and META-INF folders wind up
+                    in <tt>target/classes</tt> by the time the <tt>package</tt> lifecycle phase starts.
+                </p>
+            </subsection>
+            <subsection name="Create a new vltpack project">
+                <p>
+                    First start with a basic vltpack pom.xml as described on the <a href="usage.html">Usage</a> page.
+                    Notice that it has added the <tt>src/main/content</tt> path as a resource root for the
+                    maven-resources-plugin. This will be the root of your vlt working copy. Create the
+                    <tt>src/main/content</tt> directory if it doesn't exist.
+                </p>
+            </subsection>
+            <subsection name="Create your Workspace Filter">
+                <p>
+                    It's generally not a good idea to try to checkout the entire repository for simple package project,
+                    so you should specify your desired package Workspace Filter <strong>first</strong>, so that the vlt
+                    checkout command can be executed faster and more reliably.
+                </p>
+                <p>
+                    First, create the <tt>META-INF/vault</tt> directory under <tt>src/main/content</tt>, then create a
+                    <tt>filter.xml</tt> file under <tt>META-INF/vault</tt> with the following basic structure:
+                </p>
+                <source>
+                    <![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/myApp" />
+    <filter root="/etc/designs/myApp" />
+</workspaceFilter>
+]]>
+                </source>
+            </subsection>
+            <subsection name="Check out your vlt workspace">
+                <p>
+                    Next, you will checkout your application code into the <tt>src/main/content</tt> directory. Make
+                    sure you have followed Adobe's
+                    <a href="http://dev.day.com/docs/en/cq/current/developing/developmenttools/developing_with_eclipse.html#Installing%20FileVault%20(VLT)">
+                        instructions for installing VLT
+                    </a>.
+                </p>
+                <p>
+                    With VLT installed and your CQ server running at localhost:4502, open a terminal window and navigate
+                    to your project directory. Then execute the following command:
+                    <tt>vlt --credentials admin:admin checkout http://localhost:4502/crx src/main/content</tt>
+                </p>
+            </subsection>
         </section>
     </body>
 </document>
