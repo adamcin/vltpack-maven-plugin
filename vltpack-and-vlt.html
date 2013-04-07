@@ -54,7 +54,7 @@
         <ul class="breadcrumb">
                 
                     
-                  <li id="publishDate">Last Published: 2013-04-07 14:38</li>
+                  <li id="publishDate">Last Published: 2013-04-07 14:55</li>
                   <li class="divider">|</li> <li id="projectVersion">Version: 1.1.0-SNAPSHOT</li>
                       
                 
@@ -228,8 +228,7 @@
 |  +- jcr_root/             # jcr_root contains repository content like jsp and .content.xml files
 |  \- META-INF/vault/
 |     \- filter.xml         # the META-INF/vault/filter.xml defines the package Workspace Filter
-\- pom.xml
-                </pre></div>
+\- pom.xml</pre></div>
                 <p>
                     Keeping your vlt workspace under <tt>src/main/content</tt> is merely a convention. It is possible to
                     specify any directory containing the <tt>jcr_root</tt> and <tt>META-INF/vault</tt> paths in your
@@ -255,14 +254,11 @@
                     First, create the <tt>META-INF/vault</tt> directory under <tt>src/main/content</tt>, then create a
                     <tt>filter.xml</tt> file under <tt>META-INF/vault</tt> with the following basic structure:
                 </p>
-                <div class="source"><pre class="prettyprint">
-                    
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+                <div class="source"><pre class="prettyprint">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;workspaceFilter version=&quot;1.0&quot;&gt;
     &lt;filter root=&quot;/apps/myApp&quot; /&gt;
     &lt;filter root=&quot;/etc/designs/myApp&quot; /&gt;
 &lt;/workspaceFilter&gt;
-
                 </pre></div>
             </div>
             <div class="section"><h3>Check out your vlt workspace<a name="Check_out_your_vlt_workspace"></a></h3>
@@ -276,6 +272,8 @@
                 <p>
                     With VLT installed and your CQ server running at localhost:4502, open a terminal window and navigate
                     to your project directory. Then execute the following command:
+                </p>
+                <p>
                     <tt>vlt --credentials admin:admin checkout http://localhost:4502/crx src/main/content</tt>
                 </p>
             </div>
