@@ -32,6 +32,26 @@
     </properties>
     <body>
         <section name="Uploading and Installing Packages">
+            <subsection name="Uploading a package from a maven repository">
+                <p>
+                    The only convenience goal provided by the vltpack-maven-plugin for general package installation is
+                    the <a href="upload-from-repo-mojo.html"><tt>upload-from-repo</tt></a> goal. This goal is intended
+                    to be executed outside of a maven project, and requires the user to specify a <tt>coords</tt>
+                    property that defines a set of maven artifact coordinates in compact, colon-delimited form. The
+                    value of this property will be resolved against your local and active remote repositories. If an
+                    artifact is resolved and the artifact file is a valid CRX package, the file will be uploaded and
+                    installed.
+                </p>
+            </subsection>
+            <subsection name="Uploading a vltpack project artifact as part of a maven build">
+                <p>
+                    The vltpack-maven-plugin will upload and install the main project artifact to the configured CQ
+                    server during a maven build if the <tt>supportITs</tt> property is set to <tt>true</tt>. This can
+                    also be specified in a user profile to make CQ installation of the package easier in IDEs, but
+                    wouldn't you rather be uploading JSPs and content with the <tt>vlt</tt> tool instead? Just think of
+                    the size of your CRX DataStore!
+                </p>
+            </subsection>
             <subsection name="Common HTTP Parameters">
                 <p>
                     The vltpack-maven-plugin was designed to allow the use of profiles defined in a user's
@@ -43,7 +63,7 @@
                     running locally on the conventional port 4503, add the following profile:
                 </p>
                 <source>
-                    <![CDATA[<profile>
+<![CDATA[<profile>
     <id>publish-server</id>
     <properties>
         <vltpack.port>4503</vltpack.port>
@@ -58,7 +78,7 @@
                     attractive, yes?
                 </p>
                 <source>
-                    <![CDATA[<profile>
+<![CDATA[<profile>
     <id>corp-CQ-IT-auth-server</id>
     <properties>
         <vltpack.host>cqhqdevauth01</vltpack.host>
@@ -93,7 +113,7 @@
                         characteristics of the target server (significant concurrent activity, clustered repository,
                         large number of affected nodes, etc.).
                     </dd>
-                    <dt><tt>vltpack.upload.timeout</tt> (default: <tt>60 seconds</tt>)</dt>
+                    <dt><tt>vltpack.upload.timeout</tt> (default: <tt>60</tt>)</dt>
                     <dd>
                         Set the number of seconds to wait for CRX Package Manager service availability before failing
                         the execution. The vltpack-maven-plugin checks for service availability before each POST request
@@ -107,26 +127,6 @@
                         issue.
                     </dd>
                 </dl>
-            </subsection>
-            <subsection name="Uploading a package from a maven repository">
-                <p>
-                    The only convenience goal provided by the vltpack-maven-plugin for general package installation is
-                    the <a href="upload-from-repo-mojo.html"><tt>upload-from-repo</tt></a> goal. This goal is intended
-                    to be executed outside of a maven project, and requires the user to specify a <tt>coords</tt>
-                    property that defines a set of maven artifact coordinates in compact, colon-delimited form. The
-                    value of this property will be resolved against your local and active remote repositories. If an
-                    artifact is resolved and the artifact file is a valid CRX package, the file will be uploaded and
-                    installed.
-                </p>
-            </subsection>
-            <subsection name="Uploading a vltpack project artifact as part of a maven build">
-                <p>
-                    The vltpack-maven-plugin will upload and install the main project artifact to the configured CQ
-                    server during a maven build if the <tt>supportITs</tt> property is set to <tt>true</tt>. This can
-                    also be specified in a user profile to make CQ installation of the package easier in IDEs, but
-                    wouldn't you rather be uploading JSPs and content with the <tt>vlt</tt> tool instead? Just think of
-                    the size of your CRX DataStore!
-                </p>
             </subsection>
         </section>
     </body>
