@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This is free and unencumbered software released into the public domain.
+  ~
+  ~ Anyone is free to copy, modify, publish, use, compile, sell, or
+  ~ distribute this software, either in source code form or as a compiled
+  ~ binary, for any purpose, commercial or non-commercial, and by any
+  ~ means.
+  ~
+  ~ In jurisdictions that recognize copyright laws, the author or authors
+  ~ of this software dedicate any and all copyright interest in the
+  ~ software to the public domain. We make this dedication for the benefit
+  ~ of the public at large and to the detriment of our heirs and
+  ~ successors. We intend this dedication to be an overt act of
+  ~ relinquishment in perpetuity of all present and future rights to this
+  ~ software under copyright law.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  ~ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  ~ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  ~ IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+  ~ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+  ~ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+  ~ OTHER DEALINGS IN THE SOFTWARE.
+  ~
+  ~ For more information, please refer to <http://unlicense.org/>
+  -->
+
+<document>
+    <properties>
+        <title>Uploading and Installing Packages</title>
+    </properties>
+    <body>
+        <section name="Uploading and Installing Packages">
+            <subsection name="Common HTTP Parameters">
+                <p>
+                    The vltpack-maven-plugin was designed to allow the use of profiles defined in a user's
+                    <tt>settings.xml</tt> to target commonly-used CRX servers for package upload, bundle installation,
+                    and integration test execution. By default, the plugin attempt to connect to a CRX server at
+                    <tt>http://localhost:4502/crx</tt> with basic credentials of <tt>admin:admin</tt>. To target a
+                    different port, one can simply create a profile in <tt>~/.m2/settings.xml</tt> that sets the
+                    <tt>vltpack.port</tt> property, and activate it. For example, to easily target a publish server
+                    running locally on the conventional port 4503, add the following profile:
+                </p>
+                <source>
+                    <![CDATA[<profile>
+    <id>publish-server</id>
+    <properties>
+        <vltpack.port>4503</vltpack.port>
+    </properties>
+</profile>]]>
+                </source>
+                <p>
+                    Setting a single property is of course, not very impressive, but imagine that you must upload to a
+                    shared CQ integration server running on a non-standard port with admin credentials disabled, which
+                    also happens to be sitting behind its own HTTP proxy and is mapped to a different context path in
+                    order to integrate with a corporate SSO configuration. Suddenly a user profile starts to look more
+                    attractive, yes?
+                </p>
+                <source>
+                    <![CDATA[<profile>
+    <id>corp-CQ-IT-auth-server</id>
+    <properties>
+        <vltpack.host>cqhqdevauth01</vltpack.host>
+        <vltpack.port>8502</vltpack.port>
+        <vltpack.user>jenkins</vltpack.user>
+        <vltpack.pass>Chang3m3</vltpack.pass>
+        <vltpack.context>/cq</vltpack.context>
+        <vltpack.proxy.set>true</vltpack.proxy.set>
+        <vltpack.proxy.host>dmzNA083.corp.acme.com</vltpack.proxy.host>
+        <vltpack.proxy.user>appuser0159</vltpack.proxy.user>
+        <vltpack.proxy.pass>October19</vltpack.proxy.pass>
+    </properties>
+</profile>]]>
+                </source>
+                <p>
+                    In addition to HTTP parameters, goals which upload and install packages also accept the following
+                    user properties to control the behavior of the package installation process:
+                </p>
+                <dl>
+                    <dt><tt>vltpack.upload.force</tt> (default: <tt>false</tt>)</dt>
+                    <dd>
+                        Set to true to upload and install the package even if a package with the same ID
+                        (group:name:version) is already installed on the server.
+                    </dd>
+                    <dt><tt>vltpack.upload.recursive</tt> (default: <tt>true</tt>)</dt>
+                    <dd>
+                        Set to false to disable recursive installation of subpackages.
+                    </dd>
+                    <dt><tt>vltpack.upload.autosave</tt> (minimum: <tt>1024</tt>)</dt>
+                    <dd>
+                        Increase this value in order to optimize the performance of package installation, based on the
+                        characteristics of the target server (significant concurrent activity, clustered repository,
+                        large number of affected nodes, etc.).
+                    </dd>
+                    <dt><tt>vltpack.upload.timeout</tt> (default: <tt>60 seconds</tt>)</dt>
+                    <dd>
+                        Set the number of seconds to wait for CRX Package Manager service availability before failing
+                        the execution. The vltpack-maven-plugin checks for service availability before each POST request
+                        in order to avoid a minor yet annoying behavior caused such requests if they are sent to the
+                        Package Manager service URL while the bundle is temporarily deactivated, which can happen
+                        immediately after installing another package with embedded OSGi bundles. The SlingPostServlet
+                        ends up handling the request, which creates nodes in the repository at /crx/packmgr/*. The
+                        existence of these nodes confuses the CQ Link Rewriter Filter, which then decides to change the
+                        Package Manager link on the CQ Welcome page from /crx/packmgr/ to /crx/packmgr.html, which is
+                        incorrect. If you ever see this happen on one of your servers, it is probably caused by this
+                        issue.
+                    </dd>
+                </dl>
+            </subsection>
+            <subsection name="Uploading a package from a maven repository">
+                <p>
+                    The only convenience goal provided by the vltpack-maven-plugin for general package installation is
+                    the <a href="upload-from-repo-mojo.html"><tt>upload-from-repo</tt></a> goal. This goal is intended
+                    to be executed outside of a maven project, and requires the user to specify a <tt>coords</tt>
+                    property that defines a set of maven artifact coordinates in compact, colon-delimited form. The
+                    value of this property will be resolved against your local and active remote repositories. If an
+                    artifact is resolved and the artifact file is a valid CRX package, the file will be uploaded and
+                    installed.
+                </p>
+            </subsection>
+            <subsection name="Uploading a vltpack project artifact as part of a maven build">
+                <p>
+                    The vltpack-maven-plugin will upload and install the main project artifact to the configured CQ
+                    server during a maven build if the <tt>supportITs</tt> property is set to <tt>true</tt>. This can
+                    also be specified in a user profile to make CQ installation of the package easier in IDEs, but
+                    wouldn't you rather be uploading JSPs and content with the <tt>vlt</tt> tool instead? Just think of
+                    the size of your CRX DataStore!
+                </p>
+            </subsection>
+        </section>
+    </body>
+</document>
