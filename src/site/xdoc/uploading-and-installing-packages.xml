@@ -40,8 +40,10 @@
                     property that defines a set of maven artifact coordinates in compact, colon-delimited form. The
                     value of this property will be resolved against your local and active remote repositories. If an
                     artifact is resolved and the artifact file is a valid CRX package, the file will be uploaded and
-                    installed.
+                    installed. For example, this command will upload and install Recap from the Maven Central
+                    repository:
                 </p>
+                <source>mvn net.adamcin:vltpack-maven-plugin:1.0.0:upload-from-repo -Dcoords=net.adamcin.recap:recap-graniteui:zip:0.8.0</source>
             </subsection>
             <subsection name="Uploading a vltpack project artifact as part of a maven build">
                 <p>
