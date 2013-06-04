@@ -52,6 +52,7 @@ class UploadFileMojo
   @Parameter(property = "vltpack.skip.upload-file")
   val skip = false
 
+
   /**
    * Specify the path to a valid vault package file.
    */
