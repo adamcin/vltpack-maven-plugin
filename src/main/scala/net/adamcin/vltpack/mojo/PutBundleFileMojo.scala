@@ -39,7 +39,7 @@ import net.adamcin.vltpack.PutsBundles
  * @author Mark Adamcin
  */
 @Mojo(name = "put-bundle-file",
-  defaultPhase = LifecyclePhase.INTEGRATION_TEST,
+  defaultPhase = LifecyclePhase.PRE_INTEGRATION_TEST,
   requiresProject = false,
   threadSafe = true)
 class PutBundleFileMojo

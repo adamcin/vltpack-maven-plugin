@@ -29,19 +29,18 @@ package net.adamcin.vltpack.mojo
 
 import org.apache.maven.plugins.annotations.{Parameter, LifecyclePhase, Mojo}
 import net.adamcin.vltpack.{IdentifiesPackages, ResolvesArtifacts, UploadsPackages}
-import org.apache.maven.plugin.MojoExecutionException
+import java.io.File
 
 /**
- * Command-line goal that provides the ability to resolve a package artifact from a local or remote repository and
- * install it directly into a running instance.
- * @since 1.0.0
+ * Command-line goal that provides the ability to upload a package file and install it directly into a running instance.
+ * @since 1.0.2
  * @author Mark Adamcin
  */
-@Mojo(name = "upload-from-repo",
+@Mojo(name = "upload-file",
   defaultPhase = LifecyclePhase.PRE_INTEGRATION_TEST,
   requiresProject = false,
   threadSafe = true)
-class UploadFromRepoMojo
+class UploadFileMojo
   extends BaseMojo
   with ResolvesArtifacts
   with IdentifiesPackages
@@ -50,26 +49,20 @@ class UploadFromRepoMojo
   /**
    * Set to true to skip execution of this mojo
    */
-  @Parameter(property = "vltpack.skip.upload-from-repo")
+  @Parameter(property = "vltpack.skip.upload-file")
   val skip = false
 
   /**
-   * Specify the full maven coordinates of the artifact in one of the following forms:
-   *
-   *  "groupId:artifactId:version"
-   *  "groupId:artifactId:packaging:version"
-   *  "groupId:artifactId:packaging:classifier:version"
-   *
-   *  where packaging is either "jar" or "zip" (the default is "jar")
+   * Specify the path to a valid vault package file.
    */
-  @Parameter(property = "coords", required = true)
-  val coords = ""
+  @Parameter(property = "file", required = true)
+  val file: File = null
 
   override def execute() {
     super.execute()
 
     skipOrExecute(skip) {
-      resolveByCoordinates(coords) foreach { uploadPackageArtifact }
+      uploadPackageFile(file)
     }
   }
 }

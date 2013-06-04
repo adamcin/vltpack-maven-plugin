@@ -184,40 +184,42 @@ trait UploadsPackages extends HttpParameters with IdentifiesPackages {
   }
 
   def uploadPackageArtifact(artifact: Artifact)(implicit force: Boolean) {
-    val thrower = (t: Throwable) => throw t
     Option(artifact.getFile) match {
       case None => throw new MojoExecutionException("failed to resolve artifact: " + artifact.getId)
-      case Some(file) => {
-        val id = identifyPackage(file)
-        val doesntExist = force || (existsOnServer(id) fold (thrower, {
+      case Some(file) => uploadPackageFile(file)
+    }
+  }
+
+  def uploadPackageFile(file: File)(implicit force: Boolean) {
+    val thrower = (t: Throwable) => throw t
+    val id = identifyPackage(file)
+    val doesntExist = force || (existsOnServer(id) fold (thrower, {
+      (result) => {
+        val (success, msg) = result
+        val successMsg = if (success) "Package exists" else "Package not found"
+        getLog.info("check for installed package " + id.get.getInstallationPath + ".zip: " + successMsg)
+        !success
+      }
+    }))
+
+    if (doesntExist) {
+      val uploaded = uploadPackage(id, file, force) fold (thrower, {
+        (result) => {
+          val (success, msg) = result
+          getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ".zip: " + msg)
+          success
+        }
+      })
+
+      if (uploaded) {
+        installPackage(id) fold (thrower, {
           (result) => {
             val (success, msg) = result
-            val successMsg = if (success) "Package exists" else "Package not found"
-            getLog.info("check for installed package " + id.get.getInstallationPath + ".zip: " + successMsg)
-            !success
+            getLog.info("installing " + id.get.getInstallationPath + ".zip: " + msg)
           }
-        }))
-
-        if (doesntExist) {
-          val uploaded = uploadPackage(id, file, force) fold (thrower, {
-            (result) => {
-              val (success, msg) = result
-              getLog.info("uploading " + file + " to " + id.get.getInstallationPath + ".zip: " + msg)
-              success
-            }
-          })
-
-          if (uploaded) {
-            installPackage(id) fold (thrower, {
-              (result) => {
-                val (success, msg) = result
-                getLog.info("installing " + id.get.getInstallationPath + ".zip: " + msg)
-              }
-            })
-          } else {
-            getLog.info("package was not uploaded and so it will not be installed")
-          }
-        }
+        })
+      } else {
+        getLog.info("package was not uploaded and so it will not be installed")
       }
     }
   }

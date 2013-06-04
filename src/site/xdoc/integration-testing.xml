@@ -32,11 +32,21 @@
     </properties>
     <body>
         <section name="Integration Testing">
-            <subsection name="">
+            <p>
+                This documentation is a work in progress. See
+                <a href="https://github.com/adamcin/net.adamcin.recap/blob/master/graniteui/pom.xml">the Recap -
+                    Granite UI pom</a> for an example.
+            </p>
+            <subsection name="Before You Begin">
                 <p>
-                    This documentation is a work in progress. See
-                    <a href="https://github.com/adamcin/net.adamcin.recap/blob/master/graniteui/pom.xml">the Recap -
-                        Granite UI pom</a> for an example.
+                    Before you begin
+                </p>
+            </subsection>
+            <subsection name="The Basics">
+                <p>
+
+                    Fact: Applications built on Adobe CQ or Granite are complex, loosely-coupled organisms even
+                    before the first JSP has been deployed.
                 </p>
             </subsection>
         </section>
