@@ -27,7 +27,7 @@
 
 package net.adamcin.vltpack.mojo
 
-import org.apache.maven.plugins.annotations.{Parameter, LifecyclePhase, Mojo}
+import org.apache.maven.plugins.annotations.{Parameter, Mojo}
 import net.adamcin.vltpack.{IdentifiesPackages, ResolvesArtifacts, UploadsPackages}
 import org.apache.maven.plugin.MojoExecutionException
 
@@ -38,7 +38,6 @@ import org.apache.maven.plugin.MojoExecutionException
  * @author Mark Adamcin
  */
 @Mojo(name = "upload-from-repo",
-  defaultPhase = LifecyclePhase.PRE_INTEGRATION_TEST,
   requiresProject = false,
   threadSafe = true)
 class UploadFromRepoMojo
@@ -62,14 +61,31 @@ class UploadFromRepoMojo
    *
    *  where packaging is either "jar" or "zip" (the default is "jar")
    */
-  @Parameter(property = "coords", required = true)
+  @Parameter(property = "coords")
   val coords = ""
 
   override def execute() {
     super.execute()
 
     skipOrExecute(skip) {
-      resolveByCoordinates(coords) foreach { uploadPackageArtifact }
+      if (!coords.isEmpty) {
+        resolveByCoordinates(coords) match {
+          case Some(artifact) => uploadPackageArtifact(artifact)
+          case None => throw new MojoExecutionException("Failed to resolve an artifact for coordinates " + coords)
+        }
+      } else {
+        Option(proj) match {
+          case Some(p) => {
+            resolveArtifacts(Stream(p.getArtifact)) match {
+              case head #:: tail => uploadPackageArtifact(head)
+              case _ => throw new MojoExecutionException("Failed to resolve project artifact " + p.getArtifactId)
+            }
+          }
+          case None => {
+            throw new MojoExecutionException("The coords parameter is required when this goal is executed outside of a maven project")
+          }
+        }
+      }
     }
   }
 }

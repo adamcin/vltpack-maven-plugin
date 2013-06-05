@@ -39,7 +39,9 @@ import java.io.File
 import scalax.io.Resource
 import org.codehaus.plexus.util.SelectorUtils
 import org.apache.maven.project.MavenProject
+import org.apache.maven.artifact.repository.ArtifactRepository
 import org.apache.maven.plugins.annotations.Component
+import org.apache.maven.plugins.annotations.Parameter
 import util.matching.Regex
 
 /**
@@ -66,6 +68,14 @@ trait ResolvesArtifacts extends BaseMojo {
   final val pGATCV = new Regex("""^([^:]*):([^:]*):([^:]*):([^:]*):([^:]*)$""",
     "groupId", "artifactId", "artifactType", "classifier", "version")
 
+  /**
+   * Specify the local repository path for resolved artifacts
+   * Refer to maven-install-plugin:install-file
+   * @since 1.0.4
+   */
+  @Parameter(property = "vltpack.localRepositoryPath")
+  val localRepositoryPath: File = null
+
   @Component
   var repositorySystem: RepositorySystem = null
 
@@ -74,7 +84,24 @@ trait ResolvesArtifacts extends BaseMojo {
     case None => null
   }
 
-  lazy val repositoryRequest: RepositoryRequest = DefaultRepositoryRequest.getRepositoryRequest(session, proj)
+  lazy val localRepository: ArtifactRepository =
+    Option(localRepositoryPath) match {
+      case Some(path) => {
+        repositorySystem.createLocalRepository(path)
+      }
+      case None => {
+        Option(session) match {
+          case Some(s) => session.getLocalRepository
+          case None => repositorySystem.createDefaultLocalRepository()
+        }
+      }
+    }
+
+  lazy val repositoryRequest: RepositoryRequest = {
+    val request = DefaultRepositoryRequest.getRepositoryRequest(session, proj)
+    request.setLocalRepository(localRepository)
+    request
+  }
 
   lazy val dependencies: List[Artifact] = Option(proj) match {
     case Some(project) => {
@@ -116,7 +143,7 @@ trait ResolvesArtifacts extends BaseMojo {
         coords.count(_ == ':') match {
           case 2 => pGAV findFirstIn coords match {
             case Some(pGAV(groupId, artifactId, version)) =>
-              resolveByCoordinates(groupId, artifactId, version, null, null)
+              resolveByCoordinates(groupId, artifactId, version, "jar", null)
             case None => None
           }
           case 3 => pGATV findFirstIn coords match {
