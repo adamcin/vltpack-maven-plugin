@@ -54,7 +54,7 @@
         <ul class="breadcrumb">
                 
                     
-                  <li id="publishDate">Last Published: 2013-06-05 10:37</li>
+                  <li id="publishDate">Last Published: 2013-06-05 10:52</li>
                   <li class="divider">|</li> <li id="projectVersion">Version: 1.1.0-SNAPSHOT</li>
                       
                 
@@ -222,30 +222,7 @@ directly into a running instance.</div></div>
       <ul>
         <li>The goal is thread-safe and supports parallel builds.</li>
         <li>Since version: <tt>1.0.0</tt>.</li>
-        <li>Binds by default to the <a class="externalLink" href="http://maven.apache.org/ref/current/maven-core/lifecycles.html">lifecycle phase</a>: <tt>pre-integration-test</tt>.</li>
       </ul>
-      <div class="section"><h3>Required Parameters<a name="Required_Parameters"></a></h3>
-        <table class="table table-striped" border="0">
-          <tr class="a">
-            <th>Name</th>
-            <th>Type</th>
-            <th>Since</th>
-            <th>Description</th>
-          </tr>
-          <tr class="b">
-            <td><b><a href="#coords">coords</a></b></td>
-            <td><tt>String</tt></td>
-            <td><tt>1.0.0</tt></td>
-            <td><div>Specify the full maven coordinates of the artifact in one of
-the following forms:</div>
-<div>&quot;groupId:artifactId:version&quot;
-&quot;groupId:artifactId:packaging:version&quot;
-&quot;groupId:artifactId:packaging:classifier:version&quot;</div>
-<div>where packaging is either &quot;jar&quot; or &quot;zip&quot; (the default is
-&quot;jar&quot;)</div><br /><b>User property is</b>: <tt>coords</tt>.</td>
-          </tr>
-        </table>
-      </div>
       <div class="section"><h3>Optional Parameters<a name="Optional_Parameters"></a></h3>
         <table class="table table-striped" border="0">
           <tr class="a">
@@ -268,26 +245,38 @@ the minimum.</div><br /><b>Default value is</b>: <tt>1024</tt>.<br /><b>User pro
             <td><div>Granite Servlet context by which JCR paths are appended</div><br /><b>Default value is</b>: <tt>/</tt>.<br /><b>User property is</b>: <tt>vltpack.context</tt>.</td>
           </tr>
           <tr class="b">
+            <td><b><a href="#coords">coords</a></b></td>
+            <td><tt>String</tt></td>
+            <td><tt>1.0.0</tt></td>
+            <td><div>Specify the full maven coordinates of the artifact in one of
+the following forms:</div>
+<div>&quot;groupId:artifactId:version&quot;
+&quot;groupId:artifactId:packaging:version&quot;
+&quot;groupId:artifactId:packaging:classifier:version&quot;</div>
+<div>where packaging is either &quot;jar&quot; or &quot;zip&quot; (the default is
+&quot;jar&quot;)</div><br /><b>User property is</b>: <tt>coords</tt>.</td>
+          </tr>
+          <tr class="a">
             <td><b><a href="#force">force</a></b></td>
             <td><tt>boolean</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>Force upload of packages if they already exist in the target
 environment</div><br /><b>User property is</b>: <tt>vltpack.upload.force</tt>.</td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#host">host</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>Hostname for the Granite server</div><br /><b>Default value is</b>: <tt>localhost</tt>.<br /><b>User property is</b>: <tt>vltpack.host</tt>.</td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#https">https</a></b></td>
             <td><tt>boolean</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>Whether to use an SSL connection instead of a normal HTTP
 connection. Does not affect the configured TCP port</div><br /><b>User property is</b>: <tt>vltpack.https</tt>.</td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#localRepositoryPath">localRepositoryPath</a></b></td>
             <td><tt>File</tt></td>
             <td><tt>1.0.4
@@ -295,51 +284,51 @@ connection. Does not affect the configured TCP port</div><br /><b>User property 
             <td><div>Specify the local repository path for resolved artifacts Refer
 to maven-install-plugin:install-file</div><br /><b>User property is</b>: <tt>vltpack.localRepositoryPath</tt>.</td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#noProxy">noProxy</a></b></td>
             <td><tt>boolean</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>Set to true to completely disable HTTP proxy connections for
 this plugin. Overrides any other HTTP proxy configuration</div><br /><b>User property is</b>: <tt>vltpack.proxy.noProxy</tt>.</td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#pass">pass</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>Password to use in connection credentials</div><br /><b>Default value is</b>: <tt>admin</tt>.<br /><b>User property is</b>: <tt>vltpack.pass</tt>.</td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#port">port</a></b></td>
             <td><tt>Integer</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>TCP Port for the Granite server</div><br /><b>Default value is</b>: <tt>4502</tt>.<br /><b>User property is</b>: <tt>vltpack.port</tt>.</td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#proxyHost">proxyHost</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>The HTTP Proxy hostname</div><br /><b>Default value is</b>: <tt>localhost</tt>.<br /><b>User property is</b>: <tt>vltpack.proxy.host</tt>.</td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#proxyPass">proxyPass</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>The HTTP Proxy password</div><br /><b>User property is</b>: <tt>vltpack.proxy.pass</tt>.</td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#proxyPort">proxyPort</a></b></td>
             <td><tt>int</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>The HTTP Proxy port. Set to -1 to use the default proxy
 port.</div><br /><b>User property is</b>: <tt>vltpack.proxy.port</tt>.</td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#proxyProtocol">proxyProtocol</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>The HTTP Proxy protocol</div><br /><b>Default value is</b>: <tt>http</tt>.<br /><b>User property is</b>: <tt>vltpack.proxy.protocol</tt>.</td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#proxySet">proxySet</a></b></td>
             <td><tt>boolean</tt></td>
             <td><tt>1.0.0</tt></td>
@@ -347,20 +336,20 @@ port.</div><br /><b>User property is</b>: <tt>vltpack.proxy.port</tt>.</td>
 Maven Settings with the associated mojo parameter
 alternatives</div><br /><b>User property is</b>: <tt>vltpack.proxy.set</tt>.</td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#proxyUser">proxyUser</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>The HTTP Proxy username</div><br /><b>User property is</b>: <tt>vltpack.proxy.user</tt>.</td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#recursive">recursive</a></b></td>
             <td><tt>boolean</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>Set to false to not install any subpackages that might be
 embedded within each dependency</div><br /><b>Default value is</b>: <tt>true</tt>.<br /><b>User property is</b>: <tt>vltpack.upload.recursive</tt>.</td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#serviceTimeout">serviceTimeout</a></b></td>
             <td><tt>int</tt></td>
             <td><tt>1.0.0</tt></td>
@@ -371,13 +360,13 @@ handles premature package manager requests, which can confuse the
 link rewriter and mess up links to the package manager
 console.</div><br /><b>Default value is</b>: <tt>60</tt>.<br /><b>User property is</b>: <tt>vltpack.upload.timeout</tt>.</td>
           </tr>
-          <tr class="a">
+          <tr class="b">
             <td><b><a href="#skip">skip</a></b></td>
             <td><tt>boolean</tt></td>
             <td><tt>1.0.0</tt></td>
             <td><div>Set to true to skip execution of this mojo</div><br /><b>User property is</b>: <tt>vltpack.skip.upload-from-repo</tt>.</td>
           </tr>
-          <tr class="b">
+          <tr class="a">
             <td><b><a href="#user">user</a></b></td>
             <td><tt>String</tt></td>
             <td><tt>1.0.0</tt></td>
@@ -415,7 +404,7 @@ the following forms:</div>
         <ul>
           <li><b>Type</b>: <tt>java.lang.String</tt></li>
           <li><b>Since</b>: <tt>1.0.0</tt></li>
-          <li><b>Required</b>: <tt>Yes</tt></li>
+          <li><b>Required</b>: <tt>No</tt></li>
           <li><b>User Property</b>: <tt>coords</tt></li>
         </ul><hr /><p><b><a name="force">force</a>:</b></p>
         <div><div>Force upload of packages if they already exist in the target
