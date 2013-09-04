@@ -34,7 +34,6 @@ import scalax.io.Resource
 import java.util.TimeZone
 import java.util.jar.{JarEntry, JarOutputStream}
 import org.slf4j.LoggerFactory
-import com.day.jcr.vault.vlt.VltDirectory
 import org.apache.maven.plugins.annotations.Parameter
 
 
@@ -157,7 +156,7 @@ trait CreatesPackage
                        zip: JarOutputStream): Set[String] = {
 
     if (entryFile.isDirectory) {
-      entryFile.listFiles().filter { _.getName != VltDirectory.META_DIR_NAME }.foldLeft(skipEntries) {
+      entryFile.listFiles().filter { _.getName != ".vlt" }.foldLeft(skipEntries) {
         (skip, f) => addEntryToZipFile(addToSkip, skip, f, entryName + "/" + f.getName, zip)
       }
     } else {
