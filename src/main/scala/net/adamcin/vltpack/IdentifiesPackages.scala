@@ -28,7 +28,7 @@
 package net.adamcin.vltpack
 
 import java.io.File
-import com.day.jcr.vault.packaging.{VaultPackage, PackageId}
+import org.apache.jackrabbit.vault.packaging.{VaultPackage, PackageId}
 import java.util.jar.{JarEntry, JarFile}
 import scalax.io.Resource
 import java.util.Properties
@@ -42,7 +42,7 @@ object IdentifiesPackages {
   final val GROUP = VaultPackage.NAME_GROUP
   final val NAME = VaultPackage.NAME_NAME
   final val VERSION = VaultPackage.NAME_VERSION
-  final val PATH = VaultPackage.NAME_PATH
+  final val PATH = "path"
   final val DESCRIPTION = VaultPackage.NAME_DESCRIPTION
   final val CREATED = VaultPackage.NAME_CREATED
   final val CREATED_BY = VaultPackage.NAME_CREATED_BY

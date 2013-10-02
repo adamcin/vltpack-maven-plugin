@@ -33,7 +33,7 @@ import java.io.File
 import org.apache.maven.plugin.MojoExecutionException
 import org.slf4j.LoggerFactory
 import org.apache.maven.plugins.annotations.Parameter
-import com.day.jcr.vault.util.Text
+import org.apache.jackrabbit.vault.util.Text
 
 /**
  * Trait defining common mojo parameters and methods for uploading OSGi bundles to the configured CQ server

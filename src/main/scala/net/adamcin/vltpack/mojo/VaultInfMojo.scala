@@ -30,17 +30,16 @@ package net.adamcin.vltpack.mojo
 import java.io.File
 import scalax.io.Resource
 import java.util.{Calendar, Properties, Collections}
-import com.day.jcr.vault.packaging._
-import com.day.jcr.vault.fs.config.{MetaInf, DefaultMetaInf, DefaultWorkspaceFilter}
-import com.day.jcr.vault.fs.api.PathFilterSet
-import com.day.jcr.vault.fs.filter.DefaultPathFilter
+import org.apache.jackrabbit.vault.packaging._
+import org.apache.jackrabbit.vault.fs.config.{MetaInf, DefaultMetaInf, DefaultWorkspaceFilter}
+import org.apache.jackrabbit.vault.fs.api.PathFilterSet
+import org.apache.jackrabbit.vault.fs.filter.DefaultPathFilter
 import org.apache.jackrabbit.util.ISO8601
 import javax.jcr.{Node, SimpleCredentials, Session}
 import org.apache.jackrabbit.core.TransientRepository
-import com.day.jcr.vault.packaging.impl.{JcrPackageDefinitionImpl, JcrPackageManagerImpl}
-import com.day.jcr.vault.fs.io
-import io.PlatformExporter
-import com.day.jcr.vault.util.{Text, JcrConstants}
+import org.apache.jackrabbit.vault.packaging.impl.{JcrPackageDefinitionImpl, JcrPackageManagerImpl}
+import org.apache.jackrabbit.vault.fs.io.{ImportOptions, PlatformExporter}
+import org.apache.jackrabbit.vault.util.{Text, JcrConstants}
 import collection.JavaConversions._
 import java.security.{DigestInputStream, MessageDigest}
 import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
@@ -66,7 +65,7 @@ class VaultInfMojo
   with IdentifiesPackages {
 
   final val DEFAULT_VAULT_SOURCE = "${project.build.outputDirectory}/META-INF/vault"
-  final val DEFAULT_CONFIG = "com/day/jcr/vault/fs/config/defaultConfig-1.1.xml"
+  final val DEFAULT_CONFIG = "org.apache.jackrabbit/vault/fs/config/defaultConfig-1.1.xml"
 
   /**
    * Source folder for existing meta info files, such as are created and managed by the VLT working copy
@@ -468,7 +467,6 @@ class VaultInfMojo
       def close() {}
       def isValid = false
       def isClosed = true
-      def extract(p1: Session, p2: io.ImportOptions) {}
       def extract(p1: Session, p2: ImportOptions) {}
       def getLastModifiedBy = ""
       def getLastWrapped = null

@@ -27,7 +27,7 @@
 
 package net.adamcin.vltpack
 
-import com.day.jcr.vault.packaging.Dependency
+import org.apache.jackrabbit.vault.packaging.Dependency
 import collection.JavaConversions._
 import org.apache.maven.plugins.annotations.Parameter
 import java.util.Collections

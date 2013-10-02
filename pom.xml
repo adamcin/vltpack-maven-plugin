@@ -89,7 +89,7 @@
         <scala.version.major>2.10</scala.version.major>
         <scala.version>2.10.0</scala.version>
         <scalamojo.version>0.8.0</scalamojo.version>
-        <vlt.version>2.4.32</vlt.version>
+        <vlt.version>3.0.0</vlt.version>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
         <jackrabbit.version>2.4.2</jackrabbit.version>
@@ -151,6 +151,18 @@
                         <id>attach-javadocs</id>
                         <goals>
                             <goal>doc-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-component-metadata</artifactId>
+                <version>1.5.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate-metadata</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -277,16 +289,14 @@
         </dependency>
 
         <!-- disabled until migration to apache jackrabbit vault -->
-        <!--
         <dependency>
-            <groupId>com.day.jcr.vault</groupId>
+            <groupId>org.apache.jackrabbit.vault</groupId>
             <artifactId>vault-vlt</artifactId>
             <version>${vlt.version}</version>
         </dependency>
-        -->
         <dependency>
-            <groupId>com.day.jcr.vault</groupId>
-            <artifactId>com.day.jcr.vault</artifactId>
+            <groupId>org.apache.jackrabbit.vault</groupId>
+            <artifactId>org.apache.jackrabbit.vault</artifactId>
             <version>${vlt.version}</version>
         </dependency>
 

@@ -33,7 +33,7 @@ import dispatch._
 import org.slf4j.LoggerFactory
 import util.parsing.json.JSON
 import com.ning.http.multipart.FilePart
-import com.day.jcr.vault.packaging.PackageId
+import org.apache.jackrabbit.vault.packaging.PackageId
 import org.apache.maven.plugins.annotations.Parameter
 import com.ning.http.client.Response
 import org.apache.maven.artifact.Artifact
