@@ -100,25 +100,6 @@
         <maven>${maven.version}</maven>
     </prerequisites>
 
-    <!--
-    This repository must remain in the pom itself to support
-    maven project reports site generation.
-    -->
-    <repositories>
-        <repository>
-            <id>adobe-public-releases</id>
-            <name>Adobe Public Repository</name>
-            <url>http://repo.adobe.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <build>
         <resources>
             <resource>
