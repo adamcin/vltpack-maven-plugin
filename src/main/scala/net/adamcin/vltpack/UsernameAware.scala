@@ -27,7 +27,7 @@
 
 package net.adamcin.vltpack
 
-import mojo.BaseMojo
+import net.adamcin.vltpack.mojo.BaseMojo
 import org.apache.maven.plugins.annotations.Parameter
 
 /**

@@ -27,9 +27,10 @@
 
 package net.adamcin.vltpack.mojo
 
-import org.apache.maven.plugins.annotations.{Parameter, LifecyclePhase, Mojo}
-import net.adamcin.vltpack.{IdentifiesPackages, ResolvesArtifacts, UploadsPackages}
 import java.io.File
+
+import net.adamcin.vltpack.{IdentifiesPackages, ResolvesArtifacts, UploadsPackages}
+import org.apache.maven.plugins.annotations.{LifecyclePhase, Mojo, Parameter}
 
 /**
  * Command-line goal that provides the ability to upload a package file and install it directly into a running instance.

@@ -27,10 +27,10 @@
 
 package net.adamcin.vltpack.mojo
 
-import org.apache.maven.plugin.AbstractMojo
-import org.apache.maven.plugins.annotations.Component
-import org.apache.maven.settings.Settings
 import org.apache.maven.execution.MavenSession
+import org.apache.maven.plugin.AbstractMojo
+import org.apache.maven.plugins.annotations.Parameter
+import org.apache.maven.settings.Settings
 
 /**
  * Base mojo class
@@ -39,10 +39,10 @@ import org.apache.maven.execution.MavenSession
  */
 abstract class BaseMojo extends AbstractMojo {
 
-  @Component
+  @Parameter(defaultValue = "${settings}", readonly = true)
   var settings: Settings = null
 
-  @Component
+  @Parameter(defaultValue = "${session}", readonly = true)
   var session: MavenSession = null
 
   def execute() { /* nothing here now */ }

@@ -28,10 +28,12 @@
 package net.adamcin.vltpack
 
 import java.io.File
-import org.apache.jackrabbit.vault.packaging.{VaultPackage, PackageId}
-import java.util.jar.{JarEntry, JarFile}
-import scalax.io.Resource
 import java.util.Properties
+import java.util.jar.{JarEntry, JarFile}
+
+import org.apache.jackrabbit.vault.packaging.{PackageId, PackageProperties}
+
+import scalax.io.Resource
 
 /**
  * Companion object for the trait defining these useful property constants
@@ -39,14 +41,14 @@ import java.util.Properties
  * @author Mark Adamcin
  */
 object IdentifiesPackages {
-  final val GROUP = VaultPackage.NAME_GROUP
-  final val NAME = VaultPackage.NAME_NAME
-  final val VERSION = VaultPackage.NAME_VERSION
+  final val GROUP = PackageProperties.NAME_GROUP
+  final val NAME = PackageProperties.NAME_NAME
+  final val VERSION = PackageProperties.NAME_VERSION
   final val PATH = "path"
-  final val DESCRIPTION = VaultPackage.NAME_DESCRIPTION
-  final val CREATED = VaultPackage.NAME_CREATED
-  final val CREATED_BY = VaultPackage.NAME_CREATED_BY
-  final val DEPENDENCIES = VaultPackage.NAME_DEPENDENCIES
+  final val DESCRIPTION = PackageProperties.NAME_DESCRIPTION
+  final val CREATED = PackageProperties.NAME_CREATED
+  final val CREATED_BY = PackageProperties.NAME_CREATED_BY
+  final val DEPENDENCIES = PackageProperties.NAME_DEPENDENCIES
 }
 
 /**

@@ -27,22 +27,22 @@
 
 package net.adamcin.vltpack
 
-import mojo.BaseMojo
-import org.apache.maven.repository.RepositorySystem
-import org.apache.maven.artifact.repository.{DefaultRepositoryRequest, RepositoryRequest}
-import org.apache.maven.artifact.Artifact
-import org.apache.maven.plugin.logging.Log
-import org.apache.maven.artifact.resolver.ArtifactResolutionRequest
-import org.slf4j.LoggerFactory
-import collection.JavaConversions._
 import java.io.File
-import scalax.io.Resource
-import org.codehaus.plexus.util.SelectorUtils
+
+import net.adamcin.vltpack.mojo.BaseMojo
+import org.apache.maven.artifact.Artifact
+import org.apache.maven.artifact.repository.{ArtifactRepository, DefaultRepositoryRequest, RepositoryRequest}
+import org.apache.maven.artifact.resolver.ArtifactResolutionRequest
+import org.apache.maven.plugin.logging.Log
+import org.apache.maven.plugins.annotations.{Component, Parameter}
 import org.apache.maven.project.MavenProject
-import org.apache.maven.artifact.repository.ArtifactRepository
-import org.apache.maven.plugins.annotations.Component
-import org.apache.maven.plugins.annotations.Parameter
-import util.matching.Regex
+import org.apache.maven.repository.RepositorySystem
+import org.codehaus.plexus.util.SelectorUtils
+import org.slf4j.LoggerFactory
+
+import scala.collection.JavaConverters._
+import scala.util.matching.Regex
+import scalax.io.Resource
 
 /**
  * Trait defining common mojo parameters and methods useful for arbitrarily resolving artifacts from
@@ -105,7 +105,7 @@ trait ResolvesArtifacts extends BaseMojo {
 
   lazy val dependencies: List[Artifact] = Option(proj) match {
     case Some(project) => {
-      project.getDependencyArtifacts.toList
+      project.getDependencyArtifacts.asScala.toList
     }
     case None => Nil
   }
@@ -119,12 +119,12 @@ trait ResolvesArtifacts extends BaseMojo {
 
   def resolveArtifacts(artifacts: Stream[Artifact]): Stream[Artifact] = {
     val request = new ArtifactResolutionRequest(repositoryRequest)
-    artifacts.toStream.foldLeft(Stream.empty[Artifact]) {
+    artifacts.foldLeft(Stream.empty[Artifact]) {
       (stream, artifact: Artifact) => {
         request.setArtifact(artifact)
         val result = repositorySystem.resolve(request)
 
-        stream #::: result.getArtifacts.toStream
+        stream #::: result.getArtifacts.asScala.toStream
       }
     }
   }

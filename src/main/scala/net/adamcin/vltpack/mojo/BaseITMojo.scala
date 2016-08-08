@@ -27,8 +27,8 @@
 
 package net.adamcin.vltpack.mojo
 
-import org.apache.maven.plugins.annotations.Parameter
 import net.adamcin.vltpack.RequiresProject
+import org.apache.maven.plugins.annotations.Parameter
 
 /**
  * Base project IT mojo defining common mojo parameters and methods for enabling/disabling traffic to the configured

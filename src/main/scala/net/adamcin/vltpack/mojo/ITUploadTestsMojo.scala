@@ -27,15 +27,13 @@
 
 package net.adamcin.vltpack.mojo
 
-import org.apache.maven.plugin.MojoExecutionException
-import org.apache.maven.plugins.annotations.{ResolutionScope, Parameter, Mojo, LifecyclePhase}
-import net.adamcin.vltpack._
-import scala.Left
-import scala.Some
-import scala.Right
 import java.util.Collections
+
+import net.adamcin.vltpack._
+import org.apache.maven.plugin.MojoExecutionException
+import org.apache.maven.plugins.annotations.{LifecyclePhase, Mojo, Parameter, ResolutionScope}
+
 import scala.collection.JavaConversions._
-import org.apache.maven.artifact.Artifact
 import scalax.io.Resource
 
 /**

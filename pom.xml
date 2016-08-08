@@ -46,7 +46,7 @@
     <description>
         Maven plugin defining the vltpack packaging lifecycle and appropriate
         goals for use in creating application and content packages targeting
-        the Adobe CRX / CQ / Granite platforms
+        the Adobe CRX / AEM / Granite platforms
     </description>
 
     <url>http://adamcin.net/${project.artifactId}</url>
@@ -75,8 +75,8 @@
             <name>Mark Adamcin</name>
             <email>adamcin@gmail.com</email>
             <url>http://adamcin.net</url>
-            <organization>Acquity Group</organization>
-            <organizationUrl>http://www.acquitygroup.com</organizationUrl>
+            <organization>Infield Digital</organization>
+            <organizationUrl>https://www.infielddigital.com</organizationUrl>
             <roles>
                 <role>architect</role>
                 <role>developer</role>
@@ -85,19 +85,20 @@
     </developers>
 
     <properties>
-        <maven.version>3.0</maven.version>
-        <scala.version.major>2.10</scala.version.major>
-        <scala.version>2.10.0</scala.version>
-        <scalamojo.version>0.8.0</scalamojo.version>
-        <vlt.version>3.0.0</vlt.version>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
-        <jackrabbit.version>2.4.2</jackrabbit.version>
+        <maven.version>3.3.9</maven.version>
+        <maven.plugin.tools.version>3.4</maven.plugin.tools.version>
+        <scala.version.major>2.11</scala.version.major>
+        <scala.version>2.11.7</scala.version>
+        <scalamojo.version>1.0.0</scalamojo.version>
+        <vlt.version>3.1.26</vlt.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <jackrabbit.version>2.13.1</jackrabbit.version>
         <encoding>UTF-8</encoding>
     </properties>
 
     <prerequisites>
-        <maven>${maven.version}</maven>
+        <maven>3.3.9</maven>
     </prerequisites>
 
     <build>
@@ -111,10 +112,10 @@
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>3.2.2</version>
                 <configuration>
                     <args>
-                        <arg>-target:jvm-1.6</arg>
+                        <arg>-target:jvm-1.8</arg>
                         <arg>-no-specialization</arg>
                         <arg>-deprecation</arg>
                     </args>
@@ -139,7 +140,7 @@
             <plugin>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-component-metadata</artifactId>
-                <version>1.5.5</version>
+                <version>1.7</version>
                 <executions>
                     <execution>
                         <goals>
@@ -151,7 +152,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.2</version>
+                <version>${maven.plugin.tools.version}</version>
                 <configuration>
                     <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
                     <extractors>
@@ -176,28 +177,24 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <goals>deploy site</goals>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.0</version>
+                <version>3.5.1</version>
                 <configuration>
                     <inputEncoding>utf-8</inputEncoding>
-                    <reportPlugins>
-                        <plugin>
-                            <groupId>net.adamcin</groupId>
-                            <artifactId>scalamojo-maven-plugin</artifactId>
-                            <version>${scalamojo.version}</version>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-project-info-reports-plugin</artifactId>
-                            <version>2.4</version>
-                        </plugin>
-                    </reportPlugins>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
-                <version>0.8</version>
+                <version>0.12</version>
                 <configuration>
                     <message>Creating site for ${project.artifactId} ${project.version}</message>
                     <noJekyll>true</noJekyll>
@@ -216,6 +213,21 @@
         </plugins>
     </build>
 
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>net.adamcin</groupId>
+                <artifactId>scalamojo-maven-plugin</artifactId>
+                <version>${scalamojo.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.9</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
@@ -233,24 +245,25 @@
             <version>${scala.version}</version>
         </dependency>
 
+
         <!-- Core -->
         <dependency>
             <groupId>com.github.scala-incubator.io</groupId>
             <artifactId>scala-io-core_${scala.version.major}</artifactId>
-            <version>0.4.1</version>
+            <version>0.4.3-1</version>
         </dependency>
 
         <!-- File -->
         <dependency>
             <groupId>com.github.scala-incubator.io</groupId>
             <artifactId>scala-io-file_${scala.version.major}</artifactId>
-            <version>0.4.1</version>
+            <version>0.4.3-1</version>
         </dependency>
 
         <dependency>
             <groupId>net.databinder.dispatch</groupId>
             <artifactId>dispatch-core_${scala.version.major}</artifactId>
-            <version>0.9.5</version>
+            <version>0.11.2</version>
         </dependency>
 
         <dependency>
@@ -353,19 +366,19 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.10</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_${scala.version}</artifactId>
-            <version>1.8</version>
+            <artifactId>scalatest_${scala.version.major}</artifactId>
+            <version>2.2.6</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugin-testing</groupId>
             <artifactId>maven-plugin-testing-harness</artifactId>
-            <version>1.2</version>
+            <version>3.3.0</version>
             <scope>test</scope>
         </dependency>
 

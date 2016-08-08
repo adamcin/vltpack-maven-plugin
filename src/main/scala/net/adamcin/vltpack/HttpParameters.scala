@@ -27,11 +27,12 @@
 
 package net.adamcin.vltpack
 
-import dispatch._
 import com.ning.http.client._
+import dispatch._
 import org.apache.maven.plugins.annotations.Parameter
-import scala.Some
-import annotation.tailrec
+
+import scala.annotation.tailrec
+import scala.concurrent.ExecutionContext.Implicits
 
 /**
  * Adds fluid support for the MKCOL method
@@ -44,9 +45,9 @@ trait DavVerbs extends MethodVerbs {
 
 /**
  * Wraps an implicitly created DefaultRequestVerbs object with the DavVerbs trait
- * @param wrapped the requestbuilder wrapper to unwrap
+ * @param subject the requestbuilder wrapper to unwrap
  */
-class DavRequestVerbs(wrapped: DefaultRequestVerbs) extends DefaultRequestVerbs(wrapped.subject) with DavVerbs
+class DavRequestVerbs(val subject: dispatch.Req) extends MethodVerbs with DavVerbs
 
 /**
  * Trait defining common mojo parameters and methods for establishing HTTP connections to a Granite server.
@@ -62,6 +63,8 @@ trait HttpParameters extends UsernameAware {
   final val DEFAULT_CONTEXT = "/"
   final val DEFAULT_PROXY_PROTOCOL = "http"
   final val DEFAULT_PROXY_HOST = "localhost"
+
+  final implicit val executor = Implicits.global
 
   /**
    * Hostname for the Granite server
@@ -138,9 +141,9 @@ trait HttpParameters extends UsernameAware {
   @Parameter(property = "vltpack.proxy.pass")
   val proxyPass: String = null
 
-  implicit def implyDavRequestVerbs(wrapped: DefaultRequestVerbs) = new DavRequestVerbs(wrapped)
+  implicit def implyDavRequestVerbs(wrapped: Req) = new DavRequestVerbs(wrapped)
 
-  def urlForPath(absPath: String): DefaultRequestVerbs = {
+  def urlForPath(absPath: String): dispatch.Req = {
     val segments = context.split('/') ++ absPath.split('/')
     segments.foldLeft(reqHost) { (req, segment) => req / segment }
   }
@@ -198,8 +201,8 @@ trait HttpParameters extends UsernameAware {
     }
   }.head as_!(user, pass)
 
-  def isSuccess(req: RequestBuilder, resp: Response): Boolean = {
-    (req.build().getMethod, Option(resp)) match {
+  def isSuccess(req: Req, resp: Response): Boolean = {
+    (req.toRequest.getMethod, Option(resp)) match {
       case ("MKCOL", Some(response)) => {
         Set(201, 405) contains response.getStatusCode
       }
@@ -213,12 +216,12 @@ trait HttpParameters extends UsernameAware {
     }
   }
 
-  def getReqRespLogMessage(req: RequestBuilder, resp: Response): String = {
+  def getReqRespLogMessage(req: Req, resp: Response): String = {
     (Option(req), Option(resp)) match {
       case (Some(request), Some(response)) =>
-        request.build().getMethod + " " + request.url + " => " + resp.getStatusCode + " " + resp.getStatusText
+        request.toRequest.getMethod + " " + request.url + " => " + resp.getStatusCode + " " + resp.getStatusText
       case (Some(request), None) =>
-        request.build().getMethod + " " + request.url + " => null"
+        request.toRequest.getMethod + " " + request.url + " => null"
       case (None, Some(response)) =>
         "null => " + resp.getStatusCode + " " + resp.getStatusText
       case _ => "null => null"
@@ -229,7 +232,7 @@ trait HttpParameters extends UsernameAware {
   final def waitForResponse[T](nTrys: Int)
                               (implicit until: Long,
                                requestFunction: () => (Request, AsyncHandler[T]),
-                               contentChecker: (Promise[T]) => Promise[Boolean]): Boolean = {
+                               contentChecker: (Future[T]) => Future[Boolean]): Boolean = {
     if (nTrys > 0) {
       val sleepTime = nTrys * 1000L
       getLog.info("sleeping " + nTrys + " seconds")

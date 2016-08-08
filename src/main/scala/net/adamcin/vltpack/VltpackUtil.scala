@@ -27,8 +27,9 @@
 
 package net.adamcin.vltpack
 
+import java.io.{File, FilterOutputStream, InputStream, OutputStream}
+
 import scalax.io.CloseAction
-import java.io.{File, FilterOutputStream, OutputStream, InputStream}
 
 
 /**

@@ -27,8 +27,9 @@
 
 package net.adamcin.vltpack.mojo
 
-import org.apache.maven.plugins.annotations.{Parameter, LifecyclePhase, Mojo}
-import net.adamcin.vltpack.{HttpParameters}
+import net.adamcin.vltpack.HttpParameters
+import org.apache.maven.plugins.annotations.{LifecyclePhase, Mojo, Parameter}
+
 import scala.collection.JavaConversions._
 
 /**

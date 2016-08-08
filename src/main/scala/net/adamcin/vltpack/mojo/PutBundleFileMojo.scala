@@ -28,10 +28,9 @@
 package net.adamcin.vltpack.mojo
 
 import java.io.File
-import scala.Left
-import scala.Right
-import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
+
 import net.adamcin.vltpack.PutsBundles
+import org.apache.maven.plugins.annotations.{LifecyclePhase, Mojo, Parameter}
 
 /**
  * PUT a bundle identified by the file parameter to the configured CQ instance

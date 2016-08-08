@@ -28,15 +28,18 @@
 package net.adamcin.vltpack
 
 import java.io.File
-import org.apache.maven.plugin.{MojoFailureException, MojoExecutionException}
-import dispatch._
-import org.slf4j.LoggerFactory
-import util.parsing.json.JSON
-import com.ning.http.multipart.FilePart
-import org.apache.jackrabbit.vault.packaging.PackageId
-import org.apache.maven.plugins.annotations.Parameter
+import java.nio.charset.Charset
+
 import com.ning.http.client.Response
+import com.ning.http.multipart.{FilePart, StringPart}
+import dispatch._
+import org.apache.jackrabbit.vault.packaging.PackageId
 import org.apache.maven.artifact.Artifact
+import org.apache.maven.plugin.{MojoExecutionException, MojoFailureException}
+import org.apache.maven.plugins.annotations.Parameter
+import org.slf4j.LoggerFactory
+
+import scala.util.parsing.json.JSON
 
 /**
  * Trait defining common mojo parameters and methods useful for uploading and installing vault packages on
@@ -94,7 +97,7 @@ trait UploadsPackages extends HttpParameters with IdentifiesPackages {
         }
       }
 
-    def checkContent(response: Promise[String]): Promise[Boolean] = {
+    def checkContent(response: Future[String]): Future[Boolean] = {
       response.fold((ex) => { getLog.info("check service exception: " + ex.getMessage); false },
         (content) => true)
     }
@@ -110,12 +113,13 @@ trait UploadsPackages extends HttpParameters with IdentifiesPackages {
     waitForService {
       packageId match {
         case Some(id) => {
-          val req = urlForPath(servicePath + id.getInstallationPath).POST <<? Map(
-            "cmd" -> "upload",
-            "force" -> force.toString
-          )
-          req.addBodyPart(new FilePart("package", id.getDownloadName, file))
-          val resp = Http(req)()
+
+          var req = urlForPath(servicePath + id.getInstallationPath + s"?cmd=upload&force=$force").POST
+          req = req.setContentType("multipart/form-data", "UTF-8")
+          req = req.addBodyPart(new FilePart("package", id.getDownloadName, file))
+          req = req.addBodyPart(new StringPart("cmd", "upload"))
+          req = req.addBodyPart(new StringPart("force", force.toString))
+          val resp = Http(req).apply()
 
           if (isSuccess(req, resp)) {
             parseServiceResponse(resp.getResponseBody)
@@ -138,7 +142,7 @@ trait UploadsPackages extends HttpParameters with IdentifiesPackages {
             "recursive" -> recursive.toString,
             "autosave" -> (autosave max 1024).toString
           )
-          val resp = Http(req)()
+          val resp = Http(req).apply()
 
           if (isSuccess(req, resp)) {
             parseServiceResponse(resp.getResponseBody)
@@ -157,7 +161,7 @@ trait UploadsPackages extends HttpParameters with IdentifiesPackages {
         case Some(id) => {
           val pkgPath = id.getInstallationPath + ".zip"
           val req = urlForPath(servicePath + pkgPath) << Map("cmd" -> "contents")
-          val resp = Http(req)()
+          val resp = Http(req).apply()
 
           if (isSuccess(req, resp)) {
             parseServiceResponse(resp.getResponseBody)
@@ -177,7 +181,7 @@ trait UploadsPackages extends HttpParameters with IdentifiesPackages {
       Some(M(map)) <- json
       B(success) = map("success")
       S(msg) = map("msg")
-    } yield (success, msg)).toList match {
+    } yield (success, msg)) match {
       case head :: tail => Right(head)
       case _ => Left(new MojoExecutionException("failed to parse json response: " + respBody))
     }

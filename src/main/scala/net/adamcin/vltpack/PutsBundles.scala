@@ -27,13 +27,14 @@
 
 package net.adamcin.vltpack
 
-import com.ning.http.client.{RequestBuilder, Response}
-import dispatch._
 import java.io.File
-import org.apache.maven.plugin.MojoExecutionException
-import org.slf4j.LoggerFactory
-import org.apache.maven.plugins.annotations.Parameter
+
+import com.ning.http.client.Response
+import dispatch._
 import org.apache.jackrabbit.vault.util.Text
+import org.apache.maven.plugin.MojoExecutionException
+import org.apache.maven.plugins.annotations.Parameter
+import org.slf4j.LoggerFactory
 
 /**
  * Trait defining common mojo parameters and methods for uploading OSGi bundles to the configured CQ server
@@ -69,9 +70,9 @@ trait PutsBundles extends HttpParameters with BundlePathParameters {
   }
 
   def putBundleToPath(file: File, path: String): Either[Throwable, List[String]] = {
-    lazy val (putReq, putResp) = {
+    lazy val (putReq: Req, putResp: Response) = {
       val req = urlForPath(path) <<< file
-      (req, Http(req)())
+      (req, Http(req).apply())
     }
 
     val fromMkdirs: Either[Throwable, List[String]] = if (!skipMkdirs) {
@@ -102,7 +103,7 @@ trait PutsBundles extends HttpParameters with BundlePathParameters {
     }
   }
 
-  def mkdirs(absPath: String): (RequestBuilder, Response) = {
+  def mkdirs(absPath: String): (Req, Response) = {
     val segments = absPath.split('/').filter(!_.isEmpty)
 
     val dirs = segments.foldLeft(List.empty[String]) {
@@ -112,8 +113,8 @@ trait PutsBundles extends HttpParameters with BundlePathParameters {
       }
     }.reverse
 
-    dirs.foldLeft (null: (RequestBuilder, Response)) {
-      (p: (RequestBuilder, Response), path: String) => {
+    dirs.foldLeft (null: (Req, Response)) {
+      (p: (Req, Response), path: String) => {
         val doMkdir = Option(p) match {
           case Some((req, resp)) => isSuccess(req, resp)
           case None => true
@@ -123,8 +124,8 @@ trait PutsBundles extends HttpParameters with BundlePathParameters {
     }
   }
 
-  def mkdir(absPath: String): (RequestBuilder, Response) = {
+  def mkdir(absPath: String): (Req, Response) = {
     val req = urlForPath(absPath).MKCOL
-    (req, Http(req)())
+    (req, Http(req).apply())
   }
 }

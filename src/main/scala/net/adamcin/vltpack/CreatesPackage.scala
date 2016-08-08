@@ -27,14 +27,16 @@
 
 package net.adamcin.vltpack
 
-import java.io.{FileOutputStream, File}
-import mojo.BaseMojo
-import org.apache.maven.plugin.MojoExecutionException
-import scalax.io.Resource
+import java.io.{File, FileOutputStream}
 import java.util.TimeZone
 import java.util.jar.{JarEntry, JarOutputStream}
-import org.slf4j.LoggerFactory
+
+import net.adamcin.vltpack.mojo.BaseMojo
+import org.apache.maven.plugin.MojoExecutionException
 import org.apache.maven.plugins.annotations.Parameter
+import org.slf4j.LoggerFactory
+
+import scalax.io.Resource
 
 
 /**

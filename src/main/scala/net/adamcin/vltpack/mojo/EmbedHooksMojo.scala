@@ -27,11 +27,13 @@
 
 package net.adamcin.vltpack.mojo
 
-import org.apache.maven.plugins.annotations.{Parameter, LifecyclePhase, Mojo}
-import net.adamcin.vltpack.{OutputParameters, ResolvesArtifacts}
 import java.util.Collections
-import scala.collection.JavaConversions._
+
+import net.adamcin.vltpack.{OutputParameters, ResolvesArtifacts}
 import org.apache.maven.plugin.MojoExecutionException
+import org.apache.maven.plugins.annotations.{LifecyclePhase, Mojo, Parameter}
+
+import scala.collection.JavaConversions._
 
 /**
  * Embeds install hooks (dependencies referenced by artifactId) into the package. A valid

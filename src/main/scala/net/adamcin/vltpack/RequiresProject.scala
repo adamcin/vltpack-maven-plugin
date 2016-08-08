@@ -27,9 +27,9 @@
 
 package net.adamcin.vltpack
 
-import mojo.BaseMojo
+import net.adamcin.vltpack.mojo.BaseMojo
+import org.apache.maven.plugins.annotations.Parameter
 import org.apache.maven.project.MavenProject
-import org.apache.maven.plugins.annotations.Component
 
 /**
  * Trait for mojos to mark them as requiring a reference to a maven project as well as defining
@@ -39,6 +39,6 @@ import org.apache.maven.plugins.annotations.Component
  */
 trait RequiresProject extends BaseMojo {
 
-  @Component
+  @Parameter(defaultValue = "${project}", readonly = true)
   var project: MavenProject = null
 }

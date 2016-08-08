@@ -2,6 +2,7 @@ package net.adamcin.vltpack
 
 import java.io.File
 import java.security.MessageDigest
+
 import scalax.io.Resource
 
 class ChecksumCalculator {

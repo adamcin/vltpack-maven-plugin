@@ -1,10 +1,9 @@
 package net.adamcin.vltpack.mojo
 
-import net.adamcin.vltpack.HttpParameters
-import org.apache.maven.plugins.annotations.{LifecyclePhase, Mojo, Parameter}
-import org.apache.maven.plugin.MojoFailureException
-import annotation.tailrec
 import dispatch._
+import net.adamcin.vltpack.HttpParameters
+import org.apache.maven.plugin.MojoFailureException
+import org.apache.maven.plugins.annotations.{LifecyclePhase, Mojo, Parameter}
 
 /**
  * Waits for server readiness before continuing on to integration-test phase. Fails the build if
@@ -45,7 +44,7 @@ class ITServerReadyMojo
   @Parameter(defaultValue = "QUICKSTART_HOMEPAGE")
   val expectedContent = ""
 
-  def checkContent(response: Promise[String]): Promise[Boolean] = {
+  def checkContent(response: Future[String]): Future[Boolean] = {
     response.fold(
       (ex) => {
         getLog.info("server ready check exception: " + ex.getMessage)

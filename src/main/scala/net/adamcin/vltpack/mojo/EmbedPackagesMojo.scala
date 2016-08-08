@@ -27,11 +27,13 @@
 
 package net.adamcin.vltpack.mojo
 
-import collection.JavaConversions._
 import java.util.Collections
+
+import net.adamcin.vltpack.{OutputParameters, ResolvesArtifacts}
 import org.apache.maven.plugin.MojoExecutionException
-import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
-import net.adamcin.vltpack.{ResolvesArtifacts, OutputParameters}
+import org.apache.maven.plugins.annotations.{LifecyclePhase, Mojo, Parameter}
+
+import scala.collection.JavaConversions._
 
 /**
  * Embed sub packages in the project artifact package under /etc/packages

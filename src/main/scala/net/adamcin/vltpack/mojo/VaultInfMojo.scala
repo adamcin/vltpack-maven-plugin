@@ -28,24 +28,24 @@
 package net.adamcin.vltpack.mojo
 
 import java.io.File
-import scalax.io.Resource
-import java.util.{Calendar, Properties, Collections}
-import org.apache.jackrabbit.vault.packaging._
-import org.apache.jackrabbit.vault.fs.config.{MetaInf, DefaultMetaInf, DefaultWorkspaceFilter}
-import org.apache.jackrabbit.vault.fs.api.PathFilterSet
-import org.apache.jackrabbit.vault.fs.filter.DefaultPathFilter
-import org.apache.jackrabbit.util.ISO8601
-import javax.jcr.{Node, SimpleCredentials, Session}
-import org.apache.jackrabbit.core.TransientRepository
-import org.apache.jackrabbit.vault.packaging.impl.{JcrPackageDefinitionImpl, JcrPackageManagerImpl}
-import org.apache.jackrabbit.vault.fs.io.{ImportOptions, PlatformExporter}
-import org.apache.jackrabbit.vault.util.{Text, JcrConstants}
-import collection.JavaConversions._
 import java.security.{DigestInputStream, MessageDigest}
-import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
+import java.util.{Calendar, Collections, Properties}
+import javax.jcr.{Node, Session, SimpleCredentials}
+
 import net.adamcin.vltpack._
-import scala.Left
-import scala.Some
+import org.apache.jackrabbit.core.TransientRepository
+import org.apache.jackrabbit.util.ISO8601
+import org.apache.jackrabbit.vault.fs.api.PathFilterSet
+import org.apache.jackrabbit.vault.fs.config.{DefaultMetaInf, DefaultWorkspaceFilter, MetaInf}
+import org.apache.jackrabbit.vault.fs.filter.DefaultPathFilter
+import org.apache.jackrabbit.vault.fs.io.{Archive, ImportOptions, PlatformExporter}
+import org.apache.jackrabbit.vault.packaging._
+import org.apache.jackrabbit.vault.packaging.impl.{JcrPackageDefinitionImpl, JcrPackageManagerImpl, PackagePropertiesImpl}
+import org.apache.jackrabbit.vault.util.{JcrConstants, Text}
+import org.apache.maven.plugins.annotations.{LifecyclePhase, Mojo, Parameter}
+
+import scala.collection.JavaConversions._
+import scalax.io.Resource
 
 /**
  * Generates package meta information under META-INF/vault, including config.xml, properties.xml, filter.xml
@@ -445,32 +445,35 @@ class VaultInfMojo
     }
   }
 
+  class FakePackage(fakeMetaInf: MetaInf, vaultInfDirectory: File) extends PackagePropertiesImpl with VaultPackage {
+    override def getPropertiesMap: Properties = fakeMetaInf.getProperties
+
+    override def getSize: Long = 0L
+
+    override def getArchive: Archive = null
+
+    override def close(): Unit = {}
+
+    override def isValid: Boolean = false
+
+    override def extract(session: Session, importOptions: ImportOptions): Unit = {}
+
+    override def isClosed: Boolean = true
+
+    override def getMetaInf: MetaInf = fakeMetaInf
+
+    override def getProperties: PackageProperties = this
+
+    override def getFile: File = vaultInfDirectory
+  }
+
   def getFakePackage: VaultPackage = {
     val fakeMetaInf = new DefaultMetaInf
     Resource.fromFile(configXml).inputStream.acquireFor { fakeMetaInf.loadConfig(_, configXml.getPath) }
     Resource.fromFile(filterXml).inputStream.acquireFor { fakeMetaInf.loadFilter(_, filterXml.getPath) }
     Resource.fromFile(propertiesXml).inputStream.acquireFor { fakeMetaInf.loadProperties(_, propertiesXml.getPath) }
 
-    new VaultPackage {
-      def getMetaInf = fakeMetaInf
-      def requiresRoot() = false
-      def getCreatedBy = ""
-      def getSize = 0L
-      def getId = getIdFromProperties(fakeMetaInf.getProperties, None).get
-      def getArchive = null
-      def getLastWrappedBy = ""
-      def getDescription = ""
-      def getLastModified = null
-      def getACHandling = null
-      def getDependencies = null
-      def getCreated = null
-      def close() {}
-      def isValid = false
-      def isClosed = true
-      def extract(p1: Session, p2: ImportOptions) {}
-      def getLastModifiedBy = ""
-      def getLastWrapped = null
-      def getFile = vaultInfDirectory
-    }
+
+    new FakePackage(fakeMetaInf, vaultInfDirectory)
   }
 }

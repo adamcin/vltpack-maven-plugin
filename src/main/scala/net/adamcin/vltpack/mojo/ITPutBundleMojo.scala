@@ -27,10 +27,8 @@
 
 package net.adamcin.vltpack.mojo
 
-import scala.Left
-import scala.Right
-import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
-import net.adamcin.vltpack.{RequiresProject, PutsBundles}
+import net.adamcin.vltpack.{PutsBundles, RequiresProject}
+import org.apache.maven.plugins.annotations.{LifecyclePhase, Mojo, Parameter}
 
 /**
  * PUT the project artifact (of packaging type 'bundle') to the configured CQ server

@@ -27,8 +27,8 @@
 
 package net.adamcin.vltpack.mojo
 
-import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
-import net.adamcin.vltpack.{ChecksumCalculator, PackageDependencies, UploadsPackages, OutputParameters}
+import net.adamcin.vltpack.{ChecksumCalculator, OutputParameters, PackageDependencies, UploadsPackages}
+import org.apache.maven.plugins.annotations.{LifecyclePhase, Mojo, Parameter}
 
 import scala.collection.JavaConversions._
 

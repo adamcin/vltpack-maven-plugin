@@ -27,12 +27,13 @@
 
 package net.adamcin.vltpack.mojo
 
-import collection.JavaConversions
-import java.util.Collections
-import org.apache.maven.plugin.MojoExecutionException
 import java.io.File
-import org.apache.maven.plugins.annotations.{Parameter, Mojo, LifecyclePhase}
-import net.adamcin.vltpack.{VltpackUtil, ResolvesArtifacts, OutputParameters, BundlePathParameters}
+import java.util.Collections
+
+import net.adamcin.vltpack.{BundlePathParameters, OutputParameters, ResolvesArtifacts, VltpackUtil}
+import org.apache.maven.plugin.MojoExecutionException
+import org.apache.maven.plugins.annotations.{LifecyclePhase, Mojo, Parameter}
+
 import scala.collection.JavaConversions._
 
 /**

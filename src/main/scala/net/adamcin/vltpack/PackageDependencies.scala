@@ -27,10 +27,12 @@
 
 package net.adamcin.vltpack
 
-import org.apache.jackrabbit.vault.packaging.Dependency
-import collection.JavaConversions._
-import org.apache.maven.plugins.annotations.Parameter
 import java.util.Collections
+
+import org.apache.jackrabbit.vault.packaging.Dependency
+import org.apache.maven.plugins.annotations.Parameter
+
+import scala.collection.JavaConversions._
 
 
 /**

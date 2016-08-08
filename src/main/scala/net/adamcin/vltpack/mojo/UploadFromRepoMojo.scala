@@ -27,9 +27,9 @@
 
 package net.adamcin.vltpack.mojo
 
-import org.apache.maven.plugins.annotations.{Parameter, Mojo}
 import net.adamcin.vltpack.{IdentifiesPackages, ResolvesArtifacts, UploadsPackages}
 import org.apache.maven.plugin.MojoExecutionException
+import org.apache.maven.plugins.annotations.{Mojo, Parameter}
 
 /**
  * Command-line goal that provides the ability to resolve a package artifact from a local or remote repository and
