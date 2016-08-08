@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>vltpack - VLT Pack Maven Plugin 1.1.0-SNAPSHOT API - net.adamcin.vltpack</title>
@@ -29,9 +28,13 @@
         </head>
         <body class="value">
       <div id="definition">
-        <img src="../../../lib/package_big.png" />
+        <img alt="Package" src="../../../lib/package_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="net">net</a>.<a href="../package.html" class="extype" name="net.adamcin">adamcin</a></p>
-        <h1>vltpack</h1>
+        <h1>vltpack</h1><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -63,7 +66,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="net.adamcin.vltpack.BundlePathParameters" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="net.adamcin.vltpack.BundlePathParameters" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="BundlePathParametersextendsBaseMojo"></a>
       <a id="BundlePathParameters:BundlePathParameters"></a>
       <h4 class="signature">
@@ -74,10 +77,14 @@
       <span class="symbol">
         <a href="BundlePathParameters.html"><span class="name">BundlePathParameters</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Trait defining common parameters and methods for placement of bundles within a JCR repository</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@BundlePathParametersextendsBaseMojo" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait defining common parameters and methods for placement of bundles within a JCR repository</p><div class="fullcomment"><div class="comment cmt"><p>Trait defining common parameters and methods for placement of bundles within a JCR repository</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
     </li><li name="net.adamcin.vltpack.ChecksumCalculator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ChecksumCalculatorextendsObject"></a>
+      <a id="ChecksumCalculatorextendsAnyRef"></a>
       <a id="ChecksumCalculator:ChecksumCalculator"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -87,9 +94,13 @@
       <span class="symbol">
         <a href="ChecksumCalculator.html"><span class="name">ChecksumCalculator</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@ChecksumCalculatorextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       
-    </li><li name="net.adamcin.vltpack.CreatesPackage" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+    </li><li name="net.adamcin.vltpack.CreatesPackage" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="CreatesPackageextendsBaseMojo"></a>
       <a id="CreatesPackage:CreatesPackage"></a>
       <h4 class="signature">
@@ -100,10 +111,14 @@
       <span class="symbol">
         <a href="CreatesPackage.html"><span class="name">CreatesPackage</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Trait defining common mojo parameters and methods for the creation of vault packages</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@CreatesPackageextendsBaseMojo" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait defining common mojo parameters and methods for the creation of vault packages</p><div class="fullcomment"><div class="comment cmt"><p>Trait defining common mojo parameters and methods for the creation of vault packages</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
     </li><li name="net.adamcin.vltpack.DavRequestVerbs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="DavRequestVerbsextendsDefaultRequestVerbswithDavVerbs"></a>
+      <a id="DavRequestVerbsextendsMethodVerbswithDavVerbs"></a>
       <a id="DavRequestVerbs:DavRequestVerbs"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -111,11 +126,15 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="DavRequestVerbs.html"><span class="name">DavRequestVerbs</span></a><span class="result"> extends <span class="extype" name="dispatch.DefaultRequestVerbs">DefaultRequestVerbs</span> with <a href="DavVerbs.html" class="extype" name="net.adamcin.vltpack.DavVerbs">DavVerbs</a></span>
+        <a href="DavRequestVerbs.html"><span class="name">DavRequestVerbs</span></a><span class="result"> extends <span class="extype" name="dispatch.MethodVerbs">MethodVerbs</span> with <a href="DavVerbs.html" class="extype" name="net.adamcin.vltpack.DavVerbs">DavVerbs</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Wraps an implicitly created DefaultRequestVerbs object with the DavVerbs trait</p>
-    </li><li name="net.adamcin.vltpack.DavVerbs" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@DavRequestVerbsextendsMethodVerbswithDavVerbs" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Wraps an implicitly created DefaultRequestVerbs object with the DavVerbs trait</p>
+    </li><li name="net.adamcin.vltpack.DavVerbs" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="DavVerbsextendsMethodVerbs"></a>
       <a id="DavVerbs:DavVerbs"></a>
       <h4 class="signature">
@@ -126,9 +145,13 @@
       <span class="symbol">
         <a href="DavVerbs.html"><span class="name">DavVerbs</span></a><span class="result"> extends <span class="extype" name="dispatch.MethodVerbs">MethodVerbs</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Adds fluid support for the MKCOL method</p>
-    </li><li name="net.adamcin.vltpack.HttpParameters" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@DavVerbsextendsMethodVerbs" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Adds fluid support for the MKCOL method</p><div class="fullcomment"><div class="comment cmt"><p>Adds fluid support for the MKCOL method</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.HttpParameters" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="HttpParametersextendsBaseMojowithUsernameAware"></a>
       <a id="HttpParameters:HttpParameters"></a>
       <h4 class="signature">
@@ -139,10 +162,15 @@
       <span class="symbol">
         <a href="HttpParameters.html"><span class="name">HttpParameters</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="UsernameAware.html" class="extype" name="net.adamcin.vltpack.UsernameAware">UsernameAware</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Trait defining common mojo parameters and methods for establishing HTTP connections to a Granite server.</p>
-    </li><li name="net.adamcin.vltpack.IdentifiesPackages" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="IdentifiesPackagesextendsObject"></a>
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@HttpParametersextendsBaseMojowithUsernameAware" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait defining common mojo parameters and methods for establishing HTTP connections to a Granite server.</p><div class="fullcomment"><div class="comment cmt"><p>Trait defining common mojo parameters and methods for establishing HTTP connections to a Granite server.
+Reuses the vltpack.user parameter defined in the UsernameAware trait as part of the connection credentials</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.IdentifiesPackages" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="IdentifiesPackagesextendsAnyRef"></a>
       <a id="IdentifiesPackages:IdentifiesPackages"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -152,10 +180,15 @@
       <span class="symbol">
         <a href="IdentifiesPackages.html"><span class="name">IdentifiesPackages</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Trait defining common mojo parameters and methods needed to identify vault package binaries based on
-embedded metadata</p>
-    </li><li name="net.adamcin.vltpack.OutputParameters" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@IdentifiesPackagesextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait defining common mojo parameters and methods needed to identify vault package binaries based on
+embedded metadata</p><div class="fullcomment"><div class="comment cmt"><p>Trait defining common mojo parameters and methods needed to identify vault package binaries based on
+embedded metadata</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.OutputParameters" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="OutputParametersextendsBaseMojowithRequiresProject"></a>
       <a id="OutputParameters:OutputParameters"></a>
       <h4 class="signature">
@@ -166,9 +199,13 @@ embedded metadata</p>
       <span class="symbol">
         <a href="OutputParameters.html"><span class="name">OutputParameters</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Trait defining common output path variables</p>
-    </li><li name="net.adamcin.vltpack.PackageDependencies" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@OutputParametersextendsBaseMojowithRequiresProject" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait defining common output path variables</p><div class="fullcomment"><div class="comment cmt"><p>Trait defining common output path variables</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.PackageDependencies" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="PackageDependenciesextendsBaseMojowithRequiresProjectwithIdentifiesPackageswithResolvesArtifacts"></a>
       <a id="PackageDependencies:PackageDependencies"></a>
       <h4 class="signature">
@@ -179,10 +216,15 @@ embedded metadata</p>
       <span class="symbol">
         <a href="PackageDependencies.html"><span class="name">PackageDependencies</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="RequiresProject.html" class="extype" name="net.adamcin.vltpack.RequiresProject">RequiresProject</a> with <a href="IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a> with <a href="ResolvesArtifacts.html" class="extype" name="net.adamcin.vltpack.ResolvesArtifacts">ResolvesArtifacts</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Trait defining common mojo parameters and methods useful for identifying package dependencies that
-are not embedded in the main project artifact</p>
-    </li><li name="net.adamcin.vltpack.PutsBundles" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@PackageDependenciesextendsBaseMojowithRequiresProjectwithIdentifiesPackageswithResolvesArtifacts" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait defining common mojo parameters and methods useful for identifying package dependencies that
+are not embedded in the main project artifact</p><div class="fullcomment"><div class="comment cmt"><p>Trait defining common mojo parameters and methods useful for identifying package dependencies that
+are not embedded in the main project artifact</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.PutsBundles" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="PutsBundlesextendsBaseMojowithHttpParameterswithBundlePathParameters"></a>
       <a id="PutsBundles:PutsBundles"></a>
       <h4 class="signature">
@@ -193,10 +235,15 @@ are not embedded in the main project artifact</p>
       <span class="symbol">
         <a href="PutsBundles.html"><span class="name">PutsBundles</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a> with <a href="BundlePathParameters.html" class="extype" name="net.adamcin.vltpack.BundlePathParameters">BundlePathParameters</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Trait defining common mojo parameters and methods for uploading OSGi bundles to the configured CQ server
-using the PUT HTTP method</p>
-    </li><li name="net.adamcin.vltpack.RequiresProject" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@PutsBundlesextendsBaseMojowithHttpParameterswithBundlePathParameters" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait defining common mojo parameters and methods for uploading OSGi bundles to the configured CQ server
+using the PUT HTTP method</p><div class="fullcomment"><div class="comment cmt"><p>Trait defining common mojo parameters and methods for uploading OSGi bundles to the configured CQ server
+using the PUT HTTP method</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.RequiresProject" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="RequiresProjectextendsBaseMojo"></a>
       <a id="RequiresProject:RequiresProject"></a>
       <h4 class="signature">
@@ -207,10 +254,15 @@ using the PUT HTTP method</p>
       <span class="symbol">
         <a href="RequiresProject.html"><span class="name">RequiresProject</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Trait for mojos to mark them as requiring a reference to a maven project as well as defining
-the dependency as a component</p>
-    </li><li name="net.adamcin.vltpack.ResolvesArtifacts" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@RequiresProjectextendsBaseMojo" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait for mojos to mark them as requiring a reference to a maven project as well as defining
+the dependency as a component</p><div class="fullcomment"><div class="comment cmt"><p>Trait for mojos to mark them as requiring a reference to a maven project as well as defining
+the dependency as a component</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.ResolvesArtifacts" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ResolvesArtifactsextendsBaseMojo"></a>
       <a id="ResolvesArtifacts:ResolvesArtifacts"></a>
       <h4 class="signature">
@@ -221,10 +273,15 @@ the dependency as a component</p>
       <span class="symbol">
         <a href="ResolvesArtifacts.html"><span class="name">ResolvesArtifacts</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Trait defining common mojo parameters and methods useful for arbitrarily resolving artifacts from
-local and remote repositories</p>
-    </li><li name="net.adamcin.vltpack.UploadsPackages" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@ResolvesArtifactsextendsBaseMojo" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait defining common mojo parameters and methods useful for arbitrarily resolving artifacts from
+local and remote repositories</p><div class="fullcomment"><div class="comment cmt"><p>Trait defining common mojo parameters and methods useful for arbitrarily resolving artifacts from
+local and remote repositories</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.UploadsPackages" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="UploadsPackagesextendsBaseMojowithHttpParameterswithIdentifiesPackages"></a>
       <a id="UploadsPackages:UploadsPackages"></a>
       <h4 class="signature">
@@ -235,10 +292,15 @@ local and remote repositories</p>
       <span class="symbol">
         <a href="UploadsPackages.html"><span class="name">UploadsPackages</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a> with <a href="HttpParameters.html" class="extype" name="net.adamcin.vltpack.HttpParameters">HttpParameters</a> with <a href="IdentifiesPackages.html" class="extype" name="net.adamcin.vltpack.IdentifiesPackages">IdentifiesPackages</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Trait defining common mojo parameters and methods useful for uploading and installing vault packages on
-CQ servers</p>
-    </li><li name="net.adamcin.vltpack.UsernameAware" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@UploadsPackagesextendsBaseMojowithHttpParameterswithIdentifiesPackages" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait defining common mojo parameters and methods useful for uploading and installing vault packages on
+CQ servers</p><div class="fullcomment"><div class="comment cmt"><p>Trait defining common mojo parameters and methods useful for uploading and installing vault packages on
+CQ servers</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.UsernameAware" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="UsernameAwareextendsBaseMojo"></a>
       <a id="UsernameAware:UsernameAware"></a>
       <h4 class="signature">
@@ -249,8 +311,12 @@ CQ servers</p>
       <span class="symbol">
         <a href="UsernameAware.html"><span class="name">UsernameAware</span></a><span class="result"> extends <a href="mojo/BaseMojo.html" class="extype" name="net.adamcin.vltpack.mojo.BaseMojo">BaseMojo</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Trait defining the vltpack.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@UsernameAwareextendsBaseMojo" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait defining the vltpack.user mojo parameter</p><div class="fullcomment"><div class="comment cmt"><p>Trait defining the vltpack.user mojo parameter</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
     </li><li name="net.adamcin.vltpack.VltpackException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="VltpackExceptionextendsException"></a>
       <a id="VltpackException:VltpackException"></a>
@@ -260,10 +326,14 @@ CQ servers</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="VltpackException.html"><span class="name">VltpackException</span></a><span class="result"> extends <span class="extype" name="java.lang.Exception">Exception</span></span>
+        <a href="VltpackException.html"><span class="name">VltpackException</span></a><span class="result"> extends <span class="extype" name="scala.Exception">Exception</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">General exception for error cases without a throwable cause
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@VltpackExceptionextendsException" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">General exception for error cases without a throwable cause
 </p>
     </li></ol>
             </div>
@@ -272,7 +342,7 @@ CQ servers</p>
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="net.adamcin.vltpack.IdentifiesPackages" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="net.adamcin.vltpack.IdentifiesPackages" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="IdentifiesPackages"></a>
       <a id="IdentifiesPackages:IdentifiesPackages"></a>
       <h4 class="signature">
@@ -283,9 +353,13 @@ CQ servers</p>
       <span class="symbol">
         <a href="IdentifiesPackages$.html"><span class="name">IdentifiesPackages</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Companion object for the trait defining these useful property constants</p>
-    </li><li name="net.adamcin.vltpack.VltpackUtil" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@IdentifiesPackages" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Companion object for the trait defining these useful property constants</p><div class="fullcomment"><div class="comment cmt"><p>Companion object for the trait defining these useful property constants</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
+    </li><li name="net.adamcin.vltpack.VltpackUtil" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="VltpackUtil"></a>
       <a id="VltpackUtil:VltpackUtil"></a>
       <h4 class="signature">
@@ -296,8 +370,12 @@ CQ servers</p>
       <span class="symbol">
         <a href="VltpackUtil$.html"><span class="name">VltpackUtil</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Utility methods used by the plugin</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@VltpackUtil" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Utility methods used by the plugin</p><div class="fullcomment"><div class="comment cmt"><p>Utility methods used by the plugin</p></div><dl class="attributes block"> <dt>Since</dt><dd><p>0.6.0</p></dd></dl></div>
     </li><li name="net.adamcin.vltpack.mojo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="mojo"></a>
       <a id="mojo:mojo"></a>
@@ -309,7 +387,11 @@ CQ servers</p>
       <span class="symbol">
         <a href="mojo/package.html"><span class="name">mojo</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#net.adamcin.vltpack.package@mojo" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       
     </li></ol>
             </div>
